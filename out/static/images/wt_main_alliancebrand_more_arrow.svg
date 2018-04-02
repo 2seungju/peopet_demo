@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="22px" viewBox="0 0 24 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>w_alliancebrand_more_arrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="w_main" transform="translate(-1143.000000, -5934.000000)" fill="#FFFFFF" stroke="#FFFFFF">
+            <g id="alliancebrand" transform="translate(0.000000, 5598.000000)">
+                <g id="alliancebrand_more" transform="translate(891.000000, 327.000000)">
+                    <g id="alliance_brand_more">
+                        <g id="w_alliancebrand_more_arrow" transform="translate(253.000000, 9.000000)">
+                            <path d="M11,10.8623832 L0.945817892,22 L6.03961325e-14,20.9781529 L9.23574183,11 L0,1.02184706 L0.945817892,0 L11,10.8623832 Z" id="contact_brand_arrow"></path>
+                            <path d="M22,10.8623832 L11.9458179,22 L11,20.9781529 L20.2357418,11 L11,1.02184706 L11.9458179,0 L22,10.8623832 Z" id="contact_brand_arrow"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

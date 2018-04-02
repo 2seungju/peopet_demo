@@ -1,0 +1,150 @@
+import React, { Component } from 'react'
+import styled from 'styled-components'
+import SeoHead from 'components/SeoHead'
+import Nav from 'components/Nav'
+import { marginTop } from 'utils/nav'
+import Footer from 'components/Footer'
+import rem from 'utils/rem'
+import { white } from 'utils/colors'
+import Spinner from 'components/Spinner'
+
+const LayoutWrapper = styled.div`
+  position: relative;
+  height: 100%;
+`
+
+const Wrapper = styled.div`
+  position: relative;
+  ${'' /* height: 100%; */}
+  ${p => p.location === 'breeder' && marginTop('70px')};
+  ${'' /* padding-top: ${p => p.location === 'detail' && '50px'}; */}
+  ${'' /* margin-top: ${rem(70)}; */}
+  ${'' /* max-width: 100%; */}
+  ${'' /* height: 100%; */}
+  ${'' /* min-height: ${rem(800)}; */}
+  background: ${p => p.background ? p.background : white};
+  ${'' /* overflow-y: ${p => p.isSideMenuFolded ? 'hidden' : 'scroll'}; */}
+  ${'' /* overflow-x: hidden; */}
+  ${'' /* -webkit-overflow-scrolling: touch; */}
+  ${'' /* position: ${p => p.isSideMenuFolded ? 'fixed' : 'relative'}; */}
+  ${'' /* top: ${p => p.isSideMenuFolded && '-400px'}; */}
+  opacity: ${p => p.isSideMenuFolded && 0.76};
+`
+
+class Layout extends Component {
+  state = {
+    isDropMenuFolded: false,
+    transparent: false,
+    isScrolled: false,
+    isSideMenuFolded: false,
+    isMobileCategorySelected: false,
+    mobileCategorySelectedId: ''
+  }
+
+  componentDidMount() {
+    // Learn more about how { passive: true } improves scrolling performance
+    // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Improving_scrolling_performance_with_passive_listeners
+    // window.addEventListener('scroll', this.onScroll, { passive: true })
+    window.addEventListener('scroll', this.onScroll)
+    document.getElementById('__next').scrollTo(0, 0)
+    // this.onScroll()
+    
+
+  }
+
+  // componentDidUpdate(prevProps) {
+  //   console.log(prevProps.location, this.props.location)
+  //   if (this.props.location !== prevProps.location) {
+  //     this.onScroll()
+  //   }
+  //   const elem = document.getElementById('root')
+  //   elem.scrollTop = elem.scrollHeight;
+  // }
+
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll)
+  }
+
+  onScroll = () => {
+    document.getElementById('root').scrollTo(0, 0)
+  }
+
+  // onScroll = () => {
+  //   const isScrolled = (window.pageYOffset || document.body.scrollTop) > 0
+
+  //   if (isScrolled !== this.state.isScrolled) {
+  //     this.setState({ isScrolled })
+  //   }
+  // }
+
+  onDropMenuToggle = () => {
+    const { isDropMenuFolded, isSideMenuFolded } = this.state
+    this.setState({
+      isDropMenuFolded: !isDropMenuFolded,
+      isSideMenuFolded: !isSideMenuFolded && false
+    })
+  }
+
+  onSideMenuToggle = () => {
+    // console.log('??')
+    const { isDropMenuFolded, isSideMenuFolded } = this.state
+    this.setState({
+      isSideMenuFolded: !isSideMenuFolded,
+      isDropMenuFolded: !isDropMenuFolded && false
+    })
+  }
+
+  // onChangeBreeder = (dogId) => {
+  //   console.log(dogId)
+  //   this.setState({
+  //     isMobileCategorySelected: true,
+  //     mobileCategorySelectedId: dogId
+  //   })
+  // }
+
+  render() {
+    const { title, description, children, location, handleClickSuggestion, background, breeder, onChangeBreeder, activeDogId, loading, isFiltered, mobile } = this.props
+    const { isDropMenuFolded, transparent, isScrolled, isSideMenuFolded, isMobileCategorySelected, mobileCategorySelectedId } = this.state
+    const { onDropMenuToggle, onSideMenuToggle } = this
+    return (
+      <LayoutWrapper>
+        <SeoHead
+          title={`peopet${title ? `/${title}` : ''}`}
+          description={description}
+        />
+        <Nav
+          transparent={transparent}
+          isDropMenuFolded={isDropMenuFolded}
+          onDropMenuToggle={onDropMenuToggle}
+          isScrolled={isScrolled}
+          location={location}
+          onSideMenuToggle={onSideMenuToggle}
+          isSideMenuFolded={isSideMenuFolded}
+          onChangeBreeder={onChangeBreeder}
+          activeDogId={activeDogId}
+          handleClickSuggestion={handleClickSuggestion}
+          // showDropMenu={showDropMenu}
+        />
+        {
+          isFiltered && loading ? <Spinner loading={loading} /> :
+          <Wrapper
+            id="layout"
+            location={location}
+            background={background}
+            isSideMenuFolded={isSideMenuFolded}
+            onChangeBreeder={onChangeBreeder}
+            handleClickSuggestion={handleClickSuggestion}
+            isMobileCategorySelecte={isMobileCategorySelected}
+            mobileCategorySelectedId={mobileCategorySelectedId}
+          >
+            {children}
+          </Wrapper>
+        }
+        <Footer isSideMenuFolded={isSideMenuFolded} />
+      </LayoutWrapper>
+    )
+  }
+}
+
+export default Layout

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="12px" viewBox="0 0 20 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>newbreeder_more_arrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="w_main" transform="translate(-789.000000, -4368.000000)" fill="#FFFFFF">
+            <g id="newbreeder" transform="translate(0.000000, 2045.000000)">
+                <g id="newbreeder_orangebar" transform="translate(595.000000, 2302.000000)">
+                    <polygon id="newbreeder_more_arrow" transform="translate(204.000000, 27.000000) rotate(360.000000) translate(-204.000000, -27.000000) " points="211.692308 21 214 23.25 204 33 194 23.25 196.307692 21 204 28.5"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
