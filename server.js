@@ -20,6 +20,13 @@ app.prepare()
   .then(() => {
     const server = express()
 
+    // Allows for cross origin domain request:
+    server.use((req, res, next) => {
+      res.header('Access-Control-Allow-Origin', '*')
+      res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+      next()
+    })
+
     // Use the `renderAndCache` utility defined below to serve pages
     server.get('/', (req, res) => {
       renderAndCache(req, res, '/')
