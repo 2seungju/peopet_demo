@@ -227,7 +227,7 @@ const resetStyles = `
     margin: 0;
     height: 100%;
     -webkit-font-smoothing: subpixel-antialiased;
-    font-family: 'PT Sans', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
   }
 
   body {
@@ -273,6 +273,7 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content="#ffffff" />
           <meta name="author" content="peopet" />
 
+          <meta name="title" content="브리더, 전문브리더, 강아지 브리더, 반려견, 강아지 분양, 강아지 브리더 분양, 페키니즈, 포메라니안, 전문견사" />
           <meta name="description" content="브리더, 전문브리더, 강아지 브리더, 반려견, 강아지 분양, 강아지 브리더 분양, 페키니즈, 포메라니안, 전문견사" />
           <meta property="og:title" content="페오펫 | 강아지 브리더 | peopet | 강아지 분양 | 페키니즈" />
           <meta property="og:description" content="브리더, 전문브리더, 강아지 브리더, 반려견, 강아지 분양, 강아지 브리더 분양, 페키니즈, 포메라니안, 전문견사" />
@@ -281,10 +282,26 @@ export default class MyDocument extends Document {
           <link rel="icon" type="image/png" href="/static/favicon.png" />
           <link rel="stylesheet" href="/_next/static/style.css" />
           <link rel="manifest" href="/static/manifest.json" />
-          <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet" />
           <style dangerouslySetInnerHTML={{ __html: resetStyles }} />
           {styleTags}
           <script dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MVS64F9');` }} />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: `{
+                "@context": "http://schema.org",
+                "@type": "Person",
+                "name": "페오펫_peopet",
+                "url": "https://www.peopet.co.kr",
+                "sameAs": [
+                  "https://www.facebook.com/peopleNpet",
+                  "http://blog.naver.com/peopet",
+                  "http://www.instagram.com/peo_pet",
+                ]
+              }` 
+            }}
+          />
         </Head>
         <body>
           <div className="root">
