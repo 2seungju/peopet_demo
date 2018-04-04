@@ -229,7 +229,7 @@ class Index extends Component {
     // const dog = await axios.get(`http://${fetchServerConfig.ip}:4000/api/dog`)
     // const json = await res.json()
     return {
-      breederData: breeder.data,
+      // breederData: breeder.data,
       // dogData: dog.data,
     }
   }
