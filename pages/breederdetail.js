@@ -222,7 +222,7 @@ const Image = styled.img`
 
 export default class Breederdetail extends Component {
   static async getInitialProps({ query: { id } }) {
-    const res = await axios.get(`https://${fetchServerConfig.ip}:3000/api/breeder/${id}`)
+    const res = await axios.get(`http://${fetchServerConfig.ip}:3000/api/breeder/${id}`)
     // const json = await res.json()
     return { data: res.data }
   }
