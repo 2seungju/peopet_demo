@@ -53,8 +53,8 @@ export default class SeoHead extends Component {
 
         {children}
 
-        <link rel="shortcut icon" href="/static/pavicon.png" />
-        <link rel="icon" href="/static/pavicon.png" />
+        <link rel="shortcut icon" href="/static/favicon.png" />
+        <link rel="icon" href="/static/favicon.png" />
       </NextHead>
     )
   }
