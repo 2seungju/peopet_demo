@@ -222,17 +222,37 @@ const Image = styled.img`
 
 export default class Breederdetail extends Component {
   static async getInitialProps({ query: { id } }) {
-    const res = await axios.get(`${fetchServerConfig.ip}/api/breeder/${id}`)
-    // const json = await res.json()
-    return { data: res.data }
+    return { id }
+  }
+
+  state = {
+    breederData: []
   }
 
   componentDidMount() {
+    const { id } = this.props
+    axios.get(`${fetchServerConfig.ip}/api/breeder/${id}`)
+      .then(res => this.setState({
+        breederData: res.data
+      }))
+      .catch(err => console.log(err))
   }
 
   render() {
-    const { data } = this.props
-    const { kannelImage, dogImage, puppyImage } = data
+    const { breederData } = this.state
+    const {
+      kannelImage,
+      dogImage,
+      puppyImage,
+      breederImage,
+      breederName,
+      kannelBreed,
+      kannelLocation,
+      kannelName,
+      question_start,
+      question_mind,
+      question_word
+    } = breederData
     let images = []
     images.push(kannelImage, dogImage, puppyImage)
     images = images.reduce((a, b) => a.concat(b), [])
@@ -252,10 +272,10 @@ export default class Breederdetail extends Component {
                 <Bar borderColor={warmGrey2} mobileHide />
                 <NavWrapper padding={25} breeder>
                   <BreederImageNameWrapper>
-                    <BreederImage src={data.breederImage} />
+                    <BreederImage src={breederImage} />
                     <NameWrapper>
-                      <Name>{data.breederName} 브리더</Name>
-                      <Introduce>안녕하세요. {data.kannelBreed}을<br />브리딩 하는 {data.breederName} 입니다.</Introduce>
+                      <Name>{breederName} 브리더</Name>
+                      <Introduce>안녕하세요. {kannelBreed}을<br />브리딩 하는 {breederName} 입니다.</Introduce>
                     </NameWrapper>
                   </BreederImageNameWrapper>
                   <SupportWrapper>
@@ -266,25 +286,25 @@ export default class Breederdetail extends Component {
                 <Bar borderColor={warmGrey2} />
                 <NavWrapper padding={20} mobilePadding={10} breederDetail>
                   <BreederDetailWrapper>
-                    <DetailLocationIcon /><Description breederDetail>{data.kannelLocation}</Description>
+                    <DetailLocationIcon /><Description breederDetail>{kannelLocation}</Description>
                   </BreederDetailWrapper>
                   <BreederDetailWrapper>
-                    <DetailDogNameIcon /><Description breederDetail>{data.kannelBreed}</Description>
+                    <DetailDogNameIcon /><Description breederDetail>{kannelBreed}</Description>
                   </BreederDetailWrapper>
                   <BreederDetailWrapper>
-                    <DetailLocationIcon /><Description breederDetail>{data.kannelLocation}</Description>
+                    <DetailLocationIcon /><Description breederDetail>{kannelLocation}</Description>
                   </BreederDetailWrapper>
                   <BreederDetailWrapper>
-                    <DetailKannelIcon /><Description breederDetail>{data.kannelName}</Description>
+                    <DetailKannelIcon /><Description breederDetail>{kannelName}</Description>
                   </BreederDetailWrapper>
                 </NavWrapper>
                 <Bar borderColor={warmGrey2} />
               </BreederWrapper>
               <InterviewWrapper>
                 <Title>브리더 인터뷰</Title>
-                <Description>{data.question_start}</Description>
-                <Description>{data.question_mind}</Description>
-                <Description>{data.question_word}</Description>
+                <Description>{question_start}</Description>
+                <Description>{question_mind}</Description>
+                <Description>{question_word}</Description>
               </InterviewWrapper>
               {/* <Bar borderColor={warmGrey2} />
               <KannelInfoWrapper>

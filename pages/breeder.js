@@ -50,15 +50,7 @@ const BreederList = styled.div`
 export default class Breeder extends Component {
   static async getInitialProps({ query }) {
     const { dogId } = query
-    const fetchQuery = dogId ? `/dog/${dogId}` : ''
-    const res = await axios.get(`${fetchServerConfig.ip}/api/breeder${fetchQuery}`)
-
-    if (res.data.statusCode === 404) {
-      return { statusCode: 404 }
-    }
-    // console.log(res.data)
-    return { data: res.data }
-    // const res = await axios.get(`http://${fetchServerConfig.ip}:4000/api/breeder`)    
+    return { dogId }
   }
 
   state = {
@@ -67,7 +59,21 @@ export default class Breeder extends Component {
     filterDogData: [],
     isFiltered: false,
     activeDogId: '',
-    fetchError: false
+    fetchError: false,
+    dogData: []
+  }
+
+  componentDidMount() {
+    const { dogId } = this.props
+    const fetchQuery = dogId ? `/dog/${dogId}` : ''
+
+    axios.get(`${fetchServerConfig.ip}/api/breeder${fetchQuery}`)
+      .then(res => {
+        this.setState({
+          dogData: res.data
+        })
+      })
+      .catch(err => console.log(err))
   }
 
   componentDidCatch(error, info) {
@@ -127,13 +133,14 @@ export default class Breeder extends Component {
 
 
   render() {
-    const { loading, errorFound, dogData, isFiltered, filterDogData, activeDogId, fetchError } = this.state
-    const { data, isMobileCategorySelected, mobileCategorySelectedId, statusCode } = this.props
+    const { dogData, loading, errorFound, isFiltered, filterDogData, activeDogId } = this.state
+    const { isMobileCategorySelected, mobileCategorySelectedId, statusCode } = this.props
     const { onChangeBreeder, handleClickSuggestion } = this
-    const breederData = isFiltered ? filterDogData : data
+    const breederData = isFiltered ? filterDogData : dogData
     // return isFiltered && loading ? <Spinner loading={loading} /> : (
     // return (
-    return statusCode === '404' ? <ErrorPage statusCode={404} /> : (
+    // return statusCode === '404' ? <ErrorPage statusCode={404} /> : (
+    return (
       <Layout
         title="breeder"
         background={grey}
