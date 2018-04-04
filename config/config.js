@@ -4,7 +4,7 @@ const fetchServerConfig = {
   // server
   // ip: '13.125.234.197',
   // client
-  ip: 'peopet.co.kr'
+  ip: 'www.peopet.co.kr'
 }
 
 const config = {
