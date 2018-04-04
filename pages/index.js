@@ -225,7 +225,7 @@ const TextInput = styled.input`
 
 class Index extends Component {
   static async getInitialProps() {
-    const breeder = await axios.get(`${fetchServerConfig.ip}/api/breeder`)
+    // const breeder = await axios.get(`${fetchServerConfig.ip}/api/breeder`)
     // const dog = await axios.get(`http://${fetchServerConfig.ip}:4000/api/dog`)
     // const json = await res.json()
     return {
@@ -234,8 +234,22 @@ class Index extends Component {
     }
   }
 
+  state = {
+    breederData: []
+  }
+
+  componentDidMount() {
+    axios.get(`${fetchServerConfig.ip}/api/breeder`)
+      .then(res => {
+        this.setState({
+          breederData: res.data
+        })
+      })
+      .catch(err => console.log(err))
+  }
+
   render() {
-    const { breederData } = this.props
+    const { breederData } = this.state
     const bestBreederList = breederData.filter(breeder => breeder.label === 'best')
     const newBreederList = breederData.filter(breeder => breeder.label === 'new')
     return (
