@@ -225,7 +225,7 @@ const TextInput = styled.input`
 
 class Index extends Component {
   static async getInitialProps() {
-    const breeder = await axios.get(`https://${fetchServerConfig.ip}:3000/api/breeder`)
+    const breeder = await axios.get(`https://${fetchServerConfig.ip}/api/breeder`)
     // const dog = await axios.get(`http://${fetchServerConfig.ip}:4000/api/dog`)
     // const json = await res.json()
     return {

@@ -51,7 +51,7 @@ export default class Breeder extends Component {
   static async getInitialProps({ query }) {
     const { dogId } = query
     const fetchQuery = dogId ? `/dog/${dogId}` : ''
-    const res = await axios.get(`https://${fetchServerConfig.ip}:3000/api/breeder${fetchQuery}`)
+    const res = await axios.get(`https://${fetchServerConfig.ip}/api/breeder${fetchQuery}`)
 
     if (res.data.statusCode === 404) {
       return { statusCode: 404 }
@@ -89,7 +89,7 @@ export default class Breeder extends Component {
       loading: true,
       activeDogId: id
     }, () => {
-      return axios.get(`https://${fetchServerConfig.ip}:3000/api/breeder/dog/${id}`)
+      return axios.get(`https://${fetchServerConfig.ip}/api/breeder/dog/${id}`)
         .then(res => {
           return this.setState({
             filterDogData: res.data,
@@ -110,7 +110,7 @@ export default class Breeder extends Component {
       loading: true,
       activeDogId: id
     }, () => {
-      return axios.get(`https://${fetchServerConfig.ip}:3000/api/breeder/dog/${id}`)
+      return axios.get(`https://${fetchServerConfig.ip}/api/breeder/dog/${id}`)
         .then(res => {
           return this.setState({
             filterDogData: res.data,
