@@ -3,25 +3,25 @@ import media from 'utils/media'
 import rem from 'utils/rem'
 import { white2, dark } from 'utils/colors'
 
-const facebookUrl = 'static/images/wt_main_head_icon_facebook.svg'
-const instaUrl = 'static/images/wt_main_head_icon_instagram.svg'
-const blogUrl = 'static/images/wt_main_head_icon_blog.svg'
-const yellowUrl = 'static/images/wt_main_head_icon_yellowid.svg'
-const headUrl = 'static/images/wt_main_head_logo.svg'
-const footerUrl = 'static/images/wt_main_footer_logo.svg'
-const rightDropUrl = 'static/images/wt_main_head_menu.svg'
-const searchUrl = 'static/images/wt_main_home_search.svg'
-const homePartnerRightUrl = 'static/images/wt_main_contact_arrow.svg'
-const detailColorUrl = 'static/images/breederdetail_color.svg'
-const detailKannelUrl = 'static/images/breederdetail_homename.svg'
-const detailLocationUrl = 'static/images/breederdetail_location.svg'
-const detailDogNameUrl = 'static/images/breederdetail_pet.svg'
-const changeRotationUrl = 'static/images/changeculture_icon.svg'
-const buildServiceUrl = 'static/images/wtm_buildserviece.svg'
-const leftDropUrl = 'static/images/m_head_listmenu.svg'
-const closeUrl = 'static/images/m_close.svg'
-const leftArrowUrl = 'static/images/slider-left-arrow.svg'
-const rightArrowUrl = 'static/images/slider-right-arrow.svg'
+const facebookImg = require('static/images/wt_main_head_icon_facebook.svg')
+const instaImg = require('static/images/wt_main_head_icon_instagram.svg')
+const blogImg = require('static/images/wt_main_head_icon_blog.svg')
+const yellowImg = require('static/images/wt_main_head_icon_yellowid.svg')
+const headImg = require('static/images/wt_main_head_logo.svg')
+const footerImg = require('static/images/wt_main_footer_logo.svg')
+const rightDropImg = require('static/images/wt_main_head_menu.svg')
+const searchImg = require('static/images/wt_main_home_search.svg')
+const homePartnerRightImg = require('static/images/wt_main_contact_arrow.svg')
+const detailColorImg = require('static/images/breederdetail_color.svg')
+const detailKannelImg = require('static/images/breederdetail_homename.svg')
+const detailLocationImg = require('static/images/breederdetail_location.svg')
+const detailDogNameImg = require('static/images/breederdetail_pet.svg')
+const changeRotationImg = require('static/images/changeculture_icon.svg')
+const buildServiceImg = require('static/images/wtm_buildserviece.svg')
+const leftDropImg = require('static/images/m_head_listmenu.svg')
+const closeImg = require('static/images/m_close.svg')
+const LeftArrowImg = require('static/images/slider-left-arrow.svg')
+const RightArrowImg = require('static/images/slider-right-arrow.svg')
 
 const Img = styled.img`
   display: ${p => p.mobileOpen && 'none'};
@@ -91,81 +91,81 @@ const ArrowWrapper = styled.button`
 `
 
 export const FacebookIcon = () => (
-  <Img src={facebookUrl} alt="facebookImg" />
+  <Img src={facebookImg} alt="facebookImg" />
 )
 
 export const InstaIcon = () => (
-  <Img src={instaUrl} alt="instaImg" />
+  <Img src={instaImg} alt="instaImg" />
 )
 
 export const BlogIcon = () => (
-  <Img src={blogUrl} alt="blogImg" />
+  <Img src={blogImg} alt="blogImg" />
 )
 
 export const YellowIcon = () => (
-  <Img src={yellowUrl} alt="yellowImg" />
+  <Img src={yellowImg} alt="yellowImg" />
 )
 
 export const HeadLogo = () => (
-  <Img src={headUrl} alt="headImg" mobileWidth={110} />
+  <Img src={headImg} alt="headImg" mobileWidth={110} />
 )
 
 export const FooterLogo = ({ mobileHidden, mobileOpen }) => (
-  <Img src={footerUrl} alt="headImg" mobileHidden={mobileHidden} mobileOpen={mobileOpen} />
+  <Img src={footerImg} alt="headImg" mobileHidden={mobileHidden} mobileOpen={mobileOpen} />
 )
 
 export const RightDropIcon = () => (
-  <Img src={rightDropUrl} alt="rightDropImg" />
+  <Img src={rightDropImg} alt="rightDropImg" />
 )
 
 export const SearchIcon = (...rest) => (
-  <SearchImg src={searchUrl} alt="searchImg" {...rest} />
+  <SearchImg src={searchImg} alt="searchImg" {...rest} />
 )
 
 export const HomePartnerRightIcon = (...rest) => (
-  <HomePartnerRightImg src={homePartnerRightUrl} alt="homePartnerRightImg" {...rest} />
+  <HomePartnerRightImg src={homePartnerRightImg} alt="homePartnerRightImg" {...rest} />
 )
 
 export const DetailColorIcon = () => (
-  <Img src={detailColorUrl} alt="detailColorImg" />
+  <Img src={detailColorImg} alt="detailColorImg" />
 )
 
 export const DetailDogNameIcon = () => (
-  <Img src={detailDogNameUrl} alt="detailDogNameImg" />
+  <Img src={detailDogNameImg} alt="detailDogNameImg" />
 )
 
 export const DetailLocationIcon = () => (
-  <Img src={detailLocationUrl} alt="detailLocationImg" />
+  <Img src={detailLocationImg} alt="detailLocationImg" />
 )
 
 export const DetailKannelIcon = () => (
-  <Img src={detailKannelUrl} alt="detailKannelImg" />
+  <Img src={detailKannelImg} alt="detailKannelImg" />
 )
 
 export const ChangeRotationIcon = () => (
-  <ChangeRotationImg src={changeRotationUrl} alt="changeRotationImg" />
+  <ChangeRotationImg src={changeRotationImg} alt="changeRotationImg" />
 )
 
 export const BuildServiceIcon = () => (
-  <Img src={buildServiceUrl} alt="buildServiceImg" />
+  <Img src={buildServiceImg} alt="buildServiceImg" />
 )
 
 export const LeftDropIcon = () => (
-  <Img src={leftDropUrl} alt="leftDropImg" />
+  <Img src={leftDropImg} alt="leftDropImg" />
 )
 
 export const CloseIcon = () => (
-  <Img src={closeUrl} alt="cloeImg" />
+  <Img src={closeImg} alt="cloeImg" />
 )
 
 export const LeftArrowIcon = ({ goToPreviousSlide }) => (
   <ArrowWrapper onClick={goToPreviousSlide} left>
-    <Img src={leftArrowUrl} alt="leftArrowImg" mobileWidth={20} />
+    <Img src={LeftArrowImg} alt="leftArrowImg" mobileWidth={20} />
   </ArrowWrapper>
 )
 
 export const RightArrowIcon = ({ goToNextSlide }) => (
   <ArrowWrapper onClick={goToNextSlide} right>
-    <Img src={rightArrowUrl} alt="rightArrowImg" mobileWidth={20} />
+    <Img src={RightArrowImg} alt="rightArrowImg" mobileWidth={20} />
   </ArrowWrapper>
 )

@@ -74,7 +74,6 @@ app.prepare()
         '/sitemap.xml',
         '/manifest.json',
         '/favicon.png',
-        '/home-hero.jpeg',
         '/styles.scss'
       ]
 
