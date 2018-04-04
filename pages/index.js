@@ -116,7 +116,7 @@ const SubTitle = styled.h3`
   `}
 `
 
-const BreederLink = styled(Link)`
+const BreederLink = styled.a`
   padding: 10px;
   align-self: center;
   text-align: ${p => p.content === 'partner' ? 'right' : 'center'};
@@ -132,7 +132,7 @@ const BreederLink = styled(Link)`
   `}
 `
 
-const SupportLink = styled(Link)`
+const SupportLink = styled.a`
   align-self: center;
   text-align: center;
   font-size: ${rem(30)};
@@ -225,7 +225,7 @@ const TextInput = styled.input`
 
 class Index extends Component {
   static async getInitialProps() {
-    const breeder = await axios.get(`http://${fetchServerConfig.ip}:4000/api/breeder`)
+    const breeder = await axios.get(`http://${fetchServerConfig.ip}:3000/api/breeder`)
     // const dog = await axios.get(`http://${fetchServerConfig.ip}:4000/api/dog`)
     // const json = await res.json()
     return {

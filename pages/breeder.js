@@ -51,7 +51,7 @@ export default class Breeder extends Component {
   static async getInitialProps({ query }) {
     const { dogId } = query
     const fetchQuery = dogId ? `/dog/${dogId}` : ''
-    const res = await axios.get(`http://${fetchServerConfig.ip}:4000/api/breeder${fetchQuery}`)
+    const res = await axios.get(`http://${fetchServerConfig.ip}:3000/api/breeder${fetchQuery}`)
 
     if (res.data.statusCode === 404) {
       return { statusCode: 404 }
@@ -84,12 +84,12 @@ export default class Breeder extends Component {
     //   isFiltered: true,
     //   filterDogData: res.data
     // })
-    console.log(id, 'iidd')
+    // console.log(id, 'iidd')
     return this.setState({
       loading: true,
       activeDogId: id
     }, () => {
-      return axios.get(`http://${fetchServerConfig.ip}:4000/api/breeder/dog/${id}`)
+      return axios.get(`http://${fetchServerConfig.ip}:3000/api/breeder/dog/${id}`)
         .then(res => {
           return this.setState({
             filterDogData: res.data,
@@ -105,12 +105,12 @@ export default class Breeder extends Component {
   }
 
   handleClickSuggestion = (id) => {
-    console.log(id, 'iidd')
+    // console.log(id, 'iidd')
     return this.setState({
       loading: true,
       activeDogId: id
     }, () => {
-      return axios.get(`http://${fetchServerConfig.ip}:4000/api/breeder/dog/${id}`)
+      return axios.get(`http://${fetchServerConfig.ip}:3000/api/breeder/dog/${id}`)
         .then(res => {
           return this.setState({
             filterDogData: res.data,

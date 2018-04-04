@@ -38,7 +38,7 @@ export default class Blog extends Component {
 
 
   render() {
-    console.log(this.state.windowWidth)
+    // console.log(this.state.windowWidth)
     return (
       <Layout title="support">
         <Wrapper>
