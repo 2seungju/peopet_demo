@@ -40,7 +40,7 @@ const Link = ({
   }
 
   return (
-    <UnstyledLink prefetch {...rest}>
+    <UnstyledLink {...rest}>
       <Child
         href={rest.href}
         className={className}
