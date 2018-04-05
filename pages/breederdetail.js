@@ -258,7 +258,7 @@ export default class Breederdetail extends Component {
     images.push(kannelImage, dogImage, puppyImage)
     images = images.reduce((a, b) => a.concat(b), [])
     return (
-      <Layout title="BreederDetail" location="detail" image={kannelImage[0]}>
+      <Layout title="BreederDetail" location="detail" image={images.length > 0 && images[0]}>
         <Wrapper>
           <Category />
           <DetailWrapper>
