@@ -46,12 +46,14 @@ class Layout extends Component {
     // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Improving_scrolling_performance_with_passive_listeners
     // window.addEventListener('scroll', this.onScroll, { passive: true })
     window.addEventListener('scroll', this.onScroll)
-    const agent = navigator.userAgent.toLowerCase()
-    if ((navigator.appName === 'Netscape' && navigator.userAgent.search('Trident') !== -1) || (agent.indexOf('msie') !== -1)) {
-      alert('인터넷 익스플로러 브라우저로 접속하셨습니다.\n* 이 사이트는 크롬 브라우저에 최적화 되어 있습니다. *')
-    } else {
-      document.getElementById('__next').scrollTo(0, 0)
-    }
+    //TODO:
+    // scrollTo ... !!!!
+    // const agent = navigator.userAgent.toLowerCase()
+    // if ((navigator.appName === 'Netscape' && navigator.userAgent.search('Trident') !== -1) || (agent.indexOf('msie') !== -1)) {
+    //   alert('인터넷 익스플로러 브라우저로 접속하셨습니다.\n* 이 사이트는 크롬 브라우저에 최적화 되어 있습니다. *')
+    // } else {
+    //   document.getElementById('__next').scrollTo(0, 0)
+    // }
   }
 
   // componentDidUpdate(prevProps) {
