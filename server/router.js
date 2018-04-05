@@ -2,6 +2,7 @@ const express = require('express')
 
 const DogController = require('./controllers/dog')
 const BreederController = require('./controllers/breeder')
+const AdminController = require('./controllers/admin')
 
 module.exports = function (app) {
   const apiRoutes = express.Router()
@@ -29,6 +30,10 @@ module.exports = function (app) {
   breederRoutes.get('/:id', BreederController.oneBreederGet)
   breederRoutes.post('/', BreederController.saveBreeder)
   breederRoutes.get('/dog/:id', BreederController.findBreederGet)
+
+  apiRoutes.use('/admin', adminRoutes)
+  adminRoutes.get('/', AdminController.allDataGet)
+  // adminRoutes.post('/', Admin)
 
   app.use('/api', apiRoutes)
 }

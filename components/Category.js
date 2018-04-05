@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import Link from 'components/Link'
 import { white2, black, peacockBlue } from 'utils/colors'
 import rem from 'utils/rem'
 import media from 'utils/media'
-import { dogData, filterDogData } from '../dogData'
+import { filterDogData } from '../dogData'
 
 const MobileWrapper = styled.div`
   display: none;
@@ -15,7 +15,7 @@ const MobileWrapper = styled.div`
   text-align: left;
   width: ${rem(240)};
   padding: 0 ${rem(20)};
-  ${'' /* margin: ${rem(10)}; */}
+  ${''/* margin: ${rem(10)}; */}
   ${media.tablet`
     display: flex;
   `}  
@@ -61,7 +61,7 @@ const BreederQueryButton = styled.button`
   background: ${white2};
   border: 0;
   text-align: left;
-  ${'' /* margin-bottom: ${rem(5)}; */}
+  ${''/* margin-bottom: ${rem(5)}; */}
   cursor: pointer;
   outline: none;
   &:hover {

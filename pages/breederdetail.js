@@ -249,6 +249,7 @@ export default class Breederdetail extends Component {
       kannelBreed,
       kannelLocation,
       kannelName,
+      kannelColor,
       question_start,
       question_mind,
       question_word
@@ -275,7 +276,7 @@ export default class Breederdetail extends Component {
                     <BreederImage src={breederImage} />
                     <NameWrapper>
                       <Name>{breederName} 브리더</Name>
-                      <Introduce>안녕하세요. {kannelBreed}을<br />브리딩 하는 {breederName} 입니다.</Introduce>
+                      <Introduce>안녕하세요. {kannelBreed}<br />브리더 {breederName} 입니다.</Introduce>
                     </NameWrapper>
                   </BreederImageNameWrapper>
                   <SupportWrapper>
@@ -292,10 +293,10 @@ export default class Breederdetail extends Component {
                     <DetailDogNameIcon /><Description breederDetail>{kannelBreed}</Description>
                   </BreederDetailWrapper>
                   <BreederDetailWrapper>
-                    <DetailLocationIcon /><Description breederDetail>{kannelLocation}</Description>
+                    <DetailKannelIcon /><Description breederDetail>{kannelName}</Description>
                   </BreederDetailWrapper>
                   <BreederDetailWrapper>
-                    <DetailKannelIcon /><Description breederDetail>{kannelName}</Description>
+                    {/* <DetailColorIcon /><Description breederDetail>{kannelColor}</Description> */}
                   </BreederDetailWrapper>
                 </NavWrapper>
                 <Bar borderColor={warmGrey2} />

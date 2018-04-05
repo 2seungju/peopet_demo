@@ -95,6 +95,7 @@ const BreederCard = ({
   kannelImage,
   kannelBreed,
   kannelLocation,
+  kannelColor,
   breederImage,
   breederName,
   position,
@@ -117,7 +118,7 @@ const BreederCard = ({
     <DetailWrapper position={position}>
       <Title><b>견종</b> : {kannelBreed}</Title>
       <Title><b>위치</b> : {kannelLocation}</Title>
-      <Title><b>모색</b> : {kannelBreed}</Title>
+      {/* <Title><b>모색</b> : {kannelColor}</Title> */}
     </DetailWrapper>
   </Wrapper>
 )

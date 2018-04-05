@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "node server.js",
-    "build": "next build", 
+    "build": "next build",
     "export": "&& next export && cp -R ./.next/static ./out/_next/static/",
     "start": "NODE_ENV=production node server.js",
     "lint:js": "eslint .",
@@ -55,6 +55,7 @@
     "serverless-apigw-binary": "^0.4.4",
     "serverless-http": "^1.5.5",
     "styled-components": "^3.1.6",
+    "useragent": "^2.3.0",
     "webpack-bundle-analyzer": "^2.10.0"
   },
   "devDependencies": {
@@ -87,4 +88,3 @@
   "author": "",
   "license": "ISC"
 }
-

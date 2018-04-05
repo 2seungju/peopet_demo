@@ -5,7 +5,7 @@ const next = require('next')
 const { parse } = require('url')
 const { join } = require('path')
 const bodyParser = require('body-parser')
-const morgan = require('morgan')
+// const morgan = require('morgan')
 const mongoose = require('mongoose')
 const router = require('./server/router')
 
@@ -33,7 +33,7 @@ app.prepare()
     server.use(bodyParser.json({ limit: '50mb' }))
     server.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
     server.use(bodyParser.json())
-    server.use(morgan('dev'))
+    // server.use(morgan('dev'))
     server.use((req, res, next) => {
       res.header('Access-Control-Allow-Origin', '*')
       res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
@@ -142,9 +142,6 @@ function renderAndCache(req, res, pagePath, queryParams) {
 //     server.listen(port)
 //   })
 // }
-
-
-
 // function createServer() {
 //   const server = express()
 

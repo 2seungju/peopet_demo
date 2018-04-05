@@ -20,6 +20,7 @@ const Breeder = new Schema({
   kannelLocation: { type: String },
   kannelManage: { type: String },
   kannelBreed: { type: String },
+  kannelColor: { type: String },
   kannelImage: [{
     type: String,
   }],

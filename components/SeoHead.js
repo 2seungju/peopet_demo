@@ -15,7 +15,6 @@ export default class SeoHead extends Component {
       description,
       image,
       children,
-      url,
     } = this.props
     return (
       <NextHead>

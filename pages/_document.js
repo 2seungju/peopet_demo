@@ -1,4 +1,5 @@
 import React from 'react'
+import useragent from 'useragent'
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
@@ -247,11 +248,12 @@ const resetStyles = `
 `
 
 export default class MyDocument extends Document {
-  static getInitialProps({ renderPage }) {
+  static getInitialProps({ renderPage, req }) {
     const sheet = new ServerStyleSheet()
     const page = renderPage(App => props => sheet.collectStyles(<App {...props} />))
     const styleTags = sheet.getStyleElement()
-    return { ...page, styleTags }
+    const ua = useragent.parse(req.headers['user-agent']) // here
+    return { ...page, styleTags, useragent: ua }
   }
 
   /*
@@ -299,9 +301,16 @@ export default class MyDocument extends Document {
                   "http://blog.naver.com/peopet",
                   "http://www.instagram.com/peo_pet",
                 ]
-              }` 
+              }`
             }}
           />
+          {
+            useragent.family === 'IE' && (
+              <script
+                src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.min.js"
+              />
+            )
+          }
         </Head>
         <body>
           <div className="root">

@@ -16,7 +16,7 @@ import AutoComplete from 'components/AutoComplete'
 // import HomeHeroImg from '../static/home-hero.jpeg'
 
 const Hero = styled.div`
-  width: ${rem(650)};
+  width: ${rem(800)};
   margin: 0 auto;
 
   ${media.pc`
