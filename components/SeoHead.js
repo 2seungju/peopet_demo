@@ -12,9 +12,10 @@ export default class SeoHead extends Component {
   render() {
     const {
       title = 'peopet',
-      description,
+      description = 'peopet',
       image,
       children,
+      url = 'https://www.peopet.co.kr'
     } = this.props
     return (
       <NextHead>
@@ -25,10 +26,10 @@ export default class SeoHead extends Component {
         <meta name="description" content="브리더, 전문브리더, 강아지 브리더, 반려견, 강아지 분양, 강아지 브리더 분양, 페키니즈, 포메라니안, 전문견사" />
         <meta property="keywords" content="브리더, 전문브리더, 강아지 브리더, 반려견, 강아지 분양, 강아지 브리더 분양, 페키니즈, 포메라니안, 전문견사" />
 
-        <link itemProp="url" href="http://peopet.co.kr/" />
+        <link itemProp="url" href={url} />
         <meta itemProp="name" content={title} />
         <meta itemProp="description" content={description} />
-        <meta itemProp="image" content="/static/atom.png" />
+        <meta itemProp="image" content="/static/favicon.png" />
 
         <meta
           name="google-site-verification"
@@ -37,14 +38,14 @@ export default class SeoHead extends Component {
 
         <meta property="og:locale" content="ko_KR" />
         <meta property="og:type" content="website" />
-        {/* <meta property="og:title" content={title} /> */}
+        <meta property="og:title" content={title} />
         <meta property="og:title" content="페오펫 | 강아지 브리더 | peopet | 강아지 분양 | 페키니즈" />
-        {/* <meta property="og:url" content={url} /> */}
+        <meta property="og:url" content={url} />
         <meta property="og:url" content="http://peopet.co.kr" />
         <meta property="og:image" content={image} />
         <meta property="og:image:height" content="652" />
         <meta property="og:image:width" content="652" />
-        {/* <meta property="og:description" content={description} /> */}
+        <meta property="og:description" content={description} />
         <meta property="og:description" content="브리더, 전문브리더, 강아지 브리더, 반려견, 강아지 분양, 강아지 브리더 분양, 페키니즈, 포메라니안, 전문견사" />
         <meta property="og:site_name" content="페오펫_peopet" />
 

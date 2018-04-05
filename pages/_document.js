@@ -253,7 +253,7 @@ export default class MyDocument extends Document {
     const page = renderPage(App => props => sheet.collectStyles(<App {...props} />))
     const styleTags = sheet.getStyleElement()
     const ua = useragent.parse(req.headers['user-agent']) // here
-    return { ...page, styleTags, useragent: ua }
+    return { ...page, styleTags, useragents: ua }
   }
 
   /*
@@ -263,7 +263,7 @@ export default class MyDocument extends Document {
   */
 
   render() {
-    const { styleTags } = this.props
+    const { styleTags, useragents } = this.props
 
     return (
       <html lang="ko">
@@ -287,6 +287,7 @@ export default class MyDocument extends Document {
           <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet" />
           <style dangerouslySetInnerHTML={{ __html: resetStyles }} />
           {styleTags}
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.min.js" />
           <script dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MVS64F9');` }} />
           <script
             type="application/ld+json"
@@ -304,13 +305,6 @@ export default class MyDocument extends Document {
               }`
             }}
           />
-          {
-            useragent.family === 'IE' && (
-              <script
-                src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.min.js"
-              />
-            )
-          }
         </Head>
         <body>
           <div className="root">

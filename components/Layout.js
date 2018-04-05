@@ -106,7 +106,7 @@ class Layout extends Component {
   // }
 
   render() {
-    const { title, description, children, location, handleClickSuggestion, background, breeder, onChangeBreeder, activeDogId, loading, isFiltered, mobile } = this.props
+    const { title, description, children, location, handleClickSuggestion, background, breeder, onChangeBreeder, activeDogId, loading, isFiltered, mobile, image } = this.props
     const { isDropMenuFolded, transparent, isScrolled, isSideMenuFolded, isMobileCategorySelected, mobileCategorySelectedId } = this.state
     const { onDropMenuToggle, onSideMenuToggle } = this
     return (
@@ -114,6 +114,7 @@ class Layout extends Component {
         <SeoHead
           title={`peopet${title ? `/${title}` : ''}`}
           description={description}
+          image={image}
         />
         <Nav
           transparent={transparent}
