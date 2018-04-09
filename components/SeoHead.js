@@ -31,10 +31,10 @@ export default class SeoHead extends Component {
         <meta itemProp="description" content={description} />
         <meta itemProp="image" content="/static/favicon.png" />
 
-        <meta
+        {/* <meta
           name="google-site-verification"
           content="kC4Y5cVvYNKPj1kleZi45vi1vZdKgN3bvdQKUYkyBFE"
-        />
+        /> */}
 
         <meta property="og:locale" content="ko_KR" />
         <meta property="og:type" content="website" />

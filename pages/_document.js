@@ -308,6 +308,7 @@ export default class MyDocument extends Document {
               }`
             }}
           />
+          <meta name="google-site-verification" content="u73GRNDDuj4e7nJFLiY8NcERojS4dPScTUBo30Sudho" />
         </Head>
         <body>
           <div className="root">
