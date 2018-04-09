@@ -263,12 +263,12 @@ export default class MyDocument extends Document {
   */
 
   render() {
-    const { styleTags, useragents } = this.props
+    const { styleTags } = this.props
 
     return (
       <html lang="ko">
         <Head>
-          <meta charSet="utf-8" />
+          <meta charSet="euc-kr" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
 
           <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -288,7 +288,10 @@ export default class MyDocument extends Document {
           <style dangerouslySetInnerHTML={{ __html: resetStyles }} />
           {styleTags}
           <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.min.js" />
-          <script dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MVS64F9');` }} />
+          {/* <script dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MVS64F9');` }} /> */}
+          {
+            process.env.NODE_ENV === 'production' && <script dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MVS64F9');` }} />
+          }
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{

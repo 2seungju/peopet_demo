@@ -13,7 +13,8 @@ import placeholder from 'utils/placeholder'
 import { RightDropIcon, HomePartnerRightIcon } from 'components/Icons'
 import textInputs from 'polished/lib/shorthands/textInputs'
 import AutoComplete from 'components/AutoComplete'
-// import HomeHeroImg from '../static/home-hero.jpeg'
+import AdPopup from 'components/AdPopup'
+import Spinner from 'components/Spinner'
 
 const Hero = styled.div`
   width: ${rem(800)};
@@ -235,23 +236,54 @@ class Index extends Component {
   }
 
   state = {
-    breederData: []
+    breederData: [],
+    isOpenPopup: false,
+    loading: true
   }
 
   componentDidMount() {
+    const todayDate = new Date().getTime()
+    /* eslint radix: ["error", "as-needed"] */
+    const standardDate = parseInt(localStorage.getItem('peopet:vo'))
     axios.get(`${fetchServerConfig.ip}/api/breeder`)
       .then(res => {
         this.setState({
-          breederData: res.data
+          breederData: res.data,
+          isOpenPopup: !standardDate ? true : todayDate > standardDate,
         })
       })
       .catch(err => console.log(err))
   }
 
+  onClosePopup = (e) => {
+    this.setState({
+      isOpenPopup: false
+    })
+
+    e.preventDefault()
+  }
+
+  onHideToday = (e) => {
+    // 24시간 기준
+    const todayDate = new Date()
+    todayDate.setDate(todayDate.getDate() + 1)
+    const statndardDate = todayDate.getTime()
+    localStorage.setItem('peopet:vo', statndardDate)
+    this.setState({
+      isOpenPopup: false
+    })
+    // 00:00 기준
+    // let todayDate = new Date()
+    // todayDate = new Date(parseInt(todayDate.getTime() / 86400000) * 86400000 + 54000000);
+    e.preventDefault()
+  }
+
   render() {
-    const { breederData } = this.state
+    const { breederData, isOpenPopup, loading } = this.state
+    const { onClosePopup, onHideToday } = this
     const bestBreederList = breederData.filter(breeder => breeder.label === 'best')
     const newBreederList = breederData.filter(breeder => breeder.label === 'new')
+    // return loading ? <Spinner /> : (
     return (
       <Layout location="/">
         <Wrapper background={peacockBlue} height={950} mobileHeight={650}>
@@ -325,6 +357,17 @@ class Index extends Component {
             <SupportLink href="https://pf.kakao.com/_pUyTd">브리더 제휴 문의 </SupportLink>
           </Content>
         </Wrapper>
+        {
+          isOpenPopup &&
+          <AdPopup
+            isOpenPopup={isOpenPopup}
+            onClosePopup={onClosePopup}
+            onHideToday={onHideToday}
+            content="static/images/popup-volunteer.jpg"
+            mobileContent="static/images/popup-volunteer-mobile.jpg"
+            url="https://www.instagram.com/peo_pet/"
+          />
+        }
       </Layout>
     )
   }
