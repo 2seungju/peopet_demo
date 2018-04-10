@@ -303,7 +303,7 @@ export default class MyDocument extends Document {
                 "sameAs": [
                   "https://www.facebook.com/peopleNpet",
                   "http://blog.naver.com/peopet",
-                  "http://www.instagram.com/peo_pet",
+                  "http://www.instagram.com/peo_pet"
                 ]
               }`
             }}
