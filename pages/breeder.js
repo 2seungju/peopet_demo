@@ -142,7 +142,8 @@ export default class Breeder extends Component {
     // return statusCode === '404' ? <ErrorPage statusCode={404} /> : (
     return (
       <Layout
-        title="breeder"
+        title="브리더"
+        description="브리더, 강아지 브리더, 포메라니안, 비숑, 치와와, 푸들, 라브라도, 시바"
         background={grey}
         location="breeder"
         onChangeBreeder={onChangeBreeder}

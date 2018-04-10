@@ -268,23 +268,25 @@ export default class MyDocument extends Document {
     return (
       <html lang="ko">
         <Head>
-          <meta charSet="euc-kr" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-
-          <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-          <meta name="theme-color" content="#ffffff" />
-          <meta name="author" content="peopet" />
-
-          <meta name="title" content="브리더, 전문브리더, 강아지 브리더, 반려견, 강아지 분양, 강아지 브리더 분양, 페키니즈, 포메라니안, 전문견사" />
-          <meta name="description" content="브리더, 전문브리더, 강아지 브리더, 반려견, 강아지 분양, 강아지 브리더 분양, 페키니즈, 포메라니안, 전문견사" />
-          <meta property="og:title" content="페오펫 | 강아지 브리더 | peopet | 강아지 분양 | 페키니즈" />
-          <meta property="og:description" content="브리더, 전문브리더, 강아지 브리더, 반려견, 강아지 분양, 강아지 브리더 분양, 페키니즈, 포메라니안, 전문견사" />
-          <meta property="og:site_name" content="페오펫_peopet" />
-
+          <title>페오펫 :: Peopet </title>
           <link rel="icon" type="image/png" href="/static/favicon.png" />
           <link rel="stylesheet" href="/_next/static/style.css" />
           <link rel="manifest" href="/static/manifest.json" />
           <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet" />
+
+          <meta charSet="euc-kr" />
+          <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+          <meta httpEquiv="Content-Type" content="text/html;charset=utf-8" />
+          <meta httpEquiv="Content-Script-Type" content="text/javascript" />
+          <meta httpEquiv="Content-Style-Type" content="text/css" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+
+          <meta name="theme-color" content="#004ca4" />
+          <meta name="author" content="페오펫(peopet)" />
+          <meta name="title" content="페오펫 :: Peopet" />
+          <meta name="description" content="강아지 브리더의 체계적인 관리를 받은 건강한 강아지를 페오펫에서 분양받으세요!" />
+          <meta name="keyword" content="브리더,강아지 브리더,전문견사,건강한 강아지,전문 브리더,강아지 분양,강아지 입양" />
+
           <style dangerouslySetInnerHTML={{ __html: resetStyles }} />
           {styleTags}
           <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.min.js" />

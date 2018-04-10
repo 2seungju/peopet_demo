@@ -40,7 +40,10 @@ export default class Blog extends Component {
   render() {
     // console.log(this.state.windowWidth)
     return (
-      <Layout title="support">
+      <Layout
+        title="고객문의"
+        description="강아지 브리더의 체계적인 관리를 받은 건강한 강아지를 페오펫에서 추천받으세요! "
+      >
         <Wrapper>
           <iframe
             src="https://docs.google.com/forms/d/e/1FAIpQLSegmy62B_MihUSFd0Ov7OdmqsMkNaU1byJeWbKdK6SexeSgMA/viewform?embedded=true"

@@ -39,7 +39,10 @@ export default class Blog extends Component {
 
   render() {
     return (
-      <Layout title="partner">
+      <Layout
+        title="제휴업체"
+        description="전문 브리더, 브리더, 입양 혜택, 강아지 분양"
+      >
         <Wrapper>
           <BuildServiceIcon />
           <TitleWrapper>
