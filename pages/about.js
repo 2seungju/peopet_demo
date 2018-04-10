@@ -6,8 +6,8 @@ import rem from 'utils/rem'
 import { ChangeRotationIcon } from 'components/Icons'
 import media from 'utils/media'
 
-const longImg = require('static/images/100000km.jpg')
-const longMobileImg = require('static/images/100000km_mobile.jpg')
+const longImg = require('static/images/10000km_w.jpg')
+const longMobileImg = require('static/images/10000km_m.jpg')
 const longTabletImg = require('static/images/100000km_tablet.jpg')
 const interviewImg = require('static/images/oneinterview.jpg')
 const interviewMobileImg = require('static/images/oneinterview_mobile.jpg')
