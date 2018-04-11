@@ -357,7 +357,7 @@ class Index extends Component {
             <SupportLink href="https://pf.kakao.com/_pUyTd">브리더 제휴 문의 </SupportLink>
           </Content>
         </Wrapper>
-        {
+        {/* {
           isOpenPopup &&
           <AdPopup
             isOpenPopup={isOpenPopup}
@@ -367,7 +367,7 @@ class Index extends Component {
             mobileContent="static/images/popup-volunteer-mobile.jpg"
             url="https://www.instagram.com/peo_pet/"
           />
-        }
+        } */}
       </Layout>
     )
   }
