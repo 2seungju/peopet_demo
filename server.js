@@ -1,7 +1,7 @@
 // 참고: next.js/examples/ssr-caching
 const express = require('express')
 const next = require('next')
-// const LRUCache = require('lru-cache')
+const LRUCache = require('lru-cache')
 const { parse } = require('url')
 const { join } = require('path')
 const bodyParser = require('body-parser')
@@ -15,10 +15,10 @@ const app = next({ dir: '.', dev })
 const handle = app.getRequestHandler()
 
 // This is where we cache our rendered HTML pages
-// const ssrCache = new LRUCache({
-//   max: 100,
-//   maxAge: 1000 * 60 * 60, // 1hour
-// })
+const ssrCache = new LRUCache({
+  max: 100,
+  maxAge: 1000 * 60 * 60, // 1hour
+})
 
 const db = mongoose.connection
 db.on('error', console.error)
@@ -72,6 +72,7 @@ app.prepare()
       const rootStaticFiles = [
         '/robots.txt',
         '/sitemap.xml',
+        '/self_sitemap.xml',
         '/manifest.json',
         '/favicon.png',
         '/styles.scss'
@@ -113,18 +114,18 @@ function renderAndCache(req, res, pagePath, queryParams) {
         app.renderError(err, req, res, pagePath, queryParams)
       })
   } else {
-    // if (ssrCache.has(key)) {
-    //   console.log(`CACHE HIT: ${key}`)
-    //   res.send(ssrCache.get(key))
-    //   return
-    // }
+    if (ssrCache.has(key)) {
+      console.log(`CACHE HIT: ${key}`)
+      res.send(ssrCache.get(key))
+      return
+    }
 
     // If not let's render the page into HTML
     app.renderToHTML(req, res, pagePath, queryParams)
       .then((html) => {
         // Let's cache this page
         console.log(`CACHE MISS: ${key}`)
-        // ssrCache.set(key, html)
+        ssrCache.set(key, html)
 
         res.send(html)
       })

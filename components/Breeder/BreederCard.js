@@ -4,26 +4,21 @@ import rem from 'utils/rem'
 import Link from 'components/Link'
 import { scarlet, squash, white2, black } from 'utils/colors'
 import media from 'utils/media'
-
+// 이상복 브리더 카드 견종이 길어서 폭이 넓어야 안깨짐. width를 줄이려면 글씨를 줄이든 대책이 필요
 const Wrapper = styled(Link)`
-  ${'' /* width: ${p => p.position === 'horizontal' ? rem(900) : rem(285)}; */}
-  ${'' /* display: ${p => p.position === 'horizontal' && 'flex'}; */}
-  width: ${rem(285)};
-  ${'' /* width: ${rem(300)}; */}
-  height: ${rem(274)};
+  width: ${rem(271)};
+  height: ${rem(262)};
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.09);
   margin: ${rem(10)};
   background: ${white2};
 
   ${media.mobile`
-    width: 100%;
+    width: ${rem(271)};
     margin: ${rem(10)} 0;
   `}
 `
 
 const ImageWrapper = styled.div`
-  ${'' /* width: ${p => p.position === 'horizontal' && rem(285)}; */}
-  ${'' /* width: ${rem(285)}; */}
   width: 100%;
   height: ${rem(180)};
   position: relative;
@@ -36,12 +31,10 @@ const KannelImage = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  ${'' /* opacity: 0.42; */}
 `
 
 const Label = styled.p`
-  width: ${rem(59)};
-  height: ${rem(24)};
+  padding: 0 ${rem(8)};
   position: absolute;
   top: 0;
   right: ${p => p.position !== 'horizontal' && 0};
@@ -53,9 +46,6 @@ const Label = styled.p`
 `
 
 const BreederWrapper = styled.div`
-  ${'' /* width: inherit; */}
-  ${'' /* height: inherit; */}
-  ${'' /* position: ${p => p.position === 'horizontal' ? 'relative' : 'absolute'}; */}
   position: absolute;
   bottom: ${rem(-50)};
   right: ${rem(15)};

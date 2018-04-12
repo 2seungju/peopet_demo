@@ -12,19 +12,17 @@ import Spinner from 'components/Spinner'
 import ErrorPage from '../pages/_error'
 
 const Wrapper = styled.div`
-  width: 90%;
+  ${'' /* TODO: width 이 애매한 숫자는 무엇...? */}
+  width: ${rem(1158.6)};
   margin: auto;
   padding-top: ${rem(160)};
   padding-bottom: ${rem(100)};
   display: flex;
   flex-direction: row;
-  ${'' /* overflow-x: hidden; */}
-  ${'' /* justify-content: space-around; */}
-  ${'' /* background: ${white}; */}
-  ${'' /* background: yellow; */}
   
   ${media.wide`
-    width: 100%;
+  ${'' /* TODO: width 이 애매한 숫자는 무엇...? */}
+    width: ${rem(890)};
   `};
   ${media.mobile`
     width: 80%;
@@ -33,7 +31,6 @@ const Wrapper = styled.div`
 `
 
 const BreederList = styled.div`
-  ${'' /* display: flex; */}
   flex-wrap: wrap;
   flex: 4;
   ${media.tablet`
@@ -44,7 +41,6 @@ const BreederList = styled.div`
     display: inline-block;
     text-align: center;
   `}
-  ${'' /* flex-direction: column; */}
 `
 
 export default class Breeder extends Component {

@@ -30,7 +30,7 @@ const TextWrapper = styled.div`
 `
 
 const Image = styled.div`
-  height: ${rem(967)};
+  height: ${rem(954)};
   background-image: ${p => p.img === 'long' ? `url(${longImg})` : `url(${interviewImg})`};
   background-position: center;
   background-repeat: no-repeat;
@@ -122,7 +122,6 @@ export default class About extends Component {
   }
 
   render() {
-    // console.log(this.props.id)
     return (
       <Layout title="회사소개" description="페오펫은 강아지 브리더를 통해 반려동물 입양 문화를 바꾸려 합니다">
         <Wrapper>
@@ -130,7 +129,6 @@ export default class About extends Component {
             <TextContent>
               <CenterWrapper>
                 <TitleWrapper>
-                  {/* <img src={titleImg} alt="aboutTitleImg" /> */}
                   <Title hero>IMPACT THE WORLD</Title>
                 </TitleWrapper>
                 <DescriptionWrapper>

@@ -17,7 +17,7 @@ const splitText = (text) => (
 )
 
 const Wrapper = styled.div`
-  width: 80%;
+  width: ${rem(1000)};
   padding-top: ${rem(150)};
   margin: 0 auto;
   text-align: center;
@@ -49,7 +49,6 @@ const DetailWrapper = styled.div`
   height: 100%;
   ${media.mobile`
     width: 100%;
-    
     margin: 0 auto;
   `}
 `

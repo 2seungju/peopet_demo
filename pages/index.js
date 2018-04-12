@@ -40,11 +40,9 @@ const MobileHero = styled.div`
     width: 90%;
     margin: 0 auto;
     text-align: center;
-    /* color: yellow; */
     display: inline-block;
   `}
 `
-
 
 const Wrapper = styled.div`
   display: flex;
@@ -60,9 +58,6 @@ const Wrapper = styled.div`
     padding-top: ${p => p.mobilePadding && rem(p.mobilePadding)};
     padding-bottom: ${p => p.mobilePadding && rem(p.mobilePadding)};
   `}
-  ${'' /* ${p => !p.content === 'flex' && css`
-    height: 800px;
-  `}; */}
 `
 
 const Content = styled.div`
@@ -70,11 +65,13 @@ const Content = styled.div`
   position: relative;
   text-align: center;
   width: ${p => p.content === 'partner' ? '60%' : '80%'};
-  ${'' /* width: 70%; */}
+  ${'' /* TODO: ie에서는 min-height 값을 넣어줘야 flex가 제대로 동작(?) */}
+  min-height: 100%;
   height: 100%;
   display: flex;
   flex-direction: ${p => p.content === 'support' ? 'row' : 'column'};
   justify-content: center;
+  width: ${p => p.breeder && '70%'};
   ${media.mobile`
     width: ${p => p.content === 'partner' ? '90%' : '90%'};
     flex-direction: column;
@@ -82,8 +79,6 @@ const Content = styled.div`
   ${media.pc`
     width: 92%;
   `}
-  ${'' /* padding: 20rem 10% 20rem 10%; */}
-  ${'' /* background-color: ${peacockBlue}; */}
 `
 
 const Title = styled.h1`
@@ -119,9 +114,11 @@ const SubTitle = styled.h3`
 
 const BreederLink = styled.a`
   padding: 10px;
-  align-self: center;
+  ${'' /* TODO: ie에서는 align-selft 동작안함. 사용하지말자 */}
+  ${'' /* align-self: center; */}
   text-align: ${p => p.content === 'partner' ? 'right' : 'center'};
-  margin: ${rem(50)};
+  margin: 0 auto;
+  margin-top: 5%;
   border-radius: ${rem(35)};
   width: ${p => p.content === 'partner' ? '100%' : rem(250)};
   font-size: ${p => p.content === 'partner' ? rem(30) : rem(20)};
@@ -134,6 +131,7 @@ const BreederLink = styled.a`
 `
 
 const SupportLink = styled.a`
+  ${'' /* TODO: please, align-self change!! */}
   align-self: center;
   text-align: center;
   font-size: ${rem(30)};
@@ -163,10 +161,7 @@ const TextWrapper = styled.div`
 const DescriptionWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  ${'' /* width: inherit; */}
-  ${'' /* text-align: center; */}
   justify-content: center;
-  ${'' /* margin: auto; */}
   margin-top: ${rem(10)};
   text-align: center;
   position: relative;
@@ -181,10 +176,7 @@ const Number = styled.p`
   color: ${white2};
   padding: 0;
   margin: 0;
-  ${'' /* float: left;   */}
-  ${'' /* position: absolute; */}
   left: 10%;
-  ${'' /* text-align: center; */}
   ${media.mobile`
     font-size: ${rem(25)};
     margin-top: ${rem(10)};
@@ -194,13 +186,8 @@ const Number = styled.p`
 const Text = styled.p`
   font-size: ${rem(30)};
   color: ${white2};
-  ${'' /* text-align: center; */}
   margin-top: ${rem(20)};
   margin-left: ${rem(10)};
-  ${'' /* text-align: left; */}
-  ${'' /* position: absolute; */}
-  ${'' /* top: 20%; */}
-  ${'' /* left: 20%; */}
   ${media.mobile`
     font-size: ${rem(13)}
   `}
@@ -225,16 +212,6 @@ const TextInput = styled.input`
 `
 
 class Index extends Component {
-  static async getInitialProps() {
-    // const breeder = await axios.get(`${fetchServerConfig.ip}/api/breeder`)
-    // const dog = await axios.get(`http://${fetchServerConfig.ip}:4000/api/dog`)
-    // const json = await res.json()
-    return {
-      // breederData: breeder.data,
-      // dogData: dog.data,
-    }
-  }
-
   state = {
     breederData: [],
     isOpenPopup: false,
@@ -283,7 +260,6 @@ class Index extends Component {
     const { onClosePopup, onHideToday } = this
     const bestBreederList = breederData.filter(breeder => breeder.label === 'best')
     const newBreederList = breederData.filter(breeder => breeder.label === 'new')
-    // return loading ? <Spinner /> : (
     return (
       <Layout location="/">
         <Wrapper background={peacockBlue} height={950} mobileHeight={650}>
@@ -351,7 +327,7 @@ class Index extends Component {
             </BreederLink>
           </Content>
         </Wrapper>
-        <Wrapper background={white2}>
+        <Wrapper height={135} background={white2}>
           <Content content="support" mobileFullWidth>
             <SupportLink href="https://pf.kakao.com/_pUyTd">강아지 입양 문의 </SupportLink>
             <SupportLink href="https://pf.kakao.com/_pUyTd">브리더 제휴 문의 </SupportLink>

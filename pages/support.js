@@ -26,7 +26,6 @@ export default class Blog extends Component {
 
   updateDimensions = () => {
     const width = window.innerWidth
-    // console.log(width)
     this.setState({
       windowWidth: width,
     })
@@ -36,9 +35,7 @@ export default class Blog extends Component {
     window.removeEventListener('resize', this.updateDimensions)
   }
 
-
   render() {
-    // console.log(this.state.windowWidth)
     return (
       <Layout
         title="고객문의"
