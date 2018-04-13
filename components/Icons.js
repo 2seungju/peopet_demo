@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import media from 'utils/media'
 import rem from 'utils/rem'
-import { white2 } from 'utils/colors'
+import { white2, dark } from 'utils/colors'
 
 const facebookImgUrl = '/static/images/wt_main_head_icon_facebook.svg'
 const instaImgUrl = '/static/images/wt_main_head_icon_instagram.svg'
@@ -29,7 +29,6 @@ const Img = styled.img`
   width: ${p => p.footer && rem(77)};
   height: ${p => p.footer && rem(65)};
   margin-top: ${p => p.footer && rem(74)};
-
   ${media.mobile`
     width: ${p => p.mobileWidth && rem(p.mobileWidth)};
     display: ${p => p.mobileHidden && 'none'};

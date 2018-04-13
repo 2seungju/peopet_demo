@@ -6,12 +6,12 @@ import rem from 'utils/rem'
 import { ChangeRotationIcon } from 'components/Icons'
 import media from 'utils/media'
 
-const longImg = require('static/images/10000km_w.jpg')
-const longMobileImg = require('static/images/10000km_m.jpg')
-const longTabletImg = require('static/images/100000km_tablet.jpg')
-const interviewImg = require('static/images/oneinterview.jpg')
-const interviewMobileImg = require('static/images/oneinterview_mobile.jpg')
-const interviewTabletImg = require('static/images/oneinterview_tablet.jpg')
+const longImg = 'static/images/100000km.jpg'
+const longMobileImg = 'static/images/100000km_mobile.jpg'
+const longTabletImg = 'static/images/100000km_tablet.jpg'
+const interviewImg = 'static/images/oneinterview.jpg'
+const interviewMobileImg = 'static/images/oneinterview_mobile.jpg'
+const interviewTabletImg = 'static/images/oneinterview_tablet.jpg'
 
 const Wrapper = styled.div`
   width: 100%;
@@ -80,7 +80,7 @@ const Title = styled.h3`
   margin: 0;
 
   ${media.mobile`
-    font-size: ${rem(30)}
+    font-size: ${rem(30)};
   `}
 `
 
@@ -122,13 +122,15 @@ export default class About extends Component {
   }
 
   render() {
+    // console.log(this.props.id)
     return (
-      <Layout title="회사소개" description="페오펫은 강아지 브리더를 통해 반려동물 입양 문화를 바꾸려 합니다">
+      <Layout title="about">
         <Wrapper>
           <TextWrapper hero>
             <TextContent>
               <CenterWrapper>
                 <TitleWrapper>
+                  {/* <img src={titleImg} alt="aboutTitleImg" /> */}
                   <Title hero>IMPACT THE WORLD</Title>
                 </TitleWrapper>
                 <DescriptionWrapper>

@@ -9,18 +9,20 @@ import media from 'utils/media'
 const Wrapper = styled(FlexBox)`
   padding-top: ${rem(20)};
   padding-bottom: ${rem(20)};
+  ${'' /* height: 500px; */}
   ${p => p.position === 'horizontal' && flexDirection('column')};
-  width: 90%;
+
+  width: 70%;
+  ${media.mobile`
+    width: 100%;
+  `}
   margin: auto;
   flex-flow: row wrap;
   justify-content: center;
   flex: 0 1 auto;
+  // flex: auto;
   display: flex;
   height: 100%;
-
-  ${media.mobile`
-    width: 100%
-  `};  
 `
 
 const TextWrapper = styled.section`
@@ -43,7 +45,7 @@ const Image = styled.img`
 const BreederList = ({
   breederData,
   location,
-  position
+  position,
 }) => {
   // let data
 
@@ -77,6 +79,7 @@ const BreederList = ({
       </TextWrapper>
       <Image src={image} /> */}
     </Wrapper>
-)}
+  )
+}
 
 export default BreederList

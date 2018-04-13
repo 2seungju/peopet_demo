@@ -17,7 +17,7 @@ const splitText = (text) => (
 )
 
 const Wrapper = styled.div`
-  width: ${rem(1000)};
+  width: ${rem(1170)};
   padding-top: ${rem(150)};
   margin: 0 auto;
   text-align: center;
@@ -49,6 +49,7 @@ const DetailWrapper = styled.div`
   height: 100%;
   ${media.mobile`
     width: 100%;
+    
     margin: 0 auto;
   `}
 `
@@ -257,12 +258,7 @@ export default class Breederdetail extends Component {
     images.push(kannelImage, dogImage, puppyImage)
     images = images.reduce((a, b) => a.concat(b), [])
     return (
-      <Layout
-        title={kannelBreed}
-        description={`${kannelBreed}, ${kannelBreed}분양, ${kannelBreed}브리더`}
-        location="detail"
-        image={images.length > 0 && images[0]}
-      >
+      <Layout title="BreederDetail" location="detail" image={images.length > 0 && images[0]}>
         <Wrapper>
           <Category />
           <DetailWrapper>
@@ -311,25 +307,6 @@ export default class Breederdetail extends Component {
                 <Description>{question_mind}</Description>
                 <Description>{question_word}</Description>
               </InterviewWrapper>
-              {/* <!-- 라이브리 시티 설치 코드 --> */}
-              <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTYxNy8xMjE1Mw==">
-                <script
-                  type="text/javascript"
-                  dangerouslySetInnerHTML={{
-                    __html: `{
-                      (function(d, s) {
-                        var j, e = d.getElementsByTagName(s)[0];
-                        if (typeof LivereTower === 'function') { return; }
-                        j = d.createElement(s);
-                        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-                        j.async = true;
-                        e.parentNode.insertBefore(j, e);
-                      })(document, 'script');
-                    }`
-                  }}
-                />
-
-              </div>
               {/* <Bar borderColor={warmGrey2} />
               <KannelInfoWrapper>
                 <Title>견사 정보</Title>

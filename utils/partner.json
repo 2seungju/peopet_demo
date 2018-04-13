@@ -1,0 +1,12 @@
+[
+  { "id": 0, "name": "펫트너1", "contents":"수의사 펫시팅" , "benefit": "펫시팅 시 20% 할인", "url": "https://petner.kr/" },
+  { "id": 1, "name": "펫트너2", "contents":"수의사 펫시팅" , "benefit": "펫시팅 시 20% 할인", "url": "https://petner.kr/" },
+  { "id": 2, "name": "펫트너3", "contents":"수의사 펫시팅" , "benefit": "펫시팅 시 20% 할인", "url": "https://petner.kr/" },
+  { "id": 3, "name": "펫트너4", "contents":"수의사 펫시팅" , "benefit": "펫시팅 시 20% 할인", "url": "https://petner.kr/" },
+  { "id": 4, "name": "펫트너5", "contents":"수의사 펫시팅" , "benefit": "펫시팅 시 20% 할인", "url": "https://petner.kr/" },
+  { "id": 5, "name": "펫트너6", "contents":"수의사 펫시팅" , "benefit": "펫시팅 시 20% 할인", "url": "https://petner.kr/" },
+  { "id": 6, "name": "펫트너7", "contents":"수의사 펫시팅" , "benefit": "펫시팅 시 20% 할인", "url": "https://petner.kr/" },
+  { "id": 7, "name": "펫트너8", "contents":"수의사 펫시팅" , "benefit": "펫시팅 시 20% 할인", "url": "https://petner.kr/" },
+  { "id": 8, "name": "펫트너9", "contents":"수의사 펫시팅" , "benefit": "펫시팅 시 20% 할인", "url": "https://petner.kr/" },
+  { "id": 9, "name": "펫트너0", "contents":"수의사 펫시팅" , "benefit": "펫시팅 시 20% 할인", "url": "https://petner.kr/" }
+]

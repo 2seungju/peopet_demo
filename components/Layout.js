@@ -114,7 +114,7 @@ class Layout extends Component {
     return (
       <LayoutWrapper>
         <SeoHead
-          title={`페오펫${title ? `-${title}` : ''}`}
+          title={`peopet${title ? `/${title}` : ''}`}
           description={description}
           image={image}
         />

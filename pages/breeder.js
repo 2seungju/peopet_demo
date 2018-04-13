@@ -12,18 +12,22 @@ import Spinner from 'components/Spinner'
 import ErrorPage from '../pages/_error'
 
 const Wrapper = styled.div`
-  ${'' /* TODO: width 이 애매한 숫자는 무엇...? */}
-  width: ${rem(1158.6)};
+  width: ${rem(1170)};
   margin: auto;
   padding-top: ${rem(160)};
   padding-bottom: ${rem(100)};
   display: flex;
   flex-direction: row;
+  // text-align:center;
+  ${'' /* overflow-x: hidden; */}
+  ${'' /* justify-content: space-around; */}
+  ${'' /* background: ${white}; */}
+  ${'' /* background: yellow; */}
   
   ${media.wide`
-  ${'' /* TODO: width 이 애매한 숫자는 무엇...? */}
-    width: ${rem(890)};
+  width: ${rem(890)};
   `};
+
   ${media.mobile`
     width: 80%;
     padding-top: ${rem(90)};
@@ -31,6 +35,7 @@ const Wrapper = styled.div`
 `
 
 const BreederList = styled.div`
+  ${'' /* display: flex; */}
   flex-wrap: wrap;
   flex: 4;
   ${media.tablet`
@@ -41,6 +46,7 @@ const BreederList = styled.div`
     display: inline-block;
     text-align: center;
   `}
+  ${'' /* flex-direction: column; */}
 `
 
 export default class Breeder extends Component {
@@ -138,8 +144,7 @@ export default class Breeder extends Component {
     // return statusCode === '404' ? <ErrorPage statusCode={404} /> : (
     return (
       <Layout
-        title="브리더"
-        description="브리더, 강아지 브리더, 포메라니안, 비숑, 치와와, 푸들, 라브라도, 시바"
+        title="breeder"
         background={grey}
         location="breeder"
         onChangeBreeder={onChangeBreeder}

@@ -15,7 +15,7 @@ const MobileWrapper = styled.div`
   text-align: left;
   width: ${rem(240)};
   padding: 0 ${rem(20)};
-
+  ${''/* margin: ${rem(10)}; */}
   ${media.tablet`
     display: flex;
   `}  
@@ -23,17 +23,16 @@ const MobileWrapper = styled.div`
 
 const Wrapper = styled.div`
   display: flex;
+  // flex:1;
   flex-direction: column;
   background: ${white2};
   text-align: left;
   padding: 0 ${rem(20)};
   margin: ${rem(10)};
-
   ${media.wide`
     flex:none;
     width: ${rem(280)};
-  `} 
-
+  `}  
   ${media.tablet`
     display: none;
   `}  
@@ -52,7 +51,6 @@ const NavLink = styled(Link)`
   color: ${black};
   font-size: ${p => p.mobile && rem(15)};
   color: ${p => p.activeDogId === p.dogId ? peacockBlue : black};
-
   &:hover {
     color: ${peacockBlue}
   }
@@ -66,12 +64,14 @@ const BreederQueryButton = styled.button`
   background: ${white2};
   border: 0;
   text-align: left;
+  ${''/* margin-bottom: ${rem(5)}; */}
   cursor: pointer;
   outline: none;
-
   &:hover {
     color: ${peacockBlue}
   };
+  
+
 `
 
 const Category = ({ mobile, pc, location, onChangeBreeder, activeDogId }) => (

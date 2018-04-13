@@ -14,7 +14,6 @@ const Wrapper = styled.div`
   padding-bottom: ${rem(100)};
   justify-content: space-around;
   display: ${p => p.isSideMenuFolded && 'none'};
-
   ${media.mobile`
     flex-direction: column;
   `}
@@ -22,7 +21,6 @@ const Wrapper = styled.div`
 
 const Content = styled.div`
   flex-direction: column;
-
   ${media.mobile`
     width: 70%;
     margin: auto;
@@ -34,17 +32,23 @@ const Text = styled.div`
   color: ${black};
 `
 
+const ImageWrapper = styled.div`
+`
+
+const Logo = styled.p`
+`
+
 const IconLink = styled.a`
   display: flex;
   align-items: center;
   margin: ${rem(10)}
 `
+
 const IconWrapper = styled.div`
   display: flex;
   flex-direction: row;
   margin-top: ${rem(20)};
   margin-bottom: ${rem(20)};
-
   ${media.mobile`
     justify-content: center;
   `}

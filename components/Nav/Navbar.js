@@ -29,6 +29,8 @@ const Wrapper = styled.div`
     }
     return p.isScrolled ? backgroundColor('yellow') : backgroundColor('red')
   }} */}
+
+  box-shadow: 0 2px 6px -5px rgba(0, 0, 0, 0.5); // <- june
 `
 
 const IconLink = styled.a`

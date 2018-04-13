@@ -13,8 +13,11 @@ import placeholder from 'utils/placeholder'
 import { RightDropIcon, HomePartnerRightIcon } from 'components/Icons'
 import textInputs from 'polished/lib/shorthands/textInputs'
 import AutoComplete from 'components/AutoComplete'
-import AdPopup from 'components/AdPopup'
-import Spinner from 'components/Spinner'
+
+// import HomeHeroImg from '../static/home-hero.jpeg'
+
+const HomeSearchUrl = '/static/images/home-search@3x.png'
+
 
 const Hero = styled.div`
   width: ${rem(800)};
@@ -29,10 +32,9 @@ const Hero = styled.div`
   `}
 
   ${media.mobile`
-    display: none
+    display: none;
   `}
 `
-
 const MobileHero = styled.div`
   display: none;
 
@@ -40,6 +42,7 @@ const MobileHero = styled.div`
     width: 90%;
     margin: 0 auto;
     text-align: center;
+    /* color: yellow; */
     display: inline-block;
   `}
 `
@@ -58,6 +61,9 @@ const Wrapper = styled.div`
     padding-top: ${p => p.mobilePadding && rem(p.mobilePadding)};
     padding-bottom: ${p => p.mobilePadding && rem(p.mobilePadding)};
   `}
+  ${'' /* ${p => !p.content === 'flex' && css`
+    height: 800px;
+  `}; */}
 `
 
 const Content = styled.div`
@@ -65,7 +71,7 @@ const Content = styled.div`
   position: relative;
   text-align: center;
   width: ${p => p.content === 'partner' ? '60%' : '80%'};
-  ${'' /* TODO: ie에서는 min-height 값을 넣어줘야 flex가 제대로 동작(?) */}
+  ${'' /* width: 70%; */}
   min-height: 100%;
   height: 100%;
   display: flex;
@@ -79,6 +85,8 @@ const Content = styled.div`
   ${media.pc`
     width: 92%;
   `}
+  ${'' /* padding: 20rem 10% 20rem 10%; */}
+  ${'' /* background-color: ${peacockBlue}; */}
 `
 
 const Title = styled.h1`
@@ -101,10 +109,11 @@ const Title = styled.h1`
 const SubTitle = styled.h3`
   text-align: ${p => p.content === 'partner' ? 'left' : 'center'};
   font-size: ${p => rem(p.size)};
+  opacity: 0.8;
   color: ${p => p.color};
   padding: 0;
   margin: 0;
-  font-weight: normal;
+  font-weight: lighter;
   ${media.mobile`
     font-size: ${p => p.mobileSize && rem(p.mobileSize)};
     width: ${p => p.mobileWidth && `${p.mobileWidth}%`};
@@ -114,8 +123,6 @@ const SubTitle = styled.h3`
 
 const BreederLink = styled.a`
   padding: 10px;
-  ${'' /* TODO: ie에서는 align-selft 동작안함. 사용하지말자 */}
-  ${'' /* align-self: center; */}
   text-align: ${p => p.content === 'partner' ? 'right' : 'center'};
   margin: 0 auto;
   margin-top: 5%;
@@ -126,12 +133,11 @@ const BreederLink = styled.a`
   color: ${p => p.content === 'support' ? black : white2};
   ${media.mobile`
     font-size: ${rem(18)};
-    width: ${p => p.content === 'partner' && '80%'}
+    width: ${p => p.content === 'partner' && '80%'};
   `}
 `
 
 const SupportLink = styled.a`
-  ${'' /* TODO: please, align-self change!! */}
   align-self: center;
   text-align: center;
   font-size: ${rem(30)};
@@ -139,6 +145,7 @@ const SupportLink = styled.a`
   padding: 10px 0;
   margin: ${rem(10)} 0;
   width: 100%;
+  border-right: ${p => p.a && 'solid 1px rgba(0, 0, 0, .3)'};
   ${media.mobile`
     padding: 0;
     font-size: ${rem(20)};
@@ -149,8 +156,8 @@ const SupportLink = styled.a`
     color: ${white2};
   }
 `
-
 const TextWrapper = styled.div`
+  font-weight: lighter;
   margin-top: ${rem(100)};
   text-align: center;
   ${media.mobile`
@@ -161,7 +168,10 @@ const TextWrapper = styled.div`
 const DescriptionWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  ${'' /* width: inherit; */}
+  ${'' /* text-align: center; */}
   justify-content: center;
+  ${'' /* margin: auto; */}
   margin-top: ${rem(10)};
   text-align: center;
   position: relative;
@@ -176,7 +186,11 @@ const Number = styled.p`
   color: ${white2};
   padding: 0;
   margin: 0;
+  font-family: PT Sans;
+  ${'' /* float: left;   */}
+  ${'' /* position: absolute; */}
   left: 10%;
+  ${'' /* text-align: center; */}
   ${media.mobile`
     font-size: ${rem(25)};
     margin-top: ${rem(10)};
@@ -186,10 +200,15 @@ const Number = styled.p`
 const Text = styled.p`
   font-size: ${rem(30)};
   color: ${white2};
+  ${'' /* text-align: center; */}
   margin-top: ${rem(20)};
   margin-left: ${rem(10)};
+  ${'' /* text-align: left; */}
+  ${'' /* position: absolute; */}
+  ${'' /* top: 20%; */}
+  ${'' /* left: 20%; */}
   ${media.mobile`
-    font-size: ${rem(13)}
+    font-size: ${rem(13)};
   `}
 `
 
@@ -206,64 +225,47 @@ const Form = styled.form`
   display: flex;
   flex-direction: row;
 `
-
-const TextInput = styled.input`
-  opacity: 0.1;
+const ImgWrapper = styled.div`
+  position: relative;
+  top: 25%;
+`
+const Img = styled.img`
+  width: 4%;
 `
 
 class Index extends Component {
+  static async getInitialProps() {
+    // const breeder = await axios.get(`${fetchServerConfig.ip}/api/breeder`)
+    // const dog = await axios.get(`http://${fetchServerConfig.ip}:4000/api/dog`)
+    // const json = await res.json()
+    return {
+      // breederData: breeder.data,
+      // dogData: dog.data,
+    }
+  }
+
   state = {
-    breederData: [],
-    isOpenPopup: false,
-    loading: true
+    breederData: []
   }
 
   componentDidMount() {
-    const todayDate = new Date().getTime()
-    /* eslint radix: ["error", "as-needed"] */
-    const standardDate = parseInt(localStorage.getItem('peopet:vo'))
     axios.get(`${fetchServerConfig.ip}/api/breeder`)
       .then(res => {
         this.setState({
-          breederData: res.data,
-          isOpenPopup: !standardDate ? true : todayDate > standardDate,
+          breederData: res.data
         })
       })
       .catch(err => console.log(err))
   }
 
-  onClosePopup = (e) => {
-    this.setState({
-      isOpenPopup: false
-    })
-
-    e.preventDefault()
-  }
-
-  onHideToday = (e) => {
-    // 24시간 기준
-    const todayDate = new Date()
-    todayDate.setDate(todayDate.getDate() + 1)
-    const statndardDate = todayDate.getTime()
-    localStorage.setItem('peopet:vo', statndardDate)
-    this.setState({
-      isOpenPopup: false
-    })
-    // 00:00 기준
-    // let todayDate = new Date()
-    // todayDate = new Date(parseInt(todayDate.getTime() / 86400000) * 86400000 + 54000000);
-    e.preventDefault()
-  }
-
   render() {
-    const { breederData, isOpenPopup, loading } = this.state
-    const { onClosePopup, onHideToday } = this
+    const { breederData } = this.state
     const bestBreederList = breederData.filter(breeder => breeder.label === 'best')
     const newBreederList = breederData.filter(breeder => breeder.label === 'new')
     return (
       <Layout location="/">
         <Wrapper background={peacockBlue} height={950} mobileHeight={650}>
-          <Content>
+          <Content home>
             <Hero>
               <Title size={50} color={white2}>&nbsp;건강한 강아지 분양 중개, 페오펫</Title>
               <SubTitle size={30} color={white2}>브리더가 기르는 건강한 강아지를 키우고 싶다면?</SubTitle>
@@ -274,10 +276,13 @@ class Index extends Component {
               <SubTitle size={30} color={white2} mobileSize={18} mobileWidth={80}>브리더가 기르는 건강한 강아지를 키우고 싶다면?</SubTitle>
               <AutoComplete location="/" />
             </MobileHero>
+            <ImgWrapper>
+              <Img src={HomeSearchUrl} alt=".." />
+            </ImgWrapper>
           </Content>
         </Wrapper>
         <Wrapper background={white} padding={150} mobilePadding={50}>
-          <Content>
+          <Content breeder>
             <Title size={50} color={peacockBlue} mobileSize={30}>이 달의 <b>인기 브리더</b></Title>
             <SubTitle size={25} color={peacockBlue} mobileSize={15}>전문 지식을 가지고 윤리적으로 강아지를 번식하는 우수한 브리더를 소개합니다.</SubTitle>
             <BreederList breederData={bestBreederList} location="/" position="vertical" />
@@ -285,7 +290,7 @@ class Index extends Component {
           </Content>
         </Wrapper>
         <Wrapper background={white2} padding={200} mobilePadding={50}>
-          <Content>
+          <Content breeder>
             <Title size={50} color={squash} mobileSize={30}>이 달의 <b />신규 브리더</Title>
             <SubTitle size={25} color={pooBrown} mobileSize={15} mobileWidth={75}>매 달 페오펫과 함께하는 새로운 브리더들을 만나보세요.</SubTitle>
             <BreederList breederData={newBreederList} location="/" position="horizontal" />
@@ -323,27 +328,16 @@ class Index extends Component {
             <Title size={50} color={white2} content="partner" mobileSize={30} mobileWidth={70}>페오펫은 <b>반려견의 행복을 바랍니다.</b></Title>
             <SubTitle size={25} color={white2} content="partner" mobileSize={15}>강아지가 태어나고 일생을 주인 곁에서 행복한 삶을<br />살 수 있도록 다양한 서비스를 제공합니다.</SubTitle>
             <BreederLink color={dark} href="https://blog.naver.com/peopet/221092557955" content="partner" mobile>
-              제휴 브랜드 보러가기 &#x3e;&#x3e;
+              제휴 브랜드 보러가기
             </BreederLink>
           </Content>
         </Wrapper>
         <Wrapper height={135} background={white2}>
           <Content content="support" mobileFullWidth>
-            <SupportLink href="https://pf.kakao.com/_pUyTd">강아지 입양 문의 </SupportLink>
-            <SupportLink href="https://pf.kakao.com/_pUyTd">브리더 제휴 문의 </SupportLink>
+            <SupportLink a href="https://pf.kakao.com/_pUyTd">강아지 입양 문의 &#x3e;&#x3e; </SupportLink>
+            <SupportLink href="https://pf.kakao.com/_pUyTd">브리더 제휴 문의 &#x3e;&#x3e; </SupportLink>
           </Content>
         </Wrapper>
-        {/* {
-          isOpenPopup &&
-          <AdPopup
-            isOpenPopup={isOpenPopup}
-            onClosePopup={onClosePopup}
-            onHideToday={onHideToday}
-            content="static/images/popup-volunteer.jpg"
-            mobileContent="static/images/popup-volunteer-mobile.jpg"
-            url="https://www.instagram.com/peo_pet/"
-          />
-        } */}
       </Layout>
     )
   }

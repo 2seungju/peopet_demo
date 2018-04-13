@@ -8,8 +8,7 @@ export default StyleSheet.create({
     'alignSelf': 'center',
     'backgroundColor': '#004ca4',
     'screen&&<w768': {
-      'marginTop': [{ 'unit': 'px', 'value': 60 }],
-      'width': [{ 'unit': '%H', 'value': 0.95 }]
+      'marginTop': [{ 'unit': 'px', 'value': 60 }]
     }
   },
   'input-wrapper': {
@@ -38,7 +37,7 @@ export default StyleSheet.create({
     'position': 'absolute',
     'screen&&<w768': {
       'top': [{ 'unit': 'px', 'value': 10 }],
-      'right': [{ 'unit': 'px', 'value': 10 }],
+      'right': [{ 'unit': 'px', 'value': 0 }],
       'width': [{ 'unit': 'px', 'value': 25 }]
     }
   },

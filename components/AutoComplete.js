@@ -9,8 +9,8 @@ import { SearchIcon } from 'components/Icons'
 import '../static/styles.scss'
 import { dogData, suggestDogData } from '../dogData'
 import media from 'utils/media'
-
-const searchImg = require('static/images/wt_main_home_search.svg')
+// search icon 위치가 안맞음
+const searchImgUrl = 'static/images/wt_main_home_search.svg'
 
 function escapeRegexCharacters(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
@@ -66,10 +66,11 @@ const SuggestionLink = styled(Link)`
   width: 95%;
   height: 100%;
   margin: 0 2.5%;
-  padding: ${rem(20)} 0 ${rem(20)} 0;
+  padding: ${rem(20)} 0 ${rem(20)} ${rem(15)};
   ${'' /* padding: ${rem(40)}; */}
   background: ${white2};
   font-size: ${rem(20)};
+  
   &:hover {
     background: ${peacockBlue};
     color: ${white2}
@@ -96,7 +97,12 @@ const SuggestionLabel = styled.div`
   `}
 `
 
-
+// const Input = styled.input`
+// width: 600px;
+// :placeholder {
+//   opacity: 0.1;
+// }
+// `
 
 class AutoComplete extends Component {
 
@@ -105,7 +111,8 @@ class AutoComplete extends Component {
     suggestions: [],
     defaultSuggestionLabel: '주간 인기 검색어',
     defaultSuggestions: [],
-    noSuggestions: false
+    noSuggestions: false,
+    placeholder: '찾고 싶은 견종을 검색하세요.'
   }
 
   componentDidMount() {
@@ -131,16 +138,18 @@ class AutoComplete extends Component {
     const suggestions = this.getSuggestions(value)
     const isInputBlank = value.trim() === ''
     const noSuggestions = !isInputBlank && suggestions.length === 0
-
+    console.log(suggestions)
     this.setState({
       suggestions,
-      noSuggestions
+      noSuggestions,
+      placeholder: '' // 클릭시 placeholder blank
     })
   }
 
   onSuggestionsClearRequested = () => {
     this.setState({
-      suggestions: []
+      suggestions: [],
+      placeholder: '찾고 싶은 견종을 검색하세요.'
     })
   }
 
@@ -151,7 +160,7 @@ class AutoComplete extends Component {
     const wrapperClassName = location === '/' ? 'input-wrapper' : 'input-wrapper-breeder'
     return (
       <div className={wrapperClassName}>
-        <img className={imgClassName} src={searchImg} alt="searchImg" />
+        <img className={imgClassName} src={searchImgUrl} alt="searchImg" />
         <input {...inputProps} className={inputClassName} />
       </div>
     )
@@ -171,9 +180,9 @@ class AutoComplete extends Component {
     }
 
     return (
-      <SuggestionButton 
+      <SuggestionButton
         type="submit"
-        onClick={() => 
+        onClick={() =>
         // {
         handleClickSuggestion(dogId)
         
@@ -215,10 +224,10 @@ class AutoComplete extends Component {
   getSuggestionValue = suggestion => suggestion.dogName
 
   render() {
-    const { value, suggestions, noSuggestions } = this.state
+    const { value, suggestions, noSuggestions, placeholder } = this.state
     const { location } = this.props
     const inputProps = {
-      placeholder: '찾고 싶은 견종을 검색하세요.',
+      placeholder: placeholder,
       value,
       onChange: this.onChange
     }

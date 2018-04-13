@@ -26,6 +26,7 @@ export default class Blog extends Component {
 
   updateDimensions = () => {
     const width = window.innerWidth
+    // console.log(width)
     this.setState({
       windowWidth: width,
     })
@@ -35,12 +36,11 @@ export default class Blog extends Component {
     window.removeEventListener('resize', this.updateDimensions)
   }
 
+
   render() {
+    // console.log(this.state.windowWidth)
     return (
-      <Layout
-        title="고객문의"
-        description="강아지 브리더의 체계적인 관리를 받은 건강한 강아지를 페오펫에서 추천받으세요! "
-      >
+      <Layout title="support">
         <Wrapper>
           <iframe
             src="https://docs.google.com/forms/d/e/1FAIpQLSegmy62B_MihUSFd0Ov7OdmqsMkNaU1byJeWbKdK6SexeSgMA/viewform?embedded=true"

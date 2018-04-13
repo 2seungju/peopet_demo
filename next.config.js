@@ -51,14 +51,21 @@ module.exports = withSass({
       '/partner': { page: '/partner' },
       '/support': { page: '/support' },
       '/breederdetail/5a1e1fc16507b624c469badc': { page: '/breederdetail', query: { id: '5a1e1fc16507b624c469badc'}},
-      '/breederdetail/5a1e22fe6507b624c469badd': { page: '/breederdetail', query: { id: '5a1e22fe6507b624c469badd' }},
-      '/breederdetail/5a1e275a6507b624c469bade': { page: '/breederdetail', query: { id: '5a1e275a6507b624c469bade' }},
-      '/breederdetail/5a1e4965933d79259c7329bd': { page: '/breederdetail', query: { id: '5a1e4965933d79259c7329bd' }},    
+        '/breederdetail/5a1e22fe6507b624c469badd': { page: '/breederdetail', query: { id: '5a1e22fe6507b624c469badd' }},
+          '/breederdetail/5a1e275a6507b624c469bade': { page: '/breederdetail', query: { id: '5a1e275a6507b624c469bade' }},
+
+          '/breederdetail/5a1e4965933d79259c7329bd': { page: '/breederdetail', query: { id: '5a1e4965933d79259c7329bd' }},
+          
       '/breederdetail/5a1e4c8c933d79259c7329be': { page: '/breederdetail', query: { id: '5a1e4c8c933d79259c7329be' } },
+
       '/breederdetail/5a1e50f8933d79259c7329bf': { page: '/breederdetail', query: { id: '5a1e50f8933d79259c7329bf' } },
+
       '/breederdetail/5a1e5424933d79259c7329c0': { page: '/breederdetail', query: { id: '5a1e5424933d79259c7329c0' } },
+
       '/breederdetail/5a1e5731933d79259c7329c1': { page: '/breederdetail', query: { id: '5a1e5731933d79259c7329c1' } },
+
       '/breederdetail/5a1e5981933d79259c7329c2': { page: '/breederdetail', query: { id: '5a1e5981933d79259c7329c2' } },
+
       '/breederdetail/5a1e5bae933d79259c7329c3': { page: '/breederdetail', query: { id: '5a1e5bae933d79259c7329c3' } },
       '/breederdetail/5a1e60b9933d79259c7329c5': { page: '/breederdetail', query: { id: '5a1e60b9933d79259c7329c5' } },
       '/breederdetail/5a27541333d5ee2510639fcf': { page: '/breederdetail', query: { id: '5a27541333d5ee2510639fcf' } },
