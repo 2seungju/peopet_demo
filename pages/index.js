@@ -230,7 +230,7 @@ const ImgWrapper = styled.div`
   top: 25%;
 `
 const Img = styled.img`
-  width: 4%;
+  width: 3%;
 `
 
 class Index extends Component {
