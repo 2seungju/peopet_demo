@@ -47,8 +47,9 @@ const NavLink = styled(Link)`
 
   &:active {
     transform: scale(0.95);
-    opacity: 0.6;
+    opacity: 0.4;
     color: ${peacockBlue};
+    font-weight: bold;
   }
   ${p => p.dropbar && css`
     width: 100%;

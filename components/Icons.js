@@ -29,6 +29,7 @@ const Img = styled.img`
   width: ${p => p.footer && rem(77)};
   height: ${p => p.footer && rem(65)};
   margin-top: ${p => p.footer && rem(74)};
+  width: ${p => p.content === 'navbar' && '90%'};
   ${media.mobile`
     width: ${p => p.mobileWidth && rem(p.mobileWidth)};
     display: ${p => p.mobileHidden && 'none'};
@@ -97,23 +98,23 @@ const ArrowWrapper = styled.button`
 `
 
 export const FacebookIcon = () => (
-  <Img src={facebookImgUrl} alt="facebookImg" />
+  <Img content="navbar" src={facebookImgUrl} alt="facebookImg" />
 )
 
 export const InstaIcon = () => (
-  <Img src={instaImgUrl} alt="instaImgUrl" />
+  <Img content="navbar" src={instaImgUrl} alt="instaImgUrl" />
 )
 
 export const BlogIcon = () => (
-  <Img src={blogImgUrl} alt="blogImg" />
+  <Img content="navbar" src={blogImgUrl} alt="blogImg" />
 )
 
 export const YellowIcon = () => (
-  <Img src={yellowImgUrl} alt="yellowImg" />
+  <Img content="navbar" src={yellowImgUrl} alt="yellowImg" />
 )
 
 export const HeadLogo = () => (
-  <Img src={headImgUrl} alt="headImg" mobileWidth={110} />
+  <Img content="navbar" src={headImgUrl} alt="headImg" mobileWidth={110} />
 )
 
 export const FooterLogo = ({ mobileHidden, mobileOpen }) => (

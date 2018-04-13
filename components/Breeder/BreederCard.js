@@ -15,6 +15,10 @@ const Wrapper = styled(Link)`
   margin: ${rem(10)};
   background: ${white2};
 
+  :hover, :focus, :active {
+    filter: brightness(80%);
+  }
+
 
   ${media.mobile`
     width: ${rem(271)};
@@ -28,6 +32,8 @@ const ImageWrapper = styled.div`
   width: 100%;
   height: ${rem(180)};
   position: relative;
+
+
 `
 
 const KannelImage = styled.div`
@@ -41,15 +47,17 @@ const KannelImage = styled.div`
 `
 
 const Label = styled.p`
-  padding: 0 ${rem(8)};
+  padding: 0 ${rem(3)};
   position: absolute;
+  width: ${rem(56)};
   top: 0;
   right: ${p => p.position !== 'horizontal' && 0};
   left: ${p => p.position === 'horizontal' && 0};
   background-color: ${p => p.position === 'horizontal' ? squash : scarlet};
   color: ${white2};
-  font-size: ${rem(20)};
+  font-size: ${rem(16)};
   margin: 0;
+  font-weight: bold;
 `
 
 const BreederWrapper = styled.div`
@@ -74,10 +82,12 @@ const BreederImage = styled.div`
 `
 
 const BreederName = styled.p`
-  height: 10px;
-  font-size: ${rem(20)};
+  
+  font-size: ${rem(16)};
   margin: 5px 0;
   color: ${black};
+  width: ${rem(60)};
+  height: ${rem(18)};
 `
 
 const DetailWrapper = styled.div`

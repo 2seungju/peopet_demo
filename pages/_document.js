@@ -263,31 +263,34 @@ export default class MyDocument extends Document {
   */
 
   render() {
-    const { styleTags, useragents } = this.props
+    const { styleTags } = this.props
 
     return (
       <html lang="ko">
         <Head>
-          <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-
-          <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-          <meta name="theme-color" content="#ffffff" />
-          <meta name="author" content="peopet" />
-
-          <meta name="title" content="브리더, 전문브리더, 강아지 브리더, 반려견, 강아지 분양, 강아지 브리더 분양, 페키니즈, 포메라니안, 전문견사" />
-          <meta name="description" content="브리더, 전문브리더, 강아지 브리더, 반려견, 강아지 분양, 강아지 브리더 분양, 페키니즈, 포메라니안, 전문견사" />
-          <meta property="og:title" content="페오펫 | 강아지 브리더 | peopet | 강아지 분양 | 페키니즈" />
-          <meta property="og:description" content="브리더, 전문브리더, 강아지 브리더, 반려견, 강아지 분양, 강아지 브리더 분양, 페키니즈, 포메라니안, 전문견사" />
-          <meta property="og:site_name" content="페오펫_peopet" />
-
+          <title>페오펫 :: Peopet </title>
           <link rel="icon" type="image/png" href="/static/favicon.png" />
           <link rel="stylesheet" href="/_next/static/style.css" />
           <link rel="manifest" href="/static/manifest.json" />
           <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet" />
+
+          <meta charSet="euc-kr" />
+          <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+          <meta httpEquiv="Content-Type" content="text/html;charset=utf-8" />
+          <meta httpEquiv="Content-Script-Type" content="text/javascript" />
+          <meta httpEquiv="Content-Style-Type" content="text/css" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+
+          <meta name="theme-color" content="#004ca4" />
+          <meta name="author" content="페오펫(peopet)" />
+          <meta name="title" content="페오펫 :: Peopet" />
+          <meta name="description" content="강아지 브리더의 체계적인 관리를 받은 건강한 강아지를 페오펫에서 분양받으세요!" />
+          <meta name="keyword" content="브리더,강아지 브리더,전문견사,건강한 강아지,전문 브리더,강아지 분양,강아지 입양" />
+
           <style dangerouslySetInnerHTML={{ __html: resetStyles }} />
           {styleTags}
           <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.min.js" />
+          {/* <script dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MVS64F9');` }} /> */}
           {
             process.env.NODE_ENV === 'production' && <script dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MVS64F9');` }} />
           }
@@ -302,11 +305,12 @@ export default class MyDocument extends Document {
                 "sameAs": [
                   "https://www.facebook.com/peopleNpet",
                   "http://blog.naver.com/peopet",
-                  "http://www.instagram.com/peo_pet",
+                  "http://www.instagram.com/peo_pet"
                 ]
               }`
             }}
           />
+          <meta name="google-site-verification" content="u73GRNDDuj4e7nJFLiY8NcERojS4dPScTUBo30Sudho" />
         </Head>
         <body>
           <div className="root">

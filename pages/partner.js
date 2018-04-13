@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   height: 100%;
   width: ${rem(1000)}; 
   margin: auto;
-
+  color: #333333;
   ${media.tablet`
   width:95%;
   `}
@@ -32,6 +32,7 @@ const Wrapper = styled.div`
 
 const TitleWrapper = styled.div`
   width: 100%;
+  margin-top: ${rem(30)};
   height: ${rem(250)};
   display: flex;
   flex-direction: column;
@@ -56,7 +57,7 @@ const BannerWrapper = styled.div`
   position: relative;
   text-align: center;
   height: ${rem(198)};
-  margin: 0 auto;
+  margin: ${rem(-20)} auto 0;
   ${media.mobile`
   margin-top: ${rem(-70)};
   `};
@@ -81,9 +82,9 @@ const BannerWord = styled.div`
   top: ${p => p.b && '45%'};
   top: ${p => (p.c || p.d) && '60%'};
   left: 55%;
+  color: #333333;
   color: ${p => p.a && white2};
-
-  margin-left: -45%;
+  margin-left: -40%;
   background-color: ${p => p.a && '#67ccdb'};
   font-size: ${p => p.a && rem(15)};
   font-size: ${p => !p.a && rem(25)};
@@ -116,7 +117,7 @@ const MembershipBox = styled.div`
   width: ${rem(166)};
 
   background-color: #ffffff;
-  border: solid 1px rgba(0, 0, 0, .3);
+  border: solid 1px rgba(0, 0, 0, .1);
   margin-top: ${rem(20)};
   margin-right: ${rem(18)};
   ${media.tablet`
@@ -155,7 +156,7 @@ const BoxFooter = styled.div`
   display: flex;
   flex-direction: row;
   text-align: center;
-  border-top:  solid 1px rgba(0, 0, 0, .3);
+  border-top:  solid 1px rgba(0, 0, 0, .1);
   padding-top: ${rem(10.7)};
   padding-bottom: ${rem(20)};
   width: 90%;
@@ -171,8 +172,8 @@ const BoxDivWrapper = styled.div`
 
 const BlueBox = styled.div`
 background: ${peacockBlue};
-width: 36px;
-height: ${rem(15)};
+width: ${rem(40)};
+height: ${rem(18)};
 color:#ffffff;
 
 ${media.mobile`
@@ -202,7 +203,7 @@ const ImgWrapper = styled.div`
 `
 
 const Img = styled.img`
-  width: 80%;
+  width: 70%;
   margin: auto;
   ${media.tablet`
 

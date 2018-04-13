@@ -12,7 +12,7 @@ import Spinner from 'components/Spinner'
 import ErrorPage from '../pages/_error'
 
 const Wrapper = styled.div`
-  width: ${rem(1170)};
+  width: ${rem(1250)};
   margin: auto;
   padding-top: ${rem(160)};
   padding-bottom: ${rem(100)};
@@ -25,7 +25,7 @@ const Wrapper = styled.div`
   ${'' /* background: yellow; */}
   
   ${media.wide`
-  width: ${rem(890)};
+  width: 100%;
   `};
 
   ${media.mobile`
