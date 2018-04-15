@@ -43,6 +43,31 @@ const Label = styled.p`
   padding: ${rem(10)} 0;
   color: ${black};
   font-size: ${p => p.mobile && rem(20)};
+  font-weight: bold;
+`
+
+const SubLabelWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+const Arrow = styled.div`
+  width: ${rem(16)};
+  height: ${rem(10)};
+  margin-right: ${rem(5)};
+  border-left: solid ${rem(16)} #333333;
+  border-bottom: solid 10px transparent;
+  border-top: solid 10px transparent;
+`
+
+const SubLabel = styled.p`
+  font-size: ${rem(20)};
+  font-weight: bold;
+  margin-top: 5px;
+  margin: auto 0;
+  ${media.tablet`
+    font-size: ${rem(15)};
+  `}
 `
 
 const NavLink = styled(Link)`
@@ -57,7 +82,7 @@ const NavLink = styled(Link)`
 `
 
 const BreederQueryButton = styled.button`
-  font-size: ${rem(20)};
+  font-size: ${rem(18)};
   padding: ${rem(10)};
   color: ${p => p.activeDogId === p.dogId ? peacockBlue : black};
   font-size: ${p => p.mobile && rem(15)};
@@ -70,6 +95,9 @@ const BreederQueryButton = styled.button`
   &:hover {
     color: ${peacockBlue}
   };
+  &:active {
+    font-weight: bold;
+  }
   
 
 `
@@ -77,6 +105,10 @@ const BreederQueryButton = styled.button`
 const Category = ({ mobile, pc, location, onChangeBreeder, activeDogId }) => (
   <Wrapper mobile={mobile} pc={pc}>
     <Label mobile={mobile}>견종별 브리더</Label>
+    <SubLabelWrapper>
+      <Arrow />
+      <SubLabel>카테고리</SubLabel>
+    </SubLabelWrapper>
     {
       filterDogData.map(dog => {
         const { dogName, id } = dog

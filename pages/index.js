@@ -92,6 +92,7 @@ const Content = styled.div`
 const Title = styled.h1`
   text-align: ${p => p.content === 'partner' ? 'left' : 'center'};
   font-size: ${p => rem(p.size)};
+  font-weight: normal;
   font-weight: ${p => p.main && 'bold'};
   padding: 0;
   margin: 0;

@@ -50,13 +50,14 @@ const Dots = styled.div`
 `
 
 const Dot = styled.button`
-  background: ${p => p.active ? peacockBlue : white2};
+  background: ${p => p.active ? white2 : white2};
+  opacity: ${p => p.active ? 0.3 : 0.9};
   display: inline-block;
-  padding: 10px;
+  padding: 7px;
   margin-left: 5px;
   cursor: pointer;
   outline: none;
-  border-width: 1px;
+  border-width: 1.5px;
   border-radius: 50%;
 
   ${media.mobile`

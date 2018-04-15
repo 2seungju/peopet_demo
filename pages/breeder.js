@@ -12,7 +12,7 @@ import Spinner from 'components/Spinner'
 import ErrorPage from '../pages/_error'
 
 const Wrapper = styled.div`
-  width: ${rem(1250)};
+  width: ${rem(1170)};
   margin: auto;
   padding-top: ${rem(160)};
   padding-bottom: ${rem(100)};

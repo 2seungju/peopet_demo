@@ -67,6 +67,7 @@ const BreederWrapper = styled.div`
   position: absolute;
   bottom: ${rem(-50)};
   right: ${rem(15)};
+  text-align: center;
 `
 
 const BreederImage = styled.div`
@@ -84,7 +85,7 @@ const BreederImage = styled.div`
 const BreederName = styled.p`
   
   font-size: ${rem(16)};
-  margin: 5px 0;
+  margin: 5px 0\;
   color: ${black};
   width: ${rem(60)};
   height: ${rem(18)};
