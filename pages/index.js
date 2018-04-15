@@ -245,8 +245,13 @@ const ImgWrapper = styled.div`
 `
 
 const Img = styled.img`
-  width: 2.5%;
-  
+  width: 2.5%; 
+`
+
+const BreederListWrapper = styled.div`
+  width:1000px;
+  margin:  0 auto;
+
 `
 
 class Index extends Component {
@@ -298,7 +303,7 @@ class Index extends Component {
           </Content>
         </Wrapper>
         <Wrapper background={white} padding={150} mobilePadding={50}>
-          <Content breeder>
+          <Content content="breeder">
             <Title size={50} color={peacockBlue} mobileSize={30}>이 달의 <b>인기 브리더</b></Title>
             <SubTitle size={25} color={peacockBlue} mobileSize={15}>전문 지식을 가지고 윤리적으로 강아지를 번식하는 우수한 브리더를 소개합니다.</SubTitle>
             <BreederList breederData={bestBreederList} location="/" position="vertical" />
@@ -306,10 +311,12 @@ class Index extends Component {
           </Content>
         </Wrapper>
         <Wrapper background={white2} padding={200} mobilePadding={50}>
-          <Content breeder>
+          <Content content="breeder">
             <Title size={50} color={squash} mobileSize={30}>이 달의 <b />신규 브리더</Title>
             <SubTitle size={25} color={pooBrown} mobileSize={15} mobileWidth={75}>매 달 페오펫과 함께하는 새로운 브리더들을 만나보세요.</SubTitle>
-            <BreederList breederData={newBreederList} location="/" position="horizontal" />
+            <BreederListWrapper>
+              <BreederList breederData={newBreederList} location="/" position="horizontal" />
+            </BreederListWrapper>
             <BreederLink color={squash} href="/breeder">신규 브리더 더 보기 </BreederLink>
           </Content>
         </Wrapper>

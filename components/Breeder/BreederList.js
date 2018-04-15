@@ -12,7 +12,7 @@ const Wrapper = styled(FlexBox)`
   ${'' /* height: 500px; */}
   ${p => p.position === 'horizontal' && flexDirection('column')};
 
-  width: 70%;
+
   ${media.mobile`
     width: 100%;
   `}
