@@ -294,7 +294,7 @@ export default class Blog extends Component {
             <Banner src={PartnerBannerImgUrl} alt="bannerImg" />
             <BannerWord a>첫 입양시</BannerWord>
             <BannerWord b>5만원 상당의</BannerWord>
-            <BannerWord c>GIFT BOX를 선물로 드립니다.</BannerWord> { /* GIFT BOX // 선물로 드립니다. 분리 */ }
+            <BannerWord c><b>GIFT BOX</b>를 선물로 드립니다.</BannerWord> { /* GIFT BOX // 선물로 드립니다. 분리 */ }
           </BannerWrapper>
           <BoxWrapper>
             {partner}

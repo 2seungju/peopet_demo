@@ -55,7 +55,7 @@ const Label = styled.p`
   left: ${p => p.position === 'horizontal' && 0};
   background-color: ${p => p.position === 'horizontal' ? squash : scarlet};
   color: ${white2};
-  font-size: ${rem(16)};
+  font-size: ${rem(17)};
   margin: 0;
   font-weight: bold;
 `
@@ -100,6 +100,7 @@ const DetailWrapper = styled.div`
 const Title = styled.p`
   margin: 0;
   font-size: ${rem(15)};
+
 `
 
 const BreederCard = ({

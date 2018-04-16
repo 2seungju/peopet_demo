@@ -31,13 +31,13 @@ const TextWrapper = styled.div`
 `
 
 const Image = styled.div`
-  height: ${rem(954)};
+  height: ${p => p.height && rem(p.height)};
   position: relative;
   background-image: ${p => p.img === 'long' ? `url(${longImg})` : `url(${interviewImg})`};
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  
+  filter: brightness(60%);
   ${media.tablet`
   `}
 
@@ -52,8 +52,11 @@ height: 100%;
 margin: 0 auto;
 position: relative;
 display: flex;
-
+color: white;
 flex-direction: column;
+${media.tablet`
+  width: 90%;
+`}
 `
 
 const TextContent = styled.div`
@@ -66,10 +69,7 @@ const TextContent = styled.div`
   justify-content: center;
 
   flex-direction: column;
-  
-  ${media.mobile`
-    width: 90%;
-  `}
+
 `
 
 
@@ -82,6 +82,10 @@ const TitleWrapper = styled.div`
   display: ${p => p.mobile && 'none'};
   margin-top: ${p => p.img && rem(240)};
   margin-left: ${p => p.img && rem(280)};
+
+  ${media.tablet`
+  margin-left: ${p => p.img && rem(41)};
+  `}
   ${media.mobile`
     display: ${p => p.mobile && 'inline-block'};
   `}
@@ -89,12 +93,13 @@ const TitleWrapper = styled.div`
 
 const Title = styled.h3`
   font-weight: ${p => p.hero && 'lighter'};
+  letter-spacing: ${p => p.hero && rem(10)};
   color: ${p => p.hero ? white : black};
   font-size: ${p => p.hero ? rem(50) : rem(30)};
   text-align: ${p => p.img && 'left'};
   margin: 0;
   
-  // font-family: 'Montserrat', serif;
+  font-family: ${p => p.hero && 'Montserrat, serif'};
   ${media.mobile`
     font-size: ${rem(30)};
   `}
@@ -104,6 +109,10 @@ const DescriptionWrapper = styled.div`
   margin-top: ${rem(45)};
   margin-top: ${p => p.img && rem(30)};
   margin-left: ${p => p.img && rem(280)};
+  ${media.tablet`
+  margin-left: ${p => p.img && rem(41)};
+  `}
+
   ${media.mobile`
     display: none;
   `}
@@ -122,9 +131,10 @@ const Description = styled.p`
   opacity: ${p => !p.hero && 0.8};
   font-size: ${rem(22)};
   margin: 0;
-  font-weight: ${p => p.hero && 'lighter'};
+  font-weight: 300;
+
   ${media.tablet`
-    font-size: ${p => p.hero ? rem(20) : rem(15)};
+    font-size: ${rem(20)};
   `};
 
   ${media.mobile`
@@ -151,6 +161,28 @@ const BeatWrapper = styled.div`
 
 const Beat = styled.img`
   width: 2%;
+
+  ${media.wide`
+  width: 4%;
+  `}
+`
+
+const Interviewee = styled.div`
+  position: absolute;
+  bottom: 5%;
+  right: 18%;
+  text-align: right;
+  
+  color: white;
+  font-size: ${rem(20)};
+
+
+  ${media.tablet`
+  bottom: 0%;
+  right: -2%;
+  color: ${white2};
+  `}
+
 `
 
 export default class About extends Component {
@@ -186,7 +218,7 @@ export default class About extends Component {
               </BeatWrapper>
             </TextContent>
           </TextWrapper>
-          <Image img="long">
+          <Image img="long" height={1288}>
             <ImageInner>
               <TitleWrapper img>
                 <Title img>현재까지 10,000km</Title>
@@ -216,7 +248,7 @@ export default class About extends Component {
               </MobileDescriptionWrapper>
             </TextContent>
           </TextWrapper>
-          <Image img="interview">
+          <Image img="interview" height={1260}>
             <ImageInner>
               <TitleWrapper img>
                 <Title img>페오펫을 어떻게 창립하게 되었나요?</Title>
@@ -228,6 +260,7 @@ export default class About extends Component {
                 <Description>만들게 되었습니다. 행복한 가족을 만드는 중간다리 역할을</Description>
                 <Description>페오펫이 합께 할 수 있길 바랍니다.</Description>
               </DescriptionWrapper>
+              <Interviewee>페오펫 최현일 대표(CEO & Co-founder)</Interviewee>
             </ImageInner>
           </Image>
           <TextWrapper mobile>

@@ -228,7 +228,7 @@ const resetStyles = `
     margin: 0;
     height: 100%;
     -webkit-font-smoothing: subpixel-antialiased;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif';
   }
 
   body {
@@ -272,8 +272,9 @@ export default class MyDocument extends Document {
           <link rel="icon" type="image/png" href="/static/favicon.png" />
           <link rel="stylesheet" href="/_next/static/style.css" />
           <link rel="manifest" href="/static/manifest.json" />
-          <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet" />
-
+          <link href="https://fonts.googleapis.com/css?family=Montserrat|Noto+Sans" rel="stylesheet" />
+          <link href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css" rel="stylesheet" type="text/css" />
+          <link href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-jp.css" rel="stylesheet" type="text/css" />
           <meta charSet="euc-kr" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
           <meta httpEquiv="Content-Type" content="text/html;charset=utf-8" />

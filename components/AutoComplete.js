@@ -19,7 +19,7 @@ function escapeRegexCharacters(str) {
 const Wrapper = styled.div`
   width: ${p => p.location !== '/' && '50%'};
   margin: ${p => p.location !== '/' && 'auto'};
-
+  margin-top: ${rem(11)};
   ${media.pc`
     width: ${p => p.location !== '/' && '60%'};
   `};
@@ -149,7 +149,6 @@ class AutoComplete extends Component {
   onSuggestionsClearRequested = () => {
     this.setState({
       suggestions: [],
-      placeholder: '찾고 싶은 견종을 검색하세요.'
     })
   }
 
@@ -185,7 +184,6 @@ class AutoComplete extends Component {
         onClick={() =>
         // {
         handleClickSuggestion(dogId)
-        
         // }
         }
       >
@@ -227,7 +225,7 @@ class AutoComplete extends Component {
     const { value, suggestions, noSuggestions, placeholder } = this.state
     const { location } = this.props
     const inputProps = {
-      placeholder: placeholder,
+      placeholder: '강아지를 검색해보세요!',
       value,
       onChange: this.onChange
     }

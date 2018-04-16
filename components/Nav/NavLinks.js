@@ -38,10 +38,10 @@ const NavLink = styled(Link)`
   font-size: ${rem(20)};
   padding-left: ${rem(20)};
   padding-right: ${rem(20)};
-
+  font-weight: bold;
+  opacity: 0.8;
   &:hover,
   &:focus {
-    opacity: 0.8;
     color: ${peacockBlue};
   }
 

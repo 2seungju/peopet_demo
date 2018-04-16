@@ -23,7 +23,6 @@ const BlueBackground = styled.div`
   position: fixed;
   top: ${rem(60)};
   background: ${peacockBlue};
-
   ${media.mobile`
     height: ${rem(90)}
   `}
