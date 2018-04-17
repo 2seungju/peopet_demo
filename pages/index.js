@@ -71,8 +71,9 @@ const Content = styled.div`
   margin: 0 auto;
   position: relative;
   text-align: center;
-  width: ${p => p.content === 'partner' ? '60%' : '90%'};
-  width: ${p => p.home && '55%'};
+  width: ${p => p.content === 'partner' ? '60%' : rem(890)};
+  width: ${p => p.home && rem(830)};
+
   ${'' /* width: 70%; */}
   min-height: 100%;
   height: 100%;
@@ -238,10 +239,10 @@ const ImgWrapper = styled.div`
   animation-direction: alternate;
 @keyframes beat {
   from {
-    top: 25%;
+    top: 22%;
   }
   to {
-    top: 24%;
+    top: 21%;
   }
 }
 `
@@ -254,6 +255,11 @@ const BreederListWrapper = styled.div`
   width: ${rem(890)};
   margin:  0 auto;
 
+`
+
+const AutoWrapper = styled.div`
+  width: 92%;
+  margin: 0 auto;
 `
 
 class Index extends Component {
@@ -292,7 +298,9 @@ class Index extends Component {
             <Hero>
               <Title main size={62} color={white2}>&nbsp;건강한 강아지 분양 중개, 페오펫</Title>
               <SubTitle main size={38} color={white2}>브리더가 기르는 건강한 강아지를 키우고 싶다면?</SubTitle>
-              <AutoComplete location="/" />
+              <AutoWrapper>
+                <AutoComplete location="/" />
+              </AutoWrapper>
             </Hero>
             <MobileHero>
               <Title size={50} color={white2} mobileSize={30} mobileWidth={90}>&nbsp;건강한 강아지<br />분양 중개, 페오펫</Title>
