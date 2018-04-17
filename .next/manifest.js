@@ -90,7 +90,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b32867751d2926375682"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "028d24eb0386d223ccc2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -755,7 +755,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "" + ({"0":"main.js","1":"bundles\\pages\\_error.js","3":"bundles\\pages\\index.js","6":"bundles\\pages\\about.js"}[chunkId]||chunkId) + "-" + {"0":"d0aad91b0dbfe5e84c1a","1":"1ab986bd6ebd3d69d0d7","3":"7e385fb84000134fe0be","6":"9e9a7a2df79133bc782e"}[chunkId] + ".js";
+/******/ 		script.src = __webpack_require__.p + "" + ({"0":"main.js","1":"bundles\\pages\\_error.js","3":"bundles\\pages\\index.js","4":"bundles\\pages\\breeder.js"}[chunkId]||chunkId) + "-" + {"0":"85a1884680c5b1e1fff3","1":"1ab986bd6ebd3d69d0d7","3":"9f39e4df5d71639313df","4":"6becccfb516b80ea6567"}[chunkId] + ".js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {

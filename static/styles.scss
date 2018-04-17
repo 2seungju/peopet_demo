@@ -6,11 +6,9 @@
 
 .react-autosuggest__container {
   position: relative;
-  width: 100%;
   margin: 0 auto;
   align-self: center;
   background-color: #004ca4;
-
   @media screen and (max-width: 768px) {
     margin-top: 60px;
   }
@@ -20,8 +18,9 @@
   display: flex;
   .react-autosuggest__input {
     margin: auto;
-    width: 800px;
     height: 80px;
+    width: 100%;
+    
     font-size: 30px;
     border: 1px solid #ffffff;
     border-radius: 4px;
@@ -42,7 +41,7 @@
 
   .search-img {
     top: 62px;
-    right: 25%;
+    right: 8%;
     position: absolute;
     width: 58px;
 
@@ -61,6 +60,12 @@
   font-weight: bold;
   font-size: 34px;
   opacity: 0.5;
+  @media screen and (max-width: 1024px) {
+    font-size: 30px;
+  }
+  @media screen and (max-width: 400px) {
+    font-size: 20px;
+  }
 }
 
 .input-wrapper-breeder {
@@ -124,6 +129,8 @@
 
 .react-autosuggest__suggestions-container--open {
   display: block;
+  position: absolute;
+  z-index: 1;
   // position: absolute;
   // top: 51px;
   width: 100%;

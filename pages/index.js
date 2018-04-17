@@ -53,6 +53,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   text-align: center;
   height: ${p => rem(p.height)};
+
   background: ${p => p.background};
   padding-top: ${p => rem(p.padding)};
   padding-bottom: ${p => rem(p.padding)};
@@ -70,7 +71,8 @@ const Content = styled.div`
   margin: 0 auto;
   position: relative;
   text-align: center;
-  width: ${p => p.content === 'partner' ? '60%' : '80%'};
+  width: ${p => p.content === 'partner' ? '60%' : '90%'};
+  width: ${p => p.home && '55%'};
   ${'' /* width: 70%; */}
   min-height: 100%;
   height: 100%;
@@ -285,11 +287,11 @@ class Index extends Component {
     const newBreederList = breederData.filter(breeder => breeder.label === 'new')
     return (
       <Layout location="/">
-        <Wrapper background={peacockBlue} height={1070} mobileHeight={650}>
+        <Wrapper home background={peacockBlue} height={1070} mobileHeight={650}>
           <Content home>
             <Hero>
-              <Title main size={65} color={white2}>&nbsp;건강한 강아지 분양 중개, 페오펫</Title>
-              <SubTitle main size={40} color={white2}>브리더가 기르는 건강한 강아지를 키우고 싶다면?</SubTitle>
+              <Title main size={62} color={white2}>&nbsp;건강한 강아지 분양 중개, 페오펫</Title>
+              <SubTitle main size={38} color={white2}>브리더가 기르는 건강한 강아지를 키우고 싶다면?</SubTitle>
               <AutoComplete location="/" />
             </Hero>
             <MobileHero>
@@ -314,9 +316,7 @@ class Index extends Component {
           <Content content="breeder">
             <Title size={50} color={squash} mobileSize={30}>이 달의 <b>신규 브리더 </b></Title>
             <SubTitle size={25} color={pooBrown} mobileSize={15} mobileWidth={75}>매 달 페오펫과 함께하는 새로운 브리더들을 만나보세요.</SubTitle>
-            <BreederListWrapper>
-              <BreederList breederData={newBreederList} location="/" position="horizontal" />
-            </BreederListWrapper>
+            <BreederList breederData={newBreederList} location="/" position="horizontal" />
             <BreederLink color={squash} href="/breeder">신규 브리더 더 보기 </BreederLink>
           </Content>
         </Wrapper>
