@@ -112,7 +112,7 @@ class AutoComplete extends Component {
     defaultSuggestionLabel: '주간 인기 검색어',
     defaultSuggestions: [],
     noSuggestions: false,
-    placeholder: '찾고 싶은 견종을 검색하세요.'
+    placeholder: '강아지를 검색해보세요!'
   }
 
   componentDidMount() {
@@ -225,7 +225,7 @@ class AutoComplete extends Component {
     const { value, suggestions, noSuggestions, placeholder } = this.state
     const { location } = this.props
     const inputProps = {
-      placeholder: '강아지를 검색해보세요!',
+      placeholder: placeholder,
       value,
       onChange: this.onChange
     }
