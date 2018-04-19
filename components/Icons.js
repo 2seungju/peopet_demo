@@ -58,10 +58,10 @@ const ChangeRotationImg = styled.img`
   width: ${rem(152)};
   height: ${rem(107)};
   margin: 0 auto;
-  animation-delay: 0.2s;
-  animation-duration: 17s;
+  animation-duration: 22s;
   animation-name: rotating;
   animation-iteration-count: infinite;
+  animation-direction: reverse;
 
   @keyframes rotating {
     from {
