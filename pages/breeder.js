@@ -25,7 +25,7 @@ const Wrapper = styled.div`
   ${'' /* background: yellow; */}
   
   ${media.wide`
-  width: ${rem(890)};
+  width: 100%;
   `};
 
   ${media.mobile`

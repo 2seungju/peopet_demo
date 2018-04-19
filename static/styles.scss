@@ -6,11 +6,9 @@
 
 .react-autosuggest__container {
   position: relative;
-  width: 100%;
   margin: 0 auto;
   align-self: center;
   background-color: #004ca4;
-
   @media screen and (max-width: 768px) {
     margin-top: 60px;
   }
@@ -18,10 +16,11 @@
 
 .input-wrapper {
   display: flex;
-
   .react-autosuggest__input {
+    margin: auto;
+    height: 80px;
     width: 100%;
-    height: 60px;
+    
     font-size: 30px;
     border: 1px solid #ffffff;
     border-radius: 4px;
@@ -30,7 +29,7 @@
     margin-top: 50px;
 
     @media screen and (max-width: 768px) {
-      margin: 0;
+      
       
     }
 
@@ -41,25 +40,41 @@
   }
 
   .search-img {
-    top: 65px;
-    right: 10%;
+    top: 60px;
+    right: 7%;
     position: absolute;
+    width: 60px;
 
+    @media screen and (max-width: 1024px) {
+      top: 10px;
+      right: 0;
+      width: 25px;
+    }
     @media screen and (max-width: 768px) {
       top: 10px;
       right: 0;
       width: 25px;
     }
   }
+} .input-wrapper .react-autosuggest__input::placeholder {
+  font-weight: bold;
+  font-size: 34px;
+  opacity: 0.5;
+  @media screen and (max-width: 1024px) {
+    font-size: 30px;
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 20px;
+  }
 }
 
 .input-wrapper-breeder {
   display: flex;
   width: 100%;
-  margin: auto;
+  
   
   .react-autosuggest__input__breeder {
-    width: 100%;
+    width: 860px;
     height: 60px;
     font-size: 20px;
     border: 1px solid #ffffff;
@@ -69,7 +84,7 @@
     margin-top: 8px;
     margin-left: auto;
     margin-right: auto;
-
+    
     @media screen and (max-width: 768px) {
       margin-top: -40px;
     };
@@ -81,8 +96,8 @@
   }
 
   .search-img__breeder {
-    top: 25px;
-    right: 10%;
+    top: 20px;
+    right: 8%;
     position: absolute;
 
     @media screen and (max-width: 768px) {
@@ -98,7 +113,17 @@
   }
 }
 
-
+.input-wrapper-breeder .react-autosuggest__input__breeder::placeholder {
+  font-weight: bold;
+  font-size: 25px;
+  opacity: 0.5;
+  @media screen and (max-width: 1024px) {
+    font-size: 22px;
+  }
+  @media screen and (max-width: 400px) {
+    font-size: 20px;
+  }
+}
 
 .react-autosuggest__input--focused {
   outline: none;
@@ -116,6 +141,8 @@
 
 .react-autosuggest__suggestions-container--open {
   display: block;
+  position: absolute;
+  z-index: 1;
   // position: absolute;
   // top: 51px;
   width: 100%;

@@ -36,7 +36,9 @@ const Wrapper = styled.div`
 const IconLink = styled.a`
   display: flex;
   align-items: center;
-  margin: ${rem(10)}
+  margin: ${rem(10)};
+  position:relative;
+  left: 4.8%;
 `
 
 const NavWrapper = styled.div`
@@ -61,7 +63,8 @@ const DropButton = styled(Button).attrs({
 const IconWrapper = styled.div`
   display: flex;
   flex-direction: row;
-
+  position: relative;
+  right: 5.5%;
   ${media.tablet`
     display: none;
   `}

@@ -25,7 +25,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 100%;
 
   ${media.wide`
     width: 90%;
@@ -122,6 +121,7 @@ const BreederImage = styled.img`
   height: ${rem(80)};
   border-radius: 50%;
   margin: auto 0;
+  box-shadow: 0 ${rem(2)} ${rem(4)} 0 rgba(0, 0, 0, 0.5);
 `
 
 const NameWrapper = styled.div`
@@ -168,7 +168,7 @@ const Support = styled(Link)`
   color: ${white2};
   font-size: ${rem(18)};
   padding: ${rem(10)};
-  width: ${rem(200)};
+  width: ${rem(220)};
   margin: 0 auto;
   border-radius: ${rem(3)};
 
@@ -267,8 +267,7 @@ export default class Breederdetail extends Component {
             <NotImageWrapper>
               <BreederWrapper>
                 <NavWrapper padding={20} label="true">
-                  <Nav>브리더 인터뷰</Nav>
-                  <Nav>견사 정보</Nav>
+                  <Nav>브리더 소개란</Nav>
                 </NavWrapper>
                 <Bar borderColor={warmGrey2} mobileHide />
                 <NavWrapper padding={25} breeder>
@@ -295,9 +294,9 @@ export default class Breederdetail extends Component {
                   <BreederDetailWrapper>
                     <DetailKannelIcon /><Description breederDetail>{kannelName}</Description>
                   </BreederDetailWrapper>
-                  <BreederDetailWrapper>
+                  {/* <BreederDetailWrapper> */}
                     {/* <DetailColorIcon /><Description breederDetail>{kannelColor}</Description> */}
-                  </BreederDetailWrapper>
+                  {/* </BreederDetailWrapper> */}
                 </NavWrapper>
                 <Bar borderColor={warmGrey2} />
               </BreederWrapper>

@@ -38,17 +38,18 @@ const NavLink = styled(Link)`
   font-size: ${rem(20)};
   padding-left: ${rem(20)};
   padding-right: ${rem(20)};
-
+  font-weight: bold;
+  opacity: 0.8;
   &:hover,
   &:focus {
-    opacity: 0.8;
     color: ${peacockBlue};
   }
 
   &:active {
     transform: scale(0.95);
-    opacity: 0.6;
+    opacity: 0.4;
     color: ${peacockBlue};
+    font-weight: bold;
   }
   ${p => p.dropbar && css`
     width: 100%;

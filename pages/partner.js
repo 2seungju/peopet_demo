@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   height: 100%;
   width: ${rem(1000)}; 
   margin: auto;
-
+  color: #333333;
   ${media.tablet`
   width:95%;
   `}
@@ -32,6 +32,7 @@ const Wrapper = styled.div`
 
 const TitleWrapper = styled.div`
   width: 100%;
+  margin-top: ${rem(30)};
   height: ${rem(250)};
   display: flex;
   flex-direction: column;
@@ -56,7 +57,7 @@ const BannerWrapper = styled.div`
   position: relative;
   text-align: center;
   height: ${rem(198)};
-  margin: 0 auto;
+  margin: ${rem(-20)} auto 0;
   ${media.mobile`
   margin-top: ${rem(-70)};
   `};
@@ -81,9 +82,9 @@ const BannerWord = styled.div`
   top: ${p => p.b && '45%'};
   top: ${p => (p.c || p.d) && '60%'};
   left: 55%;
+  color: #333333;
   color: ${p => p.a && white2};
-
-  margin-left: -45%;
+  margin-left: -40%;
   background-color: ${p => p.a && '#67ccdb'};
   font-size: ${p => p.a && rem(15)};
   font-size: ${p => !p.a && rem(25)};
@@ -116,7 +117,7 @@ const MembershipBox = styled.div`
   width: ${rem(166)};
 
   background-color: #ffffff;
-  border: solid 1px rgba(0, 0, 0, .3);
+  border: solid 1px rgba(0, 0, 0, .1);
   margin-top: ${rem(20)};
   margin-right: ${rem(18)};
   ${media.tablet`
@@ -155,7 +156,7 @@ const BoxFooter = styled.div`
   display: flex;
   flex-direction: row;
   text-align: center;
-  border-top:  solid 1px rgba(0, 0, 0, .3);
+  border-top:  solid 1px rgba(0, 0, 0, .1);
   padding-top: ${rem(10.7)};
   padding-bottom: ${rem(20)};
   width: 90%;
@@ -171,8 +172,8 @@ const BoxDivWrapper = styled.div`
 
 const BlueBox = styled.div`
 background: ${peacockBlue};
-width: 36px;
-height: ${rem(15)};
+width: ${rem(40)};
+height: ${rem(18)};
 color:#ffffff;
 
 ${media.mobile`
@@ -202,7 +203,7 @@ const ImgWrapper = styled.div`
 `
 
 const Img = styled.img`
-  width: 80%;
+  width: 70%;
   margin: auto;
   ${media.tablet`
 
@@ -221,27 +222,25 @@ const Link = styled.a`
   justify-content: flex-start;
 `
 
-export default class Blog extends Component {
+const partners = [
+  { id: 0, name: '유기견 없는 도시', contents: '반려견 교육', benefit: '수강료 50% 할인', url: 'http://www.clearcity.kr/', logo: '/static/images/logo/membership_abandoneddogcitylogo.png' },
+  { id: 1, name: '앙꼬네 미용실', contents: '펫 미용', benefit: '첫 방문 시 10% 할인', url: 'https://ancoshop.modoo.at/', logo: '/static/images/logo/membership_anggologo.png' },
+  { id: 2, name: '베이컨 박스', contents: '정기선물 배송서비스', benefit: '첫 구매 시 30% 할인', url: 'https://www.baconbox.co/', logo: '/static/images/logo/membership_baconboxlogo2.png' },
+  { id: 3, name: '코르누보', contents: '사진 촬용 및 용품', benefit: '스튜디오 촬영, 목줄 하네스 30% 할인', url: 'http://cornouveau.com/', logo: '/static/images/logo/membership_cornouveaulogo.png' },
+  { id: 4, name: '닥터 케이', contents: '건국대학교 수의대 사료', benefit: '구매 시 30% 할인', url: 'https://goo.gl/Fic9Dg', logo: '/static/images/logo/membership_doctorklogo2.png' },
+  { id: 5, name: '도그 메이트', contents: '펫시팅', benefit: '첫 펫시팅 시 15% 할인', url: 'https://www.dogmate.co.kr/', logo: '/static/images/logo/membership_dogmatelogo.png' },
+  { id: 6, name: '21그램', contents: '반려동물 장례 서비스', benefit: '장례 이용시 수의 제공', url: 'http://21gram.co.kr/', logo: '/static/images/logo/membership_21gramlogo.png' },
+  { id: 7, name: '핏펫', contents: '반려동물 Lifeware', benefit: '펫시팅 시 20% 할인', url: 'http://fitpet.co.kr/', logo: '/static/images/logo/membership_fitpetlogo3.png' },
+  { id: 8, name: '제이네 운동장', contents: '강아지 운동장', benefit: '생후 6개월까지 운동장 입장료 면제', url: 'https://blog.naver.com/jground_official', logo: '/static/images/logo/membership_jgroundlogo.png' },
+  { id: 9, name: '러브핫핏', contents: '반려 동물 스타일링', benefit: '첫 구매 시 20% 할인', url: 'http://lovehotfit.com/', logo: '/static/images/logo/membership_lovehotfitlogo.png' },
+  { id: 10, name: '박중현 작가', contents: '반려견 그림작가', benefit: '그림 구매 시 만원 할인', url: 'https://www.instagram.com/artcon_park/', logo: '/static/images/logo/membership_parkjunghyeonlogo.png' },
+  { id: 11, name: '펫프렌즈', contents: '반려견 용품구매', benefit: '첫 구매시 20%, 이후 3~5%할인(무료배송)', url: 'http://www.pet-friends.co.kr/', logo: '/static/images/logo/membership_petfriendslogo2.png' },
+  { id: 12, name: '펫미업', contents: '반려동물 셔틀버스', benefit: '첫 이용 시 2,000원 할인', url: 'https://www.petmeup.co.kr/', logo: '/static/images/logo/membership_petmeuplogo2.png' },
+  { id: 13, name: '펫트너', contents: '수의사 펫시팅', benefit: '펫시팅 시 20% 할인', url: 'https://petner.kr/', logo: '/static/images/logo/membership_petnerlogo.png' },
+  { id: 14, name: '서재성 작가', contents: '반려견 그림작가', benefit: '그림의뢰 시 20% 할인', url: 'https://www.instagram.com/icegido/?hl=ko', logo: '/static/images/logo/membership_seojeasunglogo.png' },
+]
 
-  state = {
-    partners: [
-      { id: 0, name: '유기견 없는 도시', contents: '반려견 교육', benefit: '수강료 50% 할인', url: 'http://www.clearcity.kr/', logo: '/static/images/logo/membership_abandoneddogcitylogo.png' },
-      { id: 1, name: '앙꼬네 미용실', contents: '펫 미용', benefit: '첫 방문 시 10% 할인', url: 'https://ancoshop.modoo.at/', logo: '/static/images/logo/membership_anggologo.png' },
-      { id: 2, name: '베이컨 박스', contents: '정기선물 배송서비스', benefit: '첫 구매 시 30% 할인', url: 'https://www.baconbox.co/', logo: '/static/images/logo/membership_baconboxlogo2.png' },
-      { id: 3, name: '코르누보', contents: '사진 촬용 및 용품', benefit: '스튜디오 촬영, 목줄 하네스 30% 할인', url: 'http://cornouveau.com/', logo: '/static/images/logo/membership_cornouveaulogo.png' },
-      { id: 4, name: '닥터 케이', contents: '건국대학교 수의대 사료', benefit: '구매 시 30% 할인', url: 'https://goo.gl/Fic9Dg', logo: '/static/images/logo/membership_doctorklogo2.png' },
-      { id: 5, name: '도그 메이트', contents: '펫시팅', benefit: '첫 펫시팅 시 15% 할인', url: 'https://www.dogmate.co.kr/', logo: '/static/images/logo/membership_dogmatelogo.png' },
-      { id: 6, name: '21그램', contents: '반려동물 장례 서비스', benefit: '장례 이용시 수의 제공', url: 'http://21gram.co.kr/', logo: '/static/images/logo/membership_21gramlogo.png' },
-      { id: 7, name: '핏펫', contents: '반려동물 Lifeware', benefit: '펫시팅 시 20% 할인', url: 'http://fitpet.co.kr/', logo: '/static/images/logo/membership_fitpetlogo3.png' },
-      { id: 8, name: '제이네 운동장', contents: '강아지 운동장', benefit: '생후 6개월까지 운동장 입장료 면제', url: 'https://blog.naver.com/jground_official', logo: '/static/images/logo/membership_jgroundlogo.png' },
-      { id: 9, name: '러브핫핏', contents: '반려 동물 스타일링', benefit: '첫 구매 시 20% 할인', url: 'http://lovehotfit.com/', logo: '/static/images/logo/membership_lovehotfitlogo.png' },
-      { id: 10, name: '박중현 작가', contents: '반려견 그림작가', benefit: '그림 구매 시 만원 할인', url: 'https://www.instagram.com/artcon_park/', logo: '/static/images/logo/membership_parkjunghyeonlogo.png' },
-      { id: 11, name: '펫프렌즈', contents: '반려견 용품구매', benefit: '첫 구매시 20%, 이후 3~5%할인(무료배송)', url: 'http://www.pet-friends.co.kr/', logo: '/static/images/logo/membership_petfriendslogo2.png' },
-      { id: 12, name: '펫미업', contents: '반려동물 셔틀버스', benefit: '첫 이용 시 2,000원 할인', url: 'https://www.petmeup.co.kr/', logo: '/static/images/logo/membership_petmeuplogo2.png' },
-      { id: 13, name: '펫트너', contents: '수의사 펫시팅', benefit: '펫시팅 시 20% 할인', url: 'https://petner.kr/', logo: '/static/images/logo/membership_petnerlogo.png' },
-      { id: 14, name: '서재성 작가', contents: '반려견 그림작가', benefit: '그림의뢰 시 20% 할인', url: 'https://www.instagram.com/icegido/?hl=ko', logo: '/static/images/logo/membership_seojeasunglogo.png' },
-    ]
-  }
+export default class Blog extends Component {
 
   static getInitialProps({ query: { id } }) {
     return { id }
@@ -258,7 +257,6 @@ export default class Blog extends Component {
   // }
 
   render() {
-    const { partners } = this.state
     const partner = partners.map(member => {
       return (
         <MembershipBox key={member.id}>
@@ -293,7 +291,7 @@ export default class Blog extends Component {
             <Banner src={PartnerBannerImgUrl} alt="bannerImg" />
             <BannerWord a>첫 입양시</BannerWord>
             <BannerWord b>5만원 상당의</BannerWord>
-            <BannerWord c>GIFT BOX를 선물로 드립니다.</BannerWord> { /* GIFT BOX // 선물로 드립니다. 분리 */ }
+            <BannerWord c><b>GIFT BOX</b>를 선물로 드립니다.</BannerWord> { /* GIFT BOX // 선물로 드립니다. 분리 */ }
           </BannerWrapper>
           <BoxWrapper>
             {partner}

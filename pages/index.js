@@ -20,9 +20,9 @@ const HomeSearchUrl = '/static/images/home-search@3x.png'
 
 
 const Hero = styled.div`
-  width: ${rem(800)};
+  width: 100%;
   margin: 0 auto;
-
+  text-align: center;
   ${media.pc`
     width: 90%;
   `}
@@ -53,6 +53,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   text-align: center;
   height: ${p => rem(p.height)};
+
   background: ${p => p.background};
   padding-top: ${p => rem(p.padding)};
   padding-bottom: ${p => rem(p.padding)};
@@ -70,7 +71,9 @@ const Content = styled.div`
   margin: 0 auto;
   position: relative;
   text-align: center;
-  width: ${p => p.content === 'partner' ? '60%' : '80%'};
+  width: ${p => p.content === 'partner' ? '60%' : rem(890)};
+  width: ${p => p.home && rem(830)};
+
   ${'' /* width: 70%; */}
   min-height: 100%;
   height: 100%;
@@ -93,11 +96,13 @@ const Title = styled.h1`
   text-align: ${p => p.content === 'partner' ? 'left' : 'center'};
   font-size: ${p => rem(p.size)};
   font-weight: normal;
+  font-weight: ${p => p.main && 'bold'};
   padding: 0;
   margin: 0;
   color: ${p => p.color};
   ${media.tablet`
     font-size: ${p => p.tabletSize && rem(p.tabletSize)};
+    font-weight: bold;
   `};
   ${media.mobile`
     font-size: ${p => p.mobileSize && rem(p.mobileSize)};
@@ -113,7 +118,8 @@ const SubTitle = styled.h3`
   color: ${p => p.color};
   padding: 0;
   margin: 0;
-  font-weight: lighter;
+  font-weight: ${p => p.main && 500};
+
   ${media.mobile`
     font-size: ${p => p.mobileSize && rem(p.mobileSize)};
     width: ${p => p.mobileWidth && `${p.mobileWidth}%`};
@@ -125,7 +131,7 @@ const BreederLink = styled.a`
   padding: 10px;
   text-align: ${p => p.content === 'partner' ? 'right' : 'center'};
   margin: 0 auto;
-  margin-top: 5%;
+  margin-top: 7%;
   border-radius: ${rem(35)};
   width: ${p => p.content === 'partner' ? '100%' : rem(250)};
   font-size: ${p => p.content === 'partner' ? rem(30) : rem(20)};
@@ -142,9 +148,9 @@ const SupportLink = styled.a`
   text-align: center;
   font-size: ${rem(30)};
   background: ${white2};
-  padding: 10px 0;
+  padding: ${rem(10)} 0;
   margin: ${rem(10)} 0;
-  width: 100%;
+  width: 41%;
   border-right: ${p => p.a && 'solid 1px rgba(0, 0, 0, .3)'};
   ${media.mobile`
     padding: 0;
@@ -198,7 +204,7 @@ const Number = styled.p`
 `
 
 const Text = styled.p`
-  font-size: ${rem(30)};
+  font-size: ${rem(25)};
   color: ${white2};
   ${'' /* text-align: center; */}
   margin-top: ${rem(20)};
@@ -227,10 +233,33 @@ const Form = styled.form`
 `
 const ImgWrapper = styled.div`
   position: relative;
-  top: 25%;
+  animation-duration: 0.8s;
+  animation-name: beat;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+@keyframes beat {
+  from {
+    top: 22%;
+  }
+  to {
+    top: 21%;
+  }
+}
 `
+
 const Img = styled.img`
-  width: 3%;
+  width: 5%; 
+`
+
+const BreederListWrapper = styled.div`
+  width: ${rem(890)};
+  margin:  0 auto;
+
+`
+
+const AutoWrapper = styled.div`
+  width: 92%;
+  margin: 0 auto;
 `
 
 class Index extends Component {
@@ -264,12 +293,14 @@ class Index extends Component {
     const newBreederList = breederData.filter(breeder => breeder.label === 'new')
     return (
       <Layout location="/">
-        <Wrapper background={peacockBlue} height={950} mobileHeight={650}>
+        <Wrapper home background={peacockBlue} height={1070} mobileHeight={650}>
           <Content home>
             <Hero>
-              <Title size={50} color={white2}>&nbsp;건강한 강아지 분양 중개, 페오펫</Title>
-              <SubTitle size={30} color={white2}>브리더가 기르는 건강한 강아지를 키우고 싶다면?</SubTitle>
-              <AutoComplete location="/" />
+              <Title main size={62} color={white2}>&nbsp;건강한 강아지 분양 중개, 페오펫</Title>
+              <SubTitle main size={38} color={white2}>브리더가 기르는 건강한 강아지를 키우고 싶다면?</SubTitle>
+              <AutoWrapper>
+                <AutoComplete location="/" />
+              </AutoWrapper>
             </Hero>
             <MobileHero>
               <Title size={50} color={white2} mobileSize={30} mobileWidth={90}>&nbsp;건강한 강아지<br />분양 중개, 페오펫</Title>
@@ -281,8 +312,8 @@ class Index extends Component {
             </ImgWrapper>
           </Content>
         </Wrapper>
-        <Wrapper background={white} padding={150} mobilePadding={50}>
-          <Content breeder>
+        <Wrapper background={white} padding={200} mobilePadding={50}>
+          <Content content="breeder">
             <Title size={50} color={peacockBlue} mobileSize={30}>이 달의 <b>인기 브리더</b></Title>
             <SubTitle size={25} color={peacockBlue} mobileSize={15}>전문 지식을 가지고 윤리적으로 강아지를 번식하는 우수한 브리더를 소개합니다.</SubTitle>
             <BreederList breederData={bestBreederList} location="/" position="vertical" />
@@ -290,8 +321,8 @@ class Index extends Component {
           </Content>
         </Wrapper>
         <Wrapper background={white2} padding={200} mobilePadding={50}>
-          <Content breeder>
-            <Title size={50} color={squash} mobileSize={30}>이 달의 <b />신규 브리더</Title>
+          <Content content="breeder">
+            <Title size={50} color={squash} mobileSize={30}>이 달의 <b>신규 브리더 </b></Title>
             <SubTitle size={25} color={pooBrown} mobileSize={15} mobileWidth={75}>매 달 페오펫과 함께하는 새로운 브리더들을 만나보세요.</SubTitle>
             <BreederList breederData={newBreederList} location="/" position="horizontal" />
             <BreederLink color={squash} href="/breeder">신규 브리더 더 보기 </BreederLink>
@@ -334,8 +365,8 @@ class Index extends Component {
         </Wrapper>
         <Wrapper height={135} background={white2}>
           <Content content="support" mobileFullWidth>
-            <SupportLink a href="https://pf.kakao.com/_pUyTd">강아지 입양 문의 &#x3e;&#x3e; </SupportLink>
-            <SupportLink href="https://pf.kakao.com/_pUyTd">브리더 제휴 문의 &#x3e;&#x3e; </SupportLink>
+            <SupportLink a href="https://pf.kakao.com/_pUyTd">강아지 입양 문의</SupportLink>
+            <SupportLink href="https://pf.kakao.com/_pUyTd">브리더 제휴 문의</SupportLink>
           </Content>
         </Wrapper>
       </Layout>

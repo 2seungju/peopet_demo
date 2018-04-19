@@ -11,6 +11,7 @@ import Spinner from 'components/Spinner'
 const LayoutWrapper = styled.div`
   position: relative;
   height: 100%;
+
 `
 
 const Wrapper = styled.div`
