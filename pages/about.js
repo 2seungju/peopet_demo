@@ -17,6 +17,7 @@ const HomeSearchUrl = '/static/images/home-search@3x.png'
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
+  
 `
 
 const TextWrapper = styled.div`
@@ -160,6 +161,8 @@ const Description = styled.p`
 
   ${media.mobile`
     font-size: ${rem(15)}
+    width: 90%;
+    margin: auto;
   `}
 
 `
