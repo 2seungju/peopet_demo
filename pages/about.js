@@ -7,7 +7,7 @@ import { ChangeRotationIcon } from 'components/Icons'
 import media from 'utils/media'
 
 const longImg = 'static/images/10000km.jpg'
-const longMobileImg = 'static/images/10000km_m.jpg'
+const longMobileImg = 'static/images/m_100000km.jpg'
 const longTabletImg = 'static/images/100000km_tablet.jpg'
 const interviewImg = 'static/images/oneinterview2.jpg'
 const interviewMobileImg = 'static/images/oneinterview_mobile.jpg'
@@ -17,6 +17,7 @@ const HomeSearchUrl = '/static/images/home-search@3x.png'
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
+  
 `
 
 const TextWrapper = styled.div`
@@ -26,7 +27,7 @@ const TextWrapper = styled.div`
 
   ${media.mobile` 
     display: ${p => p.mobile && 'inline-block'};
-    height: ${p => !p.hero && !p.mobile ? rem(718) : rem(400)};
+    height: ${p => !p.hero && !p.mobile ? rem(718) : rem(550)};
   `}
 `
 
@@ -53,7 +54,7 @@ const Image = styled.img`
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  filter: ${p => !p.mobile && 'brightness(60%)'};
+  filter: brightness(60%);
 
   display: ${p => p.mobile && 'none'};
   ${media.mobile`
@@ -65,6 +66,12 @@ const InnerText = styled.div`
   position: absolute;
   left: 15%;
   bottom: 60%;
+`
+
+const MobileInnerText = styled.div`
+  position: absolute;
+  bottom: 60%;
+
 `
 
 const TextContent = styled.div`
@@ -104,8 +111,12 @@ const Title = styled.h3`
 
   font-size: ${p => p.hero ? rem(50) : rem(30)};
   text-align: ${p => p.img && 'left'};
+  text-align: ${p => p.mobile && 'center'};
+
   margin: 0;
-  
+  position: ${p => p.mobile && 'absolute'};
+  left: ${p => p.mobile && '15%'};
+  bottom: ${p => p.mobile && '110%'};
   font-family: ${p => p.hero && 'Montserrat, serif'};
   ${media.mobile`
     font-size: ${rem(30)};
@@ -114,7 +125,7 @@ const Title = styled.h3`
 
 const DescriptionWrapper = styled.div`
   color: ${p => (p.img || p.hero) ? white2 : black};
-  opacity: ${p => !p.hero && 0.8};
+  opacity: ${p => (!p.hero || !p.img) && 0.8};
   margin-top: ${rem(45)};
   ${media.tablet`
   margin-left: ${p => p.img && rem(41)};
@@ -126,9 +137,13 @@ const DescriptionWrapper = styled.div`
 `
 
 const MobileDescriptionWrapper = styled.div`
-  display: none;
-  color: ${p => (p.img || p.hero) ? white2 : black};
   
+  display: none;
+  color: ${p => !(p.long || p.hero) ? black : white2};
+  position: ${p => p.long && 'absolute'};
+  top: ${p => p.long && '10%'};
+  left: ${p => p.long && '0%'};
+  text-align: center;
   ${media.mobile`
     display: inline-block;
     margin-top: ${rem(45)};
@@ -146,6 +161,8 @@ const Description = styled.p`
 
   ${media.mobile`
     font-size: ${rem(15)}
+    width: 90%;
+    margin: auto;
   `}
 
 `
@@ -198,6 +215,10 @@ const Interviewee = styled.div`
   bottom: 0%;
   right: -2%;
   color: ${white2};
+  `}
+  ${media.mobile`
+  width: ${p => p.mobile && rem(175)};
+  font-size: ${rem(18)};
   `}
 `
 
@@ -264,6 +285,10 @@ export default class About extends Component {
           </ImageWrapper>
           <MobileImageWrapper>
             <Image mobile src={longMobileImg} alt="10000KM" />
+            <MobileDescriptionWrapper mobile long>
+              <Title img mobile>현재까지 10,000km</Title>
+              <Description>페오펫은 전국의 모든 전문 견사를 방문하고자 1만Km를 달려왔습니다. 전문적이고 윤리적인 브리더들을 직접 만나며 강아지가 태어나 자라는 환경을 직접 눈으로 확인하고 예비견주와 만날 수 있도록 합니다.</Description>
+            </MobileDescriptionWrapper>
           </MobileImageWrapper>
           <TextWrapper>
             <TextContent>
@@ -278,9 +303,6 @@ export default class About extends Component {
                 <Description>고객이 신중하게 반려견을 입양하며, 최고의 이용 경험을 느낄 수 있는</Description>
                 <Description>반려견 입양 중개 플랫폼으로 발돋움하고 있습니다.</Description>
               </DescriptionWrapper>
-              <MobileDescriptionWrapper>
-                <Description>페오펫은 기존의 반려동물 입양문화를 더욱 체계적이고 투명하게 바꿀 수 있도록 브리더 입양문화를 시작으로 고객이 필요로하는 서비스를 계속 발굴하고 있습니다. 고객이 신중하게 반려견을 입양 하며, 최고의 이용 경험을 느낄 수 있는 반려견 입양 중개 플랫폼으로 발돋움하고 있습니다.</Description>
-              </MobileDescriptionWrapper>
             </TextContent>
           </TextWrapper>
           <ImageWrapper img="interview" height={1260}>

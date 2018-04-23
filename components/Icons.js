@@ -58,6 +58,19 @@ const ChangeRotationImg = styled.img`
   width: ${rem(152)};
   height: ${rem(107)};
   margin: 0 auto;
+  animation-duration: 25s;
+  animation-name: rotating;
+  animation-iteration-count: infinite;
+  animation-direction: reverse;
+
+  @keyframes rotating {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(3600deg);
+    }
+  }
   ${media.mobile`
     width: ${rem(85)};
     margin: 0 auto;
@@ -150,7 +163,7 @@ export const DetailKannelIcon = () => (
 )
 
 export const ChangeRotationIcon = () => (
-  <ChangeRotationImg src={changeRotationImgUrl} alt="changeRotationImg" />
+  <ChangeRotationImg rotate src={changeRotationImgUrl} alt="changeRotationImg" />
 )
 
 export const BuildServiceIcon = () => (
