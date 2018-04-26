@@ -243,7 +243,10 @@ export default class About extends Component {
   render() {
     // console.log(this.props.id)
     return (
-      <Layout title="about">
+      <Layout
+        title="회사소개"
+        description="페오펫은 강아지 브리더를 통해 반려동물 입양 문화를 바꾸려 합니다"
+      >
         <Wrapper>
           <TextWrapper hero>
             <TextContent>

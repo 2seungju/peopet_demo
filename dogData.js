@@ -43,10 +43,10 @@ export const dogData = [
     dogName: '잭 러셀 테리어',
     id: '5a1e449f6507b624c469bae8'
   },
-  {
-    dogName: '페키니즈',
-    id: '5a1e44d56507b624c469baec'
-  },
+  // {
+  //   dogName: '페키니즈',
+  //   id: '5a1e44d56507b624c469baec'
+  // },
   {
     dogName: '아메리칸 불리',
     id: '5a1e44e16507b624c469baed'
@@ -55,26 +55,26 @@ export const dogData = [
     dogName: '요크셔테리어',
     id: '5a275dae33d5ee2510639fd1'
   },
-  {
-    dogName: '골든 리트리버',
-    id: '5ab34b8d40c8f949a1b33d6e'
-  },
+  // {
+  //   dogName: '골든 리트리버',
+  //   id: '5ab34b8d40c8f949a1b33d6e'
+  // },
   {
     dogName: '웰시코기',
     id: '5ab34cb640c8f949a1b33d6f'
   },
-  {
-    dogName: '코커 스패니얼',
-    id: '5ab34f8809d24d292f2a6891'
-  },
+  // {
+  //   dogName: '코커 스패니얼',
+  //   id: '5ab34f8809d24d292f2a6891'
+  // },
   {
     dogName: '도베르만',
     id: '5ab34f9309d24d292f2a6892'
   },
-  {
-    dogName: '보더콜리',
-    id: '5ab34fa809d24d292f2a6893'
-  }
+  // {
+  //   dogName: '보더콜리',
+  //   id: '5ab34fa809d24d292f2a6893'
+  // }
 ]
 
 export const suggestDogData = dogData.slice(0, 5)

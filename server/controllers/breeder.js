@@ -11,13 +11,17 @@ exports.findBreederGet = (req, res) => {
 
       breederList.map(breeder => {
         const { breederId } = breeder
-        promises.push(Breeder.findOne({ _id: breederId }))
+        promises.push(Breeder.findOne({ _id: breederId, isShowed: true }))
       })
 
       return Promise.all(promises)
     })
     // .catch(err => res.sendStatus(404))
-    .then(findBreederList => res.json(findBreederList))
+    .then(findBreederList => {
+      console.log(findBreederList)
+      const sendData = findBreederList.filter(findBreeder => findBreeder !== null)
+      return res.json(sendData)
+    })
     .catch(err => res.send({ statusCode: 404 }))
 
   // Breeder.find({ dogName }, (err, data) => {
@@ -28,14 +32,14 @@ exports.findBreederGet = (req, res) => {
 
 exports.oneBreederGet = (req, res) => {
   const { id } = req.params
-  Breeder.findOne({ _id: id }, (err, data) => {
+  Breeder.findOne({ _id: id, isShowed: true }, (err, data) => {
     if (err) res.redirect('/')
     return res.json(data)
   })
 }
 
 exports.allBreederGet = (req, res) => {
-  Breeder.find()
+  Breeder.find({ isShowed: true })
     .sort({ rank: 1 })
     .exec((err, data) => {
       if (err) res.send(err)

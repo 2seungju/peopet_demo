@@ -281,7 +281,11 @@ export default class Blog extends Component {
       )
     })
     return (
-      <Layout background title="partner">
+      <Layout
+        background
+        title="제휴업체"
+        description="전문 브리더, 브리더, 입양 혜택, 강아지 분양"
+      >
         <Wrapper>
           <TitleWrapper>
             <Title bold>페오펫 멤버십 제휴사 혜택</Title>

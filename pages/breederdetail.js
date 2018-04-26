@@ -258,7 +258,12 @@ export default class Breederdetail extends Component {
     images.push(kannelImage, dogImage, puppyImage)
     images = images.reduce((a, b) => a.concat(b), [])
     return (
-      <Layout title="BreederDetail" location="detail" image={images.length > 0 && images[0]}>
+      <Layout
+        title={kannelBreed}
+        description={`${kannelBreed}, ${kannelBreed}분양, ${kannelBreed}브리더`}
+        location="detail"
+        image={images.length > 0 && images[0]}
+      >
         <Wrapper>
           <Category />
           <DetailWrapper>
@@ -283,7 +288,7 @@ export default class Breederdetail extends Component {
                     <Support href="/support">문의하기</Support>
                   </SupportWrapper>
                 </NavWrapper>
-                <Bar borderColor={warmGrey2} />
+                {/* <Bar borderColor={warmGrey2} />
                 <NavWrapper padding={20} mobilePadding={10} breederDetail>
                   <BreederDetailWrapper>
                     <DetailLocationIcon /><Description breederDetail>{kannelLocation}</Description>
@@ -294,10 +299,10 @@ export default class Breederdetail extends Component {
                   <BreederDetailWrapper>
                     <DetailKannelIcon /><Description breederDetail>{kannelName}</Description>
                   </BreederDetailWrapper>
-                  {/* <BreederDetailWrapper> */}
-                    {/* <DetailColorIcon /><Description breederDetail>{kannelColor}</Description> */}
-                  {/* </BreederDetailWrapper> */}
-                </NavWrapper>
+                  <BreederDetailWrapper>
+                    <DetailColorIcon /><Description breederDetail>{kannelColor}</Description>
+                  </BreederDetailWrapper>
+                </NavWrapper> */}
                 <Bar borderColor={warmGrey2} />
               </BreederWrapper>
               <InterviewWrapper>

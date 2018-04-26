@@ -83,7 +83,7 @@ const NavLinks = ({ dropbar }) => (
     <NavSeparator dropbar={dropbar} />
     <NavLink dropbar={dropbar} href="/breeder">브리더</NavLink>
     <NavSeparator dropbar={dropbar} />
-    <NavLink dropbar={dropbar} href="/support">고객문의</NavLink>
+    <NavLink dropbar={dropbar} href="/support">분양문의</NavLink>
   </Wrapper>
 )
 

@@ -21,9 +21,9 @@ async function generateSitemap() {
   //   .catch(err => console.log(err))
 
   const breederData = await axios.get(`${fetchServerConfig}/api/breeder`)
-  const dogData = await axios.get(`${fetchServerConfig}/api/dog`)
+  // const dogData = await axios.get(`${fetchServerConfig}/api/dog`)
   const breederList = breederData.data
-  const dogList = dogData.data
+  // const dogList = dogData.data
 
   await Promise.all(diskPages.map(async page => {
     const stats = fs.statSync(page)
@@ -38,26 +38,27 @@ async function generateSitemap() {
       urlPage = urlPage.replace(/(.*)index$/, '$1')
     }
 
-    if (purePageName === '/breeder') {
+    if (purePageName === '/breederdetail') {
       breederList.map(breeder => {
         xml += '<url>'
         xml += `<loc>${urlPage}/${breeder._id}</loc>`
         xml += `<lastmod>${lastMod}</lastmod>`
-        xml += `<changefreq>always</changefreq>`
-        xml += `<priority>0.5</priority>`
+        xml += '<changefreq>always</changefreq>'
+        xml += '<priority>0.5</priority>'
         xml += '</url>'
       })
     }
 
-    if (purePageName === '/breederdetail') {
-      dogList.map(dog => {
-        xml += '<url>'
-        xml += `<loc>${urlPage}/${dog._id}</loc>`
-        xml += `<lastmod>${lastMod}</lastmod>`
-        xml += `<changefreq>always</changefreq>`
-        xml += `<priority>0.5</priority>`
-        xml += '</url>'
-      })
+    if (purePageName === '/breeder') {
+      return true
+      // breederList.map(breeder => {
+      //   xml += '<url>'
+      //   xml += `<loc>${urlPage}/${breeder._id}</loc>`
+      //   xml += `<lastmod>${lastMod}</lastmod>`
+      //   xml += '<changefreq>always</changefreq>'
+      //   xml += '<priority>0.5</priority>'
+      //   xml += '</url>'
+      // })
     }
 
     if (purePageName === '/_document') {
@@ -76,43 +77,13 @@ async function generateSitemap() {
     xml += '<url>'
     xml += `<loc>${urlPage}</loc>`
     xml += `<lastmod>${lastMod}</lastmod>`
-    xml += `<changefreq>always</changefreq>`
-    xml += `<priority>0.5</priority>`
+    xml += '<changefreq>always</changefreq>'
+    xml += '<priority>0.5</priority>'
     xml += '</url>'
   }))
 
   xml += '</urlset>'
   fs.writeFileSync(DESTINATION, xml)
-  // fs.writeFileSync(DESTINATION, '</urlset>')
 }
 
-
-// diskPages.forEach((page) => {
-//   const stats = fs.statSync(page)
-//   const modDate = new Date(stats.mtime)
-//   const lastMod = `${modDate.getFullYear()}-${(`0${(modDate.getMonth() + 1)}`).slice(-2)}-${(`0${modDate.getDate()}`).slice(-2)}`
-
-//   page = page.replace(path.join(__dirname, '..', 'pages'), '')
-//   page = page.replace(/.js$/, '')
-//   page = `${SITE_ROOT}${page}`
-
-//   if (page.match(/.*\/index$/)) {
-//     page = page.replace(/(.*)index$/, '$1')
-//   }
-
-//   xml += '<url>'
-//   xml += `<loc>${page}</loc>`
-//   xml += `<lastmod>${lastMod}</lastmod>`
-//   xml += `<changefreq>always</changefreq>`
-//   xml += `<priority>0.5</priority>`
-//   xml += '</url>'
-// })
-
 generateSitemap()
-
-// xml += '</urlset>'
-
-
-// console.log(`Wrote sitemap for ${diskPages.length} pages to ${DESTINATION}`)
-// fs.writeFileSync(DESTINATION, '</urlset>')
-// console.log('!')

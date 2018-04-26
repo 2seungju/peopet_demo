@@ -42,6 +42,7 @@ const Breeder = new Schema({
       ref: 'Puppy',
     }
   }],
+  isShowed: { type: Boolean }
 })
 
 module.exports = mongoose.model('Breeder', Breeder)
