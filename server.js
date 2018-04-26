@@ -74,7 +74,8 @@ app.prepare()
         '/sitemap.xml',
         '/manifest.json',
         '/favicon.png',
-        '/styles.scss'
+        '/styles.scss',
+        '/self_sitemap.xml'
       ]
 
       if (rootStaticFiles.indexOf(parsedUrl.pathname) > -1) {
