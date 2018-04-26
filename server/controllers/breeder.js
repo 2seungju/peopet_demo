@@ -18,16 +18,10 @@ exports.findBreederGet = (req, res) => {
     })
     // .catch(err => res.sendStatus(404))
     .then(findBreederList => {
-      console.log(findBreederList)
       const sendData = findBreederList.filter(findBreeder => findBreeder !== null)
       return res.json(sendData)
     })
     .catch(err => res.send({ statusCode: 404 }))
-
-  // Breeder.find({ dogName }, (err, data) => {
-  //   if (err) res.redirect('/')
-  //   return res.json(data)
-  // })
 }
 
 exports.oneBreederGet = (req, res) => {

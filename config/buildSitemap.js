@@ -49,17 +49,16 @@ async function generateSitemap() {
       })
     }
 
-    if (purePageName === '/breeder') {
-      return true
-      // breederList.map(breeder => {
-      //   xml += '<url>'
-      //   xml += `<loc>${urlPage}/${breeder._id}</loc>`
-      //   xml += `<lastmod>${lastMod}</lastmod>`
-      //   xml += '<changefreq>always</changefreq>'
-      //   xml += '<priority>0.5</priority>'
-      //   xml += '</url>'
-      // })
-    }
+    // if (purePageName === '/breeder') {
+    // breederList.map(breeder => {
+    //   xml += '<url>'
+    //   xml += `<loc>${urlPage}/${breeder._id}</loc>`
+    //   xml += `<lastmod>${lastMod}</lastmod>`
+    //   xml += '<changefreq>always</changefreq>'
+    //   xml += '<priority>0.5</priority>'
+    //   xml += '</url>'
+    // })
+    // }
 
     if (purePageName === '/_document') {
       return true
