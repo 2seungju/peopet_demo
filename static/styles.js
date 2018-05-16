@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   'react-autosuggest__container': {
     'position': 'relative',
-    'width': [{ 'unit': '%H', 'value': 1 }],
     'margin': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'string', 'value': 'auto' }, { 'unit': 'px', 'value': 0 }, { 'unit': 'string', 'value': 'auto' }],
     'alignSelf': 'center',
     'backgroundColor': '#004ca4',
@@ -15,39 +14,58 @@ export default StyleSheet.create({
     'display': 'flex'
   },
   'input-wrapper react-autosuggest__input': {
+    'margin': [{ 'unit': 'string', 'value': 'auto' }, { 'unit': 'string', 'value': 'auto' }, { 'unit': 'string', 'value': 'auto' }, { 'unit': 'string', 'value': 'auto' }],
+    'height': [{ 'unit': 'px', 'value': 80 }],
     'width': [{ 'unit': '%H', 'value': 1 }],
-    'height': [{ 'unit': 'px', 'value': 60 }],
     'fontSize': [{ 'unit': 'px', 'value': 30 }],
     'border': [{ 'unit': 'px', 'value': 1 }, { 'unit': 'string', 'value': 'solid' }, { 'unit': 'string', 'value': '#ffffff' }],
     'borderRadius': '4px',
     'textAlign': 'center',
     'outline': 'none',
     'marginTop': [{ 'unit': 'px', 'value': 50 }],
-    'screen&&<w768': {
-      'margin': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }]
-    },
     'screen&&<w425': {
       'height': [{ 'unit': 'px', 'value': 38 }],
-      'fontSize': [{ 'unit': 'px', 'value': 18 }]
+      'fontSize': [{ 'unit': 'px', 'value': 18 }],
+      'marginTop': [{ 'unit': 'px', 'value': 0 }]
     }
   },
   'input-wrapper search-img': {
-    'top': [{ 'unit': 'px', 'value': 65 }],
-    'right': [{ 'unit': '%H', 'value': 0.1 }],
+    'top': [{ 'unit': 'px', 'value': 60 }],
+    'right': [{ 'unit': '%H', 'value': 0.07 }],
     'position': 'absolute',
+    'width': [{ 'unit': 'px', 'value': 60 }],
+    'screen&&<w1024': {
+      'top': [{ 'unit': 'px', 'value': 10 }],
+      'right': [{ 'unit': 'px', 'value': 0 }],
+      'width': [{ 'unit': 'px', 'value': 25 }]
+    },
     'screen&&<w768': {
       'top': [{ 'unit': 'px', 'value': 10 }],
       'right': [{ 'unit': 'px', 'value': 0 }],
       'width': [{ 'unit': 'px', 'value': 25 }]
+    },
+    'screen&&<w425': {
+      'top': [{ 'unit': '%V', 'value': 0.2 }],
+      'right': [{ 'unit': '%H', 'value': 0.01 }]
+    }
+  },
+  'input-wrapper react-autosuggest__input::placeholder': {
+    'fontWeight': 'bold',
+    'fontSize': [{ 'unit': 'px', 'value': 34 }],
+    'opacity': '0.5',
+    'screen&&<w1024': {
+      'fontSize': [{ 'unit': 'px', 'value': 30 }]
+    },
+    'screen&&<w500': {
+      'fontSize': [{ 'unit': 'px', 'value': 20 }]
     }
   },
   'input-wrapper-breeder': {
     'display': 'flex',
-    'width': [{ 'unit': '%H', 'value': 1 }],
-    'margin': [{ 'unit': 'string', 'value': 'auto' }, { 'unit': 'string', 'value': 'auto' }, { 'unit': 'string', 'value': 'auto' }, { 'unit': 'string', 'value': 'auto' }]
+    'width': [{ 'unit': '%H', 'value': 1 }]
   },
   'input-wrapper-breeder react-autosuggest__input__breeder': {
-    'width': [{ 'unit': '%H', 'value': 1 }],
+    'width': [{ 'unit': 'px', 'value': 860 }],
     'height': [{ 'unit': 'px', 'value': 60 }],
     'fontSize': [{ 'unit': 'px', 'value': 20 }],
     'border': [{ 'unit': 'px', 'value': 1 }, { 'unit': 'string', 'value': 'solid' }, { 'unit': 'string', 'value': '#ffffff' }],
@@ -66,8 +84,8 @@ export default StyleSheet.create({
     }
   },
   'input-wrapper-breeder search-img__breeder': {
-    'top': [{ 'unit': 'px', 'value': 25 }],
-    'right': [{ 'unit': '%H', 'value': 0.1 }],
+    'top': [{ 'unit': 'px', 'value': 20 }],
+    'right': [{ 'unit': '%H', 'value': 0.08 }],
     'position': 'absolute',
     'screen&&<w768': {
       'top': [{ 'unit': 'px', 'value': -25 }],
@@ -77,6 +95,17 @@ export default StyleSheet.create({
       'top': [{ 'unit': 'px', 'value': -30 }],
       'right': [{ 'unit': '%H', 'value': 0.1 }],
       'width': [{ 'unit': 'px', 'value': 25 }]
+    }
+  },
+  'input-wrapper-breeder react-autosuggest__input__breeder::placeholder': {
+    'fontWeight': 'bold',
+    'fontSize': [{ 'unit': 'px', 'value': 25 }],
+    'opacity': '0.5',
+    'screen&&<w1024': {
+      'fontSize': [{ 'unit': 'px', 'value': 22 }]
+    },
+    'screen&&<w400': {
+      'fontSize': [{ 'unit': 'px', 'value': 20 }]
     }
   },
   'react-autosuggest__input--focused': {
@@ -92,6 +121,8 @@ export default StyleSheet.create({
   },
   'react-autosuggest__suggestions-container--open': {
     'display': 'block',
+    'position': 'absolute',
+    'zIndex': '1',
     'width': [{ 'unit': '%H', 'value': 1 }],
     'marginTop': [{ 'unit': 'px', 'value': 5 }],
     'backgroundColor': '#ffffff',

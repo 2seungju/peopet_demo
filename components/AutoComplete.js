@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import Autosuggest from 'react-autosuggest'
 import update from 'react-addons-update'
 import rem from 'utils/rem'
-import { white2, black, grey, peacockBlue } from 'utils/colors'
+import { white2, black, peacockBlue } from 'utils/colors'
 import Link from 'components/Link'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { SearchIcon } from 'components/Icons'
 import '../static/styles.scss'
 import { dogData, suggestDogData } from '../dogData'
@@ -33,19 +33,11 @@ const Wrapper = styled.div`
   `}
 `
 
-
-const Icon = styled(SearchIcon)`
-  position: absolute;
-  width: 200px;
-  top: 0;
-`
-
 const SuggestionButton = styled.button`
   width: 95%;
   height: 100%;
   margin: 0 2.5%;
   padding: ${rem(20)} 0 ${rem(20)} 0;
-  ${'' /* padding: ${rem(40)}; */}
   background: ${white2};
   font-size: ${rem(20)};
   text-align: left;
@@ -67,7 +59,6 @@ const SuggestionLink = styled(Link)`
   height: 100%;
   margin: 0 2.5%;
   padding: ${rem(20)} 0 ${rem(20)} ${rem(15)};
-  ${'' /* padding: ${rem(40)}; */}
   background: ${white2};
   font-size: ${rem(20)};
   
@@ -86,7 +77,6 @@ const SuggestionLink = styled(Link)`
 const SuggestionLabel = styled.div`
   color: ${black};
   font-size: ${rem(30)};
-  ${'' /* background: ${grey}; */}
   text-align: left;
   margin: ${rem(20)} 2.5%;
   font-weight: bold;

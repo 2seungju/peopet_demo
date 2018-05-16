@@ -115,9 +115,9 @@ const BoxWrapper = styled.div`
 
 const MembershipBox = styled.div`
   width: ${rem(166)};
-
+  height: ${rem(221)};
   background-color: #ffffff;
-  border: solid 1px rgba(0, 0, 0, .1);
+  border: solid 1px rgba(0, 0, 0, 0.1);
   margin-top: ${rem(20)};
   margin-right: ${rem(18)};
   ${media.tablet`
@@ -134,7 +134,7 @@ const MembershipBox = styled.div`
     cursor:pointer;
   }
 `
-const BoxWordWrapper = styled.p`
+const BoxWordWrapper = styled.div`
   flex-direction: column;
   margin: 0;
 `
@@ -156,7 +156,7 @@ const BoxFooter = styled.div`
   display: flex;
   flex-direction: row;
   text-align: center;
-  border-top:  solid 1px rgba(0, 0, 0, .1);
+  border-top:  solid 1px rgba(0, 0, 0, 0.1);
   padding-top: ${rem(10.7)};
   padding-bottom: ${rem(20)};
   width: 90%;
@@ -230,14 +230,14 @@ const partners = [
   { id: 4, name: '닥터 케이', contents: '건국대학교 수의대 사료', benefit: '구매 시 30% 할인', url: 'https://goo.gl/Fic9Dg', logo: '/static/images/logo/membership_doctorklogo2.png' },
   { id: 5, name: '도그 메이트', contents: '펫시팅', benefit: '첫 펫시팅 시 15% 할인', url: 'https://www.dogmate.co.kr/', logo: '/static/images/logo/membership_dogmatelogo.png' },
   { id: 6, name: '21그램', contents: '반려동물 장례 서비스', benefit: '장례 이용시 수의 제공', url: 'http://21gram.co.kr/', logo: '/static/images/logo/membership_21gramlogo.png' },
-  { id: 7, name: '핏펫', contents: '반려동물 Lifeware', benefit: '펫시팅 시 20% 할인', url: 'http://fitpet.co.kr/', logo: '/static/images/logo/membership_fitpetlogo3.png' },
+  { id: 7, name: '핏펫', contents: '반려동물 Lifeware', benefit: '첫 구매시 15% 할인', url: 'http://fitpet.co.kr/', logo: '/static/images/logo/membership_fitpetlogo3.png' },
   { id: 8, name: '제이네 운동장', contents: '강아지 운동장', benefit: '생후 6개월까지 운동장 입장료 면제', url: 'https://blog.naver.com/jground_official', logo: '/static/images/logo/membership_jgroundlogo.png' },
   { id: 9, name: '러브핫핏', contents: '반려 동물 스타일링', benefit: '첫 구매 시 20% 할인', url: 'http://lovehotfit.com/', logo: '/static/images/logo/membership_lovehotfitlogo.png' },
-  { id: 10, name: '박중현 작가', contents: '반려견 그림작가', benefit: '그림 구매 시 만원 할인', url: 'https://www.instagram.com/artcon_park/', logo: '/static/images/logo/membership_parkjunghyeonlogo.png' },
+  { id: 10, name: '박중현 작가', contents: '반려견 그림작가', benefit: '그림 의뢰 시 20% 할인', url: 'https://www.instagram.com/artcon_park/', logo: '/static/images/logo/membership_parkjunghyeonlogo.png' },
   { id: 11, name: '펫프렌즈', contents: '반려견 용품구매', benefit: '첫 구매시 20%, 이후 3~5%할인(무료배송)', url: 'http://www.pet-friends.co.kr/', logo: '/static/images/logo/membership_petfriendslogo2.png' },
   { id: 12, name: '펫미업', contents: '반려동물 셔틀버스', benefit: '첫 이용 시 2,000원 할인', url: 'https://www.petmeup.co.kr/', logo: '/static/images/logo/membership_petmeuplogo2.png' },
   { id: 13, name: '펫트너', contents: '수의사 펫시팅', benefit: '펫시팅 시 20% 할인', url: 'https://petner.kr/', logo: '/static/images/logo/membership_petnerlogo.png' },
-  { id: 14, name: '서재성 작가', contents: '반려견 그림작가', benefit: '그림의뢰 시 20% 할인', url: 'https://www.instagram.com/icegido/?hl=ko', logo: '/static/images/logo/membership_seojeasunglogo.png' },
+  { id: 14, name: '서재성 작가', contents: '반려견 그림작가', benefit: '그림 의뢰 시 20% 할인', url: 'https://www.instagram.com/icegido/?hl=ko', logo: '/static/images/logo/membership_seojeasunglogo.png' },
 ]
 
 export default class Blog extends Component {

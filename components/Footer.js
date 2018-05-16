@@ -57,15 +57,17 @@ const IconWrapper = styled.div`
 const Footer = ({ isSideMenuFolded }) => (
   <Wrapper isSideMenuFolded={isSideMenuFolded}>
     <Content>
-      <Text>사업자등록번호 354-88-00899 | 법인명(주)코스모스이펙트 | 대표 최현일</Text>
-      <Text>통신판매업 신고 2017-서울강남-04764호 | 주소 서울시 강남구 테헤란로 69길 5, 12층 </Text>
-      <Text>동물판매업 신고 110111-6571388 | 법인명(주)코스모스이펙트 | 대표 최현일</Text>
+      <Text>법인명(주)코스모스이펙트 | 대표 최현일</Text>
+      <Text>사업자등록번호 354-88-00899</Text>
+      <Text>통신판매업 신고 2017-서울강남-04764호</Text>
+      <Text>동물판매업번호 3220000-037-2018-0016호</Text>
+      <Text>주소: 서울시 강남구 테헤란로 69길 5, 12층</Text>
       <FooterLogo mobileOpen />
       <IconWrapper>
         <IconLink href="https://www.facebook.com/peopleNpet/">
           <FacebookIcon />
         </IconLink>
-        <IconLink href="https://www.instagram.com/peo_pet/">
+        <IconLink href="https://www.instagram.com/peopet_official">
           <InstaIcon />
         </IconLink>
         <IconLink href="https://blog.naver.com/peopet">

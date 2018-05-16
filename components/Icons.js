@@ -163,7 +163,7 @@ export const DetailKannelIcon = () => (
 )
 
 export const ChangeRotationIcon = () => (
-  <ChangeRotationImg rotate src={changeRotationImgUrl} alt="changeRotationImg" />
+  <ChangeRotationImg src={changeRotationImgUrl} alt="changeRotationImg" />
 )
 
 export const BuildServiceIcon = () => (

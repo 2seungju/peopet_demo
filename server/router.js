@@ -33,6 +33,7 @@ module.exports = function (app) {
 
   apiRoutes.use('/admin', adminRoutes)
   adminRoutes.get('/', AdminController.allDataGet)
+  adminRoutes.post('/breeder', AdminController.saveBreeder)
   // adminRoutes.post('/', Admin)
 
   app.use('/api', apiRoutes)

@@ -8,8 +8,6 @@ export default class Admin extends Component {
     password: '',
     isAuthentication: false,
     loginError: '',
-    // changeData: {},
-    // loading: true,
   }
 
   handleEmailChange = (e) => {

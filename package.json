@@ -30,6 +30,7 @@
     "express": "^4.16.2",
     "firebase": "^4.10.1",
     "google-map-react": "^0.32.0",
+    "immutable": "^3.8.2",
     "isomorphic-fetch": "^2.2.1",
     "lru-cache": "^4.1.1",
     "module-alias": "^2.0.3",

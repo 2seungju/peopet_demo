@@ -52,19 +52,16 @@ const Wrapper = styled.div`
   position: relative;
   flex-direction: column;
   text-align: center;
-  height: ${p => rem(p.height)};
-
+  height: ${p => p.support ? '100%' : rem(p.height)};
   background: ${p => p.background};
   padding-top: ${p => rem(p.padding)};
   padding-bottom: ${p => rem(p.padding)};
+
   ${media.mobile`
     height: ${p => p.mobileHeight && rem(p.mobileHeight)};
     padding-top: ${p => p.mobilePadding && rem(p.mobilePadding)};
     padding-bottom: ${p => p.mobilePadding && rem(p.mobilePadding)};
   `}
-  ${'' /* ${p => !p.content === 'flex' && css`
-    height: 800px;
-  `}; */}
 `
 
 const Content = styled.div`
@@ -118,7 +115,7 @@ const SubTitle = styled.h3`
   color: ${p => p.color};
   padding: 0;
   margin: 0;
-  font-weight: ${p => p.main && 500};
+  font-weight: ${p => p.main ? 500 : 300};
 
   ${media.mobile`
     font-size: ${p => p.mobileSize && rem(p.mobileSize)};
@@ -151,7 +148,7 @@ const SupportLink = styled.a`
   padding: ${rem(10)} 0;
   margin: ${rem(10)} 0;
   width: 41%;
-  border-right: ${p => p.a && 'solid 1px rgba(0, 0, 0, .3)'};
+  ${'' /* border-right: ${p => p.a && 'solid 1px rgba(0, 0, 0, .3)'}; */}
   ${media.mobile`
     padding: 0;
     font-size: ${rem(20)};
@@ -231,24 +228,21 @@ const Form = styled.form`
   display: flex;
   flex-direction: row;
 `
-const ImgWrapper = styled.div`
+const BeatWrapper = styled.div`
   position: relative;
-  animation-duration: 0.8s;
-  animation-name: beat;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-@keyframes beat {
-  from {
-    top: 22%;
-  }
-  to {
-    top: 21%;
-  }
-}
+  top: 15%;
 `
 
 const Img = styled.img`
-  width: 5%; 
+  width: 5%;
+  animation: beat 0.8s infinite;
+
+  @keyframes beat {
+    0% { transform: scale(0.8) }
+    14% { transform: scale(1.1) }
+    96% { transform: scale(1) }
+    100% { transform: scale(0.8) }
+  }
 `
 
 const BreederListWrapper = styled.div`
@@ -263,16 +257,6 @@ const AutoWrapper = styled.div`
 `
 
 class Index extends Component {
-  static async getInitialProps() {
-    // const breeder = await axios.get(`${fetchServerConfig.ip}/api/breeder`)
-    // const dog = await axios.get(`http://${fetchServerConfig.ip}:4000/api/dog`)
-    // const json = await res.json()
-    return {
-      // breederData: breeder.data,
-      // dogData: dog.data,
-    }
-  }
-
   state = {
     breederData: []
   }
@@ -294,7 +278,7 @@ class Index extends Component {
     return (
       <Layout location="/">
         <Wrapper home background={peacockBlue} height={1070} mobileHeight={650}>
-          <Content home>
+          <Content>
             <Hero>
               <Title main size={62} color={white2}>&nbsp;건강한 강아지 분양 중개, 페오펫</Title>
               <SubTitle main size={38} color={white2}>브리더가 기르는 건강한 강아지를 키우고 싶다면?</SubTitle>
@@ -307,9 +291,9 @@ class Index extends Component {
               <SubTitle size={30} color={white2} mobileSize={18} mobileWidth={80}>브리더가 기르는 건강한 강아지를 키우고 싶다면?</SubTitle>
               <AutoComplete location="/" />
             </MobileHero>
-            <ImgWrapper>
+            <BeatWrapper>
               <Img src={HomeSearchUrl} alt=".." />
-            </ImgWrapper>
+            </BeatWrapper>
           </Content>
         </Wrapper>
         <Wrapper background={white} padding={200} mobilePadding={50}>
@@ -363,7 +347,7 @@ class Index extends Component {
             </BreederLink>
           </Content>
         </Wrapper>
-        <Wrapper height={135} background={white2}>
+        <Wrapper support padding={10} background={white2}>
           <Content content="support" mobileFullWidth>
             <SupportLink a href="https://pf.kakao.com/_pUyTd">강아지 입양 문의</SupportLink>
             <SupportLink href="https://pf.kakao.com/_pUyTd">브리더 제휴 문의</SupportLink>

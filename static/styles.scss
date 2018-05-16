@@ -36,6 +36,7 @@
     @media screen and (max-width: 425px) {
       height: 38px;
       font-size: 18px;
+      margin-top: 0;
     }
   }
 
@@ -55,8 +56,14 @@
       right: 0;
       width: 25px;
     }
+    @media screen and (max-width: 425px) {
+      top: 20%;
+      right: 1%;
+    }
   }
-} .input-wrapper .react-autosuggest__input::placeholder {
+}
+
+.input-wrapper .react-autosuggest__input::placeholder {
   font-weight: bold;
   font-size: 34px;
   opacity: 0.5;

@@ -38,7 +38,6 @@ const IconLink = styled.a`
   align-items: center;
   margin: ${rem(10)};
   position:relative;
-  left: 4.8%;
 `
 
 const NavWrapper = styled.div`
@@ -93,7 +92,7 @@ const Navbar = ({
       <IconLink href="https://www.facebook.com/peopleNpet/">
         <FacebookIcon />
       </IconLink>
-      <IconLink href="https://www.instagram.com/peo_pet/">
+      <IconLink href="https://www.instagram.com/peopet_official/">
         <InstaIcon />
       </IconLink>
       <IconLink href="https://blog.naver.com/peopet">

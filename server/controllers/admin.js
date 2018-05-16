@@ -22,3 +22,54 @@ exports.allDataGet = (req, res) => {
     })
     .catch(err => res.send(err))
 }
+
+exports.saveBreeder = (req, res) => {
+  const {
+    breederImage,
+    breederName,
+    breederDescription,
+    nameImage,
+    kannelName,
+    kannelDescription,
+    kannelLocation,
+    kannelManage,
+    kannelBreed,
+    kannelColor,
+    kannelImage,
+    question_start,
+    question_manage,
+    question_mind,
+    question_word,
+    dogImage,
+    dogWord,
+    dogDescription,
+    rank,
+    label,
+  } = req.body
+
+  const breeder = new Breeder({
+    breederImage,
+    breederName,
+    breederDescription,
+    kannelName,
+    kannelDescription,
+    kannelLocation,
+    kannelManage,
+    kannelBreed,
+    kannelImage,
+    kannelColor,
+    question_start,
+    question_manage,
+    question_mind,
+    question_word,
+    dogImage,
+    dogWord,
+    dogDescription,
+    rank,
+    label,
+  })
+
+  return breeder.save()
+    .then(data => res.json(data))
+    .catch(err => res.send({ err }))
+}

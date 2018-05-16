@@ -22,12 +22,12 @@ const Wrapper = styled.div`
 
 const TextWrapper = styled.div`
   background: ${p => p.hero ? peacockBlue : white};
-  height: ${p => p.hero ? rem(954) : rem(998)};
+  height: ${p => p.hero ? rem(1070) : rem(998)};
   display: ${p => p.mobile && 'none'};
 
   ${media.mobile` 
     display: ${p => p.mobile && 'inline-block'};
-    height: ${p => !p.hero && !p.mobile ? rem(718) : rem(550)};
+    height: ${p => !p.hero && !p.mobile ? rem(718) : rem(650)};
   `}
 `
 
@@ -37,8 +37,27 @@ const ImageWrapper = styled.div`
   display: flex;
   color: white;
   flex-direction: column;
+
   ${media.tablet`
+    display: none;
+  `};
+
+  ${media.mobile`
+    display: none;
   `}
+`
+
+const TabletImageWrapper = styled.div`
+  display: none;
+  height: ${p => p.height && rem(p.height)};
+  position: relative;
+  ${'' /* display: flex; */}
+  color: white;
+  flex-direction: column;
+
+  ${media.tablet`
+  display: inline-block;
+  `};
 
   ${media.mobile`
     display: none;
@@ -64,21 +83,15 @@ const Image = styled.img`
 
 const InnerText = styled.div`
   position: absolute;
-  left: 15%;
+  left: 5%;
   bottom: 60%;
-`
-
-const MobileInnerText = styled.div`
-  position: absolute;
-  bottom: 60%;
-
 `
 
 const TextContent = styled.div`
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  margin-top: ${p => p.mobile && '-100px'};
+  margin-top: ${p => p.mobile && rem(-100)};
   position: relative;
   text-align: center;
   display: flex;
@@ -97,11 +110,15 @@ const TitleWrapper = styled.div`
   color: ${p => (p.img || p.hero) ? white2 : black};
   margin-top: ${rem(90)};
   display: ${p => p.mobile && 'none'};
+
   ${media.tablet`
-  margin-left: ${p => p.img && rem(41)};
-  `}
+    margin-left: ${p => p.img && rem(41)};
+  `};
+
   ${media.mobile`
     display: ${p => p.mobile && 'inline-block'};
+    width: 90%;
+    margin: 0 auto;
   `}
 `
 
@@ -119,7 +136,7 @@ const Title = styled.h3`
   bottom: ${p => p.mobile && '110%'};
   font-family: ${p => p.hero && 'Montserrat, serif'};
   ${media.mobile`
-    font-size: ${rem(30)};
+    font-size: ${rem(25)};
   `}
 `
 
@@ -169,35 +186,23 @@ const Description = styled.p`
 
 const BeatWrapper = styled.div`
   position: relative;
-  animation-duration: 0.8s;
-  animation-name: beat;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  @keyframes beat {
-    from {
-      top: 13%;
-    }
-    to {
-      top: 12%;
-    }
-  }
-${media.mobile`
-  @keyframes beat {
-    from {
-      top: 11%;
-    }
-    to {
-      top: 10%;
-    }
-  }
-`}
+  top: 15%;
 `
 
-const Beat = styled.img`
-  width: 2%;
+const Img = styled.img`
+  width: 3.1%;
+  animation: beat 0.8s infinite;
+
+  @keyframes beat {
+    0% { transform: scale(0.8) }
+    14% { transform: scale(1.1) }
+    96% { transform: scale(1) }
+    100% { transform: scale(0.8) }
+  }
+
 
   ${media.wide`
-  width: 4%;
+    width: 4%;
   `}
 `
 
@@ -212,8 +217,8 @@ const Interviewee = styled.div`
   font-size: ${rem(20)};
   width: ${p => p.mobile && rem(185)};
   ${media.tablet`
-  bottom: 0%;
-  right: -2%;
+  bottom: 4%;
+  right: 5%;
   color: ${white2};
   `}
   ${media.mobile`
@@ -267,7 +272,7 @@ export default class About extends Component {
                 </MobileDescriptionWrapper>
               </CenterWrapper>
               <BeatWrapper>
-                <Beat src={HomeSearchUrl} alt=".." />
+                <Img src={HomeSearchUrl} alt=".." />
               </BeatWrapper>
             </TextContent>
           </TextWrapper>
@@ -286,6 +291,21 @@ export default class About extends Component {
               </InnerText>
             </ImageDiv>
           </ImageWrapper>
+          <TabletImageWrapper>
+            <ImageDiv>
+              <Image src={longTabletImg} alt="10000KM" />
+              <InnerText>
+                <TitleWrapper img>
+                  <Title img>현재까지 10,000km</Title>
+                </TitleWrapper>
+                <DescriptionWrapper img>
+                  <Description>페오펫은 전국의 모든 전문 견사를 방문하고자 1만km를 달려왔습니다.</Description>
+                  <Description>전문적이고 윤리적인 브리더들을 직접 만나며 강아지가 태어나 자라는</Description>
+                  <Description>환경을 직접 눈으로 확인하고 예비견주와 만날 수 있도록 합니다.</Description>
+                </DescriptionWrapper>
+              </InnerText>
+            </ImageDiv>
+          </TabletImageWrapper>
           <MobileImageWrapper>
             <Image mobile src={longMobileImg} alt="10000KM" />
             <MobileDescriptionWrapper mobile long>
@@ -306,6 +326,9 @@ export default class About extends Component {
                 <Description>고객이 신중하게 반려견을 입양하며, 최고의 이용 경험을 느낄 수 있는</Description>
                 <Description>반려견 입양 중개 플랫폼으로 발돋움하고 있습니다.</Description>
               </DescriptionWrapper>
+              <MobileDescriptionWrapper>
+                <Description>페오펫은 기존의 반려동물 입양문화를 더욱 체계적이고 투명하게 바꿀 수 있도록 브리더 입양문화를 시작으로 고객이 필요로하는 서비스를 계속 발굴하고 있습니다. 고객이 신중하게 반려견을 입양하며, 최고의 이용 경험을 느낄 수 있는 반려견 입양 중개 플랫폼으로 발돋움하고 있습니다.</Description>
+              </MobileDescriptionWrapper>
             </TextContent>
           </TextWrapper>
           <ImageWrapper img="interview" height={1260}>
@@ -320,12 +343,30 @@ export default class About extends Component {
                   <Description>업체들에 의해 피해를 당하는 것을 방지하고, 비윤리적인</Description>
                   <Description>강아지 공장 문제를 개선하고자 이 같은 정보 제공 서비스를</Description>
                   <Description>만들게 되었습니다. 행복한 가족을 만드는 중간다리 역할을</Description>
-                  <Description>페오펫이 합께 할 수 있길 바랍니다.</Description>
+                  <Description>페오펫이 함께 할 수 있길 바랍니다.</Description>
                 </DescriptionWrapper>
               </InnerText>
               <Interviewee>페오펫 최현일 대표(CEO & Co-founder)</Interviewee>
             </ImageDiv>
           </ImageWrapper>
+          <TabletImageWrapper>
+            <ImageDiv>
+              <Image src={interviewTabletImg} alt="interview" />
+              <InnerText>
+                <TitleWrapper img>
+                  <Title img>페오펫을 어떻게 창립하게 되었나요?</Title>
+                </TitleWrapper>
+                <DescriptionWrapper img>
+                  <Description>가족을 새롭게 맞이하려는 예비 반려인들이 이익에 눈이 먼 일부</Description>
+                  <Description>업체들에 의해 피해를 당하는 것을 방지하고, 비윤리적인</Description>
+                  <Description>강아지 공장 문제를 개선하고자 이 같은 정보 제공 서비스를</Description>
+                  <Description>만들게 되었습니다. 행복한 가족을 만드는 중간다리 역할을</Description>
+                  <Description>페오펫이 함께 할 수 있길 바랍니다.</Description>
+                </DescriptionWrapper>
+              </InnerText>
+              <Interviewee>페오펫 최현일 대표(CEO & Co-founder)</Interviewee>
+            </ImageDiv>
+          </TabletImageWrapper>
           <MobileImageWrapper>
             <Image mobile src={interviewMobileImg} alt="interview" />
             <IntervieweeWrapper>
