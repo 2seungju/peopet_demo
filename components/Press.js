@@ -11,6 +11,10 @@ const Wrapper = styled.div`
   display: flex;
   height: 100%;
   color: #333333;
+
+  ${media.tablet`
+    display: none;
+  `};
 `
 const TitleWrapper = styled.div`
   margin-top: 8vh;

@@ -57,7 +57,10 @@ const Wrapper = styled.div`
   padding-top: ${p => rem(p.padding)};
   padding-bottom: ${p => rem(p.padding)};
 
-  ${media.mobile`
+  ${media.tablet`
+  height: ${p => p.mobileHeight || rem(p.mobileHeight)};
+
+  `} ${media.mobile`
     height: ${p => p.mobileHeight || rem(p.mobileHeight)};
     padding-top: ${p => p.mobilePadding && rem(p.mobilePadding)};
     padding-bottom: ${p => p.mobilePadding && rem(p.mobilePadding)};
@@ -285,7 +288,7 @@ class Index extends Component {
             </BeatWrapper>
           </Content>
         </Wrapper>
-        <Wrapper background={white} padding={200} mobilePadding={50}>
+        <Wrapper background={white} padding={200} mobilePadding={50} mobileHeight="100%">
           <Content content="breeder">
             <Title size={50} color={peacockBlue} mobileSize={30}>
               이 달의 <b>인기 브리더</b>
@@ -295,11 +298,11 @@ class Index extends Component {
             </SubTitle>
             <BreederList breederData={bestBreederList} location="/" position="vertical" />
             <BreederLink color={peacockBlue} href="/breeder">
-              브리더 더 보러가기{' '}
+              브리더 더 보러가기
             </BreederLink>
           </Content>
         </Wrapper>
-        <Wrapper background={white2} padding={200} mobilePadding={50}>
+        <Wrapper background={white2} padding={200} mobilePadding={50} mobileHeight="100%">
           <Content content="breeder">
             <Title size={50} color={squash} mobileSize={30}>
               이 달의 <b>신규 브리더 </b>
@@ -309,7 +312,7 @@ class Index extends Component {
             </SubTitle>
             <BreederList breederData={newBreeders} location="/" position="horizontal" />
             <BreederLink color={squash} href="/breeder">
-              신규 브리더 더 보기{' '}
+              신규 브리더 더 보기
             </BreederLink>
           </Content>
         </Wrapper>

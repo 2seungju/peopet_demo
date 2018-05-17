@@ -160,7 +160,6 @@ const Description = styled.p`
     margin: auto;
   `};
 `
-
 const BeatWrapper = styled.div`
   position: relative;
   top: 15%;
@@ -290,7 +289,7 @@ export default class About extends Component {
           </ImageWrapper>
           <TabletImageWrapper>
             <ImageDiv>
-              <Image src={longTabletImg} alt="10000KM" />
+              <Image src={longImg} alt="10000KM" />
               <InnerText>
                 <TitleWrapper img>
                   <Title img>현재까지 10,000km</Title>
@@ -370,7 +369,7 @@ export default class About extends Component {
             <Interviewee>페오펫 최현일 대표(CEO & Co-founder)</Interviewee>
           </ImageWrapper>
           <TabletImageWrapper>
-            <Image src={interviewTabletImg} alt="interview" />
+            <Image src={interviewImg} alt="interview" />
             <InnerText>
               <TitleWrapper img>
                 <Title img>페오펫을 어떻게 창립하게 되었나요?</Title>
