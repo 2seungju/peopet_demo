@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import media from 'utils/media'
 import rem from 'utils/rem'
-import { white2, dark } from 'utils/colors'
+import { white2, dark, peacockBlue } from 'utils/colors'
 
 const facebookImgUrl = '/static/images/wt_main_head_icon_facebook.svg'
 const instaImgUrl = '/static/images/wt_main_head_icon_instagram.svg'
@@ -30,6 +30,10 @@ const Img = styled.img`
   height: ${p => p.footer && rem(65)};
   margin-top: ${p => p.footer && rem(74)};
   width: ${p => p.content === 'navbar' && '90%'};
+
+  :hover {
+    color: ${p => p.arrow && peacockBlue};
+  }
   ${media.mobile`
     width: ${p => p.mobileWidth && rem(p.mobileWidth)};
     display: ${p => p.mobileHidden && 'none'};
@@ -38,7 +42,7 @@ const Img = styled.img`
     margin-right: ${p => p.mobileOpen && 'auto'};
     margin-top: ${p => p.mobileOpen && rem(20)};
     margin-bottom: ${p => p.mobileOpen && rem(20)};
-  `}
+  `};
 `
 
 const HomePartnerRightImg = styled.img`
@@ -74,7 +78,7 @@ const ChangeRotationImg = styled.img`
   ${media.mobile`
     width: ${rem(85)};
     margin: 0 auto;
-  `}
+  `};
 `
 
 const ArrowWrapper = styled.button`
@@ -88,18 +92,16 @@ const ArrowWrapper = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  ${'' /* background: ${white2}; */}
   background: transparent;
-  ${'' /* border-radius: 50%; */}
   border-width: 0;
   cursor: pointer;
-  transition: transform ease-in .1s;
+  transition: transform ease-in 0.1s;
   outline: none;
 
   &:hover {
-    transition: transform ease-in .1s;
-    transform: scale(1.1)
-  };
+    transition: transform ease-in 0.1s;
+    transform: scale(1.1);
+  }
 
   ${media.mobile`
     width: 25px;
@@ -107,85 +109,65 @@ const ArrowWrapper = styled.button`
     left: ${p => p.left && '15px'};
     right: ${p => p.right && '15px'};
     top: 45%;
-  `}
+  `};
 `
 
-export const FacebookIcon = () => (
-  <Img content="navbar" src={facebookImgUrl} alt="facebookImg" />
-)
+export const FacebookIcon = () => <Img content="navbar" src={facebookImgUrl} alt="facebookImg" />
 
-export const InstaIcon = () => (
-  <Img content="navbar" src={instaImgUrl} alt="instaImgUrl" />
-)
+export const InstaIcon = () => <Img content="navbar" src={instaImgUrl} alt="instaImgUrl" />
 
-export const BlogIcon = () => (
-  <Img content="navbar" src={blogImgUrl} alt="blogImg" />
-)
+export const BlogIcon = () => <Img content="navbar" src={blogImgUrl} alt="blogImg" />
 
-export const YellowIcon = () => (
-  <Img content="navbar" src={yellowImgUrl} alt="yellowImg" />
-)
+export const YellowIcon = () => <Img content="navbar" src={yellowImgUrl} alt="yellowImg" />
 
 export const HeadLogo = () => (
   <Img content="navbar" src={headImgUrl} alt="headImg" mobileWidth={110} />
 )
 
 export const FooterLogo = ({ mobileHidden, mobileOpen }) => (
-  <Img footer src={footerImgUrl} alt="headImg" mobileHidden={mobileHidden} mobileOpen={mobileOpen} />
+  <Img
+    footer
+    src={footerImgUrl}
+    alt="headImg"
+    mobileHidden={mobileHidden}
+    mobileOpen={mobileOpen}
+  />
 )
 
-export const RightDropIcon = () => (
-  <Img src={rightDropImgUrl} alt="rightDropImg" />
-)
+export const RightDropIcon = () => <Img src={rightDropImgUrl} alt="rightDropImg" />
 
-export const SearchIcon = (...rest) => (
-  <SearchImg src={searchImgUrl} alt="searchImg" {...rest} />
-)
+export const SearchIcon = (...rest) => <SearchImg src={searchImgUrl} alt="searchImg" {...rest} />
 
 export const HomePartnerRightIcon = (...rest) => (
   <HomePartnerRightImg src={homePartnerRightImgUrl} alt="homePartnerRightImg" {...rest} />
 )
 
-export const DetailColorIcon = () => (
-  <Img src={detailColorImgUrl} alt="detailColorImg" />
-)
+export const DetailColorIcon = () => <Img src={detailColorImgUrl} alt="detailColorImg" />
 
-export const DetailDogNameIcon = () => (
-  <Img src={detailDogNameImgUrl} alt="detailDogNameImg" />
-)
+export const DetailDogNameIcon = () => <Img src={detailDogNameImgUrl} alt="detailDogNameImg" />
 
-export const DetailLocationIcon = () => (
-  <Img src={detailLocationImgUrl} alt="detailLocationImg" />
-)
+export const DetailLocationIcon = () => <Img src={detailLocationImgUrl} alt="detailLocationImg" />
 
-export const DetailKannelIcon = () => (
-  <Img src={detailKannelImgUrl} alt="detailKannelImg" />
-)
+export const DetailKannelIcon = () => <Img src={detailKannelImgUrl} alt="detailKannelImg" />
 
 export const ChangeRotationIcon = () => (
   <ChangeRotationImg src={changeRotationImgUrl} alt="changeRotationImg" />
 )
 
-export const BuildServiceIcon = () => (
-  <Img src={buildServiceImgUrl} alt="buildServiceImg" />
-)
+export const BuildServiceIcon = () => <Img src={buildServiceImgUrl} alt="buildServiceImg" />
 
-export const LeftDropIcon = () => (
-  <Img src={leftDropImgUrl} alt="leftDropImg" />
-)
+export const LeftDropIcon = () => <Img src={leftDropImgUrl} alt="leftDropImg" />
 
-export const CloseIcon = () => (
-  <Img src={closeImgUrl} alt="cloeImg" />
-)
+export const CloseIcon = () => <Img src={closeImgUrl} alt="cloeImg" />
 
 export const LeftArrowIcon = ({ goToPreviousSlide }) => (
   <ArrowWrapper onClick={goToPreviousSlide} left>
-    <Img src={LeftArrowImgUrl} alt="leftArrowImg" mobileWidth={20} />
+    <Img arrow src={LeftArrowImgUrl} alt="leftArrowImg" mobileWidth={20} />
   </ArrowWrapper>
 )
 
 export const RightArrowIcon = ({ goToNextSlide }) => (
   <ArrowWrapper onClick={goToNextSlide} right>
-    <Img src={RightArrowImgUrl} alt="rightArrowImg" mobileWidth={20} />
+    <Img arrow src={RightArrowImgUrl} alt="rightArrowImg" mobileWidth={20} />
   </ArrowWrapper>
 )
