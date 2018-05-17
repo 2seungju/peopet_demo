@@ -341,7 +341,7 @@ class Index extends Component {
         <Wrapper background={dark} padding={100} mobilePadding={50}>
           <Content content="partner">
             <Title size={50} color={white2} content="partner" mobileSize={30} mobileWidth={70}>페오펫은 <b>반려견의 행복을 바랍니다.</b></Title>
-            <SubTitle size={25} color={white2} content="partner" mobileSize={15}>강아지가 태어나고 일생을 주인 곁에서 행복한 삶을<br />살 수 있도록 다양한 서비스를 제공합니다.</SubTitle>
+            <SubTitle size={25} color={white2} content="partner" mobileSize={15}>강아지가 태어나고 일생을 보호자 곁에서 행복한 삶을<br />살 수 있도록 다양한 서비스를 제공합니다.</SubTitle>
             <BreederLink color={dark} href="https://blog.naver.com/peopet/221092557955" content="partner" mobile>
               제휴 브랜드 보러가기
             </BreederLink>
