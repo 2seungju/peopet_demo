@@ -167,7 +167,7 @@ const BeatWrapper = styled.div`
 `
 
 const Img = styled.img`
-  width: 3.1%;
+  width: 1.9%;
   animation: beat 0.8s infinite;
 
   @keyframes beat {

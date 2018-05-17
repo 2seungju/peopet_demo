@@ -201,7 +201,7 @@ const Text = styled.p`
 
 const BeatWrapper = styled.div`
   position: relative;
-  top: 15%;
+  top: 20%;
 `
 
 const Img = styled.img`
