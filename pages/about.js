@@ -261,9 +261,9 @@ export default class About extends Component {
                   <Title hero>IMPACT THE WORLD</Title>
                 </TitleWrapper>
                 <DescriptionWrapper hero>
-                  <Description hero>페오펫 팀은 이 세상에 긍정적인 영향을 미칩니다.</Description>
+                  <Description hero>페오펫은 이 세상에 긍정적인 영향을 미칩니다.</Description>
                   <Description hero>아직 어두운 곳에 존재하는 강아지 공장의 문제를 해결하는 것.</Description>
-                  <Description hero>이 불편하고 부당한 반려동물 입양 문화를 페오펫 팀이 바꾸려 합니다.</Description>
+                  <Description hero>이 불편하고 부당한 반려동물 입양 문화를 페오펫이 바꾸려 합니다.</Description>
                   <Description hero>페오펫 팀에는 이 꿈에 가슴이 뛰는 사람들이 모여있습니다.</Description>
                   <Description hero>반려견 입양에서 행복함을 느끼는 서비스를 만들고자 합니다.</Description>
                 </DescriptionWrapper>
