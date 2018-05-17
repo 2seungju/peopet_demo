@@ -147,6 +147,7 @@ const SupportLink = styled.a`
   margin: ${rem(10)} 0;
   width: 41%;
   ${media.mobile`
+    width: 100%;
     padding: 0;
     font-size: ${rem(20)};
   `} &:hover {
