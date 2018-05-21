@@ -11,10 +11,6 @@ const Wrapper = styled.div`
   display: flex;
   height: 100%;
   color: #333333;
-
-  ${media.tablet`
-    display: none;
-  `};
 `
 const TitleWrapper = styled.div`
   margin-top: 8vh;
@@ -56,10 +52,14 @@ const Bar = styled.div`
 const Article = styled.div`
   color: ${p => p.press && peacockBlue};
   font-weight: ${p => p.press && 'bold'};
+  width: ${p => p.summary && '90%'};
 `
 const ImgWrapper = styled.div`
   position: absolute;
   right: 5%;
+  ${media.tablet`
+  display: none;
+`};
 `
 
 const Img = styled.img`
@@ -71,7 +71,7 @@ const PressList = [
   {
     PressName: '슾터뷰',
     Reporter: '스파크플러스',
-    Summary: '‘건강한 반려견과 함께 행복한 삶을 온전히 누리세요’ - 페오펫 최현일 대표를 만나다!',
+    Summary: '‘건강한 반려견과 함께 행복한 삶을 온전히 누리세요’',
     Link: 'https://sparkplusofficial.blog.me/221270549137'
   },
   {
@@ -126,7 +126,7 @@ export default class Press extends Component {
                   <Article>{press.Reporter}</Article>
                 </Content>
                 <Content down>
-                  <Article>{press.Summary}</Article>
+                  <Article summary>{press.Summary}</Article>
                   <ImgWrapper>
                     <Img src={Arrow} alt="arrow" />
                   </ImgWrapper>

@@ -9,7 +9,16 @@ import { FoldIcon } from 'components/Nav/DropbarIcons'
 import Button from 'components/Button'
 import { backgroundColor } from 'utils/nav'
 import { white2, peacockBlue } from 'utils/colors'
-import { LeftDropIcon, CloseIcon, RightDropIcon, FacebookIcon, InstaIcon, BlogIcon, YellowIcon, HeadLogo } from 'components/Icons'
+import {
+  LeftDropIcon,
+  CloseIcon,
+  RightDropIcon,
+  FacebookIcon,
+  InstaIcon,
+  BlogIcon,
+  YellowIcon,
+  HeadLogo
+} from 'components/Icons'
 import rem from 'utils/rem'
 
 const Wrapper = styled.div`
@@ -18,8 +27,7 @@ const Wrapper = styled.div`
   justify-content: space-around;
   ${media.mobile`
     justify-content: space-between;
-  `}
-  margin: 0 auto;
+  `} margin: 0 auto;
   height: 60px;
   padding: 5px 20px;
   ${backgroundColor(white2)};
@@ -28,16 +36,14 @@ const Wrapper = styled.div`
       return p.isScrolled ? backgroundColor(white2) : backgroundColor('transparent')
     }
     return p.isScrolled ? backgroundColor('yellow') : backgroundColor('red')
-  }} */}
-
-  box-shadow: 0 2px 6px -5px rgba(0, 0, 0, 0.5); // <- june
+  }} */} box-shadow: 0 2px 6px -5px rgba(0, 0, 0, 0.5);
 `
 
 const IconLink = styled.a`
   display: flex;
   align-items: center;
   margin: ${rem(10)};
-  position:relative;
+  position: relative;
 `
 
 const NavWrapper = styled.div`
@@ -45,7 +51,7 @@ const NavWrapper = styled.div`
 
   ${media.tablet`
     display: none;
-  `}
+  `};
 `
 
 const DropButton = styled(Button).attrs({
@@ -56,7 +62,7 @@ const DropButton = styled(Button).attrs({
   border-radius: 0;
   ${media.tablet`
     display: flex;
-  `}
+  `};
 `
 
 const IconWrapper = styled.div`
@@ -66,7 +72,7 @@ const IconWrapper = styled.div`
   right: 5.5%;
   ${media.tablet`
     display: none;
-  `}
+  `};
 `
 
 const Navbar = ({

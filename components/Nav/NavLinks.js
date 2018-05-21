@@ -11,34 +11,36 @@ const Wrapper = styled.nav`
   display: flex;
   align-items: center;
   flex: 0 0 auto;
-  ${'' /* transition: height 0.2s ease-in; */}
-  ${p => p.dropbar ? css`
-    flex-direction: column;
-    align-items: center;
-    padding-top: 30px;
-    padding-left: 30px;
-    padding-bottom: 30px;
-    width: 60%;
-    opacity: 1;
-    ${'' /* height: 300px; */}
-  ` : css`
-    ${'' /* height: 0; */}
-    `}
+  ${''} ${p =>
+  p.dropbar
+    ? css`
+          flex-direction: column;
+          align-items: center;
+          padding-top: 30px;
+          padding-left: 30px;
+          padding-bottom: 30px;
+          width: 60%;
+          opacity: 1;
+          ${''};
+        `
+    : css`
+          ${''};
+        `};
 `
 
 const NavLink = styled(Link)`
   flex: 0 0 auto;
   display: inline-block;
-  ${'' /* line-height: ${rem(navbarHeight)}; */}
+  ${''}
   transition: opacity 0.2s, transform 0.2s;
   cursor: pointer;
 
-  ${'' /* letter-spacing: ${rem(0.4)}; */}
+  ${''}
   color: ${black};
   font-size: ${rem(20)};
   padding-left: ${rem(20)};
   padding-right: ${rem(20)};
-  font-weight: bold;
+  font-weight: 500;
   opacity: 0.8;
   &:hover,
   &:focus {
@@ -51,10 +53,12 @@ const NavLink = styled(Link)`
     color: ${peacockBlue};
     font-weight: bold;
   }
-  ${p => p.dropbar && css`
-    width: 100%;
-    margin-top: 5px;
-  `}
+  ${p =>
+    p.dropbar &&
+    css`
+      width: 100%;
+      margin-top: 5px;
+    `}
 `
 
 const NavSeparator = styled.span`
@@ -65,10 +69,11 @@ const NavSeparator = styled.span`
 
   border-radius: 50%;
   background: currentColor;
-  opacity: 0.35; */}
-  ${p => p.dropbar && css`
-    display: none;
-  `}
+  opacity: 0.35; */} ${p =>
+  p.dropbar &&
+    css`
+      display: none;
+    `};
 `
 
 /*
@@ -77,13 +82,21 @@ const NavSeparator = styled.span`
 
 const NavLinks = ({ dropbar }) => (
   <Wrapper dropbar={dropbar}>
-    <NavLink dropbar={dropbar} href="/about">페오펫</NavLink>
+    <NavLink dropbar={dropbar} href="/about">
+      페오펫
+    </NavLink>
     <NavSeparator dropbar={dropbar} />
-    <NavLink dropbar={dropbar} href="/partner">제휴업체</NavLink>
+    <NavLink dropbar={dropbar} href="/partner">
+      제휴업체
+    </NavLink>
     <NavSeparator dropbar={dropbar} />
-    <NavLink dropbar={dropbar} href="/breeder">브리더</NavLink>
+    <NavLink dropbar={dropbar} href="/breeder">
+      브리더
+    </NavLink>
     <NavSeparator dropbar={dropbar} />
-    <NavLink dropbar={dropbar} href="/support">분양문의</NavLink>
+    <NavLink dropbar={dropbar} href="/support">
+      분양문의
+    </NavLink>
   </Wrapper>
 )
 

@@ -162,25 +162,28 @@ const Description = styled.p`
 `
 const BeatWrapper = styled.div`
   position: relative;
-  top: 15%;
+  top: 20%;
 `
 
 const Img = styled.img`
   width: 1.9%;
   animation: beat 0.8s infinite;
-
-  @keyframes beat {
+  -webkit-animation: mover 1s infinite alternate;
+  animation: mover 1s infinite alternate;
+  @-webkit-keyframes mover {
     0% {
-      transform: scale(0.8);
-    }
-    14% {
-      transform: scale(1.1);
-    }
-    96% {
-      transform: scale(1);
+      transform: translateY(0);
     }
     100% {
-      transform: scale(0.8);
+      transform: translateY(-20px);
+    }
+  }
+  @keyframes mover {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-20px);
     }
   }
 
@@ -238,12 +241,12 @@ export default class About extends Component {
                   <Title hero>IMPACT THE WORLD</Title>
                 </TitleWrapper>
                 <DescriptionWrapper hero>
-                  <Description hero>페오펫 팀은 이 세상에 긍정적인 영향을 미칩니다.</Description>
+                  <Description hero>페오펫은 이 세상에 긍정적인 영향을 미칩니다.</Description>
                   <Description hero>
                     아직 어두운 곳에 존재하는 강아지 공장의 문제를 해결하는 것.
                   </Description>
                   <Description hero>
-                    이 불편하고 부당한 반려동물 입양 문화를 페오펫 팀이 바꾸려 합니다.
+                    이 불편하고 부당한 반려동물 입양 문화를 페오펫이 바꾸려 합니다.
                   </Description>
                   <Description hero>
                     페오펫 팀에는 이 꿈에 가슴이 뛰는 사람들이 모여있습니다.

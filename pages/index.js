@@ -17,6 +17,9 @@ import AutoComplete from 'components/AutoComplete'
 // import HomeHeroImg from '../static/home-hero.jpeg'
 
 const HomeSearchUrl = '/static/images/home-search@3x.png'
+const Main = '/static/images/Main.jpeg'
+const TabletMain = '/static/images/T_Main.jpeg'
+const MobileMain = '/static/images/M_Main.jpeg'
 
 const Hero = styled.div`
   width: 100%;
@@ -54,8 +57,18 @@ const Wrapper = styled.div`
   height: ${p => (p.breeder || p.support ? '100%' : '100vh')};
   background: ${p => p.background};
   padding-top: ${p => rem(p.padding)};
+  padding-top: ${p => p.Listpadding};
   padding-bottom: ${p => rem(p.padding)};
+  padding-bottom: ${p => p.Listpadding};
 
+  ${p =>
+    p.home &&
+    `:before {
+    position: fixed;
+    filter: blur(5px);
+    display: block;
+    z-index:-1;
+  }`}
   ${media.tablet`
   height: ${p => p.mobileHeight || rem(p.mobileHeight)};
 
@@ -70,7 +83,7 @@ const Content = styled.div`
   position: relative;
   text-align: center;
   width: ${p => (p.content === 'partner' ? '60%' : rem(890))};
-  ${''} min-height: 100%;
+  min-height: 100%;
   height: 100%;
   display: flex;
   flex-direction: ${p => (p.content === 'support' ? 'row' : 'column')};
@@ -83,6 +96,11 @@ const Content = styled.div`
   ${media.pc`
     width: 92%;
   `};
+`
+
+const TitleWrapper = styled.div`
+  position: absolute;
+  top: 25%;
 `
 
 const Title = styled.h1`
@@ -119,12 +137,29 @@ const SubTitle = styled.h3`
     margin: ${rem(20)} auto;
   `};
 `
+const MainImgWrapper = styled.div`
+  position: absolute;
+  background-image: url(${Main});
+  background-size: cover;
+  content: '';
+  height: 100vh;
+  width: 100vw;
+  filter: brightness(80%);
+
+  ${media.wide`
+  background-image: url(${TabletMain});
+
+`};
+  ${media.mobile`
+  background-image: url(${MobileMain});
+
+`};
+`
 
 const BreederLink = styled.a`
   padding: 10px;
   text-align: ${p => (p.content === 'partner' ? 'right' : 'center')};
   margin: 0 auto;
-  margin-top: 7%;
   border-radius: ${rem(35)};
   width: ${p => (p.content === 'partner' ? '100%' : rem(250))};
   font-size: ${p => (p.content === 'partner' ? rem(30) : rem(20))};
@@ -192,36 +227,38 @@ const Number = styled.p`
 const Text = styled.p`
   font-size: ${rem(25)};
   color: ${white2};
-  ${''}
   margin-top: ${rem(20)};
   margin-left: ${rem(10)};
 
   ${media.mobile`
     font-size: ${rem(13)};
-  `}
+  `};
 `
 
 const BeatWrapper = styled.div`
   position: relative;
-  top: 20%;
+  top: 30%;
 `
 
 const Img = styled.img`
   width: 3.1%;
   animation: beat 0.8s infinite;
-
-  @keyframes beat {
+  -webkit-animation: mover 1s infinite alternate;
+  animation: mover 1s infinite alternate;
+  @-webkit-keyframes mover {
     0% {
-      transform: scale(0.8);
-    }
-    14% {
-      transform: scale(1.1);
-    }
-    96% {
-      transform: scale(1);
+      transform: translateY(0);
     }
     100% {
-      transform: scale(0.8);
+      transform: translateY(-20px);
+    }
+  }
+  @keyframes mover {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-20px);
     }
   }
 
@@ -230,10 +267,10 @@ const Img = styled.img`
   `};
 `
 
-const AutoWrapper = styled.div`
-  width: 92%;
-  margin: 0 auto;
-`
+// const AutoWrapper = styled.div`
+//   width: 92%;
+//   margin: 0 auto;
+// `
 
 class Index extends Component {
   state = {
@@ -260,18 +297,16 @@ class Index extends Component {
     const newBreeders = newBreederList.slice(2)
     return (
       <Layout location="/">
-        <Wrapper home background={peacockBlue} height={1070} mobileHeight={650}>
+        <Wrapper home height={1070} mobileHeight={650}>
+          <MainImgWrapper />
           <Content>
             <Hero>
-              <Title main size={62} color={white2}>
+              <Title main size={58} color={white2}>
                 &nbsp;건강한 강아지 분양 중개, 페오펫
               </Title>
-              <SubTitle main size={38} color={white2}>
+              <SubTitle main size={35} color={white2}>
                 브리더가 기르는 건강한 강아지를 키우고 싶다면?
               </SubTitle>
-              <AutoWrapper>
-                <AutoComplete location="/" />
-              </AutoWrapper>
             </Hero>
             <MobileHero>
               <Title size={50} color={white2} mobileSize={30} mobileWidth={90}>
@@ -287,7 +322,13 @@ class Index extends Component {
             </BeatWrapper>
           </Content>
         </Wrapper>
-        <Wrapper breeder background={white} padding={200} mobilePadding={50} mobileHeight="100%">
+        <Wrapper
+          breeder
+          background={white}
+          Listpadding="10%"
+          mobilePadding={50}
+          mobileHeight="100%"
+        >
           <Content content="breeder">
             <Title size={50} color={peacockBlue} mobileSize={30}>
               이 달의 <b>인기 브리더</b>
@@ -301,7 +342,13 @@ class Index extends Component {
             </BreederLink>
           </Content>
         </Wrapper>
-        <Wrapper breeder background={white2} padding={200} mobilePadding={50} mobileHeight="100%">
+        <Wrapper
+          breeder
+          background={white2}
+          Listpadding="10%"
+          mobilePadding={50}
+          mobileHeight="100%"
+        >
           <Content content="breeder">
             <Title size={50} color={squash} mobileSize={30}>
               이 달의 <b>신규 브리더 </b>

@@ -30,7 +30,7 @@ const Wrapper = styled.div`
 
   ${media.mobile`
     width: ${p => p.location !== '/' && '90%'}
-  `}
+  `};
 `
 
 const SuggestionButton = styled.button`
@@ -44,14 +44,14 @@ const SuggestionButton = styled.button`
   border-width: 0;
   &:hover {
     background: ${peacockBlue};
-    color: ${white2}
-  };
+    color: ${white2};
+  }
 
   ${media.mobile`
     font-size: ${rem(13)};
     margin: 0 ${rem(15)};
     padding: ${rem(5)} 0;
-  `}
+  `};
 `
 
 const SuggestionLink = styled(Link)`
@@ -61,17 +61,17 @@ const SuggestionLink = styled(Link)`
   padding: ${rem(20)} 0 ${rem(20)} ${rem(15)};
   background: ${white2};
   font-size: ${rem(20)};
-  
+
   &:hover {
     background: ${peacockBlue};
-    color: ${white2}
-  };
+    color: ${white2};
+  }
 
   ${media.mobile`
     font-size: ${rem(13)};
     margin: 0 ${rem(15)};
     padding: ${rem(5)} 0;
-  `}
+  `};
 `
 
 const SuggestionLabel = styled.div`
@@ -84,7 +84,7 @@ const SuggestionLabel = styled.div`
   ${media.mobile`
     font-size: ${rem(15)};
     margin: ${rem(10)} ${rem(15)};
-  `}
+  `};
 `
 
 // const Input = styled.input`
@@ -95,26 +95,22 @@ const SuggestionLabel = styled.div`
 // `
 
 class AutoComplete extends Component {
-
   state = {
     value: '',
     suggestions: [],
     defaultSuggestionLabel: '주간 인기 검색어',
     defaultSuggestions: [],
     noSuggestions: false,
-    placeholder: '강아지를 검색해보세요!'
+    placeholder: ''
   }
 
   componentDidMount() {
     const { defaultSuggestions } = this.state
 
     this.setState({
-      defaultSuggestions: update(
-        defaultSuggestions,
-        {
-          $push: suggestDogData
-        }
-      )
+      defaultSuggestions: update(defaultSuggestions, {
+        $push: suggestDogData
+      })
     })
   }
 
@@ -138,19 +134,20 @@ class AutoComplete extends Component {
 
   onSuggestionsClearRequested = () => {
     this.setState({
-      suggestions: [],
+      suggestions: []
     })
   }
 
   renderInputComponent = inputProps => {
     const { location } = this.props
-    const inputClassName = location === '/' ? 'react-autosuggest__input' : 'react-autosuggest__input__breeder'
+    const inputClassName =
+      location === '/' ? 'react-autosuggest__input' : 'react-autosuggest__input__breeder'
     const imgClassName = location === '/' ? 'search-img' : 'search-img__breeder'
     const wrapperClassName = location === '/' ? 'input-wrapper' : 'input-wrapper-breeder'
     return (
       <div className={wrapperClassName}>
-        <img className={imgClassName} src={searchImgUrl} alt="searchImg" />
         <input {...inputProps} className={inputClassName} />
+        <img src={searchImgUrl} className={imgClassName} alt="searchImg" />
       </div>
     )
   }
@@ -171,10 +168,11 @@ class AutoComplete extends Component {
     return (
       <SuggestionButton
         type="submit"
-        onClick={() =>
-        // {
-        handleClickSuggestion(dogId)
-        // }
+        onClick={
+          () =>
+            // {
+            handleClickSuggestion(dogId)
+          // }
         }
       >
         {dogName}
@@ -191,7 +189,7 @@ class AutoComplete extends Component {
     // const className = location === '/' ? 'react-autosuggest__suggestions-container--open' : 'react-autosuggest__suggestions-container--open__breeder'
     return (
       <div {...containerProps}>
-        {!isDefaulted && <SuggestionLabel>{defaultSuggestionLabel}</SuggestionLabel> }
+        {!isDefaulted && <SuggestionLabel>{defaultSuggestionLabel}</SuggestionLabel>}
         {children}
       </div>
     )
@@ -202,11 +200,9 @@ class AutoComplete extends Component {
   getSuggestions = value => {
     const { defaultSuggestions } = this.state
     const escapedValue = escapeRegexCharacters(value.trim())
-    const regex = new RegExp('^' + escapedValue, 'i')
+    const regex = new RegExp(`^${escapedValue}`, 'i')
 
-    return value.length === 0
-      ? defaultSuggestions
-      : dogData.filter(dog => regex.test(dog.dogName))
+    return value.length === 0 ? defaultSuggestions : dogData.filter(dog => regex.test(dog.dogName))
   }
 
   getSuggestionValue = suggestion => suggestion.dogName
@@ -215,7 +211,7 @@ class AutoComplete extends Component {
     const { value, suggestions, noSuggestions, placeholder } = this.state
     const { location } = this.props
     const inputProps = {
-      placeholder: placeholder,
+      placeholder,
       value,
       onChange: this.onChange
     }
@@ -234,12 +230,7 @@ class AutoComplete extends Component {
           renderInputComponent={this.renderInputComponent}
           focusInputOnSuggestionClick={false}
         />
-        {
-          noSuggestions &&
-            <div className="no-suggestions">
-              준비중입니다.
-            </div>
-        }
+        {noSuggestions && <div className="no-suggestions">준비중입니다.</div>}
       </Wrapper>
     )
   }
