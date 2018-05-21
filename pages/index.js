@@ -51,8 +51,7 @@ const Wrapper = styled.div`
   position: relative;
   flex-direction: column;
   text-align: center;
-  height: 100vh;
-  height: ${p => p.support && '100%'};
+  height: ${p => (p.breeder || p.support ? '100%' : '100vh')};
   background: ${p => p.background};
   padding-top: ${p => rem(p.padding)};
   padding-bottom: ${p => rem(p.padding)};
@@ -66,7 +65,6 @@ const Wrapper = styled.div`
     padding-bottom: ${p => p.mobilePadding && rem(p.mobilePadding)};
   `};
 `
-// 여기 width에 rem을 쓴 이유는 4k에서도 채리가 저 비율로 보고 싶다고 하더라구요
 const Content = styled.div`
   margin: 0 auto;
   position: relative;
@@ -289,7 +287,7 @@ class Index extends Component {
             </BeatWrapper>
           </Content>
         </Wrapper>
-        <Wrapper background={white} padding={200} mobilePadding={50} mobileHeight="100%">
+        <Wrapper breeder background={white} padding={200} mobilePadding={50} mobileHeight="100%">
           <Content content="breeder">
             <Title size={50} color={peacockBlue} mobileSize={30}>
               이 달의 <b>인기 브리더</b>
@@ -303,7 +301,7 @@ class Index extends Component {
             </BreederLink>
           </Content>
         </Wrapper>
-        <Wrapper background={white2} padding={200} mobilePadding={50} mobileHeight="100%">
+        <Wrapper breeder background={white2} padding={200} mobilePadding={50} mobileHeight="100%">
           <Content content="breeder">
             <Title size={50} color={squash} mobileSize={30}>
               이 달의 <b>신규 브리더 </b>
