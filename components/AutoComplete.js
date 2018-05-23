@@ -6,10 +6,12 @@ import { white2, black, peacockBlue } from 'utils/colors'
 import Link from 'components/Link'
 import styled from 'styled-components'
 import { SearchIcon } from 'components/Icons'
+import media from 'utils/media'
+
 import '../static/styles.scss'
 import { dogData, suggestDogData } from '../dogData'
-import media from 'utils/media'
 // search icon 위치가 안맞음
+
 const searchImgUrl = 'static/images/wt_main_home_search.svg'
 
 function escapeRegexCharacters(str) {
@@ -23,13 +25,11 @@ const Wrapper = styled.div`
   ${media.pc`
     width: ${p => p.location !== '/' && '60%'};
   `};
-
   ${media.tablet`
     width: ${p => p.location !== '/' && '70%'};
   `};
-
   ${media.mobile`
-    width: ${p => p.location !== '/' && '90%'}
+    width: ${p => p.location !== '/' && '90%'};
   `};
 `
 
@@ -147,7 +147,7 @@ class AutoComplete extends Component {
     return (
       <div className={wrapperClassName}>
         <input {...inputProps} className={inputClassName} />
-        <img src={searchImgUrl} className={imgClassName} alt="searchImg" />
+        <SearchIcon />
       </div>
     )
   }

@@ -54,7 +54,7 @@ const HomePartnerRightImg = styled.img`
 
 const SearchImg = styled.img`
   position: absolute;
-  top: ${rem(30)};
+  top: ${rem(20)};
   right: ${rem(30)};
 `
 
