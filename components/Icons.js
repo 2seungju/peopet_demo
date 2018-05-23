@@ -56,6 +56,9 @@ const SearchImg = styled.img`
   position: absolute;
   top: ${rem(20)};
   right: ${rem(30)};
+  ${media.tablet`
+    display:none;
+  `};
 `
 
 const ChangeRotationImg = styled.img`
