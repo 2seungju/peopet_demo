@@ -1,26 +1,26 @@
 import React from 'react'
 import styled from 'styled-components'
 import FlexBox from 'components/FlexBox'
-import BreederCard from 'components/Breeder/BreederCard'
+import MediaQuery from 'react-responsive'
+
+import BreederCardLong from 'components/Breeder/BreederCardLong'
 import flexDirection from 'utils/flex'
 import rem from 'utils/rem'
 import media from 'utils/media'
+import BreederCard from './BreederCard'
 
 const Wrapper = styled(FlexBox)`
   padding-top: ${rem(20)};
   padding-bottom: ${rem(20)};
-  ${'' /* height: 500px; */}
+  /* height: 500px; */
   ${p => p.position === 'horizontal' && flexDirection('column')};
-
-  
   ${media.mobile`
     width: 100%;
-  `}
-  margin: auto;
+  `} margin: auto;
   flex-flow: row wrap;
   justify-content: center;
   flex: 0 1 auto;
-  // flex: auto;
+  /* flex: auto; */
   display: flex;
   height: 100%;
 `
@@ -42,11 +42,7 @@ const Image = styled.img`
   height: 100px;
 `
 
-const BreederList = ({
-  breederData,
-  location,
-  position,
-}) => {
+const BreederList = ({ breederData, location, position }) => (
   // let data
 
   // if (location === '/' && position === 'vertical') {
@@ -57,12 +53,20 @@ const BreederList = ({
   //   data = breederData.slice(4, 10)
   // }
 
-  return (
-    <Wrapper position={position}>
-      {
-        breederData.map((breeder, i) => (
+  <Wrapper position={position}>
+    {breederData.map((breeder, i) => (
+      <div key={i}>
+        <BreederCardLong
+          position={position}
+          id={breeder._id}
+          kannelImage={breeder.kannelImage}
+          kannelBreed={breeder.kannelBreed}
+          kannelLocation={breeder.kannelLocation}
+          breederImage={breeder.breederImage}
+          breederName={breeder.breederName}
+        />
+        <MediaQuery query="(max-width: 425px)">
           <BreederCard
-            key={i}
             position={position}
             id={breeder._id}
             kannelImage={breeder.kannelImage}
@@ -71,15 +75,15 @@ const BreederList = ({
             breederImage={breeder.breederImage}
             breederName={breeder.breederName}
           />
-        ))
-      }
-      {/* <TextWrapper>
+        </MediaQuery>
+      </div>
+    ))}
+    {/* <TextWrapper>
         <Title>{title}</Title>
         <Description>{description}</Description>
       </TextWrapper>
       <Image src={image} /> */}
-    </Wrapper>
-  )
-}
+  </Wrapper>
+)
 
 export default BreederList

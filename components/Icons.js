@@ -90,8 +90,8 @@ const ArrowWrapper = styled.button`
   left: ${p => p.left && '25px'};
   right: ${p => p.right && '25px'};
   z-index: 10;
-  height: 50px;
-  width: 50px;
+  height: 20px;
+  width: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -104,6 +104,10 @@ const ArrowWrapper = styled.button`
   &:hover {
     transition: transform ease-in 0.1s;
     transform: scale(1.1);
+  }
+
+  &:active {
+    opacity: 0.5;
   }
 
   ${media.mobile`

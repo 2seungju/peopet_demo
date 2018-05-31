@@ -13,8 +13,13 @@ const Wrapper = styled.div`
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: 10;
+  z-index: 9999;
   transition: display 0.2s;
+  /* opacity: 0.5;
+
+  :hover {
+    opacity: 1;
+  } */
 `
 
 const BlueBackground = styled.div`
@@ -24,8 +29,8 @@ const BlueBackground = styled.div`
   top: ${rem(60)};
   background: ${peacockBlue};
   ${media.mobile`
-    height: ${rem(90)}
-  `}
+    height: ${rem(90)};
+  `};
 `
 
 const Nav = ({
@@ -59,8 +64,10 @@ const Nav = ({
       isScrolled={isScrolled}
       onSideMenuToggle={onSideMenuToggle}
     />
-    { location === 'breeder' && <BlueBackground />}
-    {location === 'breeder' && <AutoComplete handleClickSuggestion={handleClickSuggestion} location={location} /> }
+    {location === 'breeder' && <BlueBackground />}
+    {location === 'breeder' && (
+      <AutoComplete handleClickSuggestion={handleClickSuggestion} location={location} />
+    )}
     <Dropbar isDropMenuFolded={isDropMenuFolded} onDropMenuToggle={onDropMenuToggle} />
   </Wrapper>
 )

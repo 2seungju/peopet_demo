@@ -3,12 +3,14 @@ const express = require('express')
 const DogController = require('./controllers/dog')
 const BreederController = require('./controllers/breeder')
 const AdminController = require('./controllers/admin')
+const ReviewController = require('./controllers/review')
 
 module.exports = function (app) {
   const apiRoutes = express.Router()
   const dogRoutes = express.Router()
   const breederRoutes = express.Router()
   const adminRoutes = express.Router()
+  const reviewRoutes = express.Router()
 
   /*------------------------------------------------------------------------------
     PRODUCT ROUTE
@@ -35,6 +37,12 @@ module.exports = function (app) {
   adminRoutes.get('/', AdminController.allDataGet)
   adminRoutes.post('/breeder', AdminController.saveBreeder)
   // adminRoutes.post('/', Admin)
+
+  apiRoutes.use('/review', reviewRoutes)
+  reviewRoutes.get('/', ReviewController.allReviewGet)
+  reviewRoutes.get('/:id', ReviewController.oneReviewGet)
+  reviewRoutes.post('/', ReviewController.saveReview)
+  reviewRoutes.put('/id', ReviewController.saveOneReview)
 
   app.use('/api', apiRoutes)
 }

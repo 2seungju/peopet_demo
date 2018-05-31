@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   display: ${p => p.isSideMenuFolded && 'none'};
   ${media.mobile`
     flex-direction: column;
-  `}
+  `};
 `
 
 const Content = styled.div`
@@ -24,7 +24,7 @@ const Content = styled.div`
   ${media.mobile`
     width: 70%;
     margin: auto;
-  `}
+  `};
 `
 
 const Text = styled.div`
@@ -32,16 +32,14 @@ const Text = styled.div`
   color: ${black};
 `
 
-const ImageWrapper = styled.div`
-`
+const ImageWrapper = styled.div``
 
-const Logo = styled.p`
-`
+const Logo = styled.p``
 
 const IconLink = styled.a`
   display: flex;
   align-items: center;
-  margin: ${rem(10)}
+  margin: ${rem(10)};
 `
 
 const IconWrapper = styled.div`
@@ -51,7 +49,7 @@ const IconWrapper = styled.div`
   margin-bottom: ${rem(20)};
   ${media.mobile`
     justify-content: center;
-  `}
+  `};
 `
 
 const Footer = ({ isSideMenuFolded }) => (
@@ -62,6 +60,7 @@ const Footer = ({ isSideMenuFolded }) => (
       <Text>통신판매업 신고 2017-서울강남-04764호</Text>
       <Text>동물판매업번호 3220000-037-2018-0016호</Text>
       <Text>주소: 서울시 강남구 테헤란로 69길 5, 12층</Text>
+      <Text>Tel: 010-2069-5988</Text>
       <FooterLogo mobileOpen />
       <IconWrapper>
         <IconLink href="https://www.facebook.com/peopleNpet/">

@@ -22,15 +22,20 @@ import {
 import rem from 'utils/rem'
 
 const Wrapper = styled.div`
+  width: 100%;
+  ${backgroundColor(white2)};
+`
+
+const SubWrapper = styled.div`
   position: relative;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   ${media.mobile`
     justify-content: space-between;
   `} margin: 0 auto;
   height: 60px;
   padding: 5px 20px;
-  ${backgroundColor(white2)};
+  width: 90%;
   ${'' /* ${p => {
     if (p.location === '/') {
       return p.isScrolled ? backgroundColor(white2) : backgroundColor('transparent')
@@ -42,7 +47,7 @@ const Wrapper = styled.div`
 const IconLink = styled.a`
   display: flex;
   align-items: center;
-  margin: ${rem(10)};
+  margin: ${rem(5)};
   position: relative;
 `
 
@@ -69,7 +74,6 @@ const IconWrapper = styled.div`
   display: flex;
   flex-direction: row;
   position: relative;
-  right: 5.5%;
   ${media.tablet`
     display: none;
   `};
@@ -85,32 +89,34 @@ const Navbar = ({
   onSideMenuToggle
 }) => (
   <Wrapper isScrolled={isScrolled} location={location}>
-    <DropButton onClick={onSideMenuToggle}>
-      {isSideMenuFolded ? <CloseIcon /> : <LeftDropIcon />}
-    </DropButton>
-    <IconLink href="/">
-      <HeadLogo />
-    </IconLink>
-    <NavWrapper>
-      <NavLinks />
-    </NavWrapper>
-    <IconWrapper>
-      <IconLink href="https://www.facebook.com/peopleNpet/">
-        <FacebookIcon />
+    <SubWrapper>
+      <DropButton onClick={onSideMenuToggle}>
+        {isSideMenuFolded ? <CloseIcon /> : <LeftDropIcon />}
+      </DropButton>
+      <IconLink href="/">
+        <HeadLogo />
       </IconLink>
-      <IconLink href="https://www.instagram.com/peopet_official/">
-        <InstaIcon />
-      </IconLink>
-      <IconLink href="https://blog.naver.com/peopet">
-        <BlogIcon />
-      </IconLink>
-      <IconLink href="https://pf.kakao.com/_pUyTd">
-        <YellowIcon />
-      </IconLink>
-    </IconWrapper>
-    <DropButton onClick={onDropMenuToggle}>
-      {isDropMenuFolded ? <CloseIcon /> : <RightDropIcon />}
-    </DropButton>
+      <NavWrapper>
+        <NavLinks />
+      </NavWrapper>
+      <IconWrapper>
+        <IconLink href="https://www.facebook.com/peopleNpet/">
+          <FacebookIcon />
+        </IconLink>
+        <IconLink href="https://www.instagram.com/peopet_official/">
+          <InstaIcon />
+        </IconLink>
+        <IconLink href="https://blog.naver.com/peopet">
+          <BlogIcon />
+        </IconLink>
+        <IconLink href="https://pf.kakao.com/_pUyTd">
+          <YellowIcon />
+        </IconLink>
+      </IconWrapper>
+      <DropButton onClick={onDropMenuToggle}>
+        {isDropMenuFolded ? <CloseIcon /> : <RightDropIcon />}
+      </DropButton>
+    </SubWrapper>
   </Wrapper>
 )
 

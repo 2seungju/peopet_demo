@@ -99,7 +99,7 @@ class Index extends Component {
     console.log(this.state.data)
 
     const Breed = styled.div`
-      grid-column: ${p => p.column}
+      grid-column: ${p => p.column};
       grid-row: 2;
       font-weight: bold;
     `
@@ -110,7 +110,7 @@ class Index extends Component {
     `
 
     const Weight = styled.div`
-      grid-column: ${p => p.column}
+      grid-column: ${p => p.column};
       grid-row: 4;
     `
 

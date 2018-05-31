@@ -18,7 +18,7 @@ const PartnerBannerImgUrl = '/static/images/w_partner_banner.jpg'
 const Wrapper = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
   height: 100%;
-  width: ${rem(1000)}; 
+  width: ${rem(1000)};
   margin: auto;
   color: #333333;
   ${media.tablet`

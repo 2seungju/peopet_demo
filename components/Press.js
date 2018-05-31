@@ -27,6 +27,7 @@ const ContentWrapper = styled.div`
   position: relative;
   opacity: 0.5;
   width: 100%;
+
   :hover {
     opacity: 1;
     transition: transform ease-in 0.1s;

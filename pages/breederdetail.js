@@ -7,18 +7,19 @@ import Link from 'components/Link'
 import rem from 'utils/rem'
 import { warmGrey2, black, white2, white, peacockBlue } from 'utils/colors'
 import Bar from 'components/Bar'
-import Category from 'components/Category'
 import media from 'utils/media'
-import { DetailColorIcon, DetailLocationIcon, DetailKannelIcon, DetailDogNameIcon } from 'components/Icons'
+import {
+  DetailColorIcon,
+  DetailLocationIcon,
+  DetailKannelIcon,
+  DetailDogNameIcon
+} from 'components/Icons'
 import ImageSlider from 'components/ImageSlider'
 
-const splitText = (text) => (
-  text.split('<br/>').map(p => p)
-)
+const splitText = text => text.split('<br/>').map(p => p)
 
 const Wrapper = styled.div`
-  width: ${rem(1170)};
-  padding-top: ${rem(150)};
+  padding: ${rem(200)} 0;
   margin: 0 auto;
   text-align: center;
   background: ${white};
@@ -26,94 +27,78 @@ const Wrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-  ${media.wide`
-    width: 90%;
-  `};
-
   ${media.pc`
-    width: 100%;
+  padding: ${rem(100)} 0;
   `};
 
   ${media.mobile`
-    padding-top: ${rem(70)};
-    display: inline-block;
-    background: ${white2};
-  `}
+    width: 95%;
+  `};
 `
 
 const DetailWrapper = styled.div`
-  background: ${white2};
-  margin-top: ${rem(10)};
-  flex: 4;
+  margin: auto;
   height: 100%;
+  width: 60%;
   ${media.mobile`
     width: 100%;
     
     margin: 0 auto;
-  `}
+  `};
 `
 
-const NotImageWrapper = styled.div`
-  width: 100%;
-
-  ${media.mobile`
-    width: 85%;
-    margin: 0 auto;
-  `}
+const SliderWrapper = styled.div`
+  width: 55%;
+  ${media.wide`
+    width: 65%;
+  `};
+  ${media.pc`
+    width: 100%;
+  `};
 `
 
-const KannelImage = styled.img`
-  width: 100%;
-`
+// const NotImageWrapper = styled.div`
+//   width: 100%;
+//   display: flex;
+
+//   ${media.mobile`
+//     width: 85%;
+//     margin: 0 auto;
+//   `};
+// `
 
 const BreederWrapper = styled.div`
   display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+
+  ${media.pc`
   flex-direction: column;  
+  `};
 `
 
 const NavWrapper = styled.div`
   display: flex;
-  flex-direction: row;
-  padding: ${p => rem(p.padding)};
-  justify-content: space-around;
+  flex-direction: column;
+  margin-left: ${rem(20)};
+  width: 60%;
 
-  ${media.mobile`
-    flex-wrap: ${p => p.breederDetail && 'wrap'};
-    padding-top: ${p => p.mobilePadding && rem(p.mobilePadding)};
-    padding-bottom: ${p => p.mobilePadding && rem(p.mobilePadding)};
-    flex-direction: ${p => p.breeder && 'column'};
-    display: ${p => p.label && 'none'};
-    padding-left: 0;
-    padding-right: 0;
-  `}
+  justify-content: space-between;
+  ${media.pc`
+    width: 100%;
+    margin: 0;
+    margin-top: 3%;
+  `};
 `
 
 const BreederImageNameWrapper = styled.div`
   display: flex;
-  flex: 4;
   justify-content: center;
-  ${media.mobile`
-    flex-direction: row;
-    justify-content: center;
-  `}
-`
-
-const BreederDetailWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  ${media.mobile`
-    flex: 0 1 50%;
-    justify-content: left;
-    margin-top: ${rem(5)};
-    margin-bottom: ${rem(5)};
-  `}
-`
-
-const Nav = styled.p`
-  font-size: ${rem(20)};
-  color: ${black};
-  margin: 0;
-  font-weight: bold;
+  padding: 2%;
+  background: ${white2};
+  ${media.pc`
+    padding: 3%;
+  `};
 `
 
 const BreederImage = styled.img`
@@ -129,38 +114,63 @@ const NameWrapper = styled.div`
   flex-direction: column;
   text-align: left;
   color: ${black};
+  margin: auto 0;
   margin-left: ${rem(20)};
 `
 
 const Name = styled.p`
-  font-size: ${rem(20)};
-  ${'' /* margin-top: 0; */}
-  ${'' /* margin-bottom: 2px; */}
+  font-size: ${rem(22)};
   margin-top: 0;
   margin-bottom: 5px;
   font-weight: bold;
-  margin-top: 0;
+  ${media.wide`
+  font-size: ${rem(17)};
+  `};
 `
 
 const Introduce = styled.p`
   font-size: ${rem(15)};
   margin-top: 0;
   margin-bottom: 0;
-  ${'' /* margin: 0; */}
+  ${media.wide`
+  font-size: ${rem(13)};
+  `};
 `
 
 const SupportWrapper = styled.div`
-  margin-left: ${rem(30)};
+  width: 100%;
   flex: 4;
-
-  ${media.mobile`
-    margin: 0;
-  `}
+  margin-top: 6%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1%;
+  max-height: ${rem(200)};
+  background: ${white2};
+  ${media.wide`
+    margin-top: 3%;
+  `};
+  ${media.pc`
+    padding: 3%;
+  `};
 `
 
 const SupportDescription = styled.p`
-  font-size: ${rem(12)};
-  opacity: 0.5;
+  font-size: ${p => (p.down ? rem(12) : rem(20))};
+  opacity: ${p => p.down && 0.5};
+  width: 80%;
+  margin: 0 auto;
+  display: ${p => p.pc && 'none'};
+  ${media.wide`
+    font-size: ${p => (p.down ? rem(10) : rem(15))};
+  `};
+  ${media.pc`
+    display: ${p => p.down && 'none'};
+    margin-bottom: 4%;
+  display: ${p => p.pc && 'inline-block'};
+  display: ${p => p.wide && 'inline-block'};    
+      
+  `};
 `
 
 const Support = styled(Link)`
@@ -176,7 +186,7 @@ const Support = styled(Link)`
     padding-left: 0;
     padding-right: 0;
     width: 100%;
-  `}
+  `};
 `
 
 const Title = styled.p`
@@ -184,10 +194,10 @@ const Title = styled.p`
   color: ${black};
   text-align: left;
   font-weight: bold;
-  
+
   ${media.mobile`
     padding-top: ${rem(15)};
-  `}
+  `};
 `
 
 const Description = styled.p`
@@ -201,11 +211,17 @@ const Description = styled.p`
   margin-left: ${p => p.breederDetail && '5px'};
 `
 
-const InterviewWrapper = styled.div`
-  padding: ${rem(40)};
+const ContentWrapper = styled.div`
+  padding: 5%;
+  background: ${white2};
+  margin-top: 3%;
+`
+
+const Content = styled.div`
+  margin-bottom: 10%;
   ${media.mobile`
     padding: 0;
-  `}
+  `};
 `
 
 const KannelInfoWrapper = styled.div`
@@ -213,7 +229,7 @@ const KannelInfoWrapper = styled.div`
 
   ${media.mobile`
     padding: 0;
-  `}
+  `};
 `
 
 const Image = styled.img`
@@ -231,10 +247,12 @@ export default class Breederdetail extends Component {
 
   componentDidMount() {
     const { id } = this.props
-    axios.get(`${fetchServerConfig.ip}/api/breeder/${id}`)
-      .then(res => this.setState({
-        breederData: res.data
-      }))
+    axios
+      .get(`${fetchServerConfig.ip}/api/breeder/${id}`)
+      .then(res =>
+        this.setState({
+          breederData: res.data
+        }))
       .catch(err => console.log(err))
   }
 
@@ -252,7 +270,8 @@ export default class Breederdetail extends Component {
       kannelColor,
       question_start,
       question_mind,
-      question_word
+      question_word,
+      dogDescription
     } = breederData
     let images = []
     images.push(kannelImage, dogImage, puppyImage)
@@ -265,64 +284,50 @@ export default class Breederdetail extends Component {
         image={images.length > 0 && images[0]}
       >
         <Wrapper>
-          <Category />
           <DetailWrapper>
-            <ImageSlider images={images} />
-            {/* <KannelImage src={data.kannelImage && data.kannelImage[0]} /> */}
-            <NotImageWrapper>
-              <BreederWrapper>
-                <NavWrapper padding={20} label="true">
-                  <Nav>브리더 소개란</Nav>
-                </NavWrapper>
-                <Bar borderColor={warmGrey2} mobileHide />
-                <NavWrapper padding={25} breeder>
-                  <BreederImageNameWrapper>
-                    <BreederImage src={breederImage} />
-                    <NameWrapper>
-                      <Name>{breederName} 브리더</Name>
-                      <Introduce>안녕하세요. {kannelBreed}<br />브리더 {breederName} 입니다.</Introduce>
-                    </NameWrapper>
-                  </BreederImageNameWrapper>
-                  <SupportWrapper>
-                    <SupportDescription>분양에 대한 자세한 상담을 나누고 싶다면?</SupportDescription>
-                    <Support href="/support">문의하기</Support>
-                  </SupportWrapper>
-                </NavWrapper>
-                {/* <Bar borderColor={warmGrey2} />
-                <NavWrapper padding={20} mobilePadding={10} breederDetail>
-                  <BreederDetailWrapper>
-                    <DetailLocationIcon /><Description breederDetail>{kannelLocation}</Description>
-                  </BreederDetailWrapper>
-                  <BreederDetailWrapper>
-                    <DetailDogNameIcon /><Description breederDetail>{kannelBreed}</Description>
-                  </BreederDetailWrapper>
-                  <BreederDetailWrapper>
-                    <DetailKannelIcon /><Description breederDetail>{kannelName}</Description>
-                  </BreederDetailWrapper>
-                  <BreederDetailWrapper>
-                    <DetailColorIcon /><Description breederDetail>{kannelColor}</Description>
-                  </BreederDetailWrapper>
-                </NavWrapper> */}
-                <Bar borderColor={warmGrey2} />
-              </BreederWrapper>
-              <InterviewWrapper>
+            <BreederWrapper>
+              <SliderWrapper>
+                <ImageSlider images={images} />
+              </SliderWrapper>
+              {/* <KannelImage src={data.kannelImage && data.kannelImage[0]} /> */}
+              <NavWrapper padding={25} breeder>
+                <BreederImageNameWrapper>
+                  <BreederImage src={breederImage} />
+                  <NameWrapper>
+                    <Name>{breederName} 브리더</Name>
+                    <Introduce>
+                      안녕하세요. {kannelBreed}을 브리딩하는 브리더 {breederName} 입니다.
+                    </Introduce>
+                  </NameWrapper>
+                </BreederImageNameWrapper>
+                {/* <Bar borderColor={warmGrey2} mobileHide /> */}
+                <SupportWrapper>
+                  <SupportDescription up wide>
+                    페오펫은 국내의 윤리적인 <br /> 브리더들을 엄선하여 함께합니다.
+                  </SupportDescription>
+                  <SupportDescription up pc>
+                    페오펫은 국내의 윤리적인 브리더들을 엄선하여 함께합니다.
+                  </SupportDescription>
+
+                  <Support href="/support">문의하기</Support>
+                </SupportWrapper>
+              </NavWrapper>
+            </BreederWrapper>
+            <ContentWrapper>
+              <Content>
                 <Title>브리더 인터뷰</Title>
                 <Description>{question_start}</Description>
                 <Description>{question_mind}</Description>
                 <Description>{question_word}</Description>
-              </InterviewWrapper>
-              {/* <Bar borderColor={warmGrey2} />
-              <KannelInfoWrapper>
-                <Title>견사 정보</Title>
-                { data.dogImage && data.dogImage.map((image, i) => <Image key={`dog-${i}`} src={image} />)}
-                { data.puppyImage && data.puppyImage.map((image, i) => <Image key={`puppy-${i}`} src={image} />)}
-                { data.kannelImage && data.kannelImage.map((image, i) => <Image key={`kannel-${i}`} src={image} />)}
-              </KannelInfoWrapper> */}
-            </NotImageWrapper>
+              </Content>
+              <Content>
+                <Title>이런 분들께 추천합니다!</Title>
+                <Description>{dogDescription}</Description>
+              </Content>
+            </ContentWrapper>
           </DetailWrapper>
         </Wrapper>
       </Layout>
     )
   }
 }
-
