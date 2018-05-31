@@ -210,7 +210,11 @@ export default class Review extends React.Component {
                     </b>
                     <br />
                   </Name>
-                  <Content>{reviewer.review}</Content>
+                  <Content>
+                    {' " '}
+                    {reviewer.review}
+                    {' " '}
+                  </Content>
                 </NameWrapper>
               </ReviewWrapper>
             </Slider>
