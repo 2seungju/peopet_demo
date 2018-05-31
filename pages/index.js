@@ -337,12 +337,12 @@ class Index extends Component {
           <Content>
             <Hero main>
               <Title main size={58} color={white2}>
-                건강한 강아지와의 특별한 만남, 페오펫
+                건강한 강아지와의<br />특별한 만남, 페오펫
               </Title>
             </Hero>
             <MobileHero>
               <Title size={50} color={white2} mobileSize={30} mobileWidth={90}>
-                건강한 강아지와<br /> 특별한 만남, 페오펫
+                건강한 강아지와<br />특별한 만남, 페오펫
               </Title>
               {/* <AutoComplete location="/" /> */}
             </MobileHero>
@@ -358,7 +358,7 @@ class Index extends Component {
             </Title>
             <DescriptionWrapper>
               <Text>
-                1. 사회화가 잘 된 <b>건강한 강아지</b>를 선벌해서 소개합니다.
+                1. 사회화가 잘 된 <b>건강한 강아지</b>를 선별해서 소개합니다.
               </Text>
             </DescriptionWrapper>
             <DescriptionWrapper>
