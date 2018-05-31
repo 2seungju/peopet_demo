@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   }
 
   ${media.mobile`
-    display: none;
+    margin: 10% auto;
   `};
 `
 
@@ -71,6 +71,12 @@ const BreederWrapper = styled.div`
   text-align: left;
   margin-top: ${rem(6)};
   padding-bottom: ${rem(10)};
+
+  ${media.mobile`
+    margin: 0;
+    flex-direction: row;
+    justify-content: space-around;
+  `};
 `
 
 const BreederImage = styled.div`
@@ -83,6 +89,12 @@ const BreederImage = styled.div`
   background-size: 100% 100%;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   margin: auto 4%;
+  display: ${p => p.mobile && 'none'};
+
+  ${media.mobile`
+  display: ${p => (p.mobile ? 'inline-block' : 'none')};
+
+  `};
 `
 
 const Breeder = styled.p`
@@ -91,6 +103,7 @@ const Breeder = styled.p`
   color: ${black};
   ${media.mobile`
     display: ${p => p.hello && 'none'};
+    margin: auto 0;
   `};
 `
 
@@ -112,8 +125,8 @@ const TitleWrapper = styled.div`
     width: 99%;
     `};
   ${media.mobile`
-    flex-direction: column;
-    justify-content: initial;
+  justify-content: space-around;
+
     `};
 `
 
@@ -151,8 +164,9 @@ const BreederCardLong = ({
             </Title>
             {/* <Title><b>모색</b> : {kannelColor}</Title> */}
           </TitleWrapper>
-          <Bar margin={`${rem(20)} auto`} />
+          <Bar margin={`${rem(20)} auto`} mobilemargin={`${rem(5)} auto`} />
           <BreederWrapper>
+            <BreederImage mobile img={breederImage && breederImage} />
             <Breeder>
               <b>{breederName} 브리더</b> <br />
             </Breeder>

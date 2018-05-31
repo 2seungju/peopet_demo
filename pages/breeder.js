@@ -164,28 +164,16 @@ export default class Breeder extends Component {
                 <Spinner loading={loading} />
               ) : (
                 breederData.map((breeder, i) => (
-                  <div key={i}>
-                    <BreederCardLong
-                      id={breeder._id}
-                      position="breeder"
-                      kannelImage={breeder.kannelImage}
-                      kannelBreed={breeder.kannelBreed}
-                      kannelLocation={breeder.kannelLocation}
-                      breederImage={breeder.breederImage}
-                      breederName={breeder.breederName}
-                    />
-                    <MediaQuery query="(max-width: 425px)">
-                      <BreederCard
-                        id={breeder._id}
-                        position="breeder"
-                        kannelImage={breeder.kannelImage}
-                        kannelBreed={breeder.kannelBreed}
-                        kannelLocation={breeder.kannelLocation}
-                        breederImage={breeder.breederImage}
-                        breederName={breeder.breederName}
-                      />
-                    </MediaQuery>
-                  </div>
+                  <BreederCardLong
+                    key={i}
+                    id={breeder._id}
+                    position="breeder"
+                    kannelImage={breeder.kannelImage}
+                    kannelBreed={breeder.kannelBreed}
+                    kannelLocation={breeder.kannelLocation}
+                    breederImage={breeder.breederImage}
+                    breederName={breeder.breederName}
+                  />
                 ))
               )}
             </BreederList>

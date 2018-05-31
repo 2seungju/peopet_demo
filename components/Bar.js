@@ -8,7 +8,8 @@ const Bar = styled.div`
   border: 0.5px solid ${p => p.borderColor};
   ${media.mobile`
     width: ${p => p.mobileHorizontal && '100%'};
-    display: ${p => p.mobileHide && 'none'}
+    display: ${p => p.mobileHide && 'none'};
+    margin: ${p => p.mobilemargin};
   `};
 `
 

@@ -55,28 +55,16 @@ const BreederList = ({ breederData, location, position }) => (
 
   <Wrapper position={position}>
     {breederData.map((breeder, i) => (
-      <div key={i}>
-        <BreederCardLong
-          position={position}
-          id={breeder._id}
-          kannelImage={breeder.kannelImage}
-          kannelBreed={breeder.kannelBreed}
-          kannelLocation={breeder.kannelLocation}
-          breederImage={breeder.breederImage}
-          breederName={breeder.breederName}
-        />
-        <MediaQuery query="(max-width: 425px)">
-          <BreederCard
-            position={position}
-            id={breeder._id}
-            kannelImage={breeder.kannelImage}
-            kannelBreed={breeder.kannelBreed}
-            kannelLocation={breeder.kannelLocation}
-            breederImage={breeder.breederImage}
-            breederName={breeder.breederName}
-          />
-        </MediaQuery>
-      </div>
+      <BreederCardLong
+        key={i}
+        position={position}
+        id={breeder._id}
+        kannelImage={breeder.kannelImage}
+        kannelBreed={breeder.kannelBreed}
+        kannelLocation={breeder.kannelLocation}
+        breederImage={breeder.breederImage}
+        breederName={breeder.breederName}
+      />
     ))}
     {/* <TextWrapper>
         <Title>{title}</Title>
