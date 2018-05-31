@@ -206,7 +206,7 @@ export default class Review extends React.Component {
                 <NameWrapper>
                   <Name>
                     <b>
-                      {reviewer.dogname} 보호자님 ({reviewer.breed})
+                      {reviewer.dogname} 보호자 ({reviewer.breed})
                     </b>
                     <br />
                   </Name>
