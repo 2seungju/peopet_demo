@@ -313,7 +313,7 @@ class Index extends Component {
       })
       .catch(err => console.log(err))
     axios
-      .get('http://localhost:3000/api/review')
+      .get(`${fetchServerConfig.ip}/api/review`)
       .then(res => {
         this.setState({
           reviews: res.data
@@ -337,12 +337,12 @@ class Index extends Component {
           <Content>
             <Hero main>
               <Title main size={58} color={white2}>
-                건강한 강아지 분양 중개, 페오펫
+                건강한 강아지와의 특별한 만남, 페오펫
               </Title>
             </Hero>
             <MobileHero>
               <Title size={50} color={white2} mobileSize={30} mobileWidth={90}>
-                건강한 강아지<br />분양 중개, 페오펫
+                건강한 강아지와<br /> 특별한 만남, 페오펫
               </Title>
               {/* <AutoComplete location="/" /> */}
             </MobileHero>
@@ -363,7 +363,7 @@ class Index extends Component {
             </DescriptionWrapper>
             <DescriptionWrapper>
               <Text>
-                2. 태어난 곳과 <b>부모견을직접 확인</b> 가능
+                2. 태어난 곳과 <b>부모견을 직접 확인</b> 가능
               </Text>
             </DescriptionWrapper>
             <DescriptionWrapper>
