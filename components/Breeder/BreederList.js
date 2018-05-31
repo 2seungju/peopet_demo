@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import FlexBox from 'components/FlexBox'
-import MediaQuery from 'react-responsive'
 
 import BreederCardLong from 'components/Breeder/BreederCardLong'
 import flexDirection from 'utils/flex'

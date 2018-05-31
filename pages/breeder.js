@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import MediaQuery from 'react-responsive'
 
 import Layout from 'components/Layout'
 import BreederCardLong from 'components/Breeder/BreederCardLong'
