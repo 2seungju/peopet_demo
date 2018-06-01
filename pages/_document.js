@@ -295,7 +295,6 @@ export default class MyDocument extends Document {
             name="viewport"
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
           />
-
           <meta name="theme-color" content="#004ca4" />
           <meta name="author" content="페오펫(peopet)" />
           <meta name="title" content="페오펫 :: Peopet" />
@@ -307,7 +306,7 @@ export default class MyDocument extends Document {
             name="keyword"
             content="브리더,강아지 브리더,전문견사,건강한 강아지,전문 브리더,강아지 분양,강아지 입양"
           />
-          <meta property="802680329922396" content="802680329922396" />
+          <meta property="fb:app_id" content="802680329922396" />
           <style dangerouslySetInnerHTML={{ __html: resetStyles }} />
           {styleTags}
           <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.min.js" />
