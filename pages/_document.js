@@ -272,29 +272,54 @@ export default class MyDocument extends Document {
           <link rel="icon" type="image/png" href="/static/favicon.png" />
           <link rel="stylesheet" href="/_next/static/style.css" />
           <link rel="manifest" href="/static/manifest.json" />
-          <link href="https://fonts.googleapis.com/css?family=Montserrat|Noto+Sans" rel="stylesheet" />
-          <link href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css" rel="stylesheet" type="text/css" />
-          <link href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-jp.css" rel="stylesheet" type="text/css" />
+          <link
+            href="https://fonts.googleapis.com/css?family=Montserrat|Noto+Sans"
+            rel="stylesheet"
+          />
+          <link
+            href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css"
+            rel="stylesheet"
+            type="text/css"
+          />
+          <link
+            href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-jp.css"
+            rel="stylesheet"
+            type="text/css"
+          />
           <meta charSet="euc-kr" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
           <meta httpEquiv="Content-Type" content="text/html;charset=utf-8" />
           <meta httpEquiv="Content-Script-Type" content="text/javascript" />
           <meta httpEquiv="Content-Style-Type" content="text/css" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+          />
 
           <meta name="theme-color" content="#004ca4" />
           <meta name="author" content="페오펫(peopet)" />
           <meta name="title" content="페오펫 :: Peopet" />
-          <meta name="description" content="강아지 브리더의 체계적인 관리를 받은 건강한 강아지를 페오펫에서 분양받으세요!" />
-          <meta name="keyword" content="브리더,강아지 브리더,전문견사,건강한 강아지,전문 브리더,강아지 분양,강아지 입양" />
+          <meta
+            name="description"
+            content="강아지 브리더의 체계적인 관리를 받은 건강한 강아지를 페오펫에서 분양받으세요!"
+          />
+          <meta
+            name="keyword"
+            content="브리더,강아지 브리더,전문견사,건강한 강아지,전문 브리더,강아지 분양,강아지 입양"
+          />
+          <meat property="fb:app_id" content="630799187279808" />
 
           <style dangerouslySetInnerHTML={{ __html: resetStyles }} />
           {styleTags}
           <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.min.js" />
           {/* <script dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MVS64F9');` }} /> */}
-          {
-            process.env.NODE_ENV === 'production' && <script dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MVS64F9');` }} />
-          }
+          {process.env.NODE_ENV === 'production' && (
+            <script
+              dangerouslySetInnerHTML={{
+                __html: '(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({\'gtm.start\':new Date().getTime(),event:\'gtm.js\'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!=\'dataLayer\'?\'&l=\'+l:\'\';j.async=true;j.src=\'https://www.googletagmanager.com/gtm.js?id=\'+i+dl;f.parentNode.insertBefore(j,f);})(window,document,\'script\',\'dataLayer\',\'GTM-MVS64F9\');'
+              }}
+            />
+          )}
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
@@ -311,7 +336,10 @@ export default class MyDocument extends Document {
               }`
             }}
           />
-          <meta name="google-site-verification" content="u73GRNDDuj4e7nJFLiY8NcERojS4dPScTUBo30Sudho" />
+          <meta
+            name="google-site-verification"
+            content="u73GRNDDuj4e7nJFLiY8NcERojS4dPScTUBo30Sudho"
+          />
         </Head>
         <body>
           <div className="root">

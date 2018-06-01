@@ -63,7 +63,7 @@ const Slider = styled.div`
 `
 
 const ReviewWrapper = styled.div`
-  width: 60%;
+  width: 40%;
   margin: auto;
   display: flex;
   ${media.mobile`
@@ -76,37 +76,55 @@ const DogImg = styled.img`
   height: 20%;
   border-radius: 50%;
   margin: auto 0;
-  box-shadow: 0 ${rem(2)} ${rem(4)} 0 rgba(0, 0, 0, 0.5);
   ${media.mobile`
   width: 50%;
   height: 50%;
+  margin: auto;
   `};
 `
 
 const NameWrapper = styled.div`
   margin-left: 5%;
+  ${media.mobile`
+  text-align: center;
+  `};
 `
 
 const Name = styled.p`
   font-size: ${rem(25)};
+  font-weight: ${p => (p.breeder ? 'bold' : 'normal')};
+
   ${media.mobile`
-  font-size: ${rem(20)};  
+    display: none;
   `};
+`
+
+const MobileName = styled.p`
+  display: none;
+  ${media.mobile`
+    display: inline-block;
+    font-size: ${rem(20)};
+    font-weight: ${p => (p.breed ? 'lighter' : 'bold')};
+    margin: ${p => p.breed && '0'};
+    text-align: ${p => p.breed && 'left'};
+`};
 `
 
 const Content = styled.div`
   margin: auto;
   font-weight: lighter;
   font-size: ${rem(20)};
+  text-align: left;
   ${media.mobile`
-  font-size: ${rem(15)};  
+  font-size: ${rem(15)};
+  
   `};
 `
 
 const ImgWrapper = styled.div`
   position: absolute;
   right: 20%;
-  bottom: 20%;
+  bottom: 45%;
   z-index: 999;
   ${media.mobile`
   right: 5%;
@@ -205,11 +223,14 @@ export default class Review extends React.Component {
                 <DogImg src={reviewer.dogimage} alt="dogImg" />
                 <NameWrapper>
                   <Name>
-                    <b>
-                      {reviewer.dogname} 보호자 ({reviewer.breed})
-                    </b>
+                    {reviewer.dogname} 보호자 - {reviewer.breed}
                     <br />
                   </Name>
+                  <MobileName>
+                    {reviewer.dogname} 보호자
+                    <MobileName breed>{reviewer.breed}</MobileName>
+                    <br />
+                  </MobileName>
                   <Content>
                     {' " '}
                     {reviewer.review}

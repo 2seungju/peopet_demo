@@ -342,7 +342,7 @@ class Index extends Component {
             </Hero>
             <MobileHero>
               <Title size={50} color={white2} mobileSize={30} mobileWidth={90}>
-                건강한 강아지와<br />특별한 만남, 페오펫
+                건강한 강아지와의<br />특별한 만남, 페오펫
               </Title>
               {/* <AutoComplete location="/" /> */}
             </MobileHero>
