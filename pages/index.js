@@ -22,6 +22,29 @@ const MobileMain = '/static/images/M_Main.jpeg'
 const DNA = '/static/images/DNA.png'
 const Vaccine = '/static/images/Vaccine.png'
 const Love = '/static/images/Love.png'
+const healthy = '/static/images/healthy.png'
+const check = '/static/images/check.png'
+const benefit = '/static/images/benefit.png'
+// const Differnt = [
+//   {
+//     id: 1,
+//     name: DNA,
+//     content: '강아지의 유전형질을 고려한 교배로 유전병을 최소화합니다.',
+//     color: 'black'
+//   },
+//   {
+//     id: 2,
+//     name: Vaccine,
+//     content: '체계적인 백신 프로그램으로 위험 바이러스를 예방합니다.',
+//     color: 'black'
+//   },
+//   {
+//     id: 3,
+//     name: Love,
+//     content: '작고 예쁜 강아지보다 건강한 강아지를 우선으로 합니다.',
+//     color: 'black'
+//   }
+// ]
 
 const Hero = styled.div`
   width: 100%;
@@ -352,27 +375,37 @@ class Index extends Component {
           </Content>
         </Wrapper>
         <Wrapper home background={peacockBlue}>
-          <Hero why>
-            <Title main size={58} bottom={100} mobileSize={30} color={white2}>
+          <Content>
+            <Title main size={58} mobileSize={30} color={white2}>
               왜 페오펫인가요?
             </Title>
-            <DescriptionWrapper>
-              <Text>
-                1. 사회화가 잘 된 <b>건강한 강아지</b>를 선별해서 소개합니다.
+            <GridWrapper>
+              <BreederIcon why row={1} src={healthy} />
+              <Text grid row={1} color={white}>
+                사회화가 잘 된 <b>건강한 강아지</b>를 선별해서 소개합니다.
               </Text>
-            </DescriptionWrapper>
-            <DescriptionWrapper>
-              <Text>
-                2. 태어난 곳과 <b>부모견을 직접 확인</b> 가능
+              <BreederIcon why row={2} src={check} />
+              <Text grid row={2} color={white}>
+                태어난 곳과 <b>부모견을 직접 확인</b> 가능
               </Text>
-            </DescriptionWrapper>
-            <DescriptionWrapper>
-              <Text>
-                3. 페오펫 멤버십을 통한 체계적인 <b>사후 관리 및 혜택</b>
+              <BreederIcon why row={3} src={benefit} />
+              <Text grid row={3} color={white}>
+                페오펫 멤버십을 통한 체계적인 <b>사후 관리 및 혜택</b>
               </Text>
-            </DescriptionWrapper>
-          </Hero>
+            </GridWrapper>
+          </Content>
         </Wrapper>
+        {/* <Wrapper background={white2}>
+          <Content>
+            <Title size={58} mobileSize={30} color={black}>
+              입양 가능한 자견
+            </Title>
+            <SubTitle size={25}>
+              페오펫이 엄선한 브리더들의 입양 가능한 자견입니다.<br />
+              모든 자견은 2개월 이후부터 입양 가능하며 입양 예약만 가능합니다.
+            </SubTitle>
+          </Content>
+        </Wrapper> */}
         <Wrapper
           breeder
           background={white}

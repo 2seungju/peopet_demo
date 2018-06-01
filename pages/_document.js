@@ -307,7 +307,7 @@ export default class MyDocument extends Document {
             name="keyword"
             content="브리더,강아지 브리더,전문견사,건강한 강아지,전문 브리더,강아지 분양,강아지 입양"
           />
-          <meta name="fb:app_id" content="630799187279808" />
+          <meta property="fb:app_id" content="630799187279808" />
 
           <style dangerouslySetInnerHTML={{ __html: resetStyles }} />
           {styleTags}
