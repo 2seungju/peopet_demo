@@ -1,10 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { warmGrey2, squash, black, pooBrown, peacockBlue, white, white2, dark } from 'utils/colors'
+import { warmGrey2, black, pooBrown, peacockBlue, white, white2, dark } from 'utils/colors'
 import rem from 'utils/rem'
 import media from 'utils/media'
-// import Slider from './Slider'
 
 const Arrow = '/static/images/Arrow.png'
 
@@ -68,6 +67,7 @@ const ReviewWrapper = styled.div`
   display: flex;
   ${media.mobile`
     flex-direction: column;
+    width: 65%;
   `};
 `
 
@@ -227,7 +227,7 @@ export default class Review extends React.Component {
                     <br />
                   </Name>
                   <MobileName>
-                    {reviewer.dogname} 보호자
+                    {reviewer.dogname} 보호자 <br />
                     <MobileName breed>{reviewer.breed}</MobileName>
                     <br />
                   </MobileName>

@@ -274,8 +274,12 @@ const Text = styled.p`
   grid-column: ${p => p.grid && 2};
   grid-row: ${p => p.row};
   text-align: ${p => p.grid && 'left'};
+  ${media.tablet`
+    font-size: ${p => rem(p.tabletsize)};
+  `};
   ${media.mobile`
     font-size: ${rem(13)};
+    font-size: ${p => rem(p.mobilesize)};
   `};
 `
 
@@ -382,15 +386,26 @@ class Index extends Component {
             <GridWrapper>
               <BreederIcon why row={1} src={healthy} />
               <Text grid row={1} color={white}>
-                사회화가 잘 된 <b>건강한 강아지</b>를 선별해서 소개합니다.
+                사회화가 잘 된{' '}
+                <b>
+                  <b>건강한 강아지</b>
+                </b>를 소개
               </Text>
               <BreederIcon why row={2} src={check} />
               <Text grid row={2} color={white}>
-                태어난 곳과 <b>부모견을 직접 확인</b> 가능
+                <b>
+                  <b>태어난 곳</b>
+                </b>과{' '}
+                <b>
+                  <b>부모견</b>
+                </b>을 직접 확인 가능
               </Text>
               <BreederIcon why row={3} src={benefit} />
               <Text grid row={3} color={white}>
-                페오펫 멤버십을 통한 체계적인 <b>사후 관리 및 혜택</b>
+                페오펫 멤버십의{' '}
+                <b>
+                  <b>사후 관리 및 혜택</b>
+                </b>
               </Text>
             </GridWrapper>
           </Content>
@@ -436,15 +451,15 @@ class Index extends Component {
             </Title>
             <GridWrapper>
               <BreederIcon row={1} src={DNA} />
-              <Text grid row={1} color={black}>
+              <Text grid row={1} color={black} tabletsize={20}>
                 강아지의 유전형질을 고려한 교배로 유전병을 최소화합니다.
               </Text>
               <BreederIcon row={2} src={Vaccine} />
-              <Text grid row={2} color={black}>
+              <Text grid row={2} color={black} tabletsize={20}>
                 체계적인 백신 프로그램으로 위험 바이러스를 예방합니다.
               </Text>
               <BreederIcon row={3} src={Love} />
-              <Text grid row={3} color={black}>
+              <Text grid row={3} color={black} tabletsize={20}>
                 작고 예쁜 강아지보다 건강한 강아지를 우선으로 합니다.
               </Text>
             </GridWrapper>

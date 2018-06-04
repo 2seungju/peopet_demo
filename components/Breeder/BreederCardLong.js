@@ -89,6 +89,7 @@ const BreederImage = styled.div`
   background-size: 100% 100%;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   margin: auto 4%;
+  margin-top: 3.3%;
   display: ${p => p.mobile && 'none'};
 
   ${media.mobile`
@@ -164,7 +165,7 @@ const BreederCardLong = ({
             </Title>
             {/* <Title><b>모색</b> : {kannelColor}</Title> */}
           </TitleWrapper>
-          <Bar margin={`${rem(20)} auto`} mobilemargin={`${rem(5)} auto`} />
+          <Bar margin="none" mobilemargin={`${rem(5)} auto`} />
           <BreederWrapper>
             <BreederImage mobile img={breederImage && breederImage} />
             <Breeder>
