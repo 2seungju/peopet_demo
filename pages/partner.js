@@ -303,23 +303,3 @@ export default class Blog extends Component {
     )
   }
 }
-
-
-  // width: 60%;
-  // width: ${p => p.size === 0 && rem(130)};
-  // width: ${p => p.size === 1 && rem(90)};
-  // width: ${p => p.size === 2 && rem(70)};
-  // width: ${p => p.size === 3 && rem(130)};
-  // width: ${p => p.size === 4 && rem(80)};
-  // width: ${p => p.size === 5 && rem(130)};
-  // width: ${p => p.size === 6 && rem(130)};
-  // width: ${p => p.size === 7 && rem(70)};
-  // width: ${p => p.size === 8 && rem(130)};
-  // width: ${p => p.size === 9 && rem(70)};
-  // width: ${p => p.size === 10 && rem(70)};
-  // width: ${p => p.size === 11 && rem(70)};
-  // width: ${p => p.size === 12 && rem(80)};
-  // width: ${p => p.size === 13 && rem(110)};
-  // width: ${p => p.size === 14 && rem(110)};
-  // height: ${rem(40)};
-    // margin-top: ${rem(28)};

@@ -4,6 +4,7 @@ const DogController = require('./controllers/dog')
 const BreederController = require('./controllers/breeder')
 const AdminController = require('./controllers/admin')
 const ReviewController = require('./controllers/review')
+const PuppyController = require('./controllers/puppy')
 
 module.exports = function (app) {
   const apiRoutes = express.Router()
@@ -11,6 +12,7 @@ module.exports = function (app) {
   const breederRoutes = express.Router()
   const adminRoutes = express.Router()
   const reviewRoutes = express.Router()
+  const puppyRoutes = express.Router()
 
   /*------------------------------------------------------------------------------
     PRODUCT ROUTE
@@ -43,6 +45,12 @@ module.exports = function (app) {
   reviewRoutes.get('/:id', ReviewController.oneReviewGet)
   reviewRoutes.post('/', ReviewController.saveReview)
   reviewRoutes.put('/id', ReviewController.saveOneReview)
+
+  apiRoutes.use('/puppy', puppyRoutes)
+  puppyRoutes.get('/', PuppyController.allPuppyGet)
+  puppyRoutes.get('/:id', PuppyController.onePuppyGet)
+  puppyRoutes.post('/', PuppyController.savePuppy)
+  puppyRoutes.put('/id', PuppyController.saveOnePuppy)
 
   app.use('/api', apiRoutes)
 }

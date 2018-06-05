@@ -12,6 +12,7 @@ import media from 'utils/media'
 import placeholder from 'utils/placeholder'
 import { RightDropIcon, HomePartnerRightIcon } from 'components/Icons'
 import Review from 'components/Review'
+import AdoptionCard from 'components/AdoptionCard'
 
 // import HomeHeroImg from '../static/home-hero.jpeg'
 
@@ -327,7 +328,8 @@ const Img = styled.img`
 class Index extends Component {
   state = {
     breederData: [],
-    reviews: []
+    reviews: [],
+    puppies: []
   }
 
   componentDidMount() {
@@ -347,16 +349,32 @@ class Index extends Component {
         })
       })
       .catch(err => console.log(err))
+    // axios
+    // .get(`${fetchServerConfig.ip}/api/review`)
+    // .then(res => {
+    //   this.setState({
+    //     reviews: res.data
+    //   })
+    // })
+    // .catch(err => console.log(err))
+    axios
+      .get('http://localhost:3000/api/puppy')
+      .then(res => {
+        this.setState({
+          puppies: res.data
+        })
+      })
+      .catch(err => console.log(err))
   }
 
   render() {
-    const { breederData, reviews } = this.state
+    const { breederData, reviews, puppies } = this.state
     const bestBreederList = breederData.filter(breeder => breeder.label === 'best')
     // 5명 신규브리더
     // const newBreederList = breederData.filter(breeder => breeder.label === 'new')
     // 3명 신규브리더
     // const newBreeders = newBreederList.slice(2)
-    console.log(reviews)
+    console.log(puppies)
     return (
       <Layout location="/">
         <Wrapper home mobileHeight={650}>
@@ -419,6 +437,7 @@ class Index extends Component {
               페오펫이 엄선한 브리더들의 입양 가능한 자견입니다.<br />
               모든 자견은 2개월 이후부터 입양 가능하며 입양 예약만 가능합니다.
             </SubTitle>
+            <AdoptionCard puppies={puppies} />
           </Content>
         </Wrapper> */}
         <Wrapper
