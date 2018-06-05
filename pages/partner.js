@@ -217,8 +217,8 @@ const Link = styled.a`
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
   flex-flow: row wrap;
+  flex-direction: column;
   justify-content: flex-start;
 `
 
@@ -227,7 +227,6 @@ const partners = [
   { id: 1, name: '앙꼬네 미용실', contents: '펫 미용', benefit: '첫 방문 시 10% 할인', url: 'https://ancoshop.modoo.at/', logo: '/static/images/logo/membership_anggologo.png' },
   { id: 2, name: '베이컨 박스', contents: '정기선물 배송서비스', benefit: '첫 구매 시 30% 할인', url: 'https://www.baconbox.co/', logo: '/static/images/logo/membership_baconboxlogo2.png' },
   { id: 3, name: '코르누보', contents: '사진 촬용 및 용품', benefit: '스튜디오 촬영, 목줄 하네스 30% 할인', url: 'http://cornouveau.com/', logo: '/static/images/logo/membership_cornouveaulogo.png' },
-  { id: 4, name: '닥터 케이', contents: '건국대학교 수의대 사료', benefit: '구매 시 30% 할인', url: 'https://goo.gl/Fic9Dg', logo: '/static/images/logo/membership_doctorklogo2.png' },
   { id: 5, name: '도그 메이트', contents: '펫시팅', benefit: '첫 이용 시 15% 할인', url: 'https://www.dogmate.co.kr/', logo: '/static/images/logo/membership_dogmatelogo.png' },
   { id: 6, name: '21그램', contents: '반려동물 장례 서비스', benefit: '장례 이용시 수의 제공', url: 'http://21gram.co.kr/', logo: '/static/images/logo/membership_21gramlogo.png' },
   { id: 7, name: '핏펫', contents: '반려동물 Lifeware', benefit: '첫 구매 시 15% 할인', url: 'http://fitpet.co.kr/', logo: '/static/images/logo/membership_fitpetlogo3.png' },
@@ -241,7 +240,6 @@ const partners = [
 ]
 
 export default class Blog extends Component {
-
   static getInitialProps({ query: { id } }) {
     return { id }
   }
