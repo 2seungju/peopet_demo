@@ -110,7 +110,7 @@ const Content = styled.div`
   margin: auto;
   position: relative;
   text-align: center;
-  width: 65%;
+  width: 50%;
 
   height: 100%;
   display: flex;
@@ -299,7 +299,7 @@ const Text = styled.div`
     font-size: ${p => rem(p.tabletsize)};
   `};
   ${media.mobile`
-  min-width: 0;  
+    min-width: 0;  
     font-size: ${rem(13)};
     font-size: ${p => rem(p.mobilesize)};
   `};
@@ -437,22 +437,22 @@ class Index extends Component {
 
               <TextWrapper>
                 <Text grid row={1} color={white}>
-                  사회화가 잘 된{' '}
+                  사회화가 잘 된&nbsp;
                   <b>
-                    <b>건강한 강아지</b>
+                    <b> 건강한 강아지</b>
                   </b>를 소개
                 </Text>
                 <Text grid row={2} color={white}>
                   <b>
                     <b>태어난 곳</b>
-                  </b>과{' '}
+                  </b>과&nbsp;
                   <b>
                     <b>부모견</b>
                   </b>을 직접 확인 가능
                 </Text>
 
                 <Text grid row={3} color={white}>
-                  페오펫 멤버십의{' '}
+                  페오펫 멤버십의&nbsp;
                   <b>
                     <b>사후 관리 및 혜택</b>
                   </b>
