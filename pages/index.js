@@ -80,13 +80,13 @@ const Wrapper = styled.div`
   position: relative;
   flex-direction: column;
   text-align: center;
-  height: ${p => (p.breeder || p.support ? '100%' : '100vh')};
+  height: ${p => (p.breeder || p.support || p.why ? '100%' : '100vh')};
   background: ${p => p.background};
   padding-top: ${p => rem(p.padding)};
   padding-top: ${p => p.Listpadding};
   padding-bottom: ${p => rem(p.padding)};
   padding-bottom: ${p => p.Listpadding};
-
+  min-height: ${p => !p.support && rem(900)};
   ${p =>
     p.home &&
     `:before {
@@ -102,24 +102,29 @@ const Wrapper = styled.div`
     height: ${p => p.mobileHeight || rem(p.mobileHeight)};
     padding-top: ${p => p.mobilePadding && rem(p.mobilePadding)};
     padding-bottom: ${p => p.mobilePadding && rem(p.mobilePadding)};
+    min-height: ${p => !p.support && rem(600)};
+
   `};
 `
 const Content = styled.div`
   margin: auto;
   position: relative;
   text-align: center;
-  width: ${p => (p.content === 'partner' ? '60%' : rem(890))};
+  width: 65%;
 
   height: 100%;
   display: flex;
   flex-direction: ${p => (p.content === 'support' ? 'row' : 'column')};
   justify-content: center;
+  ${media.wide`
+    width: 75%;
+  `} 
+  ${media.tablet`
+    width: 85%;
+  `} 
   ${media.mobile`
     width: ${p => (p.content === 'partner' ? '90%' : '90%')};
     flex-direction: column;
-  `};
-  ${media.pc`
-    width: 92%;
   `};
 `
 
@@ -167,8 +172,8 @@ const MainImgWrapper = styled.div`
   background-image: url(${Main});
   background-size: cover;
   content: '';
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   filter: brightness(80%);
 
   ${media.wide`
@@ -215,15 +220,42 @@ const SupportLink = styled.a`
     color: ${white2};
   }
 `
-const GridWrapper = styled.div`
-  width: 100%;
-  display: grid;
+
+const DescriptionWrapper = styled.div`
+  display: flex;
   font-weight: lighter;
-  margin-top: ${rem(100)};
   text-align: center;
+  justify-content: space-around;
+  width: ${p => (p.why ? '70%' : '95%')};
+  margin: auto;
+  margin-top: 10%;
+  ${media.wide`
+  width: ${p => (p.why ? '80%' : '100%')};
+
+  `}
+  ${media.tablet`
+  width: ${p => (p.why ? '90%' : '95%')};
+
+  `}
+  ${media.mobile`
+    margin: 0;
+  width: 99%;
+  `};
+`
+
+const IconWrapperWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-weight: lighter;
+  text-align: center;
+  margin: auto 0;
   ${media.mobile`
     margin: 0;
   `};
+`
+
+const IconWrapper = styled.div`
+  margin: 15% 0;
 `
 
 const BreederWrapper = styled.div`
@@ -231,54 +263,43 @@ const BreederWrapper = styled.div`
   margin: 0 auto;
 `
 
-const DescriptionWrapper = styled.div`
+const Description = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: ${rem(10)};
-  text-align: center;
-  position: relative;
-  height: ${rem(60)};
+`
+
+const Icon = styled.img`
+  height: ${rem(80)};
+  width: ${p => p.DNA && '60%'};
+  margin: auto;
   ${media.mobile`
-    height: ${rem(40)};
+  height: ${rem(60)};
+  width: ${p => p.DNA && '60%'};
+    `};
+`
+
+const TextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  ${media.tablet`
+    margin-left: 5%;
   `};
 `
 
-// const Number = styled.p`
-//   font-size: ${rem(45)};
-//   color: ${white2};
-//   padding: 0;
-//   margin: 0;
-//   font-family: PT Sans;
-//   ${''} ${''}
-//   left: 10%;
-//   ${''} ${media.mobile`
-//     font-size: ${rem(25)};
-//     margin-top: ${rem(10)};
-//   `};
-// `
-
-const BreederIcon = styled.img`
-  height: 100%;
-  grid-column: 1;
-  grid-row: ${p => p.row};
-  margin: 0 auto;
-  padding: 10px;
-`
-
-const Text = styled.p`
+const Text = styled.div`
+  height: ${rem(80)};
   font-size: ${rem(24)};
   color: ${p => (p.color ? p.color : white2)};
-  margin-top: ${rem(20)};
-  margin-left: ${p => p.grid && '5%'};
-  font-weight: ${p => (p.grid ? 300 : 'lighter')};
-  grid-column: ${p => p.grid && 2};
-  grid-row: ${p => p.row};
   text-align: ${p => p.grid && 'left'};
+  display: flex;
+  align-items: center;
+  min-width: ${rem(353)};
   ${media.tablet`
     font-size: ${p => rem(p.tabletsize)};
   `};
   ${media.mobile`
+  min-width: 0;  
     font-size: ${rem(13)};
     font-size: ${p => rem(p.mobilesize)};
   `};
@@ -366,7 +387,7 @@ class Index extends Component {
       })
       .catch(err => console.log(err))
   }
-
+  // TODO: 사파리, 익스 11 그리드가 제대로 적용 안되는듯, 익스는 후기 컴포넌트도 말썽
   render() {
     const { breederData, reviews, puppies } = this.state
     const bestBreederList = breederData.filter(breeder => breeder.label === 'best')
@@ -396,36 +417,48 @@ class Index extends Component {
             </BeatWrapper>
           </Content>
         </Wrapper>
-        <Wrapper home background={peacockBlue}>
+        <Wrapper why background={peacockBlue}>
           <Content>
             <Title main size={58} mobileSize={30} color={white2}>
               왜 페오펫인가요?
             </Title>
-            <GridWrapper>
-              <BreederIcon why row={1} src={healthy} />
-              <Text grid row={1} color={white}>
-                사회화가 잘 된{' '}
-                <b>
-                  <b>건강한 강아지</b>
-                </b>를 소개
-              </Text>
-              <BreederIcon why row={2} src={check} />
-              <Text grid row={2} color={white}>
-                <b>
-                  <b>태어난 곳</b>
-                </b>과{' '}
-                <b>
-                  <b>부모견</b>
-                </b>을 직접 확인 가능
-              </Text>
-              <BreederIcon why row={3} src={benefit} />
-              <Text grid row={3} color={white}>
-                페오펫 멤버십의{' '}
-                <b>
-                  <b>사후 관리 및 혜택</b>
-                </b>
-              </Text>
-            </GridWrapper>
+            <DescriptionWrapper why>
+              <IconWrapperWrapper>
+                <IconWrapper width>
+                  <Icon src={healthy} />
+                </IconWrapper>
+                <IconWrapper>
+                  <Icon row={2} src={check} />
+                </IconWrapper>
+                <IconWrapper>
+                  <Icon row={3} src={benefit} />
+                </IconWrapper>
+              </IconWrapperWrapper>
+
+              <TextWrapper>
+                <Text grid row={1} color={white}>
+                  사회화가 잘 된{' '}
+                  <b>
+                    <b>건강한 강아지</b>
+                  </b>를 소개
+                </Text>
+                <Text grid row={2} color={white}>
+                  <b>
+                    <b>태어난 곳</b>
+                  </b>과{' '}
+                  <b>
+                    <b>부모견</b>
+                  </b>을 직접 확인 가능
+                </Text>
+
+                <Text grid row={3} color={white}>
+                  페오펫 멤버십의{' '}
+                  <b>
+                    <b>사후 관리 및 혜택</b>
+                  </b>
+                </Text>
+              </TextWrapper>
+            </DescriptionWrapper>
           </Content>
         </Wrapper>
         {/* <Wrapper background={white2}>
@@ -468,20 +501,32 @@ class Index extends Component {
             <Title diffrent size={50} color={black} mobileSize={30} mobileWidth={75}>
               <b>브리더는 이런 점이 다릅니다.</b>
             </Title>
-            <GridWrapper>
-              <BreederIcon row={1} src={DNA} />
-              <Text grid row={1} color={black} tabletsize={20}>
-                강아지의 유전형질을 고려한 교배로 유전병을 최소화합니다.
-              </Text>
-              <BreederIcon row={2} src={Vaccine} />
-              <Text grid row={2} color={black} tabletsize={20}>
-                체계적인 백신 프로그램으로 위험 바이러스를 예방합니다.
-              </Text>
-              <BreederIcon row={3} src={Love} />
-              <Text grid row={3} color={black} tabletsize={20}>
-                작고 예쁜 강아지보다 건강한 강아지를 우선으로 합니다.
-              </Text>
-            </GridWrapper>
+            <DescriptionWrapper>
+              <IconWrapperWrapper>
+                <IconWrapper width>
+                  <Icon DNA src={DNA} />
+                </IconWrapper>
+                <IconWrapper>
+                  <Icon row={2} src={Vaccine} />
+                </IconWrapper>
+                <IconWrapper>
+                  <Icon row={3} src={Love} />
+                </IconWrapper>
+              </IconWrapperWrapper>
+
+              <TextWrapper>
+                <Text grid row={1} color={black} tabletsize={20}>
+                  강아지의 유전형질을 고려한 교배로 유전병을 최소화합니다.
+                </Text>
+                <Text grid row={2} color={black} tabletsize={20}>
+                  체계적인 백신 프로그램으로 위험 바이러스를 예방합니다.
+                </Text>
+
+                <Text grid row={3} color={black} tabletsize={20}>
+                  작고 예쁜 강아지보다 건강한 강아지를 우선으로 합니다.
+                </Text>
+              </TextWrapper>
+            </DescriptionWrapper>
           </Content>
         </Wrapper>
         <Review reviews={reviews} />
