@@ -48,13 +48,13 @@ const Nav = ({
   handleClickSuggestion
 }) => (
   <Wrapper>
-    <SideNav
+    {/* <SideNav
       isSideMenuFolded={isSideMenuFolded}
       onSideMenuToggle={onSideMenuToggle}
       location={location}
       onChangeBreeder={onChangeBreeder}
       activeDogId={activeDogId}
-    />
+    /> */}
     <Navbar
       onDropMenuToggle={onDropMenuToggle}
       isDropMenuFolded={isDropMenuFolded}

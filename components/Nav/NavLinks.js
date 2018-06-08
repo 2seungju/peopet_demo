@@ -6,6 +6,7 @@ import { navbarHeight } from 'utils/sizes'
 // import NavSeparator from './NavSeparator'
 import { peacockBlue, black } from 'utils/colors'
 import Link from '../Link'
+// import AutoComplete from 'components/AutoComplete'
 
 const Wrapper = styled.nav`
   display: flex;
@@ -14,14 +15,23 @@ const Wrapper = styled.nav`
   ${''} ${p =>
   p.dropbar
     ? css`
+          margin-top: 20%;
           flex-direction: column;
-          align-items: center;
           padding-top: 30px;
           padding-left: 30px;
           padding-bottom: 30px;
           width: 60%;
-          opacity: 1;
-          ${''};
+          animation-duration: 1s;
+          animation-name: fade;
+
+          @keyframes fade {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
+          }
         `
     : css`
           ${''};
@@ -42,6 +52,7 @@ const NavLink = styled(Link)`
   padding-right: ${rem(20)};
   font-weight: 500;
   opacity: 0.8;
+
   &:hover,
   &:focus {
     color: ${peacockBlue};
@@ -82,6 +93,7 @@ const NavSeparator = styled.span`
 
 const NavLinks = ({ dropbar }) => (
   <Wrapper dropbar={dropbar}>
+    {/* <AutoComplete /> */}
     <NavLink dropbar={dropbar} href="/about">
       페오펫
     </NavLink>

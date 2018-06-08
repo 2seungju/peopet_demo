@@ -49,6 +49,10 @@ const IconLink = styled.a`
   align-items: center;
   margin: ${rem(5)};
   position: relative;
+
+  ${media.tablet`
+    margin: auto;
+  `};
 `
 
 const NavWrapper = styled.div`
@@ -65,6 +69,9 @@ const DropButton = styled(Button).attrs({
 })`
   display: none;
   border-radius: 0;
+  position: absolute;
+  top: 30%;
+  left: 0;
   ${media.tablet`
     display: flex;
   `};
@@ -90,8 +97,8 @@ const Navbar = ({
 }) => (
   <Wrapper isScrolled={isScrolled} location={location}>
     <SubWrapper>
-      <DropButton onClick={onSideMenuToggle}>
-        {isSideMenuFolded ? <CloseIcon /> : <LeftDropIcon />}
+      <DropButton onClick={onDropMenuToggle}>
+        {isDropMenuFolded ? <CloseIcon /> : <LeftDropIcon />}
       </DropButton>
       <IconLink href="/">
         <HeadLogo />
@@ -113,9 +120,9 @@ const Navbar = ({
           <YellowIcon />
         </IconLink>
       </IconWrapper>
-      <DropButton onClick={onDropMenuToggle}>
+      {/* <DropButton onClick={onDropMenuToggle}>
         {isDropMenuFolded ? <CloseIcon /> : <RightDropIcon />}
-      </DropButton>
+      </DropButton> */}
     </SubWrapper>
   </Wrapper>
 )

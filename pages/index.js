@@ -269,11 +269,10 @@ const Description = styled.div`
 
 const Icon = styled.img`
   height: ${rem(80)};
-  width: ${p => p.DNA && '60%'};
+  width: ${p => p.DNA && '40%'};
   margin: auto;
   ${media.mobile`
   height: ${rem(60)};
-  width: ${p => p.DNA && '60%'};
     `};
 `
 
