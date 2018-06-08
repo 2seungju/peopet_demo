@@ -21,7 +21,7 @@ const Wrapper = styled.nav`
           padding-left: 30px;
           padding-bottom: 30px;
           width: 60%;
-          animation-duration: 1s;
+          animation-duration: 2s;
           animation-name: fade;
 
           @keyframes fade {
