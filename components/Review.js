@@ -90,7 +90,7 @@ const NameWrapper = styled.div`
   `};
 `
 
-const Name = styled.p`
+const Name = styled.div`
   font-size: ${rem(25)};
   font-weight: ${p => (p.breeder ? 'bold' : 'normal')};
 
@@ -99,7 +99,7 @@ const Name = styled.p`
   `};
 `
 
-const MobileName = styled.p`
+const MobileName = styled.div`
   display: none;
   ${media.mobile`
     display: inline-block;
