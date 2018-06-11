@@ -392,9 +392,8 @@ class Index extends Component {
     const bestBreederList = breederData.filter(breeder => breeder.label === 'best')
     // 5명 신규브리더
     // const newBreederList = breederData.filter(breeder => breeder.label === 'new')
-    // 3명 신규브리더
-    // const newBreeders = newBreederList.slice(2)
-    console.log(puppies)
+    const Puppy = puppies.slice(0, 6)
+    console.log(Puppy)
     return (
       <Layout location="/">
         <Wrapper home mobileHeight={650}>
@@ -423,7 +422,7 @@ class Index extends Component {
             </Title>
             <DescriptionWrapper why>
               <IconWrapperWrapper>
-                <IconWrapper width>
+                <IconWrapper>
                   <Icon src={healthy} />
                 </IconWrapper>
                 <IconWrapper>
@@ -451,16 +450,15 @@ class Index extends Component {
                 </Text>
 
                 <Text grid row={3} color={white}>
-                  페오펫 멤버십의&nbsp;
                   <b>
-                    <b>사후 관리 및 혜택</b>
-                  </b>
+                    <b>페오펫 멤버십</b>
+                  </b>의&nbsp;사후 관리 및 혜택
                 </Text>
               </TextWrapper>
             </DescriptionWrapper>
           </Content>
         </Wrapper>
-        {/* <Wrapper background={white2}>
+        <Wrapper breeder background={white2}>
           <Content>
             <Title size={58} mobileSize={30} color={black}>
               입양 가능한 자견
@@ -469,9 +467,9 @@ class Index extends Component {
               페오펫이 엄선한 브리더들의 입양 가능한 자견입니다.<br />
               모든 자견은 2개월 이후부터 입양 가능하며 입양 예약만 가능합니다.
             </SubTitle>
-            <AdoptionCard puppies={puppies} />
+            <AdoptionCard puppies={Puppy} />
           </Content>
-        </Wrapper> */}
+        </Wrapper>
         <Wrapper
           breeder
           background={white}
