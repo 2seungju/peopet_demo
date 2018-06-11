@@ -172,7 +172,7 @@ const BreederCardLong = ({
               <b>{breederName} 브리더</b> <br />
             </Breeder>
             <Breeder hello>
-              안녕하세요 {kannelBreed}을(를) 브리딩 하는 {breederName} 브리더 입니다.
+              안녕하세요 {kannelBreed}를(을) 브리딩 하는 {breederName} 브리더 입니다.
             </Breeder>
           </BreederWrapper>
         </DetailWrapper>

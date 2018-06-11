@@ -65,6 +65,10 @@ const ReviewWrapper = styled.div`
   width: 40%;
   margin: auto;
   display: flex;
+  ${media.pc`
+    flex-direction: column;
+    width: 50%;
+  `};
   ${media.mobile`
     flex-direction: column;
     width: 65%;
@@ -76,6 +80,11 @@ const DogImg = styled.img`
   height: 20%;
   border-radius: 50%;
   margin: auto 0;
+  ${media.pc`
+  width: 30%;
+  height: 30%;
+  margin: auto;
+  `};
   ${media.mobile`
   width: 50%;
   height: 50%;
@@ -123,11 +132,15 @@ const Content = styled.div`
 
 const ImgWrapper = styled.div`
   position: absolute;
-  right: 20%;
+  ${p => (p.right ? 'right:20%' : 'left:20%')};
+  transform: ${p => p.left && 'rotate(180deg)'};
   bottom: 45%;
   z-index: 999;
+  ${media.pc`
+  ${p => (p.right ? 'right:10%' : 'left:10%')};
+  `};
   ${media.mobile`
-  right: 5%;
+  ${p => (p.right ? 'right:5%' : 'left:5%')};
   bottom: 40%;
   `};
   :hover {
@@ -135,6 +148,7 @@ const ImgWrapper = styled.div`
     opacity: 0.5;
   }
 `
+
 const ArrowImg = styled.img`
   width: ${rem(41)};
   ${media.mobile`
@@ -213,7 +227,10 @@ export default class Review extends React.Component {
     `
     return (
       <Wrapper background={dark}>
-        <ImgWrapper onClick={this.goToNextSlide}>
+        <ImgWrapper left onClick={this.goToPreviousSlide}>
+          <ArrowImg src={Arrow} alt="Arrow" />
+        </ImgWrapper>
+        <ImgWrapper right onClick={this.goToNextSlide}>
           <ArrowImg src={Arrow} alt="Arrow" />
         </ImgWrapper>
         {reviews.map((reviewer, i) => (

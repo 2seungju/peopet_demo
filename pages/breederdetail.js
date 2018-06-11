@@ -19,7 +19,7 @@ import ImageSlider from 'components/ImageSlider'
 const splitText = text => text.split('<br/>').map(p => p)
 
 const Wrapper = styled.div`
-  padding: ${rem(200)} 0;
+  padding: ${rem(150)} 0;
   margin: 0 auto;
   text-align: center;
   background: ${white};
@@ -160,16 +160,11 @@ const SupportDescription = styled.p`
   opacity: ${p => p.down && 0.5};
   width: 80%;
   margin: 0 auto;
-  display: ${p => p.pc && 'none'};
   ${media.wide`
     font-size: ${p => (p.down ? rem(10) : rem(15))};
   `};
-  ${media.pc`
-    display: ${p => p.down && 'none'};
+  ${media.tablet`
     margin-bottom: 4%;
-  display: ${p => p.pc && 'inline-block'};
-  display: ${p => p.wide && 'inline-block'};    
-      
   `};
 `
 
@@ -296,7 +291,7 @@ export default class Breederdetail extends Component {
                   <NameWrapper>
                     <Name>{breederName} 브리더</Name>
                     <Introduce>
-                      안녕하세요. {kannelBreed}을(를) 브리딩하는 브리더 {breederName} 입니다.
+                      안녕하세요. {kannelBreed}를(을) 브리딩하는 브리더 {breederName} 입니다.
                     </Introduce>
                   </NameWrapper>
                 </BreederImageNameWrapper>
@@ -304,9 +299,6 @@ export default class Breederdetail extends Component {
                 <SupportWrapper>
                   <SupportDescription up wide>
                     페오펫은 윤리적인 <br /> 브리더들을 엄선하여 함께합니다.
-                  </SupportDescription>
-                  <SupportDescription up pc>
-                    페오펫은 국내의 윤리적인 브리더들을 엄선하여 함께합니다.
                   </SupportDescription>
 
                   <Support href="/support">문의하기</Support>

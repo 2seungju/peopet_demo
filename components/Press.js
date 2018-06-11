@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 
 const Title = styled.p`
   font-size: ${rem(50)};
-
+  font-weight: bold;
   ${media.mobile`
     font-size: ${rem(28)};
   `};

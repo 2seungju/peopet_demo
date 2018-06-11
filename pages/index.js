@@ -4,6 +4,7 @@ import axios from 'axios'
 import Layout from 'components/Layout'
 import Link from 'components/Link'
 import BreederList from 'components/Breeder/BreederList'
+import AdoptionCardList from 'components/Adoption/AdoptionCardList'
 import Review from 'components/Review'
 
 import { fetchServerConfig } from 'config/config'
@@ -522,9 +523,7 @@ class Index extends Component {
             </DescriptionWrapper>
           </Content>
         </Wrapper>
-        <Wrapper>
-          <Review reviews={reviews} />
-        </Wrapper>
+        <Review reviews={reviews} />
         <Wrapper support padding={10} background={white2}>
           <Content content="support" mobileFullWidth>
             <SupportLink a href="https://pf.kakao.com/_pUyTd">
