@@ -4,15 +4,17 @@ import axios from 'axios'
 import Layout from 'components/Layout'
 import Link from 'components/Link'
 import BreederList from 'components/Breeder/BreederList'
+import AdoptionCardList from 'components/Adoption/AdoptionCardList'
+import Review from 'components/Review'
+
 import { fetchServerConfig } from 'config/config'
+
 import { warmGrey2, squash, black, pooBrown, peacockBlue, white, white2, dark } from 'utils/colors'
 import rem from 'utils/rem'
 import Bar from 'components/Bar'
 import media from 'utils/media'
 import placeholder from 'utils/placeholder'
 import { RightDropIcon, HomePartnerRightIcon } from 'components/Icons'
-import Review from 'components/Review'
-import AdoptionCard from 'components/AdoptionCard'
 
 // import HomeHeroImg from '../static/home-hero.jpeg'
 
@@ -110,7 +112,7 @@ const Content = styled.div`
   margin: auto;
   position: relative;
   text-align: center;
-  width: 50%;
+  width: ${p => (p.adoption ? rem(900) : '50%')};
 
   height: 100%;
   display: flex;
@@ -294,8 +296,12 @@ const Text = styled.div`
   display: flex;
   align-items: center;
   min-width: ${rem(353)};
-  ${media.tablet`
+  ${media.pc`
     font-size: ${p => rem(p.tabletsize)};
+  `};
+  ${media.tablet`
+    min-width: 0;  
+    font-size: ${rem(17)};
   `};
   ${media.mobile`
     min-width: 0;  
@@ -389,11 +395,13 @@ class Index extends Component {
   // TODO: 사파리, 익스 11 그리드가 제대로 적용 안되는듯, 익스는 후기 컴포넌트도 말썽
   render() {
     const { breederData, reviews, puppies } = this.state
-    const bestBreederList = breederData.filter(breeder => breeder.label === 'best')
+    const sortingField = 'rank'
+    const BreederRank = breederData.sort((a, b) => a[sortingField] - b[sortingField])
     // 5명 신규브리더
     // const newBreederList = breederData.filter(breeder => breeder.label === 'new')
+    const Dog = BreederRank.slice(0, 3)
     const Puppy = puppies.slice(0, 6)
-    console.log(Puppy)
+
     return (
       <Layout location="/">
         <Wrapper home mobileHeight={650}>
@@ -458,8 +466,8 @@ class Index extends Component {
             </DescriptionWrapper>
           </Content>
         </Wrapper>
-        <Wrapper breeder background={white2}>
-          <Content>
+        {/* <Wrapper breeder Listpadding="10%" background={white2}>
+          <Content adoption>
             <Title size={58} mobileSize={30} color={black}>
               입양 가능한 자견
             </Title>
@@ -467,9 +475,12 @@ class Index extends Component {
               페오펫이 엄선한 브리더들의 입양 가능한 자견입니다.<br />
               모든 자견은 2개월 이후부터 입양 가능하며 입양 예약만 가능합니다.
             </SubTitle>
-            <AdoptionCard puppies={Puppy} />
+            <AdoptionCardList puppies={Puppy} />
+            <BreederLink color={white2} href="/breeder">
+              더 보기 +
+            </BreederLink>
           </Content>
-        </Wrapper>
+        </Wrapper> */}
         <Wrapper
           breeder
           background={white}
@@ -477,7 +488,7 @@ class Index extends Component {
           mobilePadding={50}
           mobileHeight="100%"
         >
-          <Content content="breeder">
+          <Content>
             <Title size={50} color={peacockBlue} mobileSize={30}>
               이 달의 <b>인기 브리더</b>
             </Title>
@@ -485,7 +496,7 @@ class Index extends Component {
               전문 지식을 가지고 윤리적으로 강아지를 번식하는 우수한 브리더를 소개합니다.
             </SubTitle>
             <BreederWrapper>
-              <BreederList breederData={bestBreederList} location="/" position="vertical" />
+              <BreederList breederData={Dog} location="/" position="vertical" />
             </BreederWrapper>
 
             <BreederLink color={white2} href="/breeder">
@@ -512,21 +523,23 @@ class Index extends Component {
               </IconWrapperWrapper>
 
               <TextWrapper>
-                <Text grid row={1} color={black} tabletsize={20}>
+                <Text grid row={1} color={black} pctsize={20}>
                   강아지의 유전형질을 고려한 교배로 유전병을 최소화합니다.
                 </Text>
-                <Text grid row={2} color={black} tabletsize={20}>
+                <Text grid row={2} color={black} pcsize={20}>
                   체계적인 백신 프로그램으로 위험 바이러스를 예방합니다.
                 </Text>
 
-                <Text grid row={3} color={black} tabletsize={20}>
+                <Text grid row={3} color={black} pcsize={20}>
                   작고 예쁜 강아지보다 건강한 강아지를 우선으로 합니다.
                 </Text>
               </TextWrapper>
             </DescriptionWrapper>
           </Content>
         </Wrapper>
-        <Review reviews={reviews} />
+        <Wrapper>
+          <Review reviews={reviews} />
+        </Wrapper>
         <Wrapper support padding={10} background={white2}>
           <Content content="support" mobileFullWidth>
             <SupportLink a href="https://pf.kakao.com/_pUyTd">

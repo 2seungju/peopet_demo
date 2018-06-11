@@ -8,19 +8,25 @@ import { peacockBlue, white2, white, black } from 'utils/colors'
 const Arrow = '/static/images/peopetnews_arrow.png'
 
 const Wrapper = styled.div`
+  padding: ${rem(100)} 0;
   display: flex;
   height: 100%;
   color: #333333;
-`
-const TitleWrapper = styled.div`
-  margin-top: 8vh;
-  margin-left: 18vw;
-  margin-right: 18vw;
-  width: 100%;
+  flex-direction: column;
+  width: 65%;
+  margin: auto;
+  ${media.mobile`
+    width: 85%;
+    padding: 0;
+  `};
 `
 
 const Title = styled.p`
   font-size: ${rem(50)};
+
+  ${media.mobile`
+    font-size: ${rem(28)};
+  `};
 `
 
 const ContentWrapper = styled.div`
@@ -33,6 +39,11 @@ const ContentWrapper = styled.div`
     transition: transform ease-in 0.1s;
     transform: scale(1.01);
   }
+
+  ${media.mobile`
+    opacity: 1;
+    margin-top: 10%;
+  `};
 `
 
 const Content = styled.div`
@@ -124,27 +135,26 @@ export default class Press extends Component {
   render() {
     return (
       <Wrapper>
-        <TitleWrapper>
-          <Title>언론에 비친 페오펫</Title>
-          {PressList.map((press, i) => (
-            <ContentWrapper key={i}>
-              <Link href={press.Link} target="_blank">
-                <Content up>
-                  <Article press>{press.PressName}</Article>
-                  <Bar vertical />
-                  <Article>{press.Reporter}</Article>
-                </Content>
-                <Content down>
-                  <Article summary>{press.Summary}</Article>
-                  <ImgWrapper>
-                    <Img src={Arrow} alt="arrow" />
-                  </ImgWrapper>
-                </Content>
-              </Link>
-              <Bar horizon />
-            </ContentWrapper>
-          ))}
-        </TitleWrapper>
+        <Title>언론에 비친 페오펫</Title>
+
+        {PressList.map((press, i) => (
+          <ContentWrapper key={i}>
+            <Link href={press.Link} target="_blank">
+              <Content up>
+                <Article press>{press.PressName}</Article>
+                <Bar vertical />
+                <Article>{press.Reporter}</Article>
+              </Content>
+              <Content down>
+                <Article summary>{press.Summary}</Article>
+                <ImgWrapper>
+                  <Img src={Arrow} alt="arrow" />
+                </ImgWrapper>
+              </Content>
+            </Link>
+            <Bar horizon />
+          </ContentWrapper>
+        ))}
       </Wrapper>
     )
   }

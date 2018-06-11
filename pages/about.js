@@ -78,7 +78,6 @@ const TextContent = styled.div`
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  margin-top: ${p => p.mobile && rem(-100)};
   position: relative;
   text-align: center;
   display: flex;
@@ -346,7 +345,7 @@ export default class About extends Component {
               <MobileDescriptionWrapper>
                 <Description>
                   페오펫은 기존의 반려동물 입양문화를 더욱 체계적이고 투명하게 바꿀 수 있도록 브리더
-                  입양문화를 시작으로 고객이 필요로하는 서비스를 계속 발굴하고 있습니다. 고객이
+                  입양문화를 시작으로 고객이 필요로 하는 서비스를 계속 발굴하고 있습니다. 고객이
                   신중하게 반려견을 입양하며, 최고의 이용 경험을 느낄 수 있는 반려견 입양 중개
                   플랫폼으로 발돋움하고 있습니다.
                 </Description>

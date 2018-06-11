@@ -296,14 +296,14 @@ export default class Breederdetail extends Component {
                   <NameWrapper>
                     <Name>{breederName} 브리더</Name>
                     <Introduce>
-                      안녕하세요. {kannelBreed}을 브리딩하는 브리더 {breederName} 입니다.
+                      안녕하세요. {kannelBreed}을(를) 브리딩하는 브리더 {breederName} 입니다.
                     </Introduce>
                   </NameWrapper>
                 </BreederImageNameWrapper>
                 {/* <Bar borderColor={warmGrey2} mobileHide /> */}
                 <SupportWrapper>
                   <SupportDescription up wide>
-                    페오펫은 국내의 윤리적인 <br /> 브리더들을 엄선하여 함께합니다.
+                    페오펫은 윤리적인 <br /> 브리더들을 엄선하여 함께합니다.
                   </SupportDescription>
                   <SupportDescription up pc>
                     페오펫은 국내의 윤리적인 브리더들을 엄선하여 함께합니다.
