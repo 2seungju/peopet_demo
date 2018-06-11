@@ -70,10 +70,17 @@ const Img = styled.img`
 
 const PressList = [
   {
-    PressName: '슾터뷰',
-    Reporter: '스파크플러스',
-    Summary: '‘건강한 반려견과 함께 행복한 삶을 온전히 누리세요’',
-    Link: 'https://sparkplusofficial.blog.me/221270549137'
+    PressName: '더나은미래',
+    Reporter: '김경하 부편집장',
+    Summary: '태어난 곳을 확인할 수 있는 반려견 입양 서비스, 페오펫',
+    Link: 'http://futurechosun.com/archives/29932'
+  },
+  {
+    PressName: '동그람이',
+    Reporter: '김경준',
+    Summary: '반려 문화를 성숙시키는 힘, 브리더를 찾아나선 청년들',
+    Link:
+      'https://post.naver.com/viewer/postView.nhn?volumeNo=11471713&memberNo=38419283&vType=VERTICAL'
   },
   {
     PressName: '매일경제',
@@ -82,11 +89,12 @@ const PressList = [
     Link: 'http://news.mk.co.kr/newsRead.php?year=2018&no=214898'
   },
   {
-    PressName: '더나은미래',
-    Reporter: '김경하 부편집장',
-    Summary: '태어난 곳을 확인할 수 있는 반려견 입양 서비스, 페오펫',
-    Link: 'http://futurechosun.com/archives/29932'
+    PressName: '슾터뷰',
+    Reporter: '스파크플러스',
+    Summary: '‘건강한 반려견과 함께 행복한 삶을 온전히 누리세요’',
+    Link: 'https://sparkplusofficial.blog.me/221270549137'
   },
+
   {
     PressName: '데일리벳',
     Reporter: '윤상준 기자',
