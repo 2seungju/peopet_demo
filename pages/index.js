@@ -1,23 +1,24 @@
 import React, { Component } from 'react'
 import styled, { css, types } from 'styled-components'
 import axios from 'axios'
+
 import Layout from 'components/Layout'
 import Link from 'components/Link'
 import BreederList from 'components/Breeder/BreederList'
 import AdoptionCardList from 'components/Adoption/AdoptionCardList'
 import Review from 'components/Review'
-
+import { RightDropIcon, HomePartnerRightIcon } from 'components/Icons'
 import { fetchServerConfig } from 'config/config'
-
-import { warmGrey2, squash, black, pooBrown, peacockBlue, white, white2, dark } from 'utils/colors'
+import Modal from 'components/Modal'
+import { warmGrey, black, sky, white, white2, scarlet, red, grey, peacockBlue } from 'utils/colors'
 import rem from 'utils/rem'
 import Bar from 'components/Bar'
 import media from 'utils/media'
 import placeholder from 'utils/placeholder'
-import { RightDropIcon, HomePartnerRightIcon } from 'components/Icons'
 
 // import HomeHeroImg from '../static/home-hero.jpeg'
-
+const peopetconst = 'static/images/peopetcost.png'
+const peopetconst1 = 'static/images/peopetcost1.png'
 const HomeSearchUrl = '/static/images/home-search@3x.png'
 const Main = '/static/images/Main.jpeg'
 const TabletMain = '/static/images/T_Main.jpeg'
@@ -82,13 +83,14 @@ const Wrapper = styled.div`
   position: relative;
   flex-direction: column;
   text-align: center;
-  height: ${p => (p.breeder || p.support || p.why ? '100%' : '100vh')};
+  height: ${p => (p.home ? '100vh' : '100%')};
   background: ${p => p.background};
   padding-top: ${p => rem(p.padding)};
   padding-top: ${p => p.Listpadding};
   padding-bottom: ${p => rem(p.padding)};
   padding-bottom: ${p => p.Listpadding};
   min-height: ${p => !p.support && rem(900)};
+  min-width: ${rem(307)};
   ${p =>
     p.home &&
     `:before {
@@ -114,7 +116,7 @@ const Content = styled.div`
   text-align: center;
   width: ${p => (p.adoption ? rem(900) : '50%')};
 
-  height: 100%;
+  height: ${p => (p.cost ? '70%' : '100%')};
   display: flex;
   flex-direction: ${p => (p.content === 'support' ? 'row' : 'column')};
   justify-content: center;
@@ -125,7 +127,7 @@ const Content = styled.div`
     width: 85%;
   `} 
   ${media.mobile`
-    width: ${p => (p.content === 'partner' ? '90%' : '90%')};
+    width: 90%
     flex-direction: column;
   `};
 `
@@ -136,10 +138,9 @@ const TitleWrapper = styled.div`
 `
 
 const Title = styled.h1`
-  text-align: ${p => (p.content === 'partner' ? 'left' : 'center')};
+  text-align: ${p => (p.cost ? 'left' : 'center')};
   font-size: ${p => rem(p.size)};
-  font-weight: normal;
-  font-weight: ${p => p.main && 'bold'};
+  font-weight: ${p => (p.main ? 500 : 'normal')};
   padding: 0;
   margin-bottom: ${p => rem(p.bottom)};
   color: ${p => p.color};
@@ -150,7 +151,7 @@ const Title = styled.h1`
   ${media.mobile`
     font-size: ${p => p.mobileSize && rem(p.mobileSize)};
     width: ${p => p.mobileWidth && `${p.mobileWidth}%`};
-    margin: ${rem(20)} auto;
+    margin: ${rem(17)} auto;
   `};
 `
 
@@ -186,6 +187,64 @@ const MainImgWrapper = styled.div`
   background-image: url(${MobileMain});
 
 `};
+`
+
+const CostbarWrapper = styled.div`
+  color: white;
+  background: ${p => p.background};
+  margin: auto;
+  position: relative;
+  width: 100%;
+  height: ${rem(60)};
+  border-radius: ${rem(5)};
+  margin-bottom: ${p => p.bottom};
+`
+const Costbar = styled.div`
+  background: ${p => p.background};
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: ${p => p.width};
+  height: ${rem(60)};
+  border-radius: 0 ${rem(5)} ${rem(5)} 0;
+  text-align: center;
+`
+const CostName = styled.p`
+  color: white;
+  margin-left: ${p => p.margin};
+
+  ${media.mobile`
+    font-size: ${rem(15)};
+  `};
+`
+
+const Reason = styled.div`
+  text-align: center;
+  font-size: ${p => rem(p.size)};
+  margin: auto;
+  margin-top: 20%;
+  font-weight: 200;
+
+  ${media.tablet`
+    font-size:${p => rem(p.tabletsize)};
+  `} ${media.mobile`
+    display: none;
+  `};
+`
+
+const MobileReason = styled.div`
+  display: none;
+  margin-top: 20%;
+
+  ${media.mobile`
+    display: inline-block;
+    font-size: ${p => rem(p.mobilesize)};
+  `};
+`
+
+const ModalWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `
 
 const BreederLink = styled.a`
@@ -316,7 +375,7 @@ const BeatWrapper = styled.div`
 `
 
 const Img = styled.img`
-  width: 3.1%;
+  width: 4%;
   animation: beat 0.8s infinite;
   -webkit-animation: mover 1s infinite alternate;
   animation: mover 1s infinite alternate;
@@ -327,7 +386,7 @@ const Img = styled.img`
     }
 
     100% {
-      transform: translateY(-20px);
+      transform: translateY(-30px);
     }
   }
 
@@ -337,7 +396,7 @@ const Img = styled.img`
     }
 
     100% {
-      transform: translateY(-20px);
+      transform: translateY(-30px);
     }
   }
 
@@ -355,7 +414,8 @@ class Index extends Component {
   state = {
     breederData: [],
     reviews: [],
-    puppies: []
+    puppies: [],
+    isClicked: false
   }
 
   componentDidMount() {
@@ -394,7 +454,7 @@ class Index extends Component {
   }
   // TODO: 사파리, 익스 11 그리드가 제대로 적용 안되는듯, 익스는 후기 컴포넌트도 말썽
   render() {
-    const { breederData, reviews, puppies } = this.state
+    const { breederData, reviews, puppies, isClicked } = this.state
     const sortingField = 'rank'
     const BreederRank = breederData.sort((a, b) => a[sortingField] - b[sortingField])
     // 5명 신규브리더
@@ -416,11 +476,49 @@ class Index extends Component {
               <Title size={50} color={white2} mobileSize={30} mobileWidth={90}>
                 건강한 강아지와의<br />특별한 만남, 페오펫
               </Title>
-              {/* <AutoComplete location="/" /> */}
             </MobileHero>
             <BeatWrapper>
               <Img src={HomeSearchUrl} alt=".." />
             </BeatWrapper>
+          </Content>
+        </Wrapper>
+        <Wrapper background={white} mobilePadding={50}>
+          <Content cost>
+            <Title cost size={40} mobileSize={20} bottom={0}>
+              번식공장 출신의 애견샵 강아지
+            </Title>
+            <CostbarWrapper background={red} bottom="13%">
+              <Costbar width="20%" background={sky}>
+                <CostName>입양비용</CostName>
+              </Costbar>
+              <CostName right margin="20%">
+                관리비용
+              </CostName>
+            </CostbarWrapper>
+            <Title cost size={40} mobileSize={20}>
+              페오펫의 건강한 강아지
+            </Title>
+            <CostbarWrapper background={grey}>
+              <Costbar width="45%" background={red}>
+                <Costbar width="50%" background={sky}>
+                  <CostName>입양비용</CostName>
+                </Costbar>
+                <CostName right margin="50%">
+                  관리비용
+                </CostName>
+              </Costbar>
+            </CostbarWrapper>
+            <ModalWrapper>
+              <Modal />
+            </ModalWrapper>
+            <Reason size={25} tabletsize={20}>
+              어디서 입양받느냐에 따라 입양 후 수백만원부터 수천만원까지 <br /> 반려견에게 들어가는
+              비용이 차이 날 수 있습니다.
+            </Reason>
+            <MobileReason mobilesize={16}>
+              어디서 입양받느냐에 따라 입양 후 수백만원부터 수천만원까지 반려견에게 들어가는 비용이
+              차이 날 수 있습니다.
+            </MobileReason>
           </Content>
         </Wrapper>
         <Wrapper why background={peacockBlue}>
@@ -444,17 +542,13 @@ class Index extends Component {
               <TextWrapper>
                 <Text grid row={1} color={white}>
                   사회화가 잘 된&nbsp;
-                  <b>
-                    <b> 건강한 강아지</b>
-                  </b>를 소개
+                  <b>건강한 강아지</b>를 소개
                 </Text>
                 <Text grid row={2} color={white}>
-                  <b>
-                    <b>태어난 곳</b>
-                  </b>과&nbsp;
-                  <b>
-                    <b>부모견</b>
-                  </b>을 직접 확인 가능
+                  <b>태어난 곳</b>
+                  과&nbsp;
+                  <b>부모견</b>
+                  을 직접 확인 가능
                 </Text>
 
                 <Text grid row={3} color={white}>
@@ -466,7 +560,21 @@ class Index extends Component {
             </DescriptionWrapper>
           </Content>
         </Wrapper>
-
+        {/* <Wrapper breeder Listpadding="10%" background={white2}>
+          <Content adoption>
+            <Title size={58} mobileSize={30} color={black}>
+              입양 가능한 자견
+            </Title>
+            <SubTitle size={25}>
+              페오펫이 엄선한 브리더들의 입양 가능한 자견입니다.<br />
+              모든 자견은 2개월 이후부터 입양 가능하며 입양 예약만 가능합니다.
+            </SubTitle>
+            <AdoptionCardList puppies={Puppy} />
+            <BreederLink color={white2} href="/puppy">
+              더 보기 +
+            </BreederLink>
+          </Content>
+        </Wrapper> */}
         <Wrapper
           breeder
           background={white}

@@ -7,6 +7,7 @@ export const black = '#333333'
 
 export const dark = '#243141'
 export const scarlet = '#d0021b' // red
+export const red = '#F15F5F'
 
 export const pooBrown = '#885400'
 export const greyishBrown = '#4a4a4a'
@@ -16,5 +17,7 @@ export const warmGrey2 = '#979797'
 
 export const white = '#f8f8f6'
 export const white2 = '#ffffff'
+
+export const sky = '#3fa9f5'
 
 export const grey = 'rgba(165, 164, 166, 0.19)'
