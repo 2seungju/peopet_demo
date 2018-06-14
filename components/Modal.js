@@ -36,21 +36,26 @@ const ModalWrapper = styled.div`
 `
 
 const ModalContent = styled.div`
+  position: relative;
   background-color: #fefefe;
   margin: auto;
-  padding: 20px;
+  padding: ${rem(100)} ${rem(20)};
   border: 1px solid #888;
-  width: 60%;
+  width: 64%;
   z-index: 9999;
-
+  display: flex;
+  align-content: center;
   ${media.mobile`
     width: 85%;
+    padding: ${rem(20)};
   `};
 `
 
 const Close = styled.span`
   color: #aaaaaa;
-  float: right;
+  position: absolute;
+  right: 2%;
+  top: 1%;
   font-size: 28px;
   font-weight: bold;
 
@@ -65,6 +70,11 @@ const Close = styled.span`
 const Detail = styled.div`
   width: 80%;
   margin: auto;
+  font-size: ${p => rem(p.size)};
+
+  ${media.mobile`
+    font-size: ${p => rem(p.mobilesize)};
+  `};
 `
 
 export default class Modal extends React.Component {
@@ -81,12 +91,11 @@ export default class Modal extends React.Component {
         <ButtonText onClick={() => this.setState({ display: 'flex' })}>알아두세요!</ButtonText>
         <ModalWrapper display={display} onClick={() => this.setState({ display: 'none' })}>
           <ModalContent>
-            <Close onClick={() => this.setState({ display: 'none' })}>&times;</Close>
-            <Detail>
-              * 페오펫은 강아지의 건강을 최우선으로, 브리더의&nbsp;
-              <b>체계적인 혈통관리, 사회화 기간인 두 달 동안의 양육비, 윤리적인 양육시설</b>&nbsp;
-              금액이 합산 되어 일반 펫샵보다 입양비용이 높을 수 있습니다.
+            <Detail size={20} mobilesize={15}>
+              * 페오펫은 강아지의 건강을 최우선으로 생각하기 때문에, 비윤리적인 환경에서 자란 공장
+              강아지들보다 입양 비용이 다소 높을 수 있습니다.
             </Detail>
+            <Close onClick={() => this.setState({ display: 'none' })}>&times;</Close>
           </ModalContent>
         </ModalWrapper>
       </Wrapper>

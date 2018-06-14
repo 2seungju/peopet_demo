@@ -512,12 +512,12 @@ class Index extends Component {
               <Modal />
             </ModalWrapper>
             <Reason size={25} tabletsize={20}>
-              어디서 입양받느냐에 따라 입양 후 수백만원부터 수천만원까지 <br /> 반려견에게 들어가는
-              비용이 차이 날 수 있습니다.
+              신뢰할 수 있는 곳에서 첫 단추를 잘 끼우면 <br />수백만원에서 수천만원의 비용을 절약할
+              수 있습니다.
             </Reason>
             <MobileReason mobilesize={16}>
-              어디서 입양받느냐에 따라 입양 후 수백만원부터 수천만원까지 반려견에게 들어가는 비용이
-              차이 날 수 있습니다.
+              신뢰할 수 있는 곳에서 첫 단추를 잘 끼우면 수백만원에서 수천만원의 비용을 절약할 수
+              있습니다.
             </MobileReason>
           </Content>
         </Wrapper>
