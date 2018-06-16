@@ -40,6 +40,7 @@ const DetailWrapper = styled.div`
   margin: auto;
   height: 100%;
   width: 60%;
+  max-width: ${rem(1150)};
   ${media.mobile`
     width: 100%;
     

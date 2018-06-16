@@ -460,7 +460,7 @@ class Index extends Component {
     // 5명 신규브리더
     // const newBreederList = breederData.filter(breeder => breeder.label === 'new')
     const Dog = BreederRank.slice(0, 3)
-    const Puppy = puppies.slice(0, 6)
+    // const Puppy = puppies.slice(0, 6)
 
     return (
       <Layout location="/">
@@ -482,7 +482,7 @@ class Index extends Component {
             </BeatWrapper>
           </Content>
         </Wrapper>
-        <Wrapper background={white} mobilePadding={50}>
+        <Wrapper home background={white} mobilePadding={50}>
           <Content cost>
             <Title cost size={40} mobileSize={20} bottom={0}>
               번식공장 출신의 애견샵 강아지
@@ -507,6 +507,7 @@ class Index extends Component {
                   관리비용
                 </CostName>
               </Costbar>
+              <CostName>&nbsp;</CostName>
             </CostbarWrapper>
             <ModalWrapper>
               <Modal />
