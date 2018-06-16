@@ -196,7 +196,6 @@ const CostbarWrapper = styled.div`
   margin: auto;
   position: relative;
   width: 100%;
-  height: ${rem(60)};
   border-radius: ${rem(5)};
   margin-bottom: ${p => p.bottom};
 `
@@ -206,7 +205,6 @@ const Costbar = styled.div`
   position: absolute;
   top: 0;
   width: ${p => p.width};
-  height: ${rem(60)};
   border-radius: 0 ${rem(5)} ${rem(5)} 0;
   text-align: center;
 `
