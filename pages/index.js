@@ -143,6 +143,7 @@ const Title = styled.h1`
   font-weight: ${p => (p.main ? 500 : 'normal')};
   padding: 0;
   margin-bottom: ${p => rem(p.bottom)};
+  margin-top: ${p => p.top};
   color: ${p => p.color};
   ${media.tablet`
     font-size: ${p => p.tabletSize && rem(p.tabletSize)};
@@ -487,7 +488,7 @@ class Index extends Component {
             <Title cost size={40} mobileSize={20} bottom={0}>
               번식공장 출신의 애견샵 강아지
             </Title>
-            <CostbarWrapper background={red} bottom="13%">
+            <CostbarWrapper background={red}>
               <Costbar width="20%" background={sky}>
                 <CostName>입양비용</CostName>
               </Costbar>
@@ -495,7 +496,7 @@ class Index extends Component {
                 관리비용
               </CostName>
             </CostbarWrapper>
-            <Title cost size={40} mobileSize={20}>
+            <Title cost size={40} mobileSize={20} top="10%">
               페오펫의 건강한 강아지
             </Title>
             <CostbarWrapper background={grey}>
