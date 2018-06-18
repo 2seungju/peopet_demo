@@ -1,7 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+import axios from 'axios'
 
+import Layout from 'components/Layout'
 import Link from 'components/Link'
+import AdoptionCardList from 'components/Adoption/AdoptionCardList'
+import Spinner from 'components/Spinner'
 
 import { warmGrey2, squash, black, pooBrown, peacockBlue, white, white2, dark } from 'utils/colors'
 import rem from 'utils/rem'
@@ -9,104 +13,75 @@ import Bar from 'components/Bar'
 import media from 'utils/media'
 
 const Wrapper = styled.div`
+  width: 60%;
+  margin: auto;
   position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 1%;
 `
 
-const ModalCard = styled.div`
-  display: flex;
-  width: 70%;
-  height: 70%;
-
-  align-items: center;
-  position: absolute;
-  z-index: 9999;
-  top: 15%;
-  left: 15%;
-  background: ${white2};
-`
-
-const ModalBackground = styled.div`
+const TitleWrapper = styled.div`
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  display: flex;
-  z-index: 0;
-`
-
-const ModalTitle = styled.p``
-
-const CardWrapper = styled.div`
+  margin-top: ${rem(30)};
+  height: ${rem(250)};
   display: flex;
   flex-direction: column;
-
-  margin: 7% 1%;
-  width: ${rem(247)};
-  height: ${rem(234)};
-  position: relative;
-  :hover {
-    opacity: 0.7;
-  }
+  justify-content: center;
+  text-align: center;
+`
+const Title = styled.p`
+  font-size: ${rem(36)};
+  font-weight: 300;
+`
+const AdoptionWrapper = styled.div`
+  display: flex;
 `
 
-const ImgWrapper = styled.div``
-
-const Img = styled.img`
-  width: ${p => (p.modal ? '50%' : '100%')};
-`
-
-const Breed = styled.p`
-  color: ${black};
-`
-
-class AdoptionCard extends React.Component {
+export default class Puppy extends React.Component {
   state = {
-    modalIsOpen: false
+    puppies: []
   }
 
-  openModal = () => {
-    this.setState({ modalIsOpen: true })
-  }
+  componentDidMount() {
+    const { puppyId } = this.props
+    const fetchQuery = puppyId ? `/puppy/${puppyId}` : ''
 
-  afterOpenModal = () => {
-    // references are now sync'd and can be accessed.
-  }
-
-  closeModal = () => {
-    this.setState({ modalIsOpen: false })
+    // axios
+    // .get(`${fetchServerConfig.ip}/api/review`)
+    // .then(res => {
+    //   this.setState({
+    //     reviews: res.data
+    //   })
+    // })
+    // .catch(err => console.log(err))
+    axios
+      .get('http://localhost:3000/api/puppy')
+      .then(res => {
+        this.setState({
+          puppies: res.data
+        })
+      })
+      .catch(err => console.log(err))
   }
 
   render() {
-    const {
-      id,
-      location,
-      puppyimage,
-      breeder,
-      breed,
-      sex,
-      birth,
-      detail,
-      description,
-      parents
-    } = this.props
-
+    const { puppies } = this.state
+    console.log(puppies)
     return (
-      <Wrapper>
-        <ModalCard>
-          <Img modal src={puppyimage} alt="puppy" />
-          <ModalTitle>{breed}</ModalTitle>
-        </ModalCard>
-        <ModalBackground onClick={() => this.setState({ modalIsOpen: false })} />
-        <CardWrapper onClick={() => this.setState({ modalIsOpen: true })}>
-          <Img src={puppyimage} alt="puppy" />
-          <Breed>{breed}</Breed>
-        </CardWrapper>
-      </Wrapper>
+      <Layout
+        background
+        title="입양가능자견"
+        description="전문 브리더, 브리더, 자견 입양, 강아지 분양"
+      >
+        <Wrapper>
+          <TitleWrapper>
+            <Title>
+              페오펫과 함께하는 윤리적인 <br />브리더들의 자견을 분양합니다.
+            </Title>
+          </TitleWrapper>
+          <AdoptionWrapper>
+            <AdoptionCardList puppies={puppies} />
+          </AdoptionWrapper>
+        </Wrapper>
+      </Layout>
     )
   }
 }
-
-export default AdoptionCard
