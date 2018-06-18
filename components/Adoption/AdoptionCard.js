@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import modal from 'react-modal'
 
 import Link from 'components/Link'
 
@@ -16,50 +17,112 @@ const Wrapper = styled.div`
   margin: 1%;
 `
 
+const Modal = styled(modal)`
+  height: 100%;
+  :focus {
+    outline: 0;
+  }
+`
+
+const ModalCard = styled.div`
+  display: flex;
+  width: 70%;
+  height: 70%;
+
+  align-items: center;
+  position: absolute;
+  z-index: 9999;
+  top: 15%;
+  left: 15%;
+  background: ${white2};
+`
+
+const ModalBackground = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  z-index: 0;
+`
+
+const ModalTitle = styled.p``
+
 const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 7% 1%;
 
+  margin: 7% 1%;
+  width: ${rem(247)};
+  height: ${rem(234)};
+  position: relative;
   :hover {
     opacity: 0.7;
   }
 `
 
-const AdoptionLink = styled(Link)`
-  width: ${rem(247)};
-  height: ${rem(234)};
-  position: relative;
-`
+const ImgWrapper = styled.div``
 
 const Img = styled.img`
-  width: 100%;
+  width: ${p => (p.modal ? '50%' : '100%')};
 `
 
 const Breed = styled.p`
   color: ${black};
 `
 
-const AdoptionCard = ({
-  id,
-  location,
-  puppyimage,
-  breeder,
-  breed,
-  sex,
-  birth,
-  detail,
-  description,
-  parents
-}) => (
-  <Wrapper>
-    <CardWrapper>
-      <AdoptionLink href={{ pathname: '/puppydetail', query: { id } }} as={`/puppydetail/${id}`}>
-        <Img src={puppyimage} alt="puppy" />
-        <Breed>{breed}</Breed>
-      </AdoptionLink>
-    </CardWrapper>
-  </Wrapper>
-)
+class AdoptionCard extends React.Component {
+  state = {
+    modalIsOpen: false
+  }
+
+  openModal = () => {
+    this.setState({ modalIsOpen: true })
+  }
+
+  afterOpenModal = () => {
+    // references are now sync'd and can be accessed.
+  }
+
+  closeModal = () => {
+    this.setState({ modalIsOpen: false })
+  }
+
+  render() {
+    const {
+      id,
+      location,
+      puppyimage,
+      breeder,
+      breed,
+      sex,
+      birth,
+      detail,
+      description,
+      parents
+    } = this.props
+
+    return (
+      <Wrapper>
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          contentLabel="puppy"
+          ariaHideApp={false}
+        >
+          <ModalCard>
+            <Img modal src={puppyimage} alt="puppy" />
+            <ModalTitle>{breed}</ModalTitle>
+          </ModalCard>
+          <ModalBackground onClick={() => this.setState({ modalIsOpen: false })} />
+        </Modal>
+        <CardWrapper onClick={() => this.setState({ modalIsOpen: true })}>
+          <Img src={puppyimage} alt="puppy" />
+          <Breed>{breed}</Breed>
+        </CardWrapper>
+      </Wrapper>
+    )
+  }
+}
 
 export default AdoptionCard
