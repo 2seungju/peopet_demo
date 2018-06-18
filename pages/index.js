@@ -205,7 +205,7 @@ const Costbar = styled.div`
   position: absolute;
   top: 0;
   width: ${p => p.width};
-  border-radius: 0 ${rem(5)} ${rem(5)} 0;
+  border-radius: ${rem(5)};
   text-align: center;
 `
 const CostName = styled.p`

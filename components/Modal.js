@@ -84,7 +84,6 @@ export default class Modal extends React.Component {
 
   render() {
     const { display } = this.state
-    console.log(display)
     return (
       <Wrapper>
         <Button src={CautionImg} alt="caution" onClick={() => this.setState({ display: 'flex' })} />

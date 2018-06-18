@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import modal from 'react-modal'
 
 import Link from 'components/Link'
 
@@ -15,13 +14,6 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   margin: 1%;
-`
-
-const Modal = styled(modal)`
-  height: 100%;
-  :focus {
-    outline: 0;
-  }
 `
 
 const ModalCard = styled.div`
@@ -103,19 +95,11 @@ class AdoptionCard extends React.Component {
 
     return (
       <Wrapper>
-        <Modal
-          isOpen={this.state.modalIsOpen}
-          onAfterOpen={this.afterOpenModal}
-          onRequestClose={this.closeModal}
-          contentLabel="puppy"
-          ariaHideApp={false}
-        >
-          <ModalCard>
-            <Img modal src={puppyimage} alt="puppy" />
-            <ModalTitle>{breed}</ModalTitle>
-          </ModalCard>
-          <ModalBackground onClick={() => this.setState({ modalIsOpen: false })} />
-        </Modal>
+        <ModalCard>
+          <Img modal src={puppyimage} alt="puppy" />
+          <ModalTitle>{breed}</ModalTitle>
+        </ModalCard>
+        <ModalBackground onClick={() => this.setState({ modalIsOpen: false })} />
         <CardWrapper onClick={() => this.setState({ modalIsOpen: true })}>
           <Img src={puppyimage} alt="puppy" />
           <Breed>{breed}</Breed>
