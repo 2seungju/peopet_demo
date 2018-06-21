@@ -461,6 +461,7 @@ class Index extends Component {
     // const newBreederList = breederData.filter(breeder => breeder.label === 'new')
     const Dog = BreederRank.slice(0, 3)
     const Puppy = puppies.slice(0, 6)
+    const MobilePuppy = puppies.slice(0, 3)
 
     return (
       <Layout location="/">
@@ -561,22 +562,26 @@ class Index extends Component {
             </DescriptionWrapper>
           </Content>
         </Wrapper>
-        <Wrapper breeder Listpadding="10%" background={white2}>
+        <Wrapper breeder background={white2} Listpadding="10%">
           <Content adoption>
             <Title size={58} mobileSize={30} color={black}>
               입양 가능한 자견
             </Title>
-            <SubTitle size={25}>
+            <SubTitle size={25} mobileSize={15}>
               페오펫이 엄선한 브리더들의 입양 가능한 자견입니다.<br />
               모든 자견은 2개월 이후부터 입양 가능하며 입양 예약만 가능합니다.
             </SubTitle>
-            <AdoptionCardList puppies={Puppy} breederData={breederData} />
+
+            <AdoptionCardList
+              puppies={Puppy}
+              breederData={breederData}
+              mobilePuppies={MobilePuppy}
+            />
             <BreederLink color={white2} href="/puppy">
               더 보기 +
             </BreederLink>
           </Content>
         </Wrapper>
-
         <Wrapper
           breeder
           background={white}
