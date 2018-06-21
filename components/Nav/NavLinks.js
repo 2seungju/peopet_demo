@@ -98,12 +98,17 @@ const NavLinks = ({ dropbar }) => (
       페오펫
     </NavLink>
     <NavSeparator dropbar={dropbar} />
-    <NavLink dropbar={dropbar} href="/partner">
-      제휴업체
-    </NavLink>
-    <NavSeparator dropbar={dropbar} />
+
     <NavLink dropbar={dropbar} href="/breeder">
       브리더
+    </NavLink>
+    <NavSeparator dropbar={dropbar} />
+    <NavLink dropbar={dropbar} href="/puppy">
+      자견입양
+    </NavLink>
+    <NavSeparator dropbar={dropbar} />
+    <NavLink dropbar={dropbar} href="/partner">
+      제휴업체
     </NavLink>
     <NavSeparator dropbar={dropbar} />
     <NavLink dropbar={dropbar} href="/support">

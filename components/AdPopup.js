@@ -6,16 +6,14 @@ import media from 'utils/media'
 
 const Wrapper = styled.div`
   position: absolute;
-  ${'' /* overflow-x: hidden; */}
-  
-  z-index: 1000;
+  ${''} z-index: 1000;
   top: ${rem(100)};
   left: ${rem(20)};
   ${media.tablet`
     width: 100%;
     height: 100%;
     left: 0;
-  `}
+  `};
 `
 
 const CenterWrapper = styled.div`
@@ -27,8 +25,8 @@ const CenterWrapper = styled.div`
     height: auto;
     margin: auto;
   `}
-  ${'' /* width: 100%; */}
-  ${'' /* left: 25%; */}
+  ${''}
+  ${''}
 `
 
 const Content = styled.img`
@@ -36,7 +34,7 @@ const Content = styled.img`
   height: 100%;
   ${media.tablet`
     display: none;
-  `}
+  `};
 `
 
 const MobileContent = styled.img`
@@ -45,13 +43,13 @@ const MobileContent = styled.img`
     display: inline-block;
     width: 100%;
     height: 100%;
-  `}
+  `};
 `
 
 const A = styled.a`
   ${media.tablet`
-    display: none
-  `}
+    display: none;
+  `};
 `
 
 const LinkWrapper = styled.div`
@@ -62,7 +60,7 @@ const LinkWrapper = styled.div`
     background: ${white2};
     text-align: center;
     padding-bottom: ${rem(20)};
-  `}
+  `};
 `
 const Link = styled.a`
   background: ${darkSkyBlue};
@@ -78,7 +76,7 @@ const CloseWrapper = styled.div`
   flex-direction: row;
   justify-content: space-around;
   width: 100%;
-  ${'' /* border-top: 1px solid ${peacockBlue}; */}
+  ${''}
   background: ${white2};
 `
 
@@ -89,24 +87,17 @@ const Button = styled.button`
   font-size: ${rem(14)};
   padding-top: ${rem(10)};
   padding-bottom: ${rem(10)};
-  border-right: ${p => p.borderRight ? `1px solid ${white2}` : 0};
+  border-right: ${p => (p.borderRight ? `1px solid ${white2}` : 0)};
   border-left: 0;
   border-top: 0;
   border-bottom: 0;
   outline: none;
   cursor: pointer;
   text-align: center;
-  flex: ${p => p.long ? 4 : 2}
+  flex: ${p => (p.long ? 4 : 2)};
 `
 
-const AdPopup = ({
-  isOpenPopup,
-  onClosePopup,
-  onHideToday,
-  content,
-  mobileContent,
-  url,
-}) => (
+const AdPopup = ({ isOpenPopup, onClosePopup, onHideToday, content, mobileContent, url }) => (
   <Wrapper>
     <CenterWrapper>
       <A href={url}>
@@ -114,17 +105,13 @@ const AdPopup = ({
       </A>
       <MobileContent src={mobileContent} />
       <LinkWrapper>
-        <Link href={url}>
-          인스타로 신청하러 가기
-        </Link>
+        <Link href={url}>인스타로 신청하러 가기</Link>
       </LinkWrapper>
       <CloseWrapper>
         <Button borderRight long onClick={onHideToday}>
           오늘 하루 보지 않기
         </Button>
-        <Button onClick={onClosePopup}>
-          창닫기
-        </Button>
+        <Button onClick={onClosePopup}>창닫기</Button>
       </CloseWrapper>
     </CenterWrapper>
   </Wrapper>

@@ -282,6 +282,7 @@ const SupportLink = styled.a`
 `
 
 const DescriptionWrapper = styled.div`
+  max-width: ${rem(900)};
   display: flex;
   font-weight: lighter;
   text-align: center;
@@ -434,24 +435,24 @@ class Index extends Component {
         })
       })
       .catch(err => console.log(err))
-    // axios
-    // .get(`${fetchServerConfig.ip}/api/review`)
-    // .then(res => {
-    //   this.setState({
-    //     reviews: res.data
-    //   })
-    // })
-    // .catch(err => console.log(err))
     axios
-      .get('http://localhost:3000/api/puppy')
+      .get(`${fetchServerConfig.ip}/api/puppy`)
       .then(res => {
         this.setState({
           puppies: res.data
         })
       })
       .catch(err => console.log(err))
+    // axios
+    //   .get('http://localhost:3000/api/puppy')
+    //   .then(res => {
+    //     this.setState({
+    //       puppies: res.data
+    //     })
+    //   })
+    //   .catch(err => console.log(err))
   }
-  // TODO: 사파리, 익스 11 그리드가 제대로 적용 안되는듯, 익스는 후기 컴포넌트도 말썽
+  // TODO: 익스는 후기 컴포넌트 말썽
   render() {
     const { breederData, reviews, puppies, isClicked } = this.state
     const sortingField = 'rank'
@@ -459,7 +460,7 @@ class Index extends Component {
     // 5명 신규브리더
     // const newBreederList = breederData.filter(breeder => breeder.label === 'new')
     const Dog = BreederRank.slice(0, 3)
-    // const Puppy = puppies.slice(0, 6)
+    const Puppy = puppies.slice(0, 6)
 
     return (
       <Layout location="/">
@@ -558,6 +559,21 @@ class Index extends Component {
                 </Text>
               </TextWrapper>
             </DescriptionWrapper>
+          </Content>
+        </Wrapper>
+        <Wrapper breeder Listpadding="10%" background={white2}>
+          <Content adoption>
+            <Title size={58} mobileSize={30} color={black}>
+              입양 가능한 자견
+            </Title>
+            <SubTitle size={25}>
+              페오펫이 엄선한 브리더들의 입양 가능한 자견입니다.<br />
+              모든 자견은 2개월 이후부터 입양 가능하며 입양 예약만 가능합니다.
+            </SubTitle>
+            <AdoptionCardList puppies={Puppy} breederData={breederData} />
+            <BreederLink color={white2} href="/puppy">
+              더 보기 +
+            </BreederLink>
           </Content>
         </Wrapper>
 

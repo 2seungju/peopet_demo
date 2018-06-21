@@ -2,10 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import FlexBox from 'components/FlexBox'
 
-import BreederCardLong from 'components/Breeder/BreederCardLong'
 import rem from 'utils/rem'
 import media from 'utils/media'
-import AdoptionCard from './AdoptionCard'
+import Modal from './Modal'
 
 const Wrapper = styled(FlexBox)`
   padding-top: ${rem(20)};
@@ -22,7 +21,7 @@ const Wrapper = styled(FlexBox)`
   height: 100%;
 `
 
-const AdoptionCardList = ({ puppies }) => (
+const AdoptionCardList = ({ puppies, breederData }) => (
   // let data
 
   // if (location === '/' && position === 'vertical') {
@@ -35,10 +34,10 @@ const AdoptionCardList = ({ puppies }) => (
 
   <Wrapper>
     {puppies.map((puppy, i) => (
-      <AdoptionCard
+      <Modal
         key={i}
         id={puppy._id}
-        location={puppy.kannelLocation}
+        location={puppy.location}
         puppyimage={puppy.puppyimage}
         breeder={puppy.breeder}
         breed={puppy.breed}
@@ -48,7 +47,7 @@ const AdoptionCardList = ({ puppies }) => (
         description={puppy.description}
         parents={puppy.parents}
       />
-    ))}
+      ))}
     {/* <TextWrapper>
         <Title>{title}</Title>
         <Description>{description}</Description>

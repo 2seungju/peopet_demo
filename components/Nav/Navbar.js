@@ -50,7 +50,7 @@ const IconLink = styled.a`
   margin: ${rem(5)};
   position: relative;
 
-  ${media.tablet`
+  ${media.pc`
     margin: auto;
   `};
 `
@@ -58,7 +58,7 @@ const IconLink = styled.a`
 const NavWrapper = styled.div`
   display: flex;
 
-  ${media.tablet`
+  ${media.pc`
     display: none;
   `};
 `
@@ -72,7 +72,7 @@ const DropButton = styled(Button).attrs({
   position: absolute;
   top: 30%;
   left: 0;
-  ${media.tablet`
+  ${media.pc`
     display: flex;
   `};
 `
@@ -81,7 +81,7 @@ const IconWrapper = styled.div`
   display: flex;
   flex-direction: row;
   position: relative;
-  ${media.tablet`
+  ${media.pc`
     display: none;
   `};
 `

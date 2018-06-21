@@ -272,6 +272,7 @@ export default class Breederdetail extends Component {
     let images = []
     images.push(kannelImage, dogImage, puppyImage)
     images = images.reduce((a, b) => a.concat(b), [])
+    console.log(images)
     return (
       <Layout
         title={kannelBreed}
@@ -288,7 +289,7 @@ export default class Breederdetail extends Component {
               {/* <KannelImage src={data.kannelImage && data.kannelImage[0]} /> */}
               <NavWrapper padding={25} breeder>
                 <BreederImageNameWrapper>
-                  <BreederImage src={breederImage} />
+                  <BreederImage src={breederImage} alt="breeder" />
                   <NameWrapper>
                     <Name>{breederName} 브리더</Name>
                     <Introduce>

@@ -227,6 +227,8 @@ export default class About extends Component {
     return { id }
   }
 
+  componentDidMount() {}
+
   render() {
     // console.log(this.props.id)
     return (

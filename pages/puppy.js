@@ -13,7 +13,7 @@ import Bar from 'components/Bar'
 import media from 'utils/media'
 
 const Wrapper = styled.div`
-  width: 60%;
+  width: 67%;
   margin: auto;
   position: relative;
 `

@@ -32,6 +32,7 @@ module.exports = function (app) {
   apiRoutes.use('/breeder', breederRoutes)
   breederRoutes.get('/', BreederController.allBreederGet)
   breederRoutes.get('/:id', BreederController.oneBreederGet)
+  breederRoutes.get('/breeder/:breeder', BreederController.BreederNameGet)
   breederRoutes.post('/', BreederController.saveBreeder)
   breederRoutes.get('/dog/:id', BreederController.findBreederGet)
 

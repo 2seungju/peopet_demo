@@ -87,7 +87,9 @@ export default class Modal extends React.Component {
     return (
       <Wrapper>
         <Button src={CautionImg} alt="caution" onClick={() => this.setState({ display: 'flex' })} />
-        <ButtonText onClick={() => this.setState({ display: 'flex' })}>알아두세요!</ButtonText>
+        <ButtonText onClick={() => this.setState({ display: 'flex' })}>
+          &nbsp;알아두세요!
+        </ButtonText>
         <ModalWrapper display={display} onClick={() => this.setState({ display: 'none' })}>
           <ModalContent>
             <Detail size={20} mobilesize={15}>

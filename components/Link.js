@@ -30,7 +30,7 @@ const Link = ({
   dogId,
   handleClick = () => {},
   position,
-  ...rest,
+  ...rest
 }) => {
   let Child = StyledLink
   if (inline) {
@@ -52,13 +52,10 @@ const Link = ({
         activeDogId={activeDogId}
         dogId={dogId}
       >
-        <span onClick={handleClick}>
-          {children}
-        </span>
+        <span onClick={handleClick}>{children}</span>
       </Child>
     </UnstyledLink>
   )
 }
 
 export default Link
-

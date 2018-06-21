@@ -26,7 +26,19 @@ exports.findBreederGet = (req, res) => {
 
 exports.oneBreederGet = (req, res) => {
   const { id } = req.params
-  Breeder.findOne({ _id: id, isShowed: true }, (err, data) => {
+
+  Breeder.findOne(
+    { _id: id, isShowed: true } || { breederName: id, isShowed: true },
+    (err, data) => {
+      if (err) res.redirect('/')
+      return res.json(data)
+    }
+  )
+}
+
+exports.BreederNameGet = (req, res) => {
+  const { breeder } = req.params
+  Breeder.findOne({ breederName: breeder, isShowed: true }, (err, data) => {
     if (err) res.redirect('/')
     return res.json(data)
   })
@@ -62,7 +74,7 @@ exports.saveBreeder = (req, res) => {
     dogWord,
     dogDescription,
     rank,
-    label,
+    label
   } = req.body
 
   const breeder = new Breeder({
@@ -84,10 +96,11 @@ exports.saveBreeder = (req, res) => {
     dogWord,
     dogDescription,
     rank,
-    label,
+    label
   })
 
-  return breeder.save()
+  return breeder
+    .save()
     .then(data => res.json(data))
     .catch(err => res.send({ err }))
 }

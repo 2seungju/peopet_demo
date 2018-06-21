@@ -65,9 +65,8 @@ const ChangeRotationImg = styled.img`
   width: ${rem(152)};
   height: ${rem(107)};
   margin: 0 auto;
-  animation-duration: 25s;
+  animation: 2s linear infinite;
   animation-name: rotating;
-  animation-iteration-count: infinite;
   animation-direction: reverse;
 
   @keyframes rotating {
@@ -75,7 +74,7 @@ const ChangeRotationImg = styled.img`
       transform: rotate(0deg);
     }
     to {
-      transform: rotate(3600deg);
+      transform: rotate(360deg);
     }
   }
   ${media.mobile`

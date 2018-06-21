@@ -11,24 +11,14 @@ import Spinner from 'components/Spinner'
 const LayoutWrapper = styled.div`
   position: relative;
   height: 100%;
-
 `
 
 const Wrapper = styled.div`
   position: relative;
-  ${'' /* height: 100%; */}
   ${p => p.location === 'breeder' && marginTop('70px')};
-  ${'' /* padding-top: ${p => p.location === 'detail' && '50px'}; */}
-  ${'' /* margin-top: ${rem(70)}; */}
-  ${'' /* max-width: 100%; */}
-  ${'' /* height: 100%; */}
-  ${'' /* min-height: ${rem(800)}; */}
-  background: ${p => p.background ? p.background : white};
-  ${'' /* overflow-y: ${p => p.isSideMenuFolded ? 'hidden' : 'scroll'}; */}
-  ${'' /* overflow-x: hidden; */}
-  ${'' /* -webkit-overflow-scrolling: touch; */}
-  ${'' /* position: ${p => p.isSideMenuFolded ? 'fixed' : 'relative'}; */}
-  ${'' /* top: ${p => p.isSideMenuFolded && '-400px'}; */}
+
+  background: ${p => (p.background ? p.background : white)};
+
   opacity: ${p => p.isSideMenuFolded && 0.76};
 `
 
@@ -47,7 +37,7 @@ class Layout extends Component {
     // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Improving_scrolling_performance_with_passive_listeners
     // window.addEventListener('scroll', this.onScroll, { passive: true })
     window.addEventListener('scroll', this.onScroll)
-    //TODO:
+    // TODO:
     // scrollTo ... !!!!
     // const agent = navigator.userAgent.toLowerCase()
     // if ((navigator.appName === 'Netscape' && navigator.userAgent.search('Trident') !== -1) || (agent.indexOf('msie') !== -1)) {
@@ -65,7 +55,6 @@ class Layout extends Component {
   //   const elem = document.getElementById('root')
   //   elem.scrollTop = elem.scrollHeight;
   // }
-
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onScroll)
@@ -109,8 +98,29 @@ class Layout extends Component {
   // }
 
   render() {
-    const { title, description, children, location, handleClickSuggestion, background, breeder, onChangeBreeder, activeDogId, loading, isFiltered, mobile, image } = this.props
-    const { isDropMenuFolded, transparent, isScrolled, isSideMenuFolded, isMobileCategorySelected, mobileCategorySelectedId } = this.state
+    const {
+      title,
+      description,
+      children,
+      location,
+      handleClickSuggestion,
+      background,
+      breeder,
+      onChangeBreeder,
+      activeDogId,
+      loading,
+      isFiltered,
+      mobile,
+      image
+    } = this.props
+    const {
+      isDropMenuFolded,
+      transparent,
+      isScrolled,
+      isSideMenuFolded,
+      isMobileCategorySelected,
+      mobileCategorySelectedId
+    } = this.state
     const { onDropMenuToggle, onSideMenuToggle } = this
     return (
       <LayoutWrapper>
@@ -132,8 +142,9 @@ class Layout extends Component {
           handleClickSuggestion={handleClickSuggestion}
           // showDropMenu={showDropMenu}
         />
-        {
-          isFiltered && loading ? <Spinner loading={loading} /> :
+        {isFiltered && loading ? (
+          <Spinner loading={loading} />
+        ) : (
           <Wrapper
             id="layout"
             location={location}
@@ -146,7 +157,7 @@ class Layout extends Component {
           >
             {children}
           </Wrapper>
-        }
+        )}
         <Footer isSideMenuFolded={isSideMenuFolded} />
       </LayoutWrapper>
     )
