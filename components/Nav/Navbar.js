@@ -49,7 +49,7 @@ const IconLink = styled.a`
   align-items: center;
   margin: ${rem(5)};
   position: relative;
-
+  max-height: ${p => p.icon && rem(30)};
   ${media.pc`
     margin: auto;
   `};
@@ -107,16 +107,16 @@ const Navbar = ({
         <NavLinks />
       </NavWrapper>
       <IconWrapper>
-        <IconLink href="https://www.facebook.com/peopleNpet/">
+        <IconLink icon href="https://www.facebook.com/peopleNpet/">
           <FacebookIcon />
         </IconLink>
-        <IconLink href="https://www.instagram.com/peopet_official/">
+        <IconLink icon href="https://www.instagram.com/peopet_official/">
           <InstaIcon />
         </IconLink>
-        <IconLink href="https://blog.naver.com/peopet">
+        <IconLink icon href="https://blog.naver.com/peopet">
           <BlogIcon />
         </IconLink>
-        <IconLink href="https://pf.kakao.com/_pUyTd">
+        <IconLink icon href="https://pf.kakao.com/_pUyTd">
           <YellowIcon />
         </IconLink>
       </IconWrapper>
