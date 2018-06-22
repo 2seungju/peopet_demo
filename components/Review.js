@@ -9,6 +9,7 @@ const Arrow = '/static/images/Arrow.png'
 
 const Wrapper = styled.div`
   height: 100%;
+
   overflow: hidden;
   background: ${p => p.background};
   color: white;
@@ -58,6 +59,7 @@ const ContentWrapper = styled.div`
 const Slider = styled.div`
   display: flex;
   width: 100vw;
+  min-width: 100vw;
   text-align: left;
 `
 
@@ -78,12 +80,18 @@ const ReviewWrapper = styled.div`
 const DogImg = styled.img`
   width: 20%;
   height: 20%;
+  min-width: ${rem(150)};
+  min-height: ${rem(150)};
+
   border-radius: 50%;
   margin: auto 0;
   ${media.pc`
   width: 30%;
   height: 30%;
   margin: auto;
+  min-width: ${rem(100)};
+  min-height: ${rem(100)};
+
   `};
   ${media.mobile`
   width: 50%;

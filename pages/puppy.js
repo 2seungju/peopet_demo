@@ -6,6 +6,7 @@ import Layout from 'components/Layout'
 import Link from 'components/Link'
 import AdoptionCardList from 'components/Adoption/AdoptionCardList'
 import Spinner from 'components/Spinner'
+import { fetchServerConfig } from 'config/config'
 
 import { warmGrey2, squash, black, pooBrown, peacockBlue, white, white2, dark } from 'utils/colors'
 import rem from 'utils/rem'
@@ -19,17 +20,37 @@ const Wrapper = styled.div`
 `
 
 const TitleWrapper = styled.div`
+  display: flex;
   width: 100%;
   margin-top: ${rem(30)};
   height: ${rem(250)};
-  display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  ${media.mobile`
+  display: none;
+`};
 `
+
+const MobileTitleWrapper = styled.div`
+  display: none;
+  width: 100%;
+  margin-top: ${rem(30)};
+  height: ${rem(250)};
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  ${media.mobile`
+    display: flex;
+  `};
+`
+
 const Title = styled.p`
   font-size: ${rem(36)};
   font-weight: 300;
+  ${media.mobile`
+    font-size: ${rem(24)}
+  `};
 `
 const AdoptionWrapper = styled.div`
   display: flex;
@@ -47,9 +68,6 @@ export default class Puppy extends React.Component {
   }
 
   componentDidMount() {
-    const { puppyId } = this.props
-    const fetchQuery = puppyId ? `/puppy/${puppyId}` : ''
-
     // axios
     // .get(`${fetchServerConfig.ip}/api/review`)
     // .then(res => {
@@ -59,7 +77,7 @@ export default class Puppy extends React.Component {
     // })
     // .catch(err => console.log(err))
     axios
-      .get('http://localhost:3000/api/puppy')
+      .get(`${fetchServerConfig.ip}/api/puppy`)
       .then(res => {
         this.setState({
           puppies: res.data
@@ -70,7 +88,6 @@ export default class Puppy extends React.Component {
 
   render() {
     const { puppies } = this.state
-    console.log(puppies)
     return (
       <Layout
         background
@@ -80,9 +97,16 @@ export default class Puppy extends React.Component {
         <Wrapper>
           <TitleWrapper>
             <Title>
-              페오펫과 함께하는 윤리적인 <br />브리더들의 자견을 분양합니다.
+              <b>페오펫과 함께하는 윤리적인 브리더들의 자견을 분양합니다.</b>
             </Title>
           </TitleWrapper>
+          <MobileTitleWrapper>
+            <Title>
+              <b>
+                페오펫과 함께하는 <br />윤리적인 브리더들의 <br />자견을 분양합니다.
+              </b>
+            </Title>
+          </MobileTitleWrapper>
           <AdoptionWrapper>
             <AdoptionCardList puppies={puppies} />
           </AdoptionWrapper>

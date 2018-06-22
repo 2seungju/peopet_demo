@@ -40,6 +40,8 @@ const ButtonWrapper = styled.div`
 
 const Button = styled.img`
   width: 100%;
+  min-width: ${p => p.button && rem(200)};
+  min-height: ${p => p.button && rem(200)};
   height: ${p => p.modal && '75%'};
 `
 
@@ -72,13 +74,15 @@ const ModalContent = styled.div`
   width: 100%;
   height: 90%;
   max-width: ${rem(1100)};
+  min-width: ${rem(840)};
   min-height: ${rem(800)};
   z-index: 9999;
   align-content: center;
 
   ${media.mobile`
     min-height: 40%;
-    height: 50%;
+    height: 55%;
+    min-width: ${rem(330)};
     width: 85%;
     padding-top: 0;
     padding-bottom: 50px;
@@ -88,7 +92,7 @@ const ModalContent = styled.div`
 const DetailWrapperWrapper = styled.div`
   display: flex;
   justify-content: center;
-  height: 80%;
+  height: 60%;
   margin: auto;
   ${media.mobile`
     display: none;
@@ -128,6 +132,7 @@ const Detail = styled.div`
   flex-direction: ${p => p.info && 'column'};
   align-items: ${p => !p.info && 'center'};
   width: ${p => p.breeder && '65%'};
+  position: relative;
 `
 
 const CallMe = styled.div`
@@ -250,7 +255,7 @@ export default class Modal extends React.Component {
       // TODO:modal 브리더 이미지 디비작업 해야함
       <Wrapper>
         <ButtonWrapper onClick={() => this.setState({ display: 'flex' })}>
-          <Button src={puppyimage} alt="puppy" />
+          <Button button src={puppyimage} alt="puppy" />
           <ButtonText>{breed}</ButtonText>
         </ButtonWrapper>
         <ModalWrapper display={display}>
