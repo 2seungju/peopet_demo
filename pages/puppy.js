@@ -3,14 +3,12 @@ import styled from 'styled-components'
 import axios from 'axios'
 
 import Layout from 'components/Layout'
-import Link from 'components/Link'
 import AdoptionCardList from 'components/Adoption/AdoptionCardList'
 import Spinner from 'components/Spinner'
 import { fetchServerConfig } from 'config/config'
 
 import { warmGrey2, squash, black, pooBrown, peacockBlue, white, white2, dark } from 'utils/colors'
 import rem from 'utils/rem'
-import Bar from 'components/Bar'
 import media from 'utils/media'
 
 const Wrapper = styled.div`
