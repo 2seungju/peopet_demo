@@ -1,11 +1,9 @@
+// 네비게이션 바 레이아웃
+
 import React from 'react'
-import styled, { css } from 'styled-components'
-import Logo from 'components/Nav/Logo'
-import Link from 'components/Link'
-import { navbarHeight } from 'utils/sizes'
+import styled from 'styled-components'
 import NavLinks from 'components/Nav/NavLinks'
 import media from 'utils/media'
-import { FoldIcon } from 'components/Nav/DropbarIcons'
 import Button from 'components/Button'
 import { backgroundColor } from 'utils/nav'
 import { white2, peacockBlue } from 'utils/colors'
@@ -36,12 +34,7 @@ const SubWrapper = styled.div`
   height: 60px;
   padding: 5px 20px;
   width: 90%;
-  ${'' /* ${p => {
-    if (p.location === '/') {
-      return p.isScrolled ? backgroundColor(white2) : backgroundColor('transparent')
-    }
-    return p.isScrolled ? backgroundColor('yellow') : backgroundColor('red')
-  }} */} box-shadow: 0 2px 6px -5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 6px -5px rgba(0, 0, 0, 0.5);
 `
 
 const IconLink = styled.a`
@@ -120,9 +113,6 @@ const Navbar = ({
           <YellowIcon />
         </IconLink>
       </IconWrapper>
-      {/* <DropButton onClick={onDropMenuToggle}>
-        {isDropMenuFolded ? <CloseIcon /> : <RightDropIcon />}
-      </DropButton> */}
     </SubWrapper>
   </Wrapper>
 )

@@ -1,3 +1,5 @@
+// 모든 페이지의 기초가 되는 레이아웃 컴포넌트
+
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import SeoHead from 'components/SeoHead'
@@ -72,6 +74,7 @@ class Layout extends Component {
   //   }
   // }
 
+  // 드랍바 컨트롤
   onDropMenuToggle = () => {
     const { isDropMenuFolded, isSideMenuFolded } = this.state
     this.setState({

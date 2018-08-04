@@ -1,3 +1,5 @@
+// 브리더 카드들을 보여주는 컴포넌트
+
 import React from 'react'
 import styled from 'styled-components'
 import FlexBox from 'components/FlexBox'
@@ -42,16 +44,6 @@ const Image = styled.img`
 `
 
 const BreederList = ({ breederData, location, position }) => (
-  // let data
-
-  // if (location === '/' && position === 'vertical') {
-  //   data = breederData.slice(0, 3)
-  // }
-
-  // if (location === '/' && position === 'horizontal') {
-  //   data = breederData.slice(4, 10)
-  // }
-
   <Wrapper position={position}>
     {breederData.map((breeder, i) => (
       <BreederCardLong
@@ -65,11 +57,6 @@ const BreederList = ({ breederData, location, position }) => (
         breederName={breeder.breederName}
       />
     ))}
-    {/* <TextWrapper>
-        <Title>{title}</Title>
-        <Description>{description}</Description>
-      </TextWrapper>
-      <Image src={image} /> */}
   </Wrapper>
 )
 

@@ -1,3 +1,6 @@
+// 파이어베이스에 저장된 데이터 값을 이용해 강아지를 비교하는 컴포넌트
+// 실제로 상용화 하진 않았음.
+
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
@@ -6,6 +9,7 @@ import { peacockBlue, white2 } from 'utils/colors'
 import Autocomplete from './Autocomplete'
 import Compare from './Compare'
 
+// 파이어베이스 연결
 const database = firebase.database()
 
 const Wrapper = styled.div`
@@ -24,13 +28,7 @@ const Caution = styled.div`
   margin-left: 75%;
 `
 
-// const Field = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   position: absolute;
-//   top: 60px;
-// `;
-
+// 그리드 레이아웃을 이용함
 const ComparisonGrid = styled.div`
   width: 100%;
   display: grid;
@@ -71,8 +69,6 @@ class Index extends Component {
         this.setState({
           data: snapshot.val()
         })
-        // var username = (snapshot.val() && snapshot.val().username) || "Anonymous";
-        // console.log(username);
       })
   }
 
@@ -121,7 +117,7 @@ class Index extends Component {
     `
     const Add = styled.div`
       cursor: pointer;
-      grid-column: 3
+      grid-column: 3;
       grid-row: 1;
     `
     const AddInput = styled.div`
@@ -174,7 +170,6 @@ class Index extends Component {
           <Weight column={1}>
             <b>무게</b>
           </Weight>
-
           <Weight column={2}>
             {dog.kr_Breed !== undefined && `${dog.weight_low_kg}kg ~ ${dog.weight_high_kg}kg`}
           </Weight>

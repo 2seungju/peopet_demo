@@ -1,3 +1,5 @@
+// 아이콘들 모듈화
+
 import styled from 'styled-components'
 import media from 'utils/media'
 import rem from 'utils/rem'

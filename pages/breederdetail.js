@@ -1,19 +1,14 @@
+// 브리더 정보 페이지. 브리더를 클릭하면 나옴
+
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+
 import Layout from 'components/Layout'
-import { fetchServerConfig } from 'config/config'
 import Link from 'components/Link'
 import rem from 'utils/rem'
 import { warmGrey2, black, white2, white, peacockBlue } from 'utils/colors'
-import Bar from 'components/Bar'
 import media from 'utils/media'
-import {
-  DetailColorIcon,
-  DetailLocationIcon,
-  DetailKannelIcon,
-  DetailDogNameIcon
-} from 'components/Icons'
 import ImageSlider from 'components/ImageSlider'
 
 const splitText = text => text.split('<br/>').map(p => p)
@@ -57,16 +52,6 @@ const SliderWrapper = styled.div`
     width: 100%;
   `};
 `
-
-// const NotImageWrapper = styled.div`
-//   width: 100%;
-//   display: flex;
-
-//   ${media.mobile`
-//     width: 85%;
-//     margin: 0 auto;
-//   `};
-// `
 
 const BreederWrapper = styled.div`
   display: flex;
@@ -244,7 +229,7 @@ export default class Breederdetail extends Component {
   componentDidMount() {
     const { id } = this.props
     axios
-      .get(`${fetchServerConfig.ip}/api/breeder/${id}`)
+      .get('DB Server')
       .then(res =>
         this.setState({
           breederData: res.data
@@ -272,7 +257,6 @@ export default class Breederdetail extends Component {
     let images = []
     images.push(kannelImage, dogImage, puppyImage)
     images = images.reduce((a, b) => a.concat(b), [])
-    console.log(images)
     return (
       <Layout
         title={kannelBreed}
@@ -286,7 +270,6 @@ export default class Breederdetail extends Component {
               <SliderWrapper>
                 <ImageSlider images={images} />
               </SliderWrapper>
-              {/* <KannelImage src={data.kannelImage && data.kannelImage[0]} /> */}
               <NavWrapper padding={25} breeder>
                 <BreederImageNameWrapper>
                   <BreederImage src={breederImage} alt="breeder" />
@@ -297,12 +280,10 @@ export default class Breederdetail extends Component {
                     </Introduce>
                   </NameWrapper>
                 </BreederImageNameWrapper>
-                {/* <Bar borderColor={warmGrey2} mobileHide /> */}
                 <SupportWrapper>
                   <SupportDescription up wide>
                     페오펫은 윤리적인 <br /> 브리더들을 엄선하여 함께합니다.
                   </SupportDescription>
-
                   <Support href="/support">문의하기</Support>
                 </SupportWrapper>
               </NavWrapper>

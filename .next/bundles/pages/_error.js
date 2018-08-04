@@ -969,7 +969,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   enterModule && enterModule(module);
 })();
 
-var _jsxFileName = "C:\\Users\\SeungJu\\Documents\\Reactworkspace\\peopet_next_express\\pages\\_error.js";
+var _jsxFileName = "c:\\Users\\SeungJu\\Documents\\Reactworkspace\\peopet_portfolio\\pages\\_error.js";
 
 var _createClass = function () {
   function defineProperties(target, props) {
@@ -1182,13 +1182,13 @@ var _default = Error;
     return;
   }
 
-  reactHotLoader.register(_jsxFileName, "_jsxFileName", "C:/Users/SeungJu/Documents/Reactworkspace/peopet_next_express/pages/_error.js");
-  reactHotLoader.register(_createClass, "_createClass", "C:/Users/SeungJu/Documents/Reactworkspace/peopet_next_express/pages/_error.js");
-  reactHotLoader.register(_classCallCheck, "_classCallCheck", "C:/Users/SeungJu/Documents/Reactworkspace/peopet_next_express/pages/_error.js");
-  reactHotLoader.register(_possibleConstructorReturn, "_possibleConstructorReturn", "C:/Users/SeungJu/Documents/Reactworkspace/peopet_next_express/pages/_error.js");
-  reactHotLoader.register(_inherits, "_inherits", "C:/Users/SeungJu/Documents/Reactworkspace/peopet_next_express/pages/_error.js");
-  reactHotLoader.register(Error, "Error", "C:/Users/SeungJu/Documents/Reactworkspace/peopet_next_express/pages/_error.js");
-  reactHotLoader.register(_default, "default", "C:/Users/SeungJu/Documents/Reactworkspace/peopet_next_express/pages/_error.js");
+  reactHotLoader.register(_jsxFileName, "_jsxFileName", "c:/Users/SeungJu/Documents/Reactworkspace/peopet_portfolio/pages/_error.js");
+  reactHotLoader.register(_createClass, "_createClass", "c:/Users/SeungJu/Documents/Reactworkspace/peopet_portfolio/pages/_error.js");
+  reactHotLoader.register(_classCallCheck, "_classCallCheck", "c:/Users/SeungJu/Documents/Reactworkspace/peopet_portfolio/pages/_error.js");
+  reactHotLoader.register(_possibleConstructorReturn, "_possibleConstructorReturn", "c:/Users/SeungJu/Documents/Reactworkspace/peopet_portfolio/pages/_error.js");
+  reactHotLoader.register(_inherits, "_inherits", "c:/Users/SeungJu/Documents/Reactworkspace/peopet_portfolio/pages/_error.js");
+  reactHotLoader.register(Error, "Error", "c:/Users/SeungJu/Documents/Reactworkspace/peopet_portfolio/pages/_error.js");
+  reactHotLoader.register(_default, "default", "c:/Users/SeungJu/Documents/Reactworkspace/peopet_portfolio/pages/_error.js");
   leaveModule(module);
 })();
 

@@ -1,30 +1,29 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import axios from 'axios'
-import Link from 'components/Link'
 
-import { fetchServerConfig } from 'config/config'
 import { warmGrey, black, sky, white, white2, scarlet, red, grey } from 'utils/colors'
 import rem from 'utils/rem'
-import Bar from 'components/Bar'
 import media from 'utils/media'
 
-// const Overlay = styled.div`
-//   display: ${p => p.display}; /* Hidden by default */
-//   position: fixed; /* Stay in place */
-//   z-index: 1; /* Sit on top */
-//   left: 0;
-//   top: 0;
-//   width: 100%; /* Full width */
-//   height: 100%; /* Full height */
-//   overflow: auto; /* Enable scroll if needed */
-//   background-color: rgb(0, 0, 0); /* Fallback color */
-//   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-// `
+// 클릭시 어두운 뒷배경
+const Overlay = styled.div`
+  display: ${p => p.display}; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+`
 
 const Wrapper = styled.div`
   display: flex;
 `
+
 const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -58,41 +57,49 @@ const ModalWrapper = styled.div`
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
   justify-content: center;
   align-items: center;
 `
 
 const ModalContent = styled.div`
   position: relative;
-  display: flex;
   background-color: ${white};
   margin-top: ${rem(70)};
-  padding: ${rem(30)};
+  margin-right: 10%;
+
   border: 1px solid #888;
-  width: 100%;
+  width: 60%;
   height: 90%;
   max-width: ${rem(1100)};
   min-width: ${rem(840)};
   min-height: ${rem(800)};
   z-index: 9999;
   align-content: center;
+  overflow-y: auto;
+  padding: ${rem(50)};
 
-  ${media.mobile`
+  ${media.wide`
+  min-width: 65%;
+  `}
+
+  ${media.tablet`
+  min-width: 60%;
+  `} ${media.mobile`
+    padding: 5%;
     min-height: 40%;
     height: 55%;
     min-width: ${rem(330)};
     width: 85%;
     padding-top: 0;
     padding-bottom: 50px;
+    margin: auto;
   `};
 `
 
 const DetailWrapperWrapper = styled.div`
   display: flex;
-  justify-content: center;
-  height: 60%;
+  position: relative;
+
   margin: auto;
   ${media.mobile`
     display: none;
@@ -101,7 +108,21 @@ const DetailWrapperWrapper = styled.div`
 const Partition = styled.div`
   display: flex;
   flex-direction: column;
-  width: ${p => (p.left ? '60%' : '20%')};
+  width: ${p => (p.left ? '100%' : '15%')};
+  height: ${p => !p.left && '70%'};
+  position: ${p => !p.left && 'fixed'};
+  right: 6%;
+  top: 8.4%;
+
+  ${media.pc`
+    right: 2%;
+  width: ${p => !p.left && '18%'};
+    
+  `};
+
+  ${media.mobile`
+    display: ${p => !p.left && 'none'};
+  `};
 `
 // overflow-y: auto;
 
@@ -119,9 +140,7 @@ const DetailWrapper = styled.div`
   display: flex;
   flex-direction: ${p => p.info && 'column'};
   justify-content: space-around;
-  margin-top: ${p => p.breeder && rem(10)};
-  margin-left: ${p => p.info && rem(10)};
-  margin-bottom: ${p => p.info && rem(10)};
+  margin-top: ${p => !p.info && rem(10)};
   align-items: center;
   width: 100%;
   height: ${p => (p.info ? '75%' : '100%')};
@@ -138,7 +157,6 @@ const Detail = styled.div`
 const CallMe = styled.div`
   background-color: ${sky};
   color: ${white2};
-  margin-left: ${rem(10)};
   display: flex;
   flex-direction: column;
   height: 23%;
@@ -149,6 +167,8 @@ const CallMe = styled.div`
 const TextWrapper = styled.div`
   display: flex;
   justify-content: space-around;
+  margin: ${rem(10)} 0;
+  width: ${p => p.mobile && '90%'};
 `
 
 const Text = styled.div`
@@ -156,25 +176,45 @@ const Text = styled.div`
   font-size: ${rem(17)};
   font-size: ${p => rem(p.size)};
   color: ${p => p.color};
-  margin: ${p => p.breeder && 'auto 0'};
+  margin: ${p => p.center && 'auto '};
   margin-bottom: ${p => p.bottom};
+
+  ${media.wide`
+    font-size: ${rem(14)};
+  `};
+  ${media.tablet`
+    font-size: ${rem(12)};
+  `};
 `
 
 const BreederImg = styled.img`
-  width: ${rem(80)};
-  height: ${rem(80)};
+  width: ${rem(90)};
+  height: ${rem(90)};
   border-radius: 50%;
   margin: auto 0;
   margin-right: 5%;
   box-shadow: 0 ${rem(2)} ${rem(4)} 0 rgba(0, 0, 0, 0.5);
+  ${media.tablet`
+  width: ${rem(60)};
+  height: ${rem(60)};
+  `};
+`
+
+const AdoptionImgWrapper = styled.div`
+  margin-top: ${rem(10)};
+  text-align: left;
+`
+
+const AdoptionImg = styled.img`
+  width: 100%;
 `
 
 const Close = styled.span`
   color: #aaaaaa;
   position: absolute;
-  right: 0.3%;
+  right: 1.5%;
   top: 0;
-  font-size: 28px;
+  font-size: 38px;
   font-weight: bold;
 
   :hover,
@@ -184,9 +224,10 @@ const Close = styled.span`
     cursor: pointer;
   }
 
+  @media screen and (max-height: 770px) {
+  }
   ${media.mobile`
-    font-size: 22px;
-    right: 1%;
+    display: none;
   `};
 `
 
@@ -205,31 +246,93 @@ const Notice = styled.div`
   color: ${white2};
   position: fixed;
   bottom: 5%;
+  text-align: left;
+`
+
+const SrcollAni = keyframes`
+  0% {
+    opacity: 1;
+    top: 29%;
+  }
+  15% {
+    opacity: 1;
+    top: 50%;
+  }
+  50% {
+    opacity: 0;
+    top: 50%;
+  }
+  100% {
+    opacity: 0;
+    top: 29%;
+  }
+`
+
+const MouseScroll = styled.div`
+  display: inline-block;
+  line-height: 18px;
+  width: 100%;
+  font-size: 13px;
+  font-weight: normal;
+  color: ${sky};
+  letter-spacing: 2px;
+  margin-top: 40px;
+  margin-bottom: 2px;
+  text-decoration: none;
+  overflow: hidden;
+`
+
+const Mouse = styled.span`
+  position: relative;
+  display: block;
+  width: 46px;
+  height: 73px;
+  margin: 0 auto 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 3px solid ${sky};
+  border-radius: 23px;
+`
+
+const MouseMovement = styled.span`
+  position: absolute;
+  display: block;
+  top: 29%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  background: ${sky};
+  border-radius: 50%;
+  -webkit-animation: ${SrcollAni} 2s linear infinite;
+  -moz-animation: ${SrcollAni} 2s linear infinite;
+  animation: ${SrcollAni} 2s linear infinite;
+`
+
+const MouseMessage = styled.span`
+  float: left;
+  margin-top: ${rem(80)};
+  padding: 0;
+  -webkit-animation: ${SrcollAni} 2s linear infinite;
+  -moz-animation: ${SrcollAni} 2s linear infinite;
+  animation: ${SrcollAni} 2s linear infinite;
+  color: ${sky};
 `
 
 export default class Modal extends React.Component {
   state = {
     display: 'none',
-    none: '없음',
     breederData: []
   }
 
   componentDidMount() {
-    // axios
-    //   .get(`http://localhost:3000/api/breeder/breeder/${this.props.breeder}`)
-    //   .then(res => {
-    //     this.setState({
-    //       breederData: res.data
-    //     })
-    //   })
-    //   .catch(err => console.log(err))
     axios
-      .get(`${fetchServerConfig.ip}/api/breeder/breeder/${this.props.breeder}`)
+      .get('DB서버')
       .then(res => {
         this.setState({
           breederData: res.data
         })
-        console.log(this.state.breederData)
       })
       .catch(err => console.log(err))
   }
@@ -246,30 +349,28 @@ export default class Modal extends React.Component {
       birth,
       detail,
       description,
-      parents
+      parents,
+      footerimage
     } = this.props
-    // const BreederData = breederData.find(data => data.breederName === breeder)
     const none = '없음'
     const { _id, breederImage } = breederData
+    console.log(footerimage)
     return (
-      // TODO:modal 브리더 이미지 디비작업 해야함
       <Wrapper>
         <ButtonWrapper onClick={() => this.setState({ display: 'flex' })}>
           <Button button src={puppyimage} alt="puppy" />
           <ButtonText>{breed}</ButtonText>
         </ButtonWrapper>
         <ModalWrapper display={display}>
+          <Overlay onClick={() => this.setState({ display: 'none' })} />
           <ModalContent>
             <DetailWrapperWrapper>
               <Partition left>
                 <Button modal src={puppyimage} alt="puppy" />
                 <DetailWrapper breeder>
-                  <BreederLink
-                    href={`${fetchServerConfig.ip}/breederdetail/${_id}`}
-                    as={`/breederdetail/${_id}`}
-                  >
+                  <BreederLink href="DB 서버" as="url">
                     <TextWrapper>
-                      <Text breeder size={33} color={sky}>
+                      <Text center size={33} color={sky}>
                         브리더
                       </Text>
                       <Detail breeder>
@@ -286,7 +387,7 @@ export default class Modal extends React.Component {
               <Partition right>
                 <DetailWrapper info>
                   <Detail info>
-                    <Text size={33} color={sky} bottom="20%">
+                    <Text center size={33} color={sky} bottom="20%">
                       입양정보
                     </Text>
                     <Text>
@@ -321,22 +422,33 @@ export default class Modal extends React.Component {
                 <b>WANTED</b>
               </Text>
               <Button modal src={puppyimage} alt="puppy" />
-              <Text>
-                <b>견종</b>: {breed}
-              </Text>
-              <Text>
-                <b>성별</b>: {sex}
-              </Text>
-              <Text>
-                <b>출생일</b>: {birth}
-              </Text>
-
+              <TextWrapper mobile>
+                <Text center size={17} color={sky}>
+                  입양정보
+                </Text>
+                <Detail info>
+                  <Text size={14}>견종: {breed}</Text>
+                  <Text size={14}>성별: {sex}</Text>
+                  <Text size={14}>출생일: {birth}</Text>
+                </Detail>
+              </TextWrapper>
               <Notice>
                 * PC화면으로 보시면 더욱 많은 정보를 <br />확인하실 수 있습니다.
-                <Text size={14}>상담번호: 010. 2069. 5988</Text>
+                <Text size={13}>상담번호: 010. 2069. 5988</Text>
               </Notice>
             </MobileWrapper>
-            <Close onClick={() => this.setState({ display: 'none' })}>&times;</Close>
+            <MouseScroll>
+              <Mouse>
+                <MouseMovement />
+                <MouseMessage>scroll</MouseMessage>
+              </Mouse>
+            </MouseScroll>
+            <AdoptionImgWrapper>
+              <AdoptionImg src={footerimage} alt="peopet" />
+            </AdoptionImgWrapper>
+            <Close mobile onClick={() => this.setState({ display: 'none' })}>
+              &times;
+            </Close>
           </ModalContent>
         </ModalWrapper>
       </Wrapper>

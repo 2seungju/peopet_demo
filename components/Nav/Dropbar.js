@@ -2,6 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import NavLinks from 'components/Nav/NavLinks'
 
+// 드랍바가 펼쳐지는 애니메이션
 const Wrapper = styled.section`
   position: absolute;
   top: 50px;

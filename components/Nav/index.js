@@ -1,10 +1,10 @@
+// 네비게이션 바 index
+
 import React from 'react'
 import styled, { css } from 'styled-components'
 import Navbar from 'components/Nav/Navbar'
 import Dropbar from 'components/Nav/Dropbar'
-import { navbarHeight } from 'utils/sizes'
 import rem from 'utils/rem'
-import SideNav from 'components/Nav/SideNav'
 import AutoComplete from 'components/AutoComplete'
 import { peacockBlue } from 'utils/colors'
 import media from 'utils/media'
@@ -48,13 +48,6 @@ const Nav = ({
   handleClickSuggestion
 }) => (
   <Wrapper>
-    {/* <SideNav
-      isSideMenuFolded={isSideMenuFolded}
-      onSideMenuToggle={onSideMenuToggle}
-      location={location}
-      onChangeBreeder={onChangeBreeder}
-      activeDogId={activeDogId}
-    /> */}
     <Navbar
       onDropMenuToggle={onDropMenuToggle}
       isDropMenuFolded={isDropMenuFolded}
@@ -65,6 +58,7 @@ const Nav = ({
       onSideMenuToggle={onSideMenuToggle}
     />
     {location === 'breeder' && <BlueBackground />}
+    {/* 브리더 페이지 일때 자동완성 컴포넌트까지 네비게이션 바와 같이 나옴 */}
     {location === 'breeder' && (
       <AutoComplete handleClickSuggestion={handleClickSuggestion} location={location} />
     )}

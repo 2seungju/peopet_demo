@@ -1,3 +1,6 @@
+// 페오펫 페이지에서 관련 기사를 보여주는 페이지
+// 모바일 버전에서는 메뉴에서도 확인 가능함
+
 import React, { Component } from 'react'
 import styled from 'styled-components'
 

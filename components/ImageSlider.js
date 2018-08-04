@@ -1,3 +1,5 @@
+// 브리더 디테일 페이지에서 이미지 슬라이더에 사용하는 컴포넌트
+
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { LeftArrowIcon, RightArrowIcon } from 'components/Icons'
@@ -12,6 +14,7 @@ const Wrapper = styled.div`
   white-space: nowrap;
 `
 
+// 애니메이션을 통한 슬라이더 구현
 const SlideWrapper = styled.div`
   position: relative;
   width: 100%;

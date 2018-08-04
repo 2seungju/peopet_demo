@@ -1,3 +1,5 @@
+// 이미지 슬라이더와 비슷한 구성의 리뷰 컴포넌트
+
 import React from 'react'
 import styled from 'styled-components'
 
@@ -56,6 +58,8 @@ const ContentWrapper = styled.div`
     }
   }
 `
+
+// ie issue 때문에 min, max width, hegiht 설정이 필요
 const Slider = styled.div`
   display: flex;
   width: 100vw;
@@ -77,6 +81,7 @@ const ReviewWrapper = styled.div`
   `};
 `
 
+// ie issue 때문에 min, max width, hegiht 설정이 필요
 const DogImg = styled.img`
   width: 20%;
   height: 20%;
@@ -165,23 +170,11 @@ const ArrowImg = styled.img`
 `
 
 export default class Review extends React.Component {
-  // componentDidMount = () => {
-  //   this.setState({
-  //     i: this.props.i
-  //   })
-  // }
-
   state = {
     index: 0,
     translateValue: 0,
     reviews: []
   }
-
-  // componentDidMount = () => {
-  //   this.setState({
-  //     reviews: this.props.reviews
-  //   })
-  // }
 
   goToPreviousSlide = () => {
     const { index, translateValue } = this.state

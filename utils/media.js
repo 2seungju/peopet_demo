@@ -1,11 +1,12 @@
-// these sizes are arbitrary and you can set them to whatever you wish
+// 반응형 웹 분기점
+// 미디어 쿼리
 import { css } from 'styled-components'
 
 const sizes = {
   wide: 1170,
   pc: 992,
   tablet: 768,
-  mobile: 425,
+  mobile: 425
 }
 
 // iterate through the sizes and create a media template
@@ -16,7 +17,7 @@ const media = Object.keys(sizes).reduce((accumulator, label) => {
   const accum = accumulator
   accum[label] = (...args) => css`
     @media (max-width: ${emSize}em) {
-      ${css(...args)}
+      ${css(...args)};
     }
   `
   return accumulator

@@ -1,3 +1,5 @@
+// 브리더 페이지 왼쪽에 있는 카테고리 컴포넌트
+
 import React from 'react'
 import styled from 'styled-components'
 import Link from 'components/Link'
@@ -15,10 +17,9 @@ const MobileWrapper = styled.div`
   text-align: left;
   width: ${rem(240)};
   padding: 0 ${rem(20)};
-  ${''/* margin: ${rem(10)}; */}
-  ${media.tablet`
+  ${''} ${media.tablet`
     display: flex;
-  `}  
+  `};
 `
 
 const Wrapper = styled.div`
@@ -32,10 +33,9 @@ const Wrapper = styled.div`
   ${media.wide`
     flex:none;
     width: ${rem(280)};
-  `}  
-  ${media.tablet`
+  `} ${media.tablet`
     display: none;
-  `}  
+  `};
 `
 
 const Label = styled.p`
@@ -67,7 +67,7 @@ const SubLabel = styled.p`
   margin: auto 0;
   ${media.tablet`
     font-size: ${rem(15)};
-  `}
+  `};
 `
 
 const NavLink = styled(Link)`
@@ -75,31 +75,28 @@ const NavLink = styled(Link)`
   padding: ${rem(10)};
   color: ${black};
   font-size: ${p => p.mobile && rem(15)};
-  color: ${p => p.activeDogId === p.dogId ? peacockBlue : black};
+  color: ${p => (p.activeDogId === p.dogId ? peacockBlue : black)};
   &:hover {
-    color: ${peacockBlue}
+    color: ${peacockBlue};
   }
 `
 
 const BreederQueryButton = styled.button`
   font-size: ${rem(18)};
   padding: ${rem(10)};
-  color: ${p => p.activeDogId === p.dogId ? peacockBlue : black};
+  color: ${p => (p.activeDogId === p.dogId ? peacockBlue : black)};
   font-size: ${p => p.mobile && rem(15)};
   background: ${white2};
   border: 0;
   text-align: left;
-  ${''/* margin-bottom: ${rem(5)}; */}
-  cursor: pointer;
+  ${''} cursor: pointer;
   outline: none;
   &:hover {
-    color: ${peacockBlue}
-  };
+    color: ${peacockBlue};
+  }
   &:active {
     font-weight: bold;
   }
-  
-
 `
 
 const Category = ({ mobile, pc, location, onChangeBreeder, activeDogId }) => (
@@ -109,86 +106,77 @@ const Category = ({ mobile, pc, location, onChangeBreeder, activeDogId }) => (
       <Arrow />
       <SubLabel>카테고리</SubLabel>
     </SubLabelWrapper>
-    {
-      filterDogData.map(dog => {
-        const { dogName, id } = dog
-        const dogId = id
+    {filterDogData.map(dog => {
+      const { dogName, id } = dog
+      const dogId = id
 
-        if (location === 'breeder') {
-          return (
-            <BreederQueryButton
-              dogId={dogId}
-              activeDogId={activeDogId}
-              onClick={() => onChangeBreeder(dogId, dogName)}
-              key={dogId}
-            >
-              {dogName}
-            </BreederQueryButton>
-          )
-        }
-
+      if (location === 'breeder') {
         return (
-          <NavLink
+          <BreederQueryButton
             dogId={dogId}
             activeDogId={activeDogId}
-            pc={pc}
-            href={{ pathname: '/breeder', query: { dogId } }}
-            as={`/breeder/${dogId}`}
+            onClick={() => onChangeBreeder(dogId, dogName)}
             key={dogId}
           >
             {dogName}
-          </NavLink>
+          </BreederQueryButton>
         )
-      })
-    }
+      }
+
+      return (
+        <NavLink
+          dogId={dogId}
+          activeDogId={activeDogId}
+          pc={pc}
+          href={{ pathname: '/breeder', query: { dogId } }}
+          as={`/breeder/${dogId}`}
+          key={dogId}
+        >
+          {dogName}
+        </NavLink>
+      )
+    })}
   </Wrapper>
 )
 
-export const MobileCategory = ({
-  onSideMenuToggle,
-  location,
-  onChangeBreeder,
-  activeDogId
-}) => (
+export const MobileCategory = ({ onSideMenuToggle, location, onChangeBreeder, activeDogId }) => (
   <MobileWrapper>
     <Label mobile>견종별 브리더</Label>
-    {
-      filterDogData.map(dog => {
-        const { dogName, id } = dog
-        const dogId = id
+    {filterDogData.map(dog => {
+      const { dogName, id } = dog
+      const dogId = id
 
-        if (location === 'breeder') {
-          return (
-            <BreederQueryButton
-              onClick={() => {
-                onChangeBreeder(dogId, dogName)
-                onSideMenuToggle()
-              }}
-              dogId={dogId}
-              activeDogId={activeDogId}
-              key={dogId}
-              mobile
-            >
-              {dogName}
-            </BreederQueryButton>
-          )
-        }
-
+      if (location === 'breeder') {
         return (
-          <NavLink
-            handleClick={onSideMenuToggle}
+          <BreederQueryButton
+            onClick={() => {
+              onChangeBreeder(dogId, dogName)
+              onSideMenuToggle()
+            }}
             dogId={dogId}
             activeDogId={activeDogId}
-            mobile
-            href={{ pathname: '/breeder', query: { dogId } }}
-            as={`/breeder/${dogId}`}
             key={dogId}
+            mobile
           >
             {dogName}
-          </NavLink>
+          </BreederQueryButton>
         )
-      })
-    }
+      }
+
+      return (
+        <NavLink
+          handleClick={onSideMenuToggle}
+          dogId={dogId}
+          activeDogId={activeDogId}
+          mobile
+          href={{ pathname: '/breeder', query: { dogId } }}
+          as={`/breeder/${dogId}`}
+          key={dogId}
+        >
+          {dogName}
+        </NavLink>
+      )
+    })}
   </MobileWrapper>
 )
 

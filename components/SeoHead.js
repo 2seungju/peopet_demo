@@ -1,13 +1,6 @@
 import NextHead from 'next/head'
 import { Component } from 'react'
 
-/*
-  TODO:
-  atom.png 파일 추가
-  meta 태그 추가
-*/
-
-
 export default class SeoHead extends Component {
   render() {
     const {
@@ -19,11 +12,12 @@ export default class SeoHead extends Component {
     } = this.props
     return (
       <NextHead>
-        <title>
-          {title}
-        </title>
+        <title>{title}</title>
         <meta name="description" content={description} />
-        <meta property="keywords" content="브리더,강아지 브리더,전문견사,건강한 강아지,전문 브리더,강아지 분양,강아지 입양" />
+        <meta
+          property="keywords"
+          content="브리더,강아지 브리더,전문견사,건강한 강아지,전문 브리더,강아지 분양,강아지 입양"
+        />
 
         {/* Open Graph */}
         <link itemProp="url" href={url} />

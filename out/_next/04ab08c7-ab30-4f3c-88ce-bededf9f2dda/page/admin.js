@@ -1,1 +1,0 @@
-module.exports=__NEXT_REGISTER_PAGE("/admin",function(){var n=webpackJsonp([5],{317:function(n,e,o){n.exports=o(318)},318:function(n,e){}},[317]);return{page:n.default}});

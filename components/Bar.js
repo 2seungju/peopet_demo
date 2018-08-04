@@ -1,3 +1,5 @@
+// 수직, 수평의 Bar 컴포넌트
+
 import styled from 'styled-components'
 import media from 'utils/media'
 

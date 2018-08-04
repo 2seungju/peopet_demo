@@ -1,20 +1,19 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import media from 'utils/media'
+
 import rem from 'utils/rem'
-import { navbarHeight } from 'utils/sizes'
-// import NavSeparator from './NavSeparator'
 import { peacockBlue, black } from 'utils/colors'
 import Link from '../Link'
-// import AutoComplete from 'components/AutoComplete'
 
+// 드랍바가 false or true에 따라 css가 다름
+// 드랍바가 true일 때 글자가 늦게 나타나는 애니메이션
 const Wrapper = styled.nav`
   display: flex;
   align-items: center;
   flex: 0 0 auto;
-  ${''} ${p =>
-  p.dropbar
-    ? css`
+  ${p =>
+    p.dropbar
+      ? css`
           margin-top: 20%;
           flex-direction: column;
           padding-top: 30px;
@@ -33,19 +32,14 @@ const Wrapper = styled.nav`
             }
           }
         `
-    : css`
-          ${''};
-        `};
+      : css``};
 `
 
 const NavLink = styled(Link)`
   flex: 0 0 auto;
   display: inline-block;
-  ${''}
   transition: opacity 0.2s, transform 0.2s;
   cursor: pointer;
-
-  ${''}
   color: ${black};
   font-size: ${rem(20)};
   padding-left: ${rem(20)};
@@ -69,36 +63,23 @@ const NavLink = styled(Link)`
     css`
       width: 100%;
       margin-top: 5px;
-    `}
+    `};
 `
 
 const NavSeparator = styled.span`
-  ${'' /* flex: 0 0 auto;
-  width: ${rem(5)};
-  height: ${rem(5)};
-  margin: 0 ${rem(15)};
-
-  border-radius: 50%;
-  background: currentColor;
-  opacity: 0.35; */} ${p =>
-  p.dropbar &&
+  ${p =>
+    p.dropbar &&
     css`
       display: none;
     `};
 `
 
-/*
-  TODO: if 문을 쓰지 않을 수 있도록!
-*/
-
 const NavLinks = ({ dropbar }) => (
   <Wrapper dropbar={dropbar}>
-    {/* <AutoComplete /> */}
     <NavLink dropbar={dropbar} href="/about">
       페오펫
     </NavLink>
     <NavSeparator dropbar={dropbar} />
-
     <NavLink dropbar={dropbar} href="/breeder">
       브리더
     </NavLink>

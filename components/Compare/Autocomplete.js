@@ -1,3 +1,5 @@
+// 파이어베이스에 있는 정보에 대한 자동완성 기능을 지원함
+
 import React, { Component } from 'react'
 import Autosuggest from 'react-autosuggest'
 import styled from 'styled-components'

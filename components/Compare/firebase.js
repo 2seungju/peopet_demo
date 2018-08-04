@@ -1,3 +1,5 @@
+// 파이어베이스 설정
+
 import * as firebase from 'firebase'
 
 const config = {

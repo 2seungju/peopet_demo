@@ -1,10 +1,12 @@
+// 입양 가능 자견 페이지
+
 import React from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 
 import Layout from 'components/Layout'
+// 입양가능한 강아지리스트 컴포넌트 호출
 import AdoptionCardList from 'components/Adoption/AdoptionCardList'
-import Spinner from 'components/Spinner'
 import { fetchServerConfig } from 'config/config'
 
 import { warmGrey2, squash, black, pooBrown, peacockBlue, white, white2, dark } from 'utils/colors'
@@ -56,26 +58,12 @@ const AdoptionWrapper = styled.div`
 
 export default class Puppy extends React.Component {
   state = {
-    errorFound: false,
-    loading: true,
-    filterDogData: [],
-    isFiltered: false,
-    activeDogId: '',
-    fetchError: false,
     puppies: []
   }
 
   componentDidMount() {
-    // axios
-    // .get(`${fetchServerConfig.ip}/api/review`)
-    // .then(res => {
-    //   this.setState({
-    //     reviews: res.data
-    //   })
-    // })
-    // .catch(err => console.log(err))
     axios
-      .get(`${fetchServerConfig.ip}/api/puppy`)
+      .get('DB 서버')
       .then(res => {
         this.setState({
           puppies: res.data

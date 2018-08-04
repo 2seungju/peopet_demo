@@ -1,3 +1,5 @@
+// 디자인 개편 이전 컴포넌트
+
 import React from 'react'
 import styled from 'styled-components'
 import rem from 'utils/rem'

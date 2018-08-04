@@ -1,16 +1,19 @@
+// 자동완성 검색창 컴포넌트. 브리더 페이지에 사용
+
 import React, { Component } from 'react'
 import Autosuggest from 'react-autosuggest'
 import update from 'react-addons-update'
+import styled from 'styled-components'
+
 import rem from 'utils/rem'
 import { white2, black, peacockBlue } from 'utils/colors'
 import Link from 'components/Link'
-import styled from 'styled-components'
 import { SearchIcon } from 'components/Icons'
 import media from 'utils/media'
 
+// sass
 import '../static/styles.scss'
 import { dogData, suggestDogData } from '../dogData'
-// search icon 위치가 안맞음
 
 const searchImgUrl = 'static/images/wt_main_home_search.svg'
 
@@ -87,13 +90,6 @@ const SuggestionLabel = styled.div`
   `};
 `
 
-// const Input = styled.input`
-// width: 600px;
-// :placeholder {
-//   opacity: 0.1;
-// }
-// `
-
 class AutoComplete extends Component {
   state = {
     value: '',
@@ -138,6 +134,7 @@ class AutoComplete extends Component {
     })
   }
 
+  // 도입 초기에는 메인 페이지와 브리더 페이지 두개의 페이지에서 사용했기 때문에 조건연산자 사용
   renderInputComponent = inputProps => {
     const { location } = this.props
     const inputClassName =

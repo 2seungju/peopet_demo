@@ -2,7 +2,6 @@ const express = require('express')
 
 const DogController = require('./controllers/dog')
 const BreederController = require('./controllers/breeder')
-const AdminController = require('./controllers/admin')
 const ReviewController = require('./controllers/review')
 const PuppyController = require('./controllers/puppy')
 
@@ -10,7 +9,6 @@ module.exports = function (app) {
   const apiRoutes = express.Router()
   const dogRoutes = express.Router()
   const breederRoutes = express.Router()
-  const adminRoutes = express.Router()
   const reviewRoutes = express.Router()
   const puppyRoutes = express.Router()
 
@@ -18,11 +16,8 @@ module.exports = function (app) {
     PRODUCT ROUTE
   ------------------------------------------------------------------------------*/
 
-  // apiRoutes.use('/admin', adminRoutes);
-  // adminRoutes.get('/', AdminController.allDataGet);
-  // adminRoutes.get('/dog/:_id', AdminController.oneDogDataGet);
-  // adminRoutes.get('/breeder/:_id', AdminController.oneBreederDataGet);
-
+  // restful api.
+  // 실제로 post는 사용하지 않았음.
   apiRoutes.use('/dog', dogRoutes)
   dogRoutes.get('/', DogController.allDogGet)
   dogRoutes.get('/:id', DogController.oneDogGet)
@@ -35,11 +30,6 @@ module.exports = function (app) {
   breederRoutes.get('/breeder/:breeder', BreederController.BreederNameGet)
   breederRoutes.post('/', BreederController.saveBreeder)
   breederRoutes.get('/dog/:id', BreederController.findBreederGet)
-
-  apiRoutes.use('/admin', adminRoutes)
-  adminRoutes.get('/', AdminController.allDataGet)
-  adminRoutes.post('/breeder', AdminController.saveBreeder)
-  // adminRoutes.post('/', Admin)
 
   apiRoutes.use('/review', reviewRoutes)
   reviewRoutes.get('/', ReviewController.allReviewGet)

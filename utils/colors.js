@@ -1,6 +1,5 @@
-import lighten from 'polished/lib/color/lighten'
+// 컬러 모듈화
 
-// export const peacockBlue = lighten(0.1, '#004ca4')
 export const peacockBlue = '#004ca4'
 export const squash = '#f5a623' // orange
 export const black = '#333333'

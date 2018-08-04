@@ -1,3 +1,5 @@
+// 현재는 쓰이지 않았지만 이벤트에 사용하던 팝업컴포넌트
+
 import React from 'react'
 import styled from 'styled-components'
 import rem from 'utils/rem'

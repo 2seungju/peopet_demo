@@ -1,3 +1,5 @@
+// 기본적인 모달형식의 컴포넌트 메인 페이지 알아두세요를 클릭하게 되면 뜸
+
 import React from 'react'
 import styled from 'styled-components'
 

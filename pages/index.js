@@ -1,22 +1,20 @@
+// 랜딩 페이지
+
+// module 및 컴포넌트 호출
 import React, { Component } from 'react'
-import styled, { css, types } from 'styled-components'
+import styled from 'styled-components'
 import axios from 'axios'
 
 import Layout from 'components/Layout'
-import Link from 'components/Link'
 import BreederList from 'components/Breeder/BreederList'
 import AdoptionCardList from 'components/Adoption/AdoptionCardList'
 import Review from 'components/Review'
-import { RightDropIcon, HomePartnerRightIcon } from 'components/Icons'
-import { fetchServerConfig } from 'config/config'
 import Modal from 'components/Modal'
 import { warmGrey, black, sky, white, white2, scarlet, red, grey, peacockBlue } from 'utils/colors'
 import rem from 'utils/rem'
-import Bar from 'components/Bar'
 import media from 'utils/media'
-import placeholder from 'utils/placeholder'
 
-// import HomeHeroImg from '../static/home-hero.jpeg'
+// 이미지 호출
 const peopetconst = 'static/images/peopetcost.png'
 const peopetconst1 = 'static/images/peopetcost1.png'
 const HomeSearchUrl = '/static/images/home-search@3x.png'
@@ -29,27 +27,12 @@ const Love = '/static/images/Love.png'
 const healthy = '/static/images/healthy.png'
 const check = '/static/images/check.png'
 const benefit = '/static/images/benefit.png'
-// const Differnt = [
-//   {
-//     id: 1,
-//     name: DNA,
-//     content: '강아지의 유전형질을 고려한 교배로 유전병을 최소화합니다.',
-//     color: 'black'
-//   },
-//   {
-//     id: 2,
-//     name: Vaccine,
-//     content: '체계적인 백신 프로그램으로 위험 바이러스를 예방합니다.',
-//     color: 'black'
-//   },
-//   {
-//     id: 3,
-//     name: Love,
-//     content: '작고 예쁜 강아지보다 건강한 강아지를 우선으로 합니다.',
-//     color: 'black'
-//   }
-// ]
 
+
+/*
+  styled-components를 이용한 css
+  props와 조건연산자를 통해 독립적인 스타일 적용
+*/
 const Hero = styled.div`
   width: 100%;
   margin: ${p => (p.main ? '0 auto' : 'auto')};
@@ -292,11 +275,9 @@ const DescriptionWrapper = styled.div`
   margin-top: 10%;
   ${media.wide`
   width: ${p => (p.why ? '80%' : '100%')};
-
   `}
   ${media.tablet`
   width: ${p => (p.why ? '90%' : '95%')};
-
   `}
   ${media.mobile`
     margin: 0;
@@ -405,11 +386,6 @@ const Img = styled.img`
   `};
 `
 
-// const AutoWrapper = styled.div`
-//   width: 92%;
-//   margin: 0 auto;
-// `
-
 class Index extends Component {
   state = {
     breederData: [],
@@ -419,8 +395,10 @@ class Index extends Component {
   }
 
   componentDidMount() {
+
+    // axios를 이용한 restful api
     axios
-      .get(`${fetchServerConfig.ip}/api/breeder`)
+      .get(`DB Server`)
       .then(res => {
         this.setState({
           breederData: res.data
@@ -428,7 +406,7 @@ class Index extends Component {
       })
       .catch(err => console.log(err))
     axios
-      .get(`${fetchServerConfig.ip}/api/review`)
+      .get(`DB Server`)
       .then(res => {
         this.setState({
           reviews: res.data
@@ -436,34 +414,28 @@ class Index extends Component {
       })
       .catch(err => console.log(err))
     axios
-      .get(`${fetchServerConfig.ip}/api/puppy`)
+      .get(`DB Server`)
       .then(res => {
         this.setState({
           puppies: res.data
         })
       })
       .catch(err => console.log(err))
-    // axios
-    //   .get('http://localhost:3000/api/puppy')
-    //   .then(res => {
-    //     this.setState({
-    //       puppies: res.data
-    //     })
-    //   })
-    //   .catch(err => console.log(err))
   }
-  // TODO: 익스는 후기 컴포넌트 말썽
   render() {
     const { breederData, reviews, puppies, isClicked } = this.state
     const sortingField = 'rank'
+    // sort를 이용한 정렬
     const BreederRank = breederData.sort((a, b) => a[sortingField] - b[sortingField])
-    // 5명 신규브리더
-    // const newBreederList = breederData.filter(breeder => breeder.label === 'new')
+    // 랜딩페이지에서 보여줄 배열 최적화
     const Dog = BreederRank.slice(0, 3)
     const Puppy = puppies.slice(0, 6)
     const MobilePuppy = puppies.slice(0, 3)
 
     return (
+      /*
+      종 스크롤 형식 페이지
+      */
       <Layout location="/">
         <Wrapper home mobileHeight={650}>
           <MainImgWrapper />
@@ -540,7 +512,6 @@ class Index extends Component {
                   <Icon row={3} src={benefit} />
                 </IconWrapper>
               </IconWrapperWrapper>
-
               <TextWrapper>
                 <Text grid row={1} color={white}>
                   사회화가 잘 된&nbsp;
@@ -562,6 +533,9 @@ class Index extends Component {
             </DescriptionWrapper>
           </Content>
         </Wrapper>
+        {/*
+        입양 가능 자견 데이터를 넘겨줌
+        */}
         <Wrapper breeder background={white2} Listpadding="10%">
           <Content adoption>
             <Title size={58} mobileSize={30} color={black}>
@@ -582,6 +556,9 @@ class Index extends Component {
             </BreederLink>
           </Content>
         </Wrapper>
+        {/*
+         브리더 데이터를 넘겨줌
+        */}
         <Wrapper
           breeder
           background={white}
@@ -599,7 +576,6 @@ class Index extends Component {
             <BreederWrapper>
               <BreederList breederData={Dog} location="/" position="vertical" />
             </BreederWrapper>
-
             <BreederLink color={white2} href="/breeder">
               더 보기 +
             </BreederLink>
@@ -622,7 +598,6 @@ class Index extends Component {
                   <Icon row={3} src={Love} />
                 </IconWrapper>
               </IconWrapperWrapper>
-
               <TextWrapper>
                 <Text grid row={1} color={black} pctsize={20}>
                   강아지의 유전형질을 고려한 교배로 유전병을 최소화합니다.
@@ -630,7 +605,6 @@ class Index extends Component {
                 <Text grid row={2} color={black} pcsize={20}>
                   체계적인 백신 프로그램으로 위험 바이러스를 예방합니다.
                 </Text>
-
                 <Text grid row={3} color={black} pcsize={20}>
                   작고 예쁜 강아지보다 건강한 강아지를 우선으로 합니다.
                 </Text>
@@ -638,6 +612,7 @@ class Index extends Component {
             </DescriptionWrapper>
           </Content>
         </Wrapper>
+        {/*리뷰 컴포넌트*/}
         <Review reviews={reviews} />
         <Wrapper support padding={10} background={white2}>
           <Content content="support" mobileFullWidth>

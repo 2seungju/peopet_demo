@@ -1,3 +1,5 @@
+// 브리더카드 컴포넌트
+
 import React from 'react'
 import styled from 'styled-components'
 import rem from 'utils/rem'
@@ -23,10 +25,6 @@ const Wrapper = styled.div`
   `};
 `
 
-// ${media.tablet`
-// width: ${rem(271)};
-// margin: ${rem(10)} 0;
-// `};
 const BreederLink = styled(Link)`
   width: 100%;
 `
@@ -152,7 +150,6 @@ const BreederCardLong = ({
       <CardWrapper>
         <ImageWrapper>
           <KannelImage src={kannelImage[0]} />
-          {/* {position !== 'breeder' && <Label position={position}>BEST</Label>} */}
         </ImageWrapper>
         <BreederImage img={breederImage && breederImage} />
         <DetailWrapper>
@@ -163,7 +160,6 @@ const BreederCardLong = ({
             <Title>
               <b>위치</b> : {kannelLocation}
             </Title>
-            {/* <Title><b>모색</b> : {kannelColor}</Title> */}
           </TitleWrapper>
           <Bar margin="none" mobilemargin={`${rem(5)} auto`} />
           <BreederWrapper>

@@ -305,20 +305,10 @@ export default class MyDocument extends Document {
           <meta
             name="keyword"
             content="브리더,강아지 브리더,전문견사,건강한 강아지,전문 브리더,강아지 분양,강아지 입양"
-          />
-          <meta property="fb:app_id" content="630799187279808" />
+          />{' '}
           <style dangerouslySetInnerHTML={{ __html: resetStyles }} />
           {styleTags}
           <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.min.js" />
-          {/* <script dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MVS64F9');` }} /> */}
-          {process.env.NODE_ENV === 'production' && (
-            <script
-              dangerouslySetInnerHTML={{
-                __html:
-                  "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MVS64F9');"
-              }}
-            />
-          )}
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
@@ -334,10 +324,6 @@ export default class MyDocument extends Document {
                 ]
               }`
             }}
-          />
-          <meta
-            name="google-site-verification"
-            content="u73GRNDDuj4e7nJFLiY8NcERojS4dPScTUBo30Sudho"
           />
         </Head>
         <body>

@@ -1,3 +1,5 @@
+// 고객 문의 페이지
+
 import React, { Component } from 'react'
 import Layout from 'components/Layout'
 import styled from 'styled-components'
@@ -8,7 +10,6 @@ const Wrapper = styled.div`
   max-width: 100%;
   height: 100%;
 `
-
 
 export default class Blog extends Component {
   static getInitialProps({ query: { id } }) {
@@ -28,14 +29,13 @@ export default class Blog extends Component {
     const width = window.innerWidth
     // console.log(width)
     this.setState({
-      windowWidth: width,
+      windowWidth: width
     })
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateDimensions)
   }
-
 
   render() {
     // console.log(this.state.windowWidth)

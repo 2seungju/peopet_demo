@@ -1,9 +1,10 @@
+// 브리더 페이지
+
 import React, { Component } from 'react'
 import axios from 'axios'
 
 import Layout from 'components/Layout'
 import BreederCardLong from 'components/Breeder/BreederCardLong'
-import BreederCard from 'components/Breeder/BreederCard'
 import { fetchServerConfig } from 'config/config'
 import styled from 'styled-components'
 import { grey } from 'utils/colors'
@@ -11,7 +12,6 @@ import rem from 'utils/rem'
 import Category from 'components/Category'
 import media from 'utils/media'
 import Spinner from 'components/Spinner'
-import ErrorPage from '../pages/_error'
 
 const Wrapper = styled.div`
   width: 71%;
@@ -55,7 +55,6 @@ export default class Breeder extends Component {
     filterDogData: [],
     isFiltered: false,
     activeDogId: '',
-    fetchError: false,
     dogData: []
   }
 
@@ -63,7 +62,7 @@ export default class Breeder extends Component {
     const { dogId } = this.props
     const fetchQuery = dogId ? `/dog/${dogId}` : ''
     axios
-      .get(`${fetchServerConfig.ip}/api/breeder${fetchQuery}`)
+      .get('DB Server')
       .then(res => {
         this.setState({
           dogData: res.data
@@ -77,16 +76,9 @@ export default class Breeder extends Component {
        code inside here is executed if an error
        itn thrown from children */
     this.setState({ errorFound: true })
-    // do some other logics if needed
   }
 
   onChangeBreeder = id =>
-    // const res = await axios.get(`http://${fetchServerConfig.ip}:4000/api/breeder/dog/${id}`)
-    // return this.setState({
-    //   isFiltered: true,
-    //   filterDogData: res.data
-    // })
-    // console.log(id, 'iidd')
     this.setState(
       {
         loading: true,
@@ -102,13 +94,9 @@ export default class Breeder extends Component {
               loading: false
             }))
           .catch(error => console.log(error))
-      // return this.setState({
-      //   fetchError: true
-      // })
     )
 
   handleClickSuggestion = id =>
-    // console.log(id, 'iidd')
     this.setState(
       {
         loading: true,
@@ -124,13 +112,10 @@ export default class Breeder extends Component {
               loading: false
             }))
           .catch(error => console.log(error))
-      // return this.setState({
-      //   fetchError: true
-      // })
     )
 
   render() {
-    const { dogData, loading, errorFound, isFiltered, filterDogData, activeDogId } = this.state
+    const { dogData, loading, isFiltered, filterDogData, activeDogId } = this.state
     const { isMobileCategorySelected, mobileCategorySelectedId, statusCode } = this.props
     const { onChangeBreeder, handleClickSuggestion } = this
     const breederData = isFiltered ? filterDogData : dogData

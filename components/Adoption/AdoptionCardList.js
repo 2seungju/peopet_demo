@@ -1,3 +1,5 @@
+// 입양 가능자견 카드
+
 import React from 'react'
 import styled from 'styled-components'
 import FlexBox from 'components/FlexBox'
@@ -21,17 +23,7 @@ const Wrapper = styled(FlexBox)`
   height: 100%;
 `
 
-const AdoptionCardList = ({ puppies, breederData }) => (
-  // let data
-
-  // if (location === '/' && position === 'vertical') {
-  //   data = breederData.slice(0, 3)
-  // }
-
-  // if (location === '/' && position === 'horizontal') {
-  //   data = breederData.slice(4, 10)
-  // }
-
+const AdoptionCardList = ({ puppies }) => (
   <Wrapper>
     {puppies.map((puppy, i) => (
       <Modal
@@ -47,12 +39,7 @@ const AdoptionCardList = ({ puppies, breederData }) => (
         description={puppy.description}
         parents={puppy.parents}
       />
-      ))}
-    {/* <TextWrapper>
-        <Title>{title}</Title>
-        <Description>{description}</Description>
-      </TextWrapper>
-      <Image src={image} /> */}
+    ))}
   </Wrapper>
 )
 

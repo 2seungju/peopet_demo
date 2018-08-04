@@ -1,3 +1,5 @@
+// 페오펫 페이지
+
 import React, { Component } from 'react'
 import Layout from 'components/Layout'
 import styled from 'styled-components'
@@ -6,6 +8,8 @@ import rem from 'utils/rem'
 import { ChangeRotationIcon } from 'components/Icons'
 import media from 'utils/media'
 import Press from 'components/Press'
+
+// 이미지 호출
 
 const longImg = 'static/images/10000km.jpg'
 const longMobileImg = 'static/images/m_100000km.jpg'
@@ -131,7 +135,7 @@ const DescriptionWrapper = styled.div`
     display: none;
   `};
 `
-
+// 모바일 버전
 const MobileDescriptionWrapper = styled.div`
   display: none;
   color: ${p => (!(p.long || p.hero) ? black : white2)};
@@ -214,6 +218,7 @@ const MobileImageWrapper = styled.div`
   position: relative;
 `
 
+// 모바일 버전
 const IntervieweeWrapper = styled.div`
   display: none;
 
@@ -230,7 +235,6 @@ export default class About extends Component {
   componentDidMount() {}
 
   render() {
-    // console.log(this.props.id)
     return (
       <Layout title="about">
         <Wrapper>
@@ -238,7 +242,6 @@ export default class About extends Component {
             <TextContent>
               <CenterWrapper>
                 <TitleWrapper hero>
-                  {/* <img src={titleImg} alt="aboutTitleImg" /> */}
                   <Title hero>IMPACT THE WORLD</Title>
                 </TitleWrapper>
                 <DescriptionWrapper hero>
